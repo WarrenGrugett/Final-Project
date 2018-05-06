@@ -16,4 +16,6 @@ public abstract class Troop extends Element {
 	public int damage() {
 		return damage;
 	}
+
+	public abstract int upgrade();
 }

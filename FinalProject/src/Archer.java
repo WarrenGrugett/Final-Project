@@ -1,19 +1,17 @@
 
-public class Archer extends Troop
-{
-   private static final int health = 150;
-   private static final int damage = 30;
-   
-   @Override
-   public int health()
-   {
-      return health;
-   }
+public class Archer extends Troop {
+	private static int health = 150;
+	private static int damage = 30;
 
-   @Override
-   public int damage()
-   {
-      return damage;
-   }
+	public int health() {
+		return health;
+	}
 
+	public int damage() {
+		return damage;
+	}
+
+	public int upgrade() {
+		return 0;
+	}
 }

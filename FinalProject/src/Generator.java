@@ -1,13 +1,20 @@
 
 public class Generator extends Building
 {
-   private static final int health = 100; 
+   private static int health = 100; 
 
    @Override
    public int health()
    {
       // TODO Auto-generated method stub
       return health;
+   }
+
+   @Override
+   public int upgrade()
+   {
+      // TODO Auto-generated method stub
+      return 0;
    }
 
 }
