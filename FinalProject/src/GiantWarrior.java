@@ -1,8 +1,8 @@
 
 public class GiantWarrior extends Troop
 {
-   private static final int health = 150;
-   private static final int damage = 30;
+   private static int health = 150;
+   private static int damage = 30;
    
    @Override
    public int health()
@@ -16,6 +16,13 @@ public class GiantWarrior extends Troop
    {
       // TODO Auto-generated method stub
       return damage;
+   }
+
+   @Override
+   public int upgrade()
+   {
+      // TODO Auto-generated method stub
+      return 0;
    }
 
 }

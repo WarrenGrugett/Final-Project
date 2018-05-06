@@ -6,4 +6,5 @@ public abstract class Troop
 	
 	public abstract int health();
 	public abstract int damage();
+	public abstract int upgrade();
 }

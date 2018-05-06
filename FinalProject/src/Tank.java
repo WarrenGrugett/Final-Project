@@ -1,14 +1,21 @@
 
 public class Tank extends Building
 {
-   private static final int health = 100; 
-   private static final double radius = 3;
+   private static int health = 100; 
+   private static double radius = 3;
 
    @Override
    public int health()
    {
       // TODO Auto-generated method stub
       return health;
+   }
+
+   @Override
+   public int upgrade()
+   {
+      // TODO Auto-generated method stub
+      return 0;
    }
 
 }
