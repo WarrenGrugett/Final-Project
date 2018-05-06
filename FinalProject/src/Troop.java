@@ -1,9 +1,9 @@
 
 public abstract class Troop
 {
-	private int health;
-	private double damage;
+	protected int health;
+	protected int damage;
 	
-	public abstract int getHealth();
-	public abstract int getDamage();
+	public abstract int health();
+	public abstract int damage();
 }

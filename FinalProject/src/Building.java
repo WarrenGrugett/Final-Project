@@ -1,7 +1,9 @@
 
 public abstract class Building
-{
-   private double health;
-   
+{   
    public abstract int health();
+   public int decHealth(int health)
+   {
+      return health - 2;
+   }
 }
