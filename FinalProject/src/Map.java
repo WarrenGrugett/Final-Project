@@ -1,7 +1,6 @@
 
 public class Map {
-	public int width;
-	public int height;
+	public int width, height;
 	public String ver;
 	
 	public Map(int width, int height, String ver) {
