@@ -7,7 +7,7 @@ public class Generator extends Building
    public int health()
    {
       // TODO Auto-generated method stub
-      return 0;
+      return health;
    }
 
 }

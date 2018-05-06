@@ -8,14 +8,14 @@ public class GiantWarrior extends Troop
    public int health()
    {
       // TODO Auto-generated method stub
-      return 0;
+      return health;
    }
 
    @Override
    public int damage()
    {
       // TODO Auto-generated method stub
-      return 0;
+      return damage;
    }
 
 }
