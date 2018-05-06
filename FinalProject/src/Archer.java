@@ -7,13 +7,13 @@ public class Archer extends Troop
    @Override
    public int health()
    {
-      return 0;
+      return health;
    }
 
    @Override
    public int damage()
    {
-      return 0;
+      return damage;
    }
 
 }
