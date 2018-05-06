@@ -1,7 +1,12 @@
-import javax.swing.*;
-import processing.awt.*;
-import processing.core.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import processing.awt.PSurfaceAWT;
+import processing.core.PApplet;
 
 public class Main {
 	private Window window;
