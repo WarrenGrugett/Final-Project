@@ -1,4 +1,4 @@
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.*;
 import processing.core.*;
 
@@ -11,23 +11,14 @@ import processing.core.*;
  * @author Warren, Sepehr, Leo
  *
  */
-<<<<<<< HEAD
-public class Gameboard extends PApplet
-{
-   private ArrayList<Tower> towers;
-   private ArrayList<Troop> troops;
-   private ArrayList<Integer> keys;
-   private Map map;
-   public static final float gridWidth = 20, gridHeight = 20;
-   private Window window;
-=======
-public class Gameboard extends PApplet {
+public class Gameboard extends PApplet implements ActionListener {
 	private ArrayList<Tower> towers;
 	private ArrayList<Troop> troops;
 	private ArrayList<Integer> keys;
 	private Map map;
-	public static final float gridWidth = 20, gridHeight = 20;
 	private Window window;
+	private javax.swing.Timer timer;
+	public static final float gridWidth = 20, gridHeight = 20;
 
 	public Gameboard(Window window) {
 		this.window = window;
@@ -37,6 +28,7 @@ public class Gameboard extends PApplet {
 		towers = new ArrayList<>();
 		troops = new ArrayList<>();
 		keys = new ArrayList<>();
+		timer = new javax.swing.Timer(100, this);
 		map = new Map(width, height, "testBG.png", "");
 	}
 
@@ -76,55 +68,14 @@ public class Gameboard extends PApplet {
 		while (keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
->>>>>>> branch 'master' of https://github.com/WarrenGrugett/Final-Project.git
 
-   public Gameboard(Window window)
-   {
-      this.window = window;
-   }
+	public boolean isPressed(Integer code) {
+		return keys.contains(code);
+	}
 
-   public void setup()
-   {
-      towers = new ArrayList<>();
-      troops = new ArrayList<>();
-      map = new Map(width, height, "testBG.png", "");
-   }
+	public void actionPerformed(ActionEvent e) {
+		for (Troop troop : troops) {
 
-   public void addMap(Map map)
-   {
-      this.map = map;
-   }
-
-   public void draw()
-   {
-      if (map != null)
-         map.draw(this);
-      else background(255);
-      for (Tower tower : towers)
-         tower.draw(this);
-      for (Troop troop : troops)
-         troop.draw(this);
-   }
-
-   public boolean addTroop(Troop troop)
-   {
-
-      return true;
-   }
-
-   public void keyPressed()
-   {
-      keys.add(keyCode);
-   }
-
-   public void keyReleased()
-   {
-      while (keys.contains(keyCode))
-         keys.remove(new Integer(keyCode));
-   }
-
-   public boolean isPressed(Integer code)
-   {
-      return keys.contains(code);
-   }
+		}
+	}
 }

@@ -9,14 +9,14 @@ import java.util.*;
  */
 public abstract class Troop extends Element
 {
-   private int health, damage, hitSpeed;
+   private int health, damage, attackSpeed;
    private float range;
 
-   public Troop(int health, int damage, int hitDuration, float range)
+   public Troop(int health, int damage, int attackSpeed, float range)
    {
       this.health = health;
       this.damage = damage;
-      this.hitSpeed = hitDuration;
+      this.attackSpeed = attackSpeed;
       this.range = range;
    }
 
@@ -24,15 +24,15 @@ public abstract class Troop extends Element
    {
       return health;
    }
-
+   
    public int damage()
    {
       return damage;
    }
 
-   public int hitDuration()
+   public int attackSpeed()
    {
-      return hitSpeed;
+      return attackSpeed;
    }
 
    public void upgrade(int health, int damage)
