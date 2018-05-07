@@ -5,23 +5,16 @@
  */
 public class Tank extends Tower
 {
-   private int health = 100;
-   private int damage = 100;
-   private static final int rechargeTime = 10;
-   private static final double radius = 3;
    private static final double radiusDamage = 0.5;
 
-   @Override
-   public int health()
+   public Tank()
    {
-      return health;
+      super(100, 100, 3, 7.5);
    }
-
    @Override
    public void upgrade()
    {
-      damage += 5;
-      health += 10;
+      super.health(;
    }
 
 }

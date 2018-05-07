@@ -5,6 +5,7 @@
  * @author Warren, Sepehr, Leo
  *
  */
+<<<<<<< HEAD
 public abstract class Tower extends Building
 {
    private int damage;
@@ -18,6 +19,10 @@ public abstract class Tower extends Building
       this.radius = radius;
       this.hitDuration = hitDuration;
    }
+=======
+public abstract class Tower extends Element {
+	private int damage/* , duration */;
+>>>>>>> branch 'master' of https://github.com/WarrenGrugett/Final-Project.git
 
    public int damage()
    {
