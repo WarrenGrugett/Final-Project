@@ -9,14 +9,14 @@ public abstract class Tower extends Building
 {
    private int damage;
    private double radius;
-   private double hitDuration;
+   private double attackSpeed;
    
-   public Tower(int health, int damage, double radius, double hitDuration)
+   public Tower(int health, int damage, double radius, double attackSpeed)
    {
       super(health);
       this.damage = damage;
       this.radius = radius;
-      this.hitDuration = hitDuration;
+      this.attackSpeed = attackSpeed;
    }
    
    public int damage()
@@ -28,9 +28,9 @@ public abstract class Tower extends Building
    {
       return radius;
    }
-   public double hitDuration()
+   public double attackSpeed()
    {
-      return hitDuration;
+      return attackSpeed;
    }
    
    public void upgrade(int health, int damage)
