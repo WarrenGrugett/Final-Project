@@ -1,4 +1,4 @@
-import processing.core.*;
+import processing.core.PImage;
 
 /**
  * This stores all data used to set up the gameboard for each level
@@ -10,17 +10,17 @@ public class Map {
 	private float width, height;
 	private String mapPath;
 	private PImage map;
-	private int[][] mapData = {}; /*
-									 * Put the grid data for the map here: 0 for empty(path), 1 for a wall, 2 for
-									 * the start point, 3 for the end point
-									 */
-	private String ver; // What does this represent?
-
-	public Map(float width, float height, String map, String ver) {
+	
+	/*
+	 * Put the grid data for the map here: 0 for empty(path), 1 for a wall, 2 for
+	 * the start point, 3 for the end point
+	 */
+	private int[][] mapData = {};
+	
+	public Map(float width, float height, String map) {
 		this.width = width;
 		this.height = height;
 		this.mapPath = map;
-		this.ver = ver;
 	}
 
 	public float width() {

@@ -1,6 +1,9 @@
-import java.awt.event.*;
-import java.util.*;
-import processing.core.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import processing.core.PApplet;
 
 /**
  * This represents the entire GUI for the main section of gameplay. It is
@@ -29,7 +32,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		troops = new ArrayList<>();
 		keys = new ArrayList<>();
 		timer = new javax.swing.Timer(100, this);
-		map = new Map(width, height, "testBG.png", "");
+		map = new Map(width, height, "testBG.png");
 	}
 
 	public void settings() {
