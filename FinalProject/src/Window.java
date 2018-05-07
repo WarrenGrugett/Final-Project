@@ -13,6 +13,7 @@ public class Window {
 	private JPanel cardPanel;
 	private GameMenu menu;
 	private Gameboard game;
+	private PauseMenu pause;
 	private PSurfaceAWT.SmoothCanvas processingCanvas;
 
 	public Window() {
@@ -31,8 +32,10 @@ public class Window {
 		window.getContentPane().removeAll();
 		menu = new GameMenu(this);
 		game = new Gameboard(this);
-		cardPanel.add(menu, "1");
-		cardPanel.add(processingCanvas, "2");
+		pause = new PauseMenu(this);
+		cardPanel.add(menu, "menu");
+		cardPanel.add(processingCanvas, "game");
+		cardPanel.add(pause, "pause");
 		window.setLayout(new BorderLayout());
 		window.add(cardPanel);
 		window.revalidate();
@@ -42,4 +45,20 @@ public class Window {
 		((CardLayout) cardPanel.getLayout()).next(cardPanel);
 		processingCanvas.requestFocus();
 	}
+	
+	public void pause() {
+		((CardLayout) cardPanel.getLayout()).show(cardPanel, "pause");
+		processingCanvas.requestFocus();
+	}
+	
+	public void play() {
+		((CardLayout) cardPanel.getLayout()).show(cardPanel, "game");
+		processingCanvas.requestFocus();
+	}
+	
+	public void menu() {
+		((CardLayout) cardPanel.getLayout()).show(cardPanel, "menu");
+		processingCanvas.requestFocus();
+	}
+
 }

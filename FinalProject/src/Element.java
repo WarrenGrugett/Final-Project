@@ -2,7 +2,7 @@ import java.awt.geom.*;
 import processing.core.*;
 
 /**
- * The all-encompassing class for all of the game elements on the board, ie:
+ * The all-encompassing superclass for all of the game elements on the board, ie:
  * Towers and Troops
  * 
  * @author Warren, Sepehr, Leo

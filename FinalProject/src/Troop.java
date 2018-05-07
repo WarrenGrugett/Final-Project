@@ -6,8 +6,7 @@
  *
  */
 public abstract class Troop extends Element {
-	private int health;
-	private int damage;
+	private int health, damage;
 
 	public int health() {
 		return health;

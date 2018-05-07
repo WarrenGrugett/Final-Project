@@ -7,7 +7,6 @@
  */
 public abstract class Tower extends Element {
 	private int damage/* , duration */;
-	// Are we going to have permanent or temporary towers?
 
 	public int damage() {
 		return damage;

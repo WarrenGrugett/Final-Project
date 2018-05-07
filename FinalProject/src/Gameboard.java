@@ -1,3 +1,4 @@
+import java.awt.event.KeyEvent;
 import java.util.*;
 import processing.core.*;
 
@@ -17,23 +18,32 @@ public class Gameboard extends PApplet {
 	private Map map;
 	public static final float gridWidth = 20, gridHeight = 20;
 	private Window window;
-	
+
 	public Gameboard(Window window) {
 		this.window = window;
 	}
-	
+
 	public void setup() {
 		towers = new ArrayList<>();
 		troops = new ArrayList<>();
+		keys = new ArrayList<>();
 		map = new Map(width, height, "testBG.png", "");
 	}
-	
+
+	public void settings() {
+		size(800, 600);
+	}
+
 	public void addMap(Map map) {
 		this.map = map;
 	}
-	
+
 	public void draw() {
-		if (map!= null)
+		if (isPressed(KeyEvent.VK_P)) {
+			keys.remove(new Integer(KeyEvent.VK_P));
+			window.pause();
+		}
+		if (map != null)
 			map.draw(this);
 		else
 			background(255);
@@ -42,16 +52,16 @@ public class Gameboard extends PApplet {
 		for (Troop troop : troops)
 			troop.draw(this);
 	}
-	
+
 	public boolean addTroop(Troop troop) {
-		
+
 		return true;
 	}
-	
+
 	public void keyPressed() {
 		keys.add(keyCode);
 	}
-	
+
 	public void keyReleased() {
 		while (keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
