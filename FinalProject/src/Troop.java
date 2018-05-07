@@ -53,7 +53,10 @@ public abstract class Troop extends Element
    }
    
    public boolean takeDamage(int damage) {
-	   
+	   health -= damage;
+	   if (health < 0)
+		   return true;
+	   return false;
    }
 
    public Troop attack(ArrayList<Troop> troops)
