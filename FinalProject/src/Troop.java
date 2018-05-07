@@ -9,11 +9,13 @@ public abstract class Troop extends Element
 {
    private int health;
    private int damage;
+   private double hitDuration;
    
-   public Troop(int health, int damage)
-   {
+   public Troop(int health, int damage, double hitDuration)
+   {      
       this.health = health;
       this.damage = damage;
+      this.hitDuration = hitDuration;
    }
 
    public int health()
