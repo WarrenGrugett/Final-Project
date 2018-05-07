@@ -9,15 +9,17 @@ import java.util.*;
  */
 public abstract class Troop extends Element
 {
-   private int health, damage, attackSpeed;
+   private int health, damage, attackSpeed, delayCount;
    private float range;
+   private boolean enemy;
 
-   public Troop(int health, int damage, int attackSpeed, float range)
+   public Troop(int health, int damage, int attackSpeed, float range, boolean enemy)
    {
       this.health = health;
       this.damage = damage;
       this.attackSpeed = attackSpeed;
       this.range = range;
+      this.enemy = enemy;
    }
 
    public int health()
@@ -40,6 +42,19 @@ public abstract class Troop extends Element
       this.health += health;
       this.damage += damage;
    }
+   
+   public boolean attack() {
+	   delayCount++;
+	   if (delayCount == attackSpeed) {
+		   delayCount = 0;
+		   return true;
+	   }
+	   return false;
+   }
+   
+   public boolean takeDamage(int damage) {
+	   
+   }
 
    public Troop attack(ArrayList<Troop> troops)
    {
@@ -48,7 +63,7 @@ public abstract class Troop extends Element
       for (Troop troop : troops)
       {
          float dist = (float) Math.pow(Math.pow(x() - troop.x(), 2) + Math.pow(y() - troop.y(), 2), 0.5);
-         if (dist <= distance)
+         if (dist <= distance && ((enemy && !troop.enemy) || (!enemy && troop.enemy)))
          {
             distance = dist;
             close = troop;
