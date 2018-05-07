@@ -74,8 +74,14 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		for (Troop troop : troops) {
-
-		}
+		ArrayList<Troop> dead = new ArrayList<>();
+		for (Troop troop : troops)
+			if (troop.attack()) {
+				Troop attacked = troop.attack(troops);
+				if (attacked != null && attacked.takeDamage(troop.damage()))
+					dead.add(attacked);
+			}
+		for (Troop troop : dead)
+			troops.remove(troop);
 	}
 }
