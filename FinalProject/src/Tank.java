@@ -9,12 +9,16 @@ public class Tank extends Tower
 
    public Tank()
    {
-      super(100, 100, 3, 7.5);
+      super(100, 3, 7.5);
    }
-   @Override
    public void upgrade()
    {
-      super.health(;
+      super.upgrade(10);
+   }
+   
+   public double radiusDamage()
+   {
+      return radiusDamage;
    }
 
 }

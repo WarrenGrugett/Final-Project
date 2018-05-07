@@ -5,15 +5,14 @@
  * @author Warren, Sepehr, Leo
  *
  */
-public abstract class Tower extends Building
+public abstract class Tower extends Element
 {
    private int damage;
    private double radius;
    private double attackSpeed;
    
-   public Tower(int health, int damage, double radius, double attackSpeed)
+   public Tower(int damage, double radius, double attackSpeed)
    {
-      super(health);
       this.damage = damage;
       this.radius = radius;
       this.attackSpeed = attackSpeed;
@@ -33,9 +32,8 @@ public abstract class Tower extends Building
       return attackSpeed;
    }
    
-   public void upgrade(int health, int damage)
+   public void upgrade(int damage)
    {
-      super.upgrade(health);
       this.damage += damage;
    }
 }
