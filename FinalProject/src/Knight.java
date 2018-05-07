@@ -1,22 +1,13 @@
 
 public class Knight extends Troop
 {
-   private static int health = 150;
-   private static int damage = 30;
-
-   public int health()
+   public Knight()
    {
-      return health;
+      super(150, 30, 2, 0);
    }
-
-   public int damage()
-   {
-      return damage;
-   }
-
+   
    public void upgrade()
    {
-      damage += 5;
-      health += 10;  
+      super.upgrade(15, 5);
    }
 }

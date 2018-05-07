@@ -28,6 +28,11 @@ public abstract class Element {
 		return icon;
 	}
 
+	public void moveTo(float x, float y) {
+		this.x = x;
+		this.y = y;
+	}
+
 	public void move(float x, float y) {
 		this.x += x;
 		this.y += y;

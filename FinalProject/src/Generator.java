@@ -1,13 +1,21 @@
 
-public class Generator extends Building
+public class Generator extends Element
 {
-   
-  
-   @Override
-   public int upgrade()
+   private double speedProduction;
+   public Generator()
    {
-      
-      return 0;
+      super();
+      speedProduction = 1;
+   }
+   
+   public void upgrade()
+   {
+      speedProduction += 0.25;      
+   }
+   
+   public double speedProduction()
+   {
+      return speedProduction;
    }
 
 }

@@ -1,23 +1,15 @@
 
 public class Cannon extends Tower
 {
-   private static int health = 100; 
-   private static int damage = 100; 
 
-   private static double radius = 3;
-
-   @Override
-   public int health()
+   public Cannon()
    {
-      // TODO Auto-generated method stub
-      return 0;
+      super(100, 3, 1);
    }
-
-   @Override
-   public int upgrade()
+   
+   public void upgrade()
    {
-      damage += 5;
-      health += 10;
+      super.upgrade(10);
    }
 
 }

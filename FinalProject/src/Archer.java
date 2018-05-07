@@ -1,8 +1,12 @@
 
 public class Archer extends Troop
 {   
+   public Archer()
+   {
+      super(40, 10, 2, 2);
+   }
    public void upgrade()
    {
-      super(40, 10, 1, 3);
+      super.upgrade(10, 5);
    }
 }

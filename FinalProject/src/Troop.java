@@ -8,15 +8,16 @@ import java.util.*;
  *
  */
 public abstract class Troop extends Element {
-	private int health, damage, hitSpeed, delayCount;
+	private int health, damage, attackSpeed, delayCount;
 	private float range;
 	private boolean enemy;
 
-	public Troop(int health, int damage, int hitDuration, float range) {
+	public Troop(int health, int damage, int attackSpeed, float range, boolean enemy) {
 		this.health = health;
 		this.damage = damage;
-		this.hitSpeed = hitDuration;
+		this.attackSpeed = attackSpeed;
 		this.range = range;
+		this.enemy = enemy;
 	}
 
 	public int health() {
@@ -27,12 +28,14 @@ public abstract class Troop extends Element {
 		return damage;
 	}
 
-	public boolean attack() {
-		delayCount++;
-		if (delayCount == hitSpeed) {
-			delayCount = 0;
+	public int attackSpeed() {
+		return attackSpeed;
+	}
+
+	public boolean takeDamage(int damage) {
+		health -= damage;
+		if (health < 0)
 			return true;
-		}
 		return false;
 	}
 
@@ -40,11 +43,13 @@ public abstract class Troop extends Element {
 		this.health += health;
 		this.damage += damage;
 	}
-	
-	public boolean takeDamage(int damage) {
-		health -= damage;
-		if (health < 0)
+
+	public boolean attack() {
+		delayCount++;
+		if (delayCount == attackSpeed) {
+			delayCount = 0;
 			return true;
+		}
 		return false;
 	}
 

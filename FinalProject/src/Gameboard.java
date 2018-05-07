@@ -29,7 +29,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		troops = new ArrayList<>();
 		keys = new ArrayList<>();
 		timer = new javax.swing.Timer(100, this);
-		map = new Map(width, height, "testBG.png", "");
+		map = new Map(width, height, "testBG.png");
 	}
 
 	public void settings() {
@@ -56,7 +56,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public boolean addTroop(Troop troop) {
-
 		return true;
 	}
 
