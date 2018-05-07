@@ -8,7 +8,7 @@ import javax.swing.*;
  */
 public class GameMenu extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	private JButton begin;
+	private JButton begin, quit;
 	// add more buttons and graphics
 	Window w;
 
@@ -17,14 +17,16 @@ public class GameMenu extends JPanel implements ActionListener {
 		begin = new JButton("Begin game");
 		begin.addActionListener(this);
 		add(begin);
+		quit = new JButton("Quit game");
+		quit.addActionListener(this);
+		add(quit);
 		// initialize other buttons here
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(begin))
 			w.play();
-		else {
-			// use the if statement above to check for other buttons
-		}
+		else if (e.getSource().equals(quit))
+			System.exit(0);
 	}
 }
