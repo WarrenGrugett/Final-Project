@@ -1,7 +1,9 @@
 
-public class Cannon extends Building
+public class Cannon extends Tower
 {
    private static int health = 100; 
+   private static int damage = 100; 
+
    private static double radius = 3;
 
    @Override
@@ -14,8 +16,8 @@ public class Cannon extends Building
    @Override
    public int upgrade()
    {
-      // TODO Auto-generated method stub
-      return 0;
+      damage += 5;
+      health += 10;
    }
 
 }

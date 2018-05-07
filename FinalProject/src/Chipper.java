@@ -1,7 +1,8 @@
 
-public class Chipper extends Building
+public class Chipper extends Tower
 {
    private static int health = 100; 
+   private static int damage = 100; 
    private static double radius = 3;
 
    @Override

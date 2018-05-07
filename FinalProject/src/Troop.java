@@ -5,17 +5,20 @@
  * @author Warren, Sepehr, Leo
  *
  */
-public abstract class Troop extends Element {
-	private int health;
-	private int damage;
+public abstract class Troop extends Element
+{
+   private int health;
+   private int damage;
 
-	public int health() {
-		return health;
-	}
+   public int health()
+   {
+      return health;
+   }
 
-	public int damage() {
-		return damage;
-	}
+   public int damage()
+   {
+      return damage;
+   }
 
-	public abstract int upgrade();
+   public abstract void upgrade();
 }

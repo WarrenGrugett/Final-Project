@@ -11,7 +11,9 @@ public class Machinist extends Troop {
 		return damage;
 	}
 
-	public int upgrade() {
-		return 0;
-	}
+	public void upgrade() 
+	{
+	   damage += 5;
+      health += 10;	
+   }
 }

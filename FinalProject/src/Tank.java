@@ -1,21 +1,27 @@
-
-public class Tank extends Building
+/**
+ * Does "splash" damage in a certain radius and high damage but has to recharge
+ * @author Sepehr
+ *
+ */
+public class Tank extends Tower
 {
-   private static int health = 100; 
-   private static double radius = 3;
+   private int health = 100;
+   private int damage = 100;
+   private static final int rechargeTime = 10;
+   private static final double radius = 3;
+   private static final double radiusDamage = 0.5;
 
    @Override
    public int health()
    {
-      // TODO Auto-generated method stub
       return health;
    }
 
    @Override
-   public int upgrade()
+   public void upgrade()
    {
-      // TODO Auto-generated method stub
-      return 0;
+      damage += 5;
+      health += 10;
    }
 
 }
