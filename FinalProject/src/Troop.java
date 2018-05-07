@@ -5,15 +5,10 @@
  * @author Warren, Sepehr, Leo
  *
  */
-<<<<<<< HEAD
 public abstract class Troop extends Element
 {
    private int health;
    private int damage;
-=======
-public abstract class Troop extends Element {
-	private int health, damage;
->>>>>>> branch 'master' of https://github.com/WarrenGrugett/Final-Project.git
 
    public int health()
    {
@@ -25,5 +20,9 @@ public abstract class Troop extends Element {
       return damage;
    }
 
-   public abstract void upgrade();
+   public void upgrade(int health, int damage)
+   {
+      this.health += health;
+      this.damage += damage;
+   }
 }

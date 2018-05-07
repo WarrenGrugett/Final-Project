@@ -33,11 +33,9 @@ public abstract class Tower extends Building
       return hitDuration;
    }
    
-   public void upgrade(int health, int damage, double radius, double hitDuration)
+   public void upgrade(int health, int damage)
    {
       super.upgrade(health);
       this.damage += damage;
-      this.radius += radius;
-      this.hitDuration += hitDuration;
    }
 }
