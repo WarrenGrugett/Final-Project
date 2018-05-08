@@ -11,6 +11,15 @@ import processing.core.*;
 public abstract class Element {
 	private PImage icon;
 	private float x, y;
+	/**
+	 * cost between 1-10
+	 */
+	private int cost;
+	
+	public Element(int cost)
+	{
+	   this.cost = cost;
+	}
 
 	public Point2D.Float getLoc() {
 		return new Point2D.Float(x, y);
@@ -26,6 +35,11 @@ public abstract class Element {
 
 	public PImage icon() {
 		return icon;
+	}
+	
+	public int cost()
+	{
+	   return cost;
 	}
 
 	public void moveTo(float x, float y) {

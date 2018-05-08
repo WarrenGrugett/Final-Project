@@ -9,7 +9,9 @@ public abstract class Tower extends Element {
 	private int damage, attackSpeed, cost;
 	private float radius;
 
-	public Tower(int damage, float radius, int attackSpeed, int cost) {
+	public Tower(int damage, float radius, int attackSpeed, int cost) 
+	{
+	   super(cost);
 		this.damage = damage;
 		this.radius = radius;
 		this.attackSpeed = attackSpeed;

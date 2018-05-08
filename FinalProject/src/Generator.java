@@ -4,7 +4,7 @@ public class Generator extends Element
    private double speedProduction;
    public Generator()
    {
-      super();
+      super(6);
       speedProduction = 1;
    }
    
