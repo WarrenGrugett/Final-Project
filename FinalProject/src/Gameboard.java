@@ -33,7 +33,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void pause() {
-		keys.remove(new Integer(KeyEvent.VK_P));
 		timer.stop();
 	}
 
@@ -51,6 +50,7 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void draw() {
 		if (isPressed(KeyEvent.VK_P)) {
+			keys.remove(new Integer(KeyEvent.VK_P));
 			w.pause();
 		}
 		if (map != null)
@@ -80,6 +80,10 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);
+	}
+	
+	public ArrayList<Integer> keys() {
+		return keys;
 	}
 
 	public void actionPerformed(ActionEvent e) {
