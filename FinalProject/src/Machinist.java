@@ -1,9 +1,9 @@
 
 public class Machinist extends Troop
 {
-  public Machinist()
+  public Machinist(boolean enemy)
   {
-     super(100, 5, 10, 10);
+     super(100, 5, 10, 10, enemy, null);
   }
   
   public void upgrade()

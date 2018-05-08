@@ -18,7 +18,13 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Map map;
 	private javax.swing.Timer timer;
 	private Window w;
+	private float shopWidth;
+	private boolean placingTower, destroyingTower;
+	private int selected;
+
+	// Constants
 	public static final float gridWidth = 20, gridHeight = 20;
+	public final int numTowers = 4; // increase this when you add more Towers
 
 	public Gameboard(Window w) {
 		this.w = w;
@@ -39,9 +45,9 @@ public class Gameboard extends PApplet implements ActionListener {
 	public void play() {
 		timer.start();
 	}
-	
+
 	public void settings() {
-		size(800, 600);
+		size(1600, 1000);
 	}
 
 	public void addMap(Map map) {
@@ -49,6 +55,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void draw() {
+		shopWidth = width / 5f;
 		if (isPressed(KeyEvent.VK_P)) {
 			keys.remove(new Integer(KeyEvent.VK_P));
 			w.pause();
@@ -63,10 +70,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			troop.makeNextMove(map);
 		for (Troop troop : troops)
 			troop.draw(this);
-	}
-
-	public boolean addTroop(Troop troop) {
-		return true;
+		drawShop();
 	}
 
 	public void keyPressed() {
@@ -81,7 +85,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);
 	}
-	
+
 	public ArrayList<Integer> keys() {
 		return keys;
 	}
@@ -98,5 +102,65 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		for (Troop troop : dead)
 			troops.remove(troop);
+	}
+
+	public void drawShop() {
+		pushMatrix();
+		fill(100);
+		rect(width - shopWidth, 0, shopWidth, height);
+		fill(200);
+		float num = V.NUM_TOWERS + 2;
+		float height = this.height / num;
+		for (float i = 0; i < this.height; i += height) {
+			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
+		}
+		fill(0);
+		textAlign(CENTER, CENTER);
+		popMatrix();
+	}
+
+	public void mousePressed() {
+		if (mouseX > width - shopWidth) {
+			if (mouseY % (height / 10f) > (height / 10f - height / 11f) / 2
+					&& mouseY % (height / 10f) < height / 10f - (height / 10f - height / 11f) / 2) {
+				int y = (int) (mouseY / (height / 10f));
+				if (y == 0) {
+					System.out.println("Cannon");
+					placingTower = true;
+					selected = 1;
+					destroyingTower = false;
+				} else if (y == 1) {
+					System.out.println("Chipper");
+					placingTower = true;
+					selected = 2;
+					destroyingTower = false;
+				} else if (y == 2) {
+					System.out.println("Generator");
+					placingTower = true;
+					selected = 3;
+					destroyingTower = false;
+				} else if (y == 3) {
+					System.out.println("Tank");
+					placingTower = true;
+					selected = 4;
+					destroyingTower = false;
+				} else if (y == 9) {
+					System.out.println("Demolish");
+					placingTower = false;
+					selected = 0;
+					destroyingTower = true;
+				}
+			}
+		} else if (placingTower) {
+			boolean onTower = false;
+			for (Tower tower : towers) {
+				if (tower.contains(mouseX, mouseY)) {
+					onTower = true;
+					continue;
+				}
+			}
+			if (!onTower) {
+			}
+		}
 	}
 }

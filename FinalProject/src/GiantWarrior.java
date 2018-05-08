@@ -1,9 +1,9 @@
 
 public class GiantWarrior extends Troop
 {
-   public GiantWarrior()
+   public GiantWarrior(boolean enemy)
    {
-      super(150, 30, 1, 0);
+      super(150, 30, 1, 0, enemy, null);
    }
 
    public void upgrade()

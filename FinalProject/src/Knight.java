@@ -1,9 +1,9 @@
 
 public class Knight extends Troop
 {
-   public Knight()
+   public Knight(boolean enemy)
    {
-      super(150, 30, 2, 0);
+      super(150, 30, 2, 0, enemy, null);
    }
    
    public void upgrade()

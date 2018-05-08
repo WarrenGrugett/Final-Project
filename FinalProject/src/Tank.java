@@ -9,7 +9,7 @@ public class Tank extends Tower
 
    public Tank()
    {
-      super(100, 3, 7.5);
+      super(100, 3, 7, V.TANK_COST);
    }
    public void upgrade()
    {
