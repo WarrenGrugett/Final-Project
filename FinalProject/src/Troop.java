@@ -1,5 +1,7 @@
 import java.util.*;
 
+import processing.core.*;
+
 /**
  * The superclass for all troops on the board, both enemy computer generated
  * enemies and possibly player troops if we implement them
@@ -8,16 +10,28 @@ import java.util.*;
  *
  */
 public abstract class Troop extends Element {
+	private PImage attackImage;
 	private int health, damage, attackSpeed, delayCount;
 	private float range;
 	private boolean enemy;
 
-	public Troop(int health, int damage, int attackSpeed, float range, boolean enemy) {
+	public Troop(int health, int damage, int attackSpeed, float range, boolean enemy, PImage attackImage) {
 		this.health = health;
 		this.damage = damage;
 		this.attackSpeed = attackSpeed;
 		this.range = range;
 		this.enemy = enemy;
+		this.attackImage = attackImage;
+	}
+
+	public void makeNextMove(Map m) {
+		int[][] map = m.map();
+		float changeX = 0, changeY = 2;
+		/*
+		 * Sepehr, can you do this part? The guide to interpreting the mapData is in the
+		 * Map class if you need it. The maze / labyrinth project might help with this
+		 */
+		move(changeX, changeY);
 	}
 
 	public int health() {
@@ -64,5 +78,9 @@ public abstract class Troop extends Element {
 			}
 		}
 		return close;
+	}
+	
+	public void drawAttack(Troop target) {
+		// Make it draw the attackImage in some way
 	}
 }

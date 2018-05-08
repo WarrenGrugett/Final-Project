@@ -5,6 +5,7 @@ import processing.core.*;
 
 /**
  * The window that contains the entire program
+ * 
  * @author Warren, Sepehr, Leo
  *
  */
@@ -24,7 +25,7 @@ public class Window {
 		window = (JFrame) processingCanvas.getFrame();
 		window.setBounds(0, 0, 800, 600);
 		window.setMinimumSize(new Dimension(100, 100));
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		window.setResizable(true);
 		cardPanel = new JPanel();
 		CardLayout cl = new CardLayout();
@@ -45,20 +46,26 @@ public class Window {
 		((CardLayout) cardPanel.getLayout()).next(cardPanel);
 		processingCanvas.requestFocus();
 	}
-	
+
 	public void pause() {
+		game.pause();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "pause");
 		processingCanvas.requestFocus();
 	}
-	
+
 	public void play() {
+		game.play();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "game");
 		processingCanvas.requestFocus();
 	}
-	
+
 	public void menu() {
+		game = new Gameboard(this);
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "menu");
 		processingCanvas.requestFocus();
 	}
 
+	public void quit() {
+		System.exit(0);
+	}
 }

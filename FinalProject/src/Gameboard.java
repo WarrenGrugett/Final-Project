@@ -16,22 +16,31 @@ public class Gameboard extends PApplet implements ActionListener {
 	private ArrayList<Troop> troops;
 	private ArrayList<Integer> keys;
 	private Map map;
-	private Window window;
 	private javax.swing.Timer timer;
+	private Window w;
 	public static final float gridWidth = 20, gridHeight = 20;
 
-	public Gameboard(Window window) {
-		this.window = window;
-	}
-
-	public void setup() {
+	public Gameboard(Window w) {
+		this.w = w;
+		timer = new javax.swing.Timer(100, this);
 		towers = new ArrayList<>();
 		troops = new ArrayList<>();
 		keys = new ArrayList<>();
-		timer = new javax.swing.Timer(100, this);
+	}
+
+	public void setup() {
 		map = new Map(width, height, "testBG.png");
 	}
 
+	public void pause() {
+		keys.remove(new Integer(KeyEvent.VK_P));
+		timer.stop();
+	}
+
+	public void play() {
+		timer.start();
+	}
+	
 	public void settings() {
 		size(800, 600);
 	}
@@ -42,8 +51,7 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void draw() {
 		if (isPressed(KeyEvent.VK_P)) {
-			keys.remove(new Integer(KeyEvent.VK_P));
-			window.pause();
+			w.pause();
 		}
 		if (map != null)
 			map.draw(this);
@@ -51,6 +59,8 @@ public class Gameboard extends PApplet implements ActionListener {
 			background(255);
 		for (Tower tower : towers)
 			tower.draw(this);
+		for (Troop troop : troops)
+			troop.makeNextMove(map);
 		for (Troop troop : troops)
 			troop.draw(this);
 	}
@@ -76,9 +86,11 @@ public class Gameboard extends PApplet implements ActionListener {
 		ArrayList<Troop> dead = new ArrayList<>();
 		for (Troop troop : troops)
 			if (troop.attack()) {
-				Troop attacked = troop.attack(troops);
-				if (attacked != null && attacked.takeDamage(troop.damage()))
-					dead.add(attacked);
+				Troop target = troop.attack(troops);
+				if (target != null && target.takeDamage(troop.damage())) {
+					dead.add(target);
+					troop.drawAttack(target);
+				}
 			}
 		for (Troop troop : dead)
 			troops.remove(troop);

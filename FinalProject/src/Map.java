@@ -49,6 +49,10 @@ public class Map {
 	public Point2D.Float startPoint() {
 		return new Point2D.Float(startX, startY);
 	}
+	
+	public Point2D.Float endPoint() {
+		return new Point2D.Float(endX, endY);
+	}
 
 	public void setup(int[][] mapData) {
 		this.mapData = mapData;
