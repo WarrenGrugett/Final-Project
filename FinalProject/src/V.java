@@ -23,7 +23,6 @@ public class V {
 	// Sepehr, add the stats here, then input those into the constructors
 	public static final double[][] TOWER_STATS = { new double[] {} };
 	// Number of enemy units, and number of player units
-	public static final int NUM_TROOPS = TROOPS.size(), NUM_UNITS = P_UNITS.size();
 	static {
 		P_UNITS.put(1, new Cannon(0, 0));
 		P_UNITS.put(2, new Chipper(0, 0));
@@ -38,4 +37,5 @@ public class V {
 		TROOPS.put(3, new Knight(0, 0, false));
 		TROOPS.put(4, new Machinist(0, 0, false));
 	}
+	public static final int NUM_TROOPS = TROOPS.size(), NUM_UNITS = P_UNITS.size();
 }
