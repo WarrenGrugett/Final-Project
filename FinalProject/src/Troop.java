@@ -13,6 +13,7 @@ public abstract class Troop extends Element {
 	private PImage attackImage;
 	private int health, damage, attackSpeed, delayCount;
 	private float range;
+        private int[][] map;
 	private boolean enemy;
 
 	public Troop(float x, float y, int health, int damage, int attackSpeed, float range, double cost, boolean enemy,
@@ -26,11 +27,37 @@ public abstract class Troop extends Element {
 		this.attackImage = attackIcon;
 	}
 
-	public void makeNextMove(Map m) {
-		int[][] map = m.map();
-		float changeX = 0, changeY = 2;
-		move(changeX, changeY);
+	public void makeNextMove(Map m) 
+	{
+                map = m.map();
+		float changeX = 0, changeY = 0;
+		int locX = (int) ((int) V.GRID_WIDTH / m.width());
+		int locY = (int) ((int) V.GRID_HEIGHT/ m.height());
+                solve(locX, locY);
+                //changeX = Math.abs
+                move(changeX, changeY);       
 	}
+        
+        public boolean solve(int i, int j)
+        {
+              if (i < 0 || j < 0 || i >= map.length() || j >= map[0].length() || map[i][j] == 1 || map[i][j] == 4)
+                  return false;
+              if (map[i][j] == 3)
+                  return true;
+               else
+               {
+                 if (map[i][j] != 2)
+                    map[i][j] = 4;
+                 cond = solve(i + 1, j);
+                 if (cond == false)
+                    cond = solve(i, j + 1);
+                 if (cond == false)
+                    cond = solve(i - 1, j);
+                 if (cond == false)
+                    cond = solve(i, j - 1);
+                 return cond;
+              }
+        }
 
 	public int health() {
 		return health;
