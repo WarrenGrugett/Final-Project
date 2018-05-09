@@ -14,6 +14,7 @@ public abstract class Troop extends Element {
 	private int health, damage, attackSpeed, delayCount;
 	private float range;
         private int[][] map;
+	private int xFound, yFound;
 	private boolean enemy;
 
 	public Troop(float x, float y, int health, int damage, int attackSpeed, float range, double cost, boolean enemy,
@@ -34,7 +35,8 @@ public abstract class Troop extends Element {
 		int locX = (int) ((int) V.GRID_WIDTH / m.width());
 		int locY = (int) ((int) V.GRID_HEIGHT/ m.height());
                 solve(locX, locY);
-                //changeX = Math.abs
+                changeX = Math.abs(xFound - locX);
+		changeY = Math.abs(yFound - locY);
                 move(changeX, changeY);       
 	}
         
@@ -43,7 +45,11 @@ public abstract class Troop extends Element {
               if (i < 0 || j < 0 || i >= map.length() || j >= map[0].length() || map[i][j] == 1 || map[i][j] == 4)
                   return false;
               if (map[i][j] == 3)
+	      {	
+		  xFound = i;
+		  yFound = y;
                   return true;
+	      }
                else
                {
                  if (map[i][j] != 2)
