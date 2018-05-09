@@ -118,7 +118,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
 			fill(0);
 			if ((int)(i / height) < V.NUM_UNITS) {
-				text(V.P_UNITS.get((int) (i / height) + 1).toString(), width - shopWidth / 2, i + 0.5f * height);
+				text(V.P_UNITS.get((int) (i / height)).toString(), width - shopWidth / 2, i + 0.5f * height);
 			} else if ((int)(i / height) == V.NUM_UNITS) {
 				text("Demolish\nRegain 2 ", width - shopWidth / 2, i + 0.5f * height);
 			}
@@ -134,31 +134,11 @@ public class Gameboard extends PApplet implements ActionListener {
 		if (mouseX > width - shopWidth) {
 			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
 				int y = (int) (mouseY / height);
-				if (y == 0) {
-					System.out.println("Cannon");
+				if (y != V.NUM_UNITS) {
+					selected = y;
+					System.out.println(V.P_UNITS.get(y));
 					placingTower = true;
-					selected = 1;
 					destroyingTower = false;
-				} else if (y == 1) {
-					System.out.println("Chipper");
-					placingTower = true;
-					selected = 2;
-					destroyingTower = false;
-				} else if (y == 2) {
-					System.out.println("Generator");
-					placingTower = true;
-					selected = 3;
-					destroyingTower = false;
-				} else if (y == 3) {
-					System.out.println("Tank");
-					placingTower = true;
-					selected = 4;
-					destroyingTower = false;
-				} else if (y == 4) {
-					System.out.println("Demolish");
-					placingTower = false;
-					selected = 0;
-					destroyingTower = true;
 				}
 			}
 		} else if (placingTower) {
