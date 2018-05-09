@@ -20,6 +20,10 @@ public abstract class Tower extends Element {
 		this.attackSpeed = attackSpeed;
 		this.attackIcon = attackIcon;
 	}
+	
+	public Tower(float x, float y, Tower tower) {
+		this(x, y, tower.damage, tower.attackSpeed, tower.range, tower.cost(), tower.icon(), tower.attackIcon);
+	}
 
 	public int damage() {
 		return damage;
@@ -38,7 +42,7 @@ public abstract class Tower extends Element {
 	}
 
 	public boolean contains(float x, float y) {
-		return (x > x() - Gameboard.gridWidth / 2 && x < x() + Gameboard.gridWidth / 2
-				&& y > y() - Gameboard.gridHeight / 2 && y < y() + Gameboard.gridHeight / 2);
+		return (x > x() - V.GRID_HEIGHT / 2 && x < x() + V.GRID_WIDTH / 2
+				&& y > y() - V.GRID_HEIGHT / 2 && y < y() + V.GRID_WIDTH / 2);
 	}
 }

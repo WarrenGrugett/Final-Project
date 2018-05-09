@@ -54,7 +54,7 @@ public abstract class Element {
 	}
 
 	public void draw(Gameboard gb) {
-		gb.image(icon, x, y, Gameboard.gridWidth, Gameboard.gridHeight);
+		gb.image(icon, x, y, V.GRID_HEIGHT, V.GRID_WIDTH);
 	}
 
 	public abstract String toString();

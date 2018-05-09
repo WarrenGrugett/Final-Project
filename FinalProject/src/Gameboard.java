@@ -23,7 +23,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	private int selected, money = 300;
 
 	// Constants
-	public static final float gridWidth = 20, gridHeight = 20;
 	public final int numTowers = 4; // increase this when you add more Towers
 
 	public Gameboard(Window w) {
@@ -44,10 +43,6 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void play() {
 		timer.start();
-	}
-
-	public void settings() {
-		size(1600, 1000);
 	}
 
 	public void addMap(Map map) {
@@ -153,7 +148,10 @@ public class Gameboard extends PApplet implements ActionListener {
 				}
 			}
 			if (!onTower) {
-				if (money / 100f > V.P_UNITS.get(selected).cost()) {
+				if (money > V.P_UNITS.get(selected).cost() * 100) {
+					money -= V.P_UNITS.get(selected).cost() * 100;
+					int y = (int) (mouseY / V.GRID_HEIGHT) * V.GRID_HEIGHT;
+					int x = (int) (mouseX / V.GRID_WIDTH) * V.GRID_WIDTH;
 					
 				}
 			}

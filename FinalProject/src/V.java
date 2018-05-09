@@ -2,6 +2,8 @@ import java.util.*;
 import processing.core.*;
 
 public class V {
+	// Grid dimensions
+	public static int GRID_WIDTH = 20, GRID_HEIGHT = 20;
 	// Tower icons
 	public static PImage CANNON_ICON = null, CHIPPER_ICON = null, TANK_ICON = null, GENERATOR_ICON = null;
 	// Troop icons
