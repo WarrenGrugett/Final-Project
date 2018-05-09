@@ -153,7 +153,9 @@ public class Gameboard extends PApplet implements ActionListener {
 				}
 			}
 			if (!onTower) {
-
+				if (money / 100f > V.P_UNITS.get(selected).cost()) {
+					
+				}
 			}
 		}
 	}

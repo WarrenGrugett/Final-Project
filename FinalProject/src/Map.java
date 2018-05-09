@@ -39,7 +39,7 @@ public class Map {
 			map = gb.loadImage(mapPath);
 		}
 		map.resize(gb.width, gb.height);
-		gb.background(map);
+		gb.image(map, 0, 0);
 	}
 
 	public int[][] map() {
