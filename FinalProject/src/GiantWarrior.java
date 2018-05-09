@@ -9,6 +9,6 @@ public class GiantWarrior extends Troop {
 	}
 
 	public String toString() {
-		return "Giant Warrior";
+		return "Giant Warrior\nCost: " + V.GIANTWARRIOR_COST;
 	}
 }

@@ -9,6 +9,6 @@ public class Machinist extends Troop {
 	}
 
 	public String toString() {
-		return "Machinist";
+		return "Machinist\nCost: " + V.MACHINIST_COST;
 	}
 }

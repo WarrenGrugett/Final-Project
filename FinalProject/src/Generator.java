@@ -16,7 +16,7 @@ public class Generator extends Element {
 	}
 
 	public String toString() {
-		return "Generator";
+		return "Generator\nCost: " + V.GENERATOR_COST;
 	}
 
 }

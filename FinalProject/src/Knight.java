@@ -9,6 +9,6 @@ public class Knight extends Troop {
 	}
 
 	public String toString() {
-		return "Knight";
+		return "Knight\nCost: " + V.KNIGHT_COST;
 	}
 }

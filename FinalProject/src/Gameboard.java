@@ -20,8 +20,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Window w;
 	private float shopWidth;
 	private boolean placingTower, destroyingTower;
-	private int selected;
-	private double money;
+	private int selected, money = 300;
 
 	// Constants
 	public static final float gridWidth = 20, gridHeight = 20;
@@ -72,7 +71,9 @@ public class Gameboard extends PApplet implements ActionListener {
 		for (Troop troop : troops)
 			troop.draw(this);
 		drawShop();
-		money += 0.01;
+		money += 1;
+		if (money > 1000)
+			money = 1000;
 	}
 
 	public void keyPressed() {
@@ -113,18 +114,20 @@ public class Gameboard extends PApplet implements ActionListener {
 		textAlign(CENTER, CENTER);
 		float num = V.NUM_UNITS + 2;
 		float height = this.height / num;
-		for (float i = 0; i < this.height - height; i += height) {
+		for (float i = 0; i < this.height; i += height) {
 			fill(200);
 			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
 			fill(0);
-			if ((int)(i / height) < V.NUM_UNITS) {
+			if ((int) (i / height) < V.NUM_UNITS) {
 				text(V.P_UNITS.get((int) (i / height)).toString(), width - shopWidth / 2, i + 0.5f * height);
-			} else if ((int)(i / height) == V.NUM_UNITS) {
-				text("Demolish\nRegain 2 ", width - shopWidth / 2, i + 0.5f * height);
+			} else if ((int) (i / height) == V.NUM_UNITS) {
+				text("Demolish\nRegain half original cost", width - shopWidth / 2, i + 0.5f * height);
 			}
 		}
 		fill(255);
 		rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
+		fill(0);
+		text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height);
 		popMatrix();
 	}
 
@@ -150,7 +153,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				}
 			}
 			if (!onTower) {
-				
+
 			}
 		}
 	}

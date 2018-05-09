@@ -9,6 +9,6 @@ public class Archer extends Troop {
 	}
 
 	public String toString() {
-		return "Archer";
+		return "Archer\nCost: " + V.ARCHER_COST;
 	}
 }
