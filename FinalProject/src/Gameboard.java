@@ -111,7 +111,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		fill(100);
 		rect(width - shopWidth, 0, shopWidth, height);
 		textAlign(CENTER, CENTER);
-		float num = V.NUM_UNITS + 3;
+		float num = V.NUM_UNITS + 2;
 		float height = this.height / num;
 		for (float i = 0; i < this.height - height; i += height) {
 			fill(200);
@@ -120,7 +120,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			if ((int)(i / height) < V.NUM_UNITS) {
 				text(V.P_UNITS.get((int) (i / height) + 1).toString(), width - shopWidth / 2, i + 0.5f * height);
 			} else if ((int)(i / height) == V.NUM_UNITS) {
-				text("Generator", width - shopWidth / 2, i + 0.5f * height);
+				text("Demolish", width - shopWidth / 2, i + 0.5f * height);
 			}
 		}
 		fill(255);
@@ -170,7 +170,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				}
 			}
 			if (!onTower) {
-
+				
 			}
 		}
 	}
