@@ -1,4 +1,8 @@
-
+/**
+ * Tower class - Shoots really fast with low damage
+ * @author Sepehr
+ *
+ */
 public class Chipper extends Tower {
 
 	public Chipper(float x, float y) {

@@ -1,4 +1,8 @@
-
+/**
+ * Tower class - Does non-splash individual damage
+ * @author Sepehr
+ *
+ */
 public class Cannon extends Tower {
 
 	public Cannon(float x, float y) {

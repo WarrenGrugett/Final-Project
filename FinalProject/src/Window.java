@@ -6,7 +6,7 @@ import processing.core.*;
 /**
  * The window that contains the entire program
  * 
- * @author Warren, Sepehr, Leo
+ * @author Warren
  *
  */
 public class Window {
