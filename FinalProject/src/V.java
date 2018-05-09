@@ -6,14 +6,17 @@ public class V {
 	// Maps
 	public static final Map[] maps = {};
 	// Tower icons
-	public static String CANNON_ICON = null, CHIPPER_ICON = null, TANK_ICON = null, GENERATOR_ICON = null;
+	public static String CANNON_ICON = "knight.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "knight.jpg",
+			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
-	public static String ARCHER_ICON = null, GIANTWARRIOR_ICON = null, KNIGHT_ICON = null, MACHINIST_ICON = null;
+	public static String ARCHER_ICON = "knight.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
+			MACHINIST_ICON = "knight.jpg";
 	// Tower attack icons
-	public static String CANNON_ATTACK_ICON = null, CHIPPER_ATTACK_ICON = null, TANK_ATTACK_ICON = null;
+	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
+			TANK_ATTACK_ICON = "knight.jpg";
 	// Troop attack icons
-	public static String ARCHER_ATTACK_ICON = null, GIANTWARRIOR_ATTACK_ICON = null, KNIGHT_ATTACK_ICON = null,
-			MACHINIST_ATTACK_ICON = null;
+	public static String ARCHER_ATTACK_ICON = "knight.jpg", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
+			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "knight.jpg";
 	// List of all units playable by the player
 	public static final HashMap<Integer, Element> P_UNITS = new HashMap<>();
 	// List of all enemy troops
