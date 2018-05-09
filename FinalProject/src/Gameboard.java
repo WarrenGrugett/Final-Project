@@ -21,6 +21,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private float shopWidth;
 	private boolean placingTower, destroyingTower;
 	private int selected;
+	private double money;
 
 	// Constants
 	public static final float gridWidth = 20, gridHeight = 20;
@@ -71,6 +72,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		for (Troop troop : troops)
 			troop.draw(this);
 		drawShop();
+		money += 0.01;
 	}
 
 	public void keyPressed() {
@@ -108,22 +110,30 @@ public class Gameboard extends PApplet implements ActionListener {
 		pushMatrix();
 		fill(100);
 		rect(width - shopWidth, 0, shopWidth, height);
-		fill(200);
-		float num = V.NUM_TOWERS + 2;
-		float height = this.height / num;
-		for (float i = 0; i < this.height; i += height) {
-			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
-		}
-		fill(0);
 		textAlign(CENTER, CENTER);
+		float num = V.NUM_UNITS + 3;
+		float height = this.height / num;
+		for (float i = 0; i < this.height - height; i += height) {
+			fill(200);
+			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
+			fill(0);
+			if ((int)(i / height) < V.NUM_UNITS) {
+				text(V.P_UNITS.get((int) (i / height) + 1).toString(), width - shopWidth / 2, i + 0.5f * height);
+			} else if ((int)(i / height) == V.NUM_UNITS) {
+				text("Generator", width - shopWidth / 2, i + 0.5f * height);
+			}
+		}
+		fill(255);
+		rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
 		popMatrix();
 	}
 
 	public void mousePressed() {
+		float num = V.NUM_UNITS + 2;
+		float height = this.height / num;
 		if (mouseX > width - shopWidth) {
-			if (mouseY % (height / 10f) > (height / 10f - height / 11f) / 2
-					&& mouseY % (height / 10f) < height / 10f - (height / 10f - height / 11f) / 2) {
-				int y = (int) (mouseY / (height / 10f));
+			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
+				int y = (int) (mouseY / height);
 				if (y == 0) {
 					System.out.println("Cannon");
 					placingTower = true;
@@ -144,7 +154,7 @@ public class Gameboard extends PApplet implements ActionListener {
 					placingTower = true;
 					selected = 4;
 					destroyingTower = false;
-				} else if (y == 9) {
+				} else if (y == 4) {
 					System.out.println("Demolish");
 					placingTower = false;
 					selected = 0;
@@ -160,6 +170,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				}
 			}
 			if (!onTower) {
+
 			}
 		}
 	}

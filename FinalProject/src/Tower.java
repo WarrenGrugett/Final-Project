@@ -1,3 +1,5 @@
+import processing.core.*;
+
 /**
  * The superclass for all defensive towers placed by the player to kill enemy
  * troops
@@ -6,16 +8,17 @@
  *
  */
 public abstract class Tower extends Element {
-	private int damage, attackSpeed, cost;
-	private float radius;
+	private int damage, attackSpeed;
+	private float range;
+	private PImage attackIcon;
 
-	public Tower(int damage, float radius, int attackSpeed, int cost) 
-	{
-	   super(cost);
+	public Tower(float x, float y, int damage, int attackSpeed, float range, double cost, PImage icon,
+			PImage attackIcon) {
+		super(x, y, cost, icon);
 		this.damage = damage;
-		this.radius = radius;
+		this.range = range;
 		this.attackSpeed = attackSpeed;
-		this.cost = cost;
+		this.attackIcon = attackIcon;
 	}
 
 	public int damage() {
@@ -23,7 +26,7 @@ public abstract class Tower extends Element {
 	}
 
 	public double radius() {
-		return radius;
+		return range;
 	}
 
 	public double attackSpeed() {
@@ -32,10 +35,6 @@ public abstract class Tower extends Element {
 
 	public void upgrade(int damage) {
 		this.damage += damage;
-	}
-
-	public int cost() {
-		return cost;
 	}
 
 	public boolean contains(float x, float y) {

@@ -14,13 +14,15 @@ public abstract class Element {
 	/**
 	 * cost between 1-10
 	 */
-	private int cost;
-	
-	public Element(int cost)
-	{
-	   this.cost = cost;
-	}
+	private double cost;
 
+	public Element(float x, float y, double cost, PImage icon) {
+		this.cost = cost;
+		this.x = x;
+		this.y = y;
+		this.icon = icon;
+	}
+	
 	public Point2D.Float getLoc() {
 		return new Point2D.Float(x, y);
 	}
@@ -36,10 +38,9 @@ public abstract class Element {
 	public PImage icon() {
 		return icon;
 	}
-	
-	public int cost()
-	{
-	   return cost;
+
+	public double cost() {
+		return cost;
 	}
 
 	public void moveTo(float x, float y) {
@@ -55,4 +56,6 @@ public abstract class Element {
 	public void draw(Gameboard gb) {
 		gb.image(icon, x, y, Gameboard.gridWidth, Gameboard.gridHeight);
 	}
+
+	public abstract String toString();
 }
