@@ -28,9 +28,10 @@ public abstract class Troop extends Element {
 
 	public void makeNextMove(Map m) {
 		int[][] map = m.map();
-		float changeX = 0, changeY = 2;
+		float changeX = 0, changeY = 0;
+		
 		/*
-		 * Sepehr or Leo, can you do this part? The guide to interpreting the mapData is
+		 * Sepehr can you do this part? The guide to interpreting the mapData is
 		 * in the Map class if you need it. The maze / labyrinth project might help
 		 */
 		move(changeX, changeY);
