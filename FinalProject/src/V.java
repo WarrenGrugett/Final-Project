@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class V {
 	// Grid dimensions
-	public static final int GRID_WIDTH = 20, GRID_HEIGHT = 20;
+	public static final int GRID_WIDTH = 32, GRID_HEIGHT = 32;
 	// Maps
 	public static final Map[] maps = {};
 	// Tower icons

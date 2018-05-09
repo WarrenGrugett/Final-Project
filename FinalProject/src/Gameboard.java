@@ -110,7 +110,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		fill(100);
 		rect(width - shopWidth, 0, shopWidth, height);
 		textAlign(CENTER, CENTER);
-		float num = V.NUM_UNITS + 2;
+		int num = V.NUM_UNITS + 2;
 		float height = this.height / num;
 		for (float i = 0; i < this.height; i += height) {
 			fill(200);
