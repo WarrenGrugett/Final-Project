@@ -10,14 +10,14 @@ import processing.core.*;
  *
  */
 public abstract class Troop extends Element {
-	private PImage attackImage;
+	private String attackImage;
 	private int health, damage, attackSpeed, delayCount;
 	private float range;
 	private int xFound, yFound;
 	private boolean enemy;
 
 	public Troop(float x, float y, int health, int damage, int attackSpeed, float range, double cost, boolean enemy,
-			PImage icon, PImage attackIcon) {
+			String icon, String attackIcon) {
 		super(x, y, cost, icon);
 		this.health = health;
 		this.damage = damage;

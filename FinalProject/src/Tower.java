@@ -10,10 +10,10 @@ import processing.core.*;
 public abstract class Tower extends Element {
 	private int damage, attackSpeed;
 	private float range;
-	private PImage attackIcon;
+	private String attackIcon;
 
-	public Tower(float x, float y, int damage, int attackSpeed, float range, double cost, PImage icon,
-			PImage attackIcon) {
+	public Tower(float x, float y, int damage, int attackSpeed, float range, double cost, String icon,
+			String attackIcon) {
 		super(x, y, cost, icon);
 		this.damage = damage;
 		this.range = range;
@@ -35,7 +35,7 @@ public abstract class Tower extends Element {
 		return range;
 	}
 
-	public PImage attackIcon() {
+	public String attackIcon() {
 		return attackIcon;
 	}
 

@@ -9,20 +9,20 @@ import processing.core.*;
  *
  */
 public abstract class Element {
-	private PImage icon;
+	private String icon;
 	private float x, y;
 	/**
 	 * cost between 1-10
 	 */
 	private double cost;
 
-	public Element(float x, float y, double cost, PImage icon) {
+	public Element(float x, float y, double cost, String icon) {
 		this.cost = cost;
 		this.x = x;
 		this.y = y;
 		this.icon = icon;
 	}
-	
+
 	public Point2D.Float getLoc() {
 		return new Point2D.Float(x, y);
 	}
@@ -35,7 +35,7 @@ public abstract class Element {
 		return y;
 	}
 
-	public PImage icon() {
+	public String icon() {
 		return icon;
 	}
 
@@ -54,6 +54,7 @@ public abstract class Element {
 	}
 
 	public void draw(Gameboard gb) {
+		PImage icon = gb.loadImage(this.icon);
 		icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
 		gb.image(icon, x, y, V.GRID_HEIGHT, V.GRID_WIDTH);
 	}
