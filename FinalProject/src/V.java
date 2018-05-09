@@ -35,25 +35,25 @@ public class V {
 	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// Number of enemy units, and number of player units
 	static {
-		PApplet p = new PApplet() {
-			public void setup() {
-				CANNON_ICON = loadImage("knight.jpg");
-				CHIPPER_ICON = loadImage("knight.jpg");
-				TANK_ICON = loadImage("knight.jpg");
-				GENERATOR_ICON = loadImage("knight.jpg");
-				ARCHER_ICON = loadImage("knight.jpg");
-				GIANTWARRIOR_ICON = loadImage("knight.jpg");
-				KNIGHT_ICON = loadImage("knight.jpg");
-				MACHINIST_ICON = loadImage("knight.jpg");
-				CANNON_ATTACK_ICON = loadImage("knight.jpg");
-				CHIPPER_ATTACK_ICON = loadImage("knight.jpg");
-				TANK_ATTACK_ICON = loadImage("knight.jpg");
-				ARCHER_ATTACK_ICON = loadImage("knight.jpg");
-				GIANTWARRIOR_ATTACK_ICON = loadImage("knight.jpg");
-				KNIGHT_ATTACK_ICON = loadImage("knight.jpg");
-				MACHINIST_ATTACK_ICON = loadImage("knight.jpg");
-			}
-		};
+//		PApplet p = new PApplet() {
+//			public void setup() {
+//				CANNON_ICON = loadImage("knight.jpg");
+//				CHIPPER_ICON = loadImage("knight.jpg");
+//				TANK_ICON = loadImage("knight.jpg");
+//				GENERATOR_ICON = loadImage("knight.jpg");
+//				ARCHER_ICON = loadImage("knight.jpg");
+//				GIANTWARRIOR_ICON = loadImage("knight.jpg");
+//				KNIGHT_ICON = loadImage("knight.jpg");
+//				MACHINIST_ICON = loadImage("knight.jpg");
+//				CANNON_ATTACK_ICON = loadImage("knight.jpg");
+//				CHIPPER_ATTACK_ICON = loadImage("knight.jpg");
+//				TANK_ATTACK_ICON = loadImage("knight.jpg");
+//				ARCHER_ATTACK_ICON = loadImage("knight.jpg");
+//				GIANTWARRIOR_ATTACK_ICON = loadImage("knight.jpg");
+//				KNIGHT_ATTACK_ICON = loadImage("knight.jpg");
+//				MACHINIST_ATTACK_ICON = loadImage("knight.jpg");
+//			}
+//		};
 		P_UNITS.put(0, new Cannon(0, 0));
 		P_UNITS.put(1, new Chipper(0, 0));
 		P_UNITS.put(2, new Tank(0, 0));
