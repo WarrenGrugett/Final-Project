@@ -5,7 +5,7 @@ import processing.core.PImage;
 /**
  * This stores all data used to set up the gameboard for each level
  * 
- * @author Warren, Sepehr, Leo
+ * @author Leo
  *
  */
 public class Map {

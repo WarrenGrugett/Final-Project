@@ -1,4 +1,8 @@
-
+/**
+ * Troop - Tank-like unit that absorbs damage and is a "distraction" to other troops attacking it
+ * @author Sepehr
+ *
+ */
 public class GiantWarrior extends Troop {
 	public GiantWarrior(float x, float y, boolean enemy) {
 		super(x, y, 150, 30, 1, 0, 7, enemy, V.GIANTWARRIOR_ICON, V.GIANTWARRIOR_ATTACK_ICON);

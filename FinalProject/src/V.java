@@ -1,6 +1,10 @@
 import java.util.*;
 import processing.core.*;
-
+/**
+ * Stores all variables that are not updated during runtime
+ * @author Sepehr, Warren
+ *
+ */
 public class V {
 	// Grid dimensions
 	public static final int GRID_WIDTH = 20, GRID_HEIGHT = 20;
