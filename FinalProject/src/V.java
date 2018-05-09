@@ -1,5 +1,9 @@
 import java.util.*;
-
+/**
+ * Class stores all variables that do not change during runtime
+ * @author Sepehr, Warren
+ *
+ */
 public class V {
 	// Grid dimensions
 	public static final int GRID_WIDTH = 20, GRID_HEIGHT = 20;
