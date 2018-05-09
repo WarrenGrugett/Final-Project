@@ -37,7 +37,7 @@ public class Map {
 		if (map == null) {
 			map = gb.loadImage(mapPath);
 		}
-		map.resize(gb.width, gb.height);
+		map.resize(gb.height, gb.height);
 		gb.image(map, 0, 0);
 	}
 

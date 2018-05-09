@@ -53,7 +53,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void draw() {
-		shopWidth = width / 5f;
+		shopWidth = width - height;
 		if (isPressed(KeyEvent.VK_P)) {
 			keys.remove(new Integer(KeyEvent.VK_P));
 			w.pause();

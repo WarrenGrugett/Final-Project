@@ -27,8 +27,7 @@ public abstract class Troop extends Element {
 		this.attackImage = attackIcon;
 	}
 
-	public void makeNextMove(Map m) 
-	{
+	public void makeNextMove(Map m) {
 		int[][] map = m.map();
 		float changeX = 0, changeY = 0;
 		int locX = (int) ((int) V.GRID_WIDTH / m.width());
@@ -39,19 +38,15 @@ public abstract class Troop extends Element {
 		move(changeX, changeY);
 	}
 
-	public boolean solve(int[][] map, int i, int j) 
-	{
+	public boolean solve(int[][] map, int i, int j) {
 		boolean cond = false;
 		if (i < 0 || j < 0 || i >= map.length || j >= map[0].length || map[i][j] == 1 || map[i][j] == 4)
 			return false;
-		if (map[i][j] == 3)
-		{
+		if (map[i][j] == 3) {
 			xFound = i;
 			yFound = j;
 			return true;
-		} 
-		else 
-		{
+		} else {
 			if (map[i][j] != 2)
 				map[i][j] = 4;
 			cond = solve(map, i + 1, j);
