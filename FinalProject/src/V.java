@@ -3,6 +3,8 @@ import processing.core.*;
 
 public class V
 {
+   // Grid dimensions
+   public static int GRID_WIDTH = 20, GRID_HEIGHT = 20;
    // Tower icons
    public static PImage CANNON_ICON = null, CHIPPER_ICON = null, TANK_ICON = null, GENERATOR_ICON = null;
    // Troop icons
@@ -21,17 +23,12 @@ public class V
    // Costs of all troops
    public static final double ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
    // List of all tower stats
-   // Sepehr, add the stats here, then input those into the constructor
+   // order: damage, cost, attackSpeed, range
+   public static final double[] cannonStats = {100, CANNON_COST, 3, 1};
+   public static final double[] chipperStats = {10, CHIPPER_COST, 3, 5};
+   public static final double[] tankStats = {100, TANK_COST, 3, 7};
 
-   // Order: damage, cost, attackSpeed, range
-   public static final double[] cannonStats =
-   { 100, CANNON_COST, 3, 1 };
-   public static final double[] chipperStats =
-   { 10, CHIPPER_COST, 3, 5 };
-   public static final double[] tankStats =
-   { 100, TANK_COST, 3, 7 };
-   public static final double[][] TOWER_STATS =
-   { cannonStats, chipperStats, tankStats };
+   public static final double[][] TOWER_STATS = {cannonStats, chipperStats, tankStats};
    // Number of enemy units, and number of player units
    static
    {
