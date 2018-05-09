@@ -24,18 +24,18 @@ public class V {
 	public static final double[][] TOWER_STATS = { new double[] {} };
 	// Number of enemy units, and number of player units
 	static {
-		P_UNITS.put(1, new Cannon(0, 0));
-		P_UNITS.put(2, new Chipper(0, 0));
-		P_UNITS.put(3, new Tank(0, 0));
-		P_UNITS.put(4, new Generator(0, 0));
-		P_UNITS.put(5, new Archer(0, 0, false));
-		P_UNITS.put(6, new GiantWarrior(0, 0, false));
-		P_UNITS.put(7, new Knight(0, 0, false));
-		P_UNITS.put(8, new Machinist(0, 0, false));
-		TROOPS.put(1, new Archer(0, 0, false));
-		TROOPS.put(2, new GiantWarrior(0, 0, false));
-		TROOPS.put(3, new Knight(0, 0, false));
-		TROOPS.put(4, new Machinist(0, 0, false));
+		P_UNITS.put(0, new Cannon(0, 0));
+		P_UNITS.put(1, new Chipper(0, 0));
+		P_UNITS.put(2, new Tank(0, 0));
+		P_UNITS.put(3, new Generator(0, 0));
+		P_UNITS.put(4, new Archer(0, 0, false));
+		P_UNITS.put(5, new GiantWarrior(0, 0, false));
+		P_UNITS.put(6, new Knight(0, 0, false));
+		P_UNITS.put(7, new Machinist(0, 0, false));
+		TROOPS.put(0, new Archer(0, 0, false));
+		TROOPS.put(1, new GiantWarrior(0, 0, false));
+		TROOPS.put(2, new Knight(0, 0, false));
+		TROOPS.put(3, new Machinist(0, 0, false));
 	}
 	public static final int NUM_TROOPS = TROOPS.size(), NUM_UNITS = P_UNITS.size();
 }
