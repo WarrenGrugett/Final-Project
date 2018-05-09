@@ -120,7 +120,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			if ((int)(i / height) < V.NUM_UNITS) {
 				text(V.P_UNITS.get((int) (i / height) + 1).toString(), width - shopWidth / 2, i + 0.5f * height);
 			} else if ((int)(i / height) == V.NUM_UNITS) {
-				text("Demolish", width - shopWidth / 2, i + 0.5f * height);
+				text("Demolish\nRegain 2 ", width - shopWidth / 2, i + 0.5f * height);
 			}
 		}
 		fill(255);
