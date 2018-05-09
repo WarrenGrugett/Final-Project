@@ -12,4 +12,8 @@ public class Chipper extends Tower {
 	public String toString() {
 		return "Chipper\nCost: " + V.CHIPPER_COST;
 	}
+	
+	public Tower clone(float x, float y) {
+		return new Chipper(x, y);
+	}
 }

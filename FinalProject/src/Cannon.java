@@ -12,4 +12,8 @@ public class Cannon extends Tower {
 	public String toString() {
 		return "Cannon\nCost: " + V.CANNON_COST;
 	}
+	
+	public Tower clone(float x, float y) {
+		return new Cannon(x, y);
+	}
 }

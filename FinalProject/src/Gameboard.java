@@ -132,9 +132,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		if (mouseX > width - shopWidth) {
 			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
 				int y = (int) (mouseY / height);
-				if (y != V.NUM_UNITS) {
+				if (y < V.NUM_UNITS - V.NUM_TROOPS) {
 					selected = y;
-					System.out.println(V.P_UNITS.get(y));
 					placingTower = true;
 					destroyingTower = false;
 				}
@@ -152,7 +151,7 @@ public class Gameboard extends PApplet implements ActionListener {
 					money -= V.P_UNITS.get(selected).cost() * 100;
 					int y = (int) (mouseY / V.GRID_HEIGHT) * V.GRID_HEIGHT;
 					int x = (int) (mouseX / V.GRID_WIDTH) * V.GRID_WIDTH;
-					
+					towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
 				}
 			}
 		}

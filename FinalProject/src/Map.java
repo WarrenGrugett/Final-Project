@@ -13,7 +13,6 @@ public class Map {
 	private String mapPath;
 	private PImage map;
 	private float startX, startY, endX, endY;
-
 	/*
 	 * Put the grid data for the map here: 0 for empty(path), 1 for a wall, 2 for
 	 * the start point, 3 for the end point

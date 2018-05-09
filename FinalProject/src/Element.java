@@ -54,6 +54,7 @@ public abstract class Element {
 	}
 
 	public void draw(Gameboard gb) {
+		icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
 		gb.image(icon, x, y, V.GRID_HEIGHT, V.GRID_WIDTH);
 	}
 

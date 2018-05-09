@@ -2,17 +2,24 @@ import java.util.*;
 import processing.core.*;
 
 public class V {
+	private static PApplet p = new PApplet();
 	// Grid dimensions
-	public static int GRID_WIDTH = 20, GRID_HEIGHT = 20;
+	public static final int GRID_WIDTH = 20, GRID_HEIGHT = 20;
+	// Maps
+	public static final Map[] maps = {};
 	// Tower icons
-	public static PImage CANNON_ICON = null, CHIPPER_ICON = null, TANK_ICON = null, GENERATOR_ICON = null;
+	public static final PImage CANNON_ICON = p.loadImage("knight.jpg"), CHIPPER_ICON = p.loadImage("knight.jpg"),
+			TANK_ICON = p.loadImage("knight.jpg"), GENERATOR_ICON = p.loadImage("knight.jpg");
 	// Troop icons
-	public static PImage ARCHER_ICON = null, GIANTWARRIOR_ICON = null, KNIGHT_ICON = null, MACHINIST_ICON = null;
+	public static final PImage ARCHER_ICON = p.loadImage("knight.jpg"), GIANTWARRIOR_ICON = p.loadImage("knight.jpg"),
+			KNIGHT_ICON = p.loadImage("knight.jpg"), MACHINIST_ICON = p.loadImage("knight.jpg");
 	// Tower attack icons
-	public static PImage CANNON_ATTACK_ICON = null, CHIPPER_ATTACK_ICON = null, TANK_ATTACK_ICON = null;
+	public static final PImage CANNON_ATTACK_ICON = p.loadImage("knight.jpg"),
+			CHIPPER_ATTACK_ICON = p.loadImage("knight.jpg"), TANK_ATTACK_ICON = p.loadImage("knight.jpg");
 	// Troop attack icons
-	public static PImage ARCHER_ATTACK_ICON = null, GIANTWARRIOR_ATTACK_ICON = null, KNIGHT_ATTACK_ICON = null,
-			MACHINIST_ATTACK_ICON = null;
+	public static final PImage ARCHER_ATTACK_ICON = p.loadImage("knight.jpg"),
+			GIANTWARRIOR_ATTACK_ICON = p.loadImage("knight.jpg"), KNIGHT_ATTACK_ICON = p.loadImage("knight.jpg"),
+			MACHINIST_ATTACK_ICON = p.loadImage("knight.jpg");
 	// List of all units playable by the player
 	public static final HashMap<Integer, Element> P_UNITS = new HashMap<>();
 	// List of all enemy troops
