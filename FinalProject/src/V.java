@@ -8,18 +8,18 @@ public class V {
 	// Maps
 	public static final Map[] maps = {};
 	// Tower icons
-	public static final PImage CANNON_ICON = p.loadImage("knight.jpg"), CHIPPER_ICON = p.loadImage("knight.jpg"),
-			TANK_ICON = p.loadImage("knight.jpg"), GENERATOR_ICON = p.loadImage("knight.jpg");
+	public static final PImage CANNON_ICON = null, CHIPPER_ICON = null,
+			TANK_ICON = null, GENERATOR_ICON = null;
 	// Troop icons
-	public static final PImage ARCHER_ICON = p.loadImage("knight.jpg"), GIANTWARRIOR_ICON = p.loadImage("knight.jpg"),
-			KNIGHT_ICON = p.loadImage("knight.jpg"), MACHINIST_ICON = p.loadImage("knight.jpg");
+	public static final PImage ARCHER_ICON = null, GIANTWARRIOR_ICON = null,
+			KNIGHT_ICON = null, MACHINIST_ICON = null;
 	// Tower attack icons
-	public static final PImage CANNON_ATTACK_ICON = p.loadImage("knight.jpg"),
-			CHIPPER_ATTACK_ICON = p.loadImage("knight.jpg"), TANK_ATTACK_ICON = p.loadImage("knight.jpg");
+	public static final PImage CANNON_ATTACK_ICON = null,
+			CHIPPER_ATTACK_ICON = null, TANK_ATTACK_ICON = null;
 	// Troop attack icons
-	public static final PImage ARCHER_ATTACK_ICON = p.loadImage("knight.jpg"),
-			GIANTWARRIOR_ATTACK_ICON = p.loadImage("knight.jpg"), KNIGHT_ATTACK_ICON = p.loadImage("knight.jpg"),
-			MACHINIST_ATTACK_ICON = p.loadImage("knight.jpg");
+	public static final PImage ARCHER_ATTACK_ICON = null,
+			GIANTWARRIOR_ATTACK_ICON = null, KNIGHT_ATTACK_ICON = null,
+			MACHINIST_ATTACK_ICON = null;
 	// List of all units playable by the player
 	public static final HashMap<Integer, Element> P_UNITS = new HashMap<>();
 	// List of all enemy troops

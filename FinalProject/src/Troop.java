@@ -13,7 +13,6 @@ public abstract class Troop extends Element {
 	private PImage attackImage;
 	private int health, damage, attackSpeed, delayCount;
 	private float range;
-        private int[][] map;
 	private int xFound, yFound;
 	private boolean enemy;
 
@@ -30,40 +29,41 @@ public abstract class Troop extends Element {
 
 	public void makeNextMove(Map m) 
 	{
-                map = m.map();
+		int[][] map = m.map();
 		float changeX = 0, changeY = 0;
 		int locX = (int) ((int) V.GRID_WIDTH / m.width());
-		int locY = (int) ((int) V.GRID_HEIGHT/ m.height());
-                solve(locX, locY);
-                changeX = Math.abs(xFound - locX);
+		int locY = (int) ((int) V.GRID_HEIGHT / m.height());
+		solve(map, locX, locY);
+		changeX = Math.abs(xFound - locX);
 		changeY = Math.abs(yFound - locY);
-                move(changeX, changeY);       
+		move(changeX, changeY);
 	}
-        
-        public boolean solve(int i, int j)
-        {
-              if (i < 0 || j < 0 || i >= map.length() || j >= map[0].length() || map[i][j] == 1 || map[i][j] == 4)
-                  return false;
-              if (map[i][j] == 3)
-	      {	
-		  xFound = i;
-		  yFound = y;
-                  return true;
-	      }
-               else
-               {
-                 if (map[i][j] != 2)
-                    map[i][j] = 4;
-                 cond = solve(i + 1, j);
-                 if (cond == false)
-                    cond = solve(i, j + 1);
-                 if (cond == false)
-                    cond = solve(i - 1, j);
-                 if (cond == false)
-                    cond = solve(i, j - 1);
-                 return cond;
-              }
-        }
+
+	public boolean solve(int[][] map, int i, int j) 
+	{
+		boolean cond = false;
+		if (i < 0 || j < 0 || i >= map.length || j >= map[0].length || map[i][j] == 1 || map[i][j] == 4)
+			return false;
+		if (map[i][j] == 3)
+		{
+			xFound = i;
+			yFound = j;
+			return true;
+		} 
+		else 
+		{
+			if (map[i][j] != 2)
+				map[i][j] = 4;
+			cond = solve(map, i + 1, j);
+			if (cond == false)
+				cond = solve(map, i, j + 1);
+			if (cond == false)
+				cond = solve(map, i - 1, j);
+			if (cond == false)
+				cond = solve(map, i, j - 1);
+			return cond;
+		}
+	}
 
 	public int health() {
 		return health;
