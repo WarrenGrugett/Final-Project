@@ -25,9 +25,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	private boolean placingTower, destroyingTower;
 	private int selected, money = 300;
 
-	// Constants
-	public final int numTowers = 4; // increase this when you add more Towers
-
 	public Gameboard(Window w) {
 		this.w = w;
 		timer = new javax.swing.Timer(100, this);
