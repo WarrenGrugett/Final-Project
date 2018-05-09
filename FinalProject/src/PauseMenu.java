@@ -1,6 +1,10 @@
 import java.awt.event.*;
 import javax.swing.*;
-
+/**
+ * PauseMenu GUI
+ * @author Warren
+ *
+ */
 public class PauseMenu extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JButton resume, menu, quit;
