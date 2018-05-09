@@ -30,6 +30,7 @@ public class V {
 	public static final double ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
 	// List of all tower stats
 	// Sepehr, add the stats here, then input those into the constructors
+	public static final double[] cannonStats = {100, CANNON_COST, 3, 1};
 	public static final double[][] TOWER_STATS = { new double[] {} };
 	// Number of enemy units, and number of player units
 	static {
