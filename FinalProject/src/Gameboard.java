@@ -1,6 +1,9 @@
-import java.awt.event.*;
-import java.util.*;
-import processing.core.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import processing.core.PApplet;
 
 /**
  * This represents the entire GUI for the main section of gameplay. It is
@@ -20,12 +23,7 @@ public class Gameboard extends PApplet implements ActionListener {
    private Window w;
    private float shopWidth;
    private boolean placingTower, destroyingTower;
-   private int selected;
-   private double money;
-
-   // Constants
-   public static final float gridWidth = 20, gridHeight = 20;
-   public final int numTowers = 4; // increase this when you add more Towers
+   private int selected, money = 300;
 
    public Gameboard(Window w) {
       this.w = w;
@@ -36,7 +34,7 @@ public class Gameboard extends PApplet implements ActionListener {
    }
 
    public void setup() {
-      map = new Map(width, height, "testBG.png");
+      map = new Map(width, height, "tdmap.png");
    }
 
    public void pause() {
@@ -47,16 +45,12 @@ public class Gameboard extends PApplet implements ActionListener {
       timer.start();
    }
 
-   public void settings() {
-      size(1600, 1000);
-   }
-
    public void addMap(Map map) {
       this.map = map;
    }
 
    public void draw() {
-      shopWidth = width / 5f;
+      shopWidth = width - height;
       if (isPressed(KeyEvent.VK_P)) {
          keys.remove(new Integer(KeyEvent.VK_P));
          w.pause();
@@ -72,7 +66,9 @@ public class Gameboard extends PApplet implements ActionListener {
       for (Troop troop : troops)
          troop.draw(this);
       drawShop();
-      money += 0.01;
+      money += 1;
+      if (money > 1000)
+         money = 1000;
    }
 
    public void keyPressed() {
@@ -111,20 +107,22 @@ public class Gameboard extends PApplet implements ActionListener {
       fill(100);
       rect(width - shopWidth, 0, shopWidth, height);
       textAlign(CENTER, CENTER);
-      float num = V.NUM_UNITS + 2;
+      int num = V.NUM_UNITS + 2;
       float height = this.height / num;
-      for (float i = 0; i < this.height - height; i += height) {
+      for (float i = 0; i < this.height; i += height) {
          fill(200);
          rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
          fill(0);
-         if ((int)(i / height) < V.NUM_UNITS) {
+         if ((int) (i / height) < V.NUM_UNITS) {
             text(V.P_UNITS.get((int) (i / height)).toString(), width - shopWidth / 2, i + 0.5f * height);
-         } else if ((int)(i / height) == V.NUM_UNITS) {
-            text("Demolish\nRegain 2 ", width - shopWidth / 2, i + 0.5f * height);
+         } else if ((int) (i / height) == V.NUM_UNITS) {
+            text("Demolish\nRegain half original cost", width - shopWidth / 2, i + 0.5f * height);
          }
       }
       fill(255);
       rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
+      fill(0);
+      text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height);
       popMatrix();
    }
 
@@ -134,9 +132,8 @@ public class Gameboard extends PApplet implements ActionListener {
       if (mouseX > width - shopWidth) {
          if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
             int y = (int) (mouseY / height);
-            if (y != V.NUM_UNITS) {
+            if (y < V.NUM_UNITS - V.NUM_TROOPS) {
                selected = y;
-               System.out.println(V.P_UNITS.get(y));
                placingTower = true;
                destroyingTower = false;
             }
@@ -150,7 +147,12 @@ public class Gameboard extends PApplet implements ActionListener {
             }
          }
          if (!onTower) {
-            
+            if (money > V.P_UNITS.get(selected).cost() * 100) {
+               money -= V.P_UNITS.get(selected).cost() * 100;
+               int y = (int) (mouseY / V.GRID_HEIGHT) * V.GRID_HEIGHT;
+               int x = (int) (mouseX / V.GRID_WIDTH) * V.GRID_WIDTH;
+               towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
+            }
          }
       }
    }

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 /**
  * The main menu screen for the game.
  * 
- * @author Warren, Sepehr, Leo
+ * @author Warren
  *
  */
 public class GameMenu extends JPanel implements ActionListener {

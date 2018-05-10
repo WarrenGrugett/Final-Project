@@ -3,9 +3,9 @@ import java.awt.geom.Point2D;
 import processing.core.PImage;
 
 /**
- * This stores all data used to set up the gameboard for each level
+ * This stores all data used to set up the Gameboard for each level
  * 
- * @author Warren, Sepehr, Leo
+ * @author Leo
  *
  */
 public class Map {
@@ -13,10 +13,9 @@ public class Map {
 	private String mapPath;
 	private PImage map;
 	private float startX, startY, endX, endY;
-
 	/*
 	 * Put the grid data for the map here: 0 for empty(path), 1 for a wall, 2 for
-	 * the start point, 3 for the end point
+	 * the start point, 3 for the end point, 4 if empty path has already been used (for tracking purposes)
 	 */
 	private int[][] mapData = {};
 
@@ -38,8 +37,8 @@ public class Map {
 		if (map == null) {
 			map = gb.loadImage(mapPath);
 		}
-		map.resize(gb.width, gb.height);
-		gb.background(map);
+		map.resize(gb.height, gb.height);
+		gb.image(map, 0, 0);
 	}
 
 	public int[][] map() {

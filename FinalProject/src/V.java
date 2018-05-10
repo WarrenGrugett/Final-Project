@@ -1,19 +1,26 @@
 import java.util.*;
-import processing.core.*;
-
-public class V
-{
+/**
+ * Class stores all variables that do not change during runtime
+ * @author Sepehr, Warren
+ *
+ */
+public class V {
    // Grid dimensions
-   public static int GRID_WIDTH = 20, GRID_HEIGHT = 20;
+   public static final int GRID_WIDTH = 32, GRID_HEIGHT = 32;
+   // Maps
+   public static final Map[] maps = {};
    // Tower icons
-   public static PImage CANNON_ICON = null, CHIPPER_ICON = null, TANK_ICON = null, GENERATOR_ICON = null;
+   public static String CANNON_ICON = "knight.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "knight.jpg",
+         GENERATOR_ICON = "knight.jpg";
    // Troop icons
-   public static PImage ARCHER_ICON = null, GIANTWARRIOR_ICON = null, KNIGHT_ICON = null, MACHINIST_ICON = null;
+   public static String ARCHER_ICON = "knight.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
+         MACHINIST_ICON = "knight.jpg";
    // Tower attack icons
-   public static PImage CANNON_ATTACK_ICON = null, CHIPPER_ATTACK_ICON = null, TANK_ATTACK_ICON = null;
+   public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
+         TANK_ATTACK_ICON = "knight.jpg";
    // Troop attack icons
-   public static PImage ARCHER_ATTACK_ICON = null, GIANTWARRIOR_ATTACK_ICON = null, KNIGHT_ATTACK_ICON = null,
-         MACHINIST_ATTACK_ICON = null;
+   public static String ARCHER_ATTACK_ICON = "knight.jpg", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
+         KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "knight.jpg";
    // List of all units playable by the player
    public static final HashMap<Integer, Element> P_UNITS = new HashMap<>();
    // List of all enemy troops
@@ -23,15 +30,13 @@ public class V
    // Costs of all troops
    public static final double ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
    // List of all tower stats
-   // order: damage, cost, attackSpeed, range
-   public static final double[] cannonStats = {100, CANNON_COST, 3, 1};
-   public static final double[] chipperStats = {10, CHIPPER_COST, 3, 5};
-   public static final double[] tankStats = {100, TANK_COST, 3, 7};
-
-   public static final double[][] TOWER_STATS = {cannonStats, chipperStats, tankStats};
-   // Number of enemy units, and number of player units
-   static
-   {
+   public static final double[] CANNON_STATS = { 100, CANNON_COST, 3, 1 };
+   public static final double[] CHIPPER_STATS = { 10, CHIPPER_COST, 3, 5 };
+   public static final double[] TANK_STATS = { 100, TANK_COST, 3, 7 };
+   public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
+   // List of all troop stats
+   public static final double[][] TROOP_STATS = {};
+   static {
       P_UNITS.put(0, new Cannon(0, 0));
       P_UNITS.put(1, new Chipper(0, 0));
       P_UNITS.put(2, new Tank(0, 0));

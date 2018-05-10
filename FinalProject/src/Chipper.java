@@ -1,4 +1,8 @@
-
+/**
+ * Tower class - Shoots really fast with low damage
+ * @author Sepehr
+ *
+ */
 public class Chipper extends Tower {
 
 	public Chipper(float x, float y) {
@@ -11,5 +15,9 @@ public class Chipper extends Tower {
 
 	public String toString() {
 		return "Chipper\nCost: " + V.CHIPPER_COST;
+	}
+	
+	public Tower clone(float x, float y) {
+		return new Chipper(x, y);
 	}
 }

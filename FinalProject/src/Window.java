@@ -6,7 +6,7 @@ import processing.core.*;
 /**
  * The window that contains the entire program
  * 
- * @author Warren, Sepehr, Leo
+ * @author Warren
  *
  */
 public class Window {
@@ -23,7 +23,7 @@ public class Window {
 		PSurfaceAWT surf = (PSurfaceAWT) game.getSurface();
 		processingCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		window = (JFrame) processingCanvas.getFrame();
-		window.setBounds(0, 0, 1600, 1000);
+		window.setBounds(0, 0, 1200, 1028);
 		window.setMinimumSize(new Dimension(100, 100));
 		window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		window.setResizable(true);

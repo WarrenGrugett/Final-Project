@@ -1,4 +1,8 @@
-
+/**
+ * Generates money for the user and is non considered a "Tower" because of the lack of damage it does
+ * @author Sepehr
+ *
+ */
 public class Generator extends Element {
 	private double generation;
 
@@ -16,7 +20,7 @@ public class Generator extends Element {
 	}
 
 	public String toString() {
-		return "Generator";
+		return "Generator\nCost: " + V.GENERATOR_COST;
 	}
 
 }
