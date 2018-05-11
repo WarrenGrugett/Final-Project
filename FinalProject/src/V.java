@@ -10,7 +10,7 @@ public class V {
 	// Grid dimensions
 	public static final int GRID_WIDTH = 64, GRID_HEIGHT = 64;
 	// Troop movement speed
-	public static final int MOVEMENT_SPEED = 64;
+	public static final int MOVEMENT_SPEED = 64; // do not change for now,, still buggy
 	// Maps
 	public static final Map[] maps = { new Map("tdmap.png",
 			new int[][] { new int[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
