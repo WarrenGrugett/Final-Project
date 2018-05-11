@@ -1,4 +1,3 @@
-import processing.core.*;
 
 /**
  * The superclass for all defensive towers placed by the player to kill enemy
@@ -33,10 +32,6 @@ public abstract class Tower extends Element {
 
 	public double range() {
 		return range;
-	}
-
-	public String attackIcon() {
-		return attackIcon;
 	}
 
 	public double attackSpeed() {

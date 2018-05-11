@@ -35,6 +35,7 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void setup() {
 		map = V.maps[0];
+		troops.add(new Archer(0, 0, true));
 	}
 
 	public void pause() {
@@ -45,7 +46,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		timer.start();
 	}
 
-	public void addMap(Map map) {
+	public void setMap(Map map) {
 		this.map = map;
 	}
 
@@ -61,8 +62,6 @@ public class Gameboard extends PApplet implements ActionListener {
 			background(255);
 		for (Tower tower : towers)
 			tower.draw(this);
-		for (Troop troop : troops)
-			troop.makeNextMove(map);
 		for (Troop troop : troops)
 			troop.draw(this);
 		drawShop();
@@ -84,10 +83,6 @@ public class Gameboard extends PApplet implements ActionListener {
 		return keys.contains(code);
 	}
 
-	public ArrayList<Integer> keys() {
-		return keys;
-	}
-
 	public void actionPerformed(ActionEvent e) {
 		ArrayList<Troop> dead = new ArrayList<>();
 		for (Troop troop : troops)
@@ -100,6 +95,14 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		for (Troop troop : dead)
 			troops.remove(troop);
+		for (Troop troop : troops)
+			if (troop.makeNextMove(map)) {
+				lose();
+			}
+	}
+	
+	public void lose() {
+		System.exit(0);
 	}
 
 	public void drawShop() {

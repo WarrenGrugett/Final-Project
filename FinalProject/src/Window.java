@@ -32,7 +32,6 @@ public class Window {
 		cardPanel.setLayout(cl);
 		window.getContentPane().removeAll();
 		menu = new GameMenu(this);
-		game = new Gameboard(this);
 		pause = new PauseMenu(this);
 		cardPanel.add(menu, "menu");
 		cardPanel.add(processingCanvas, "game");

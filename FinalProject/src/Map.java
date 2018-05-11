@@ -8,7 +8,6 @@ import processing.core.*;
  *
  */
 public class Map {
-	private float width, height;
 	private String mapPath;
 	private PImage map;
 	private float startX, startY, endX, endY;
@@ -18,19 +17,9 @@ public class Map {
 	 */
 	private int[][] mapData;
 
-	public Map(float width, float height, String map, int[][] mapData) {
-		this.width = width;
-		this.height = height;
+	public Map(String map, int[][] mapData) {
 		this.mapPath = map;
-		this.mapData = mapData;
-	}
-
-	public float width() {
-		return width;
-	}
-
-	public float height() {
-		return height;
+		setup(mapData);
 	}
 
 	public void draw(Gameboard gb) {
@@ -46,11 +35,11 @@ public class Map {
 	}
 	
 	public Point2D.Float startPoint() {
-		return new Point2D.Float(startX, startY);
+		return new Point2D.Float(startX * V.GRID_WIDTH, startY * V.GRID_HEIGHT);
 	}
 	
 	public Point2D.Float endPoint() {
-		return new Point2D.Float(endX, endY);
+		return new Point2D.Float(endX * V.GRID_WIDTH, endY * V.GRID_HEIGHT);
 	}
 
 	public void setup(int[][] mapData) {
