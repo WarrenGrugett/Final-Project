@@ -1,6 +1,8 @@
 import java.util.*;
+
 /**
  * Class stores all variables that do not change during runtime
+ * 
  * @author Sepehr, Warren
  *
  */
@@ -8,7 +10,7 @@ public class V {
 	// Grid dimensions
 	public static final int GRID_WIDTH = 32, GRID_HEIGHT = 32;
 	// Maps
-	public static final Map[] maps = {};
+	public static final Map[] maps = { new Map(960, 960, "tdmap.png", new int[][] {}) };
 	// Tower icons
 	public static String CANNON_ICON = "knight.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "knight.jpg",
 			GENERATOR_ICON = "knight.jpg";
