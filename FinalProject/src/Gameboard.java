@@ -34,7 +34,7 @@ public class Gameboard extends PApplet implements ActionListener {
    }
 
    public void setup() {
-      map = new Map(width, height, "tdmap.png");
+      map = V.maps[0];
    }
 
    public void pause() {
@@ -148,10 +148,12 @@ public class Gameboard extends PApplet implements ActionListener {
          }
          if (!onTower) {
             if (money > V.P_UNITS.get(selected).cost() * 100) {
-               money -= V.P_UNITS.get(selected).cost() * 100;
                int y = (int) (mouseY / V.GRID_HEIGHT) * V.GRID_HEIGHT;
                int x = (int) (mouseX / V.GRID_WIDTH) * V.GRID_WIDTH;
-               towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
+               if (map.map()[x][y] == 1) {
+                  towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
+                  money -= V.P_UNITS.get(selected).cost() * 100;
+               }
             }
          }
       }

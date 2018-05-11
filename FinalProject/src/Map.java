@@ -1,6 +1,5 @@
-import java.awt.geom.Point2D;
-
-import processing.core.PImage;
+import java.awt.geom.*;
+import processing.core.*;
 
 /**
  * This stores all data used to set up the Gameboard for each level
@@ -17,12 +16,13 @@ public class Map {
 	 * Put the grid data for the map here: 0 for empty(path), 1 for a wall, 2 for
 	 * the start point, 3 for the end point, 4 if empty path has already been used (for tracking purposes)
 	 */
-	private int[][] mapData = {};
+	private int[][] mapData;
 
-	public Map(float width, float height, String map) {
+	public Map(float width, float height, String map, int[][] mapData) {
 		this.width = width;
 		this.height = height;
 		this.mapPath = map;
+		this.mapData = mapData;
 	}
 
 	public float width() {
