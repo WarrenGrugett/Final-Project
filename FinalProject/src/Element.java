@@ -55,8 +55,8 @@ public abstract class Element {
 
 	public void draw(Gameboard gb) {
 		PImage icon = gb.loadImage(this.icon);
-		icon.resize(Gameboard.GRID_WIDTH, Gameboard.GRID_HEIGHT);
-		gb.image(icon, x, y, Gameboard.GRID_HEIGHT, Gameboard.GRID_WIDTH);
+		icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
+		gb.image(icon, x, y, V.GRID_HEIGHT, V.GRID_WIDTH);
 	}
 
 	public abstract String toString();

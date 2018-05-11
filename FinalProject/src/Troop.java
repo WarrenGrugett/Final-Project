@@ -30,81 +30,81 @@ public abstract class Troop extends Element {
 	public boolean makeNextMove(Map m) {
 		int[][] map = m.map();
 		float changeX = 0, changeY = 0;
-		int locX = (int) (x() / Gameboard.GRID_WIDTH), locY = (int) (y() / Gameboard.GRID_HEIGHT);
+		int locX = (int) (x() / V.GRID_WIDTH), locY = (int) (y() / V.GRID_HEIGHT);
 		if (map[locY][locX] == 3) {
 			return true;
 		}
 		if (dir == 0) {
-			if ((int) (y() - V.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT < 0
-					|| map[(int) (y() - V.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT][locX] == 1) {
+			if ((int) (y() - V.MOVEMENT_SPEED) / V.GRID_HEIGHT < 0
+					|| map[(int) (y() - V.MOVEMENT_SPEED) / V.GRID_HEIGHT][locX] == 1) {
 				if (locX + 1 == map[0].length || map[locY][locX + 1] == 1)
 					if (locX - 1 == -1 || map[locY][locX - 1] == 1)
 						System.out.println("No valid moves");
 					else {
 						dir = 3;
-						changeY = -V.MOVEMENT_SPEED + (locY * Gameboard.GRID_HEIGHT - y() + Gameboard.GRID_HEIGHT);
+						changeY = -V.MOVEMENT_SPEED + (locY * V.GRID_HEIGHT - y() + V.GRID_HEIGHT);
 						changeX = -V.MOVEMENT_SPEED - changeY;
 					}
 				else {
 					dir = 1;
-					changeY = -V.MOVEMENT_SPEED + (locY * Gameboard.GRID_HEIGHT - y() + Gameboard.GRID_HEIGHT);
+					changeY = -V.MOVEMENT_SPEED + (locY * V.GRID_HEIGHT - y() + V.GRID_HEIGHT);
 					changeX = V.MOVEMENT_SPEED + changeY;
 				}
 			} else {
 				changeY = -V.MOVEMENT_SPEED;
 			}
 		} else if (dir == 1) {
-			if ((int) (x() + V.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH >= map.length
-					|| map[locY][(int) (x() + V.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH] == 1) {
+			if ((int) (x() + V.MOVEMENT_SPEED) / V.GRID_WIDTH >= map.length
+					|| map[locY][(int) (x() + V.MOVEMENT_SPEED) / V.GRID_WIDTH] == 1) {
 				if (locY + 1 == map.length || map[locY + 1][locX] == 1)
 					if (locY - 1 == -1 || map[locY - 1][locX] == 1)
 						System.out.println("No valid moves");
 					else {
 						dir = 0;
-						changeX = V.MOVEMENT_SPEED + (locX * Gameboard.GRID_WIDTH - x() - Gameboard.GRID_WIDTH);
+						changeX = V.MOVEMENT_SPEED + (locX * V.GRID_WIDTH - x() - V.GRID_WIDTH);
 						changeY = -V.MOVEMENT_SPEED - changeY;
 					}
 				else {
 					dir = 2;
-					changeX = V.MOVEMENT_SPEED + (locX * Gameboard.GRID_WIDTH - x() - Gameboard.GRID_WIDTH);
+					changeX = V.MOVEMENT_SPEED + (locX * V.GRID_WIDTH - x() - V.GRID_WIDTH);
 					changeY = V.MOVEMENT_SPEED + changeY;
 				}
 			} else {
 				changeX = V.MOVEMENT_SPEED;
 			}
 		} else if (dir == 2) {
-			if ((int) (y() + V.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT >= map.length
-					|| map[(int) (y() + V.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT][locX] == 1) {
+			if ((int) (y() + V.MOVEMENT_SPEED) / V.GRID_HEIGHT >= map.length
+					|| map[(int) (y() + V.MOVEMENT_SPEED) / V.GRID_HEIGHT][locX] == 1) {
 				if (locX - 1 == -1 || map[locY][locX - 1] == 1)
 					if (locX + 1 == map[0].length || map[locY][locX + 1] == 1)
 						System.out.println("No valid moves");
 					else {
 						dir = 1;
-						changeY = V.MOVEMENT_SPEED + (locY * Gameboard.GRID_HEIGHT - y() - Gameboard.GRID_HEIGHT);
+						changeY = V.MOVEMENT_SPEED + (locY * V.GRID_HEIGHT - y() - V.GRID_HEIGHT);
 						changeX = V.MOVEMENT_SPEED - changeY;
 					}
 				else {
 					dir = 3;
-					changeY = V.MOVEMENT_SPEED + (locY * Gameboard.GRID_HEIGHT - y() - Gameboard.GRID_HEIGHT);
+					changeY = V.MOVEMENT_SPEED + (locY * V.GRID_HEIGHT - y() - V.GRID_HEIGHT);
 					changeX = -V.MOVEMENT_SPEED + changeY;
 				}
 			} else {
 				changeY = V.MOVEMENT_SPEED;
 			}
 		} else if (dir == 3) {
-			if ((int) (x() - V.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH < 0
-					|| map[locY][(int) (x() - V.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH] == 1) {
+			if ((int) (x() - V.MOVEMENT_SPEED) / V.GRID_WIDTH < 0
+					|| map[locY][(int) (x() - V.MOVEMENT_SPEED) / V.GRID_WIDTH] == 1) {
 				if (locY - 1 == -1 || map[locY - 1][locX] == 1)
 					if (locY + 1 == map.length || map[locY + 1][locX] == 1)
 						System.out.println("No valid moves");
 					else {
 						dir = 2;
-						changeX = -V.MOVEMENT_SPEED + (locX * Gameboard.GRID_WIDTH - x() + Gameboard.GRID_WIDTH);
+						changeX = -V.MOVEMENT_SPEED + (locX * V.GRID_WIDTH - x() + V.GRID_WIDTH);
 						changeY = V.MOVEMENT_SPEED + changeY;
 					}
 				else {
 					dir = 0;
-					changeX = -V.MOVEMENT_SPEED + (locX * Gameboard.GRID_WIDTH - x() + Gameboard.GRID_WIDTH);
+					changeX = -V.MOVEMENT_SPEED + (locX * V.GRID_WIDTH - x() + V.GRID_WIDTH);
 					changeY = -V.MOVEMENT_SPEED - changeY;
 				}
 			} else {
@@ -154,8 +154,8 @@ public abstract class Troop extends Element {
 		Troop close = null;
 		float distance = range;
 		for (Troop troop : troops) {
-			float dist = (float) Math.pow(Math.pow((x() + 0.5 * Gameboard.GRID_WIDTH) - (troop.x() + 0.5 * Gameboard.GRID_WIDTH), 2)
-					+ Math.pow((y() + 0.5 * Gameboard.GRID_HEIGHT) - (troop.y() + 0.5 * Gameboard.GRID_HEIGHT), 2), 0.5);
+			float dist = (float) Math.pow(Math.pow((x() + 0.5 * V.GRID_WIDTH) - (troop.x() + 0.5 * V.GRID_WIDTH), 2)
+					+ Math.pow((y() + 0.5 * V.GRID_HEIGHT) - (troop.y() + 0.5 * V.GRID_HEIGHT), 2), 0.5);
 			if (dist <= distance && ((enemy && !troop.enemy) || (!enemy && troop.enemy))) {
 				distance = dist;
 				close = troop;

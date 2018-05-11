@@ -35,11 +35,11 @@ public class Map {
 	}
 	
 	public Point2D.Float startPoint() {
-		return new Point2D.Float(startX * Gameboard.GRID_WIDTH, startY * Gameboard.GRID_HEIGHT);
+		return new Point2D.Float(startX * V.GRID_WIDTH, startY * V.GRID_HEIGHT);
 	}
 	
 	public Point2D.Float endPoint() {
-		return new Point2D.Float(endX * Gameboard.GRID_WIDTH, endY * Gameboard.GRID_HEIGHT);
+		return new Point2D.Float(endX * V.GRID_WIDTH, endY * V.GRID_HEIGHT);
 	}
 
 	public void setup(int[][] mapData) {

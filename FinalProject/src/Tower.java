@@ -46,7 +46,7 @@ public abstract class Tower extends Element {
    }
 
    public boolean contains(float x, float y) {
-      return (x > x() - Gameboard.GRID_HEIGHT / 2 && x < x() + Gameboard.GRID_WIDTH / 2 && y > y() - Gameboard.GRID_HEIGHT / 2
-            && y < y() + Gameboard.GRID_WIDTH / 2);
+      return (x > x() - V.GRID_HEIGHT / 2 && x < x() + V.GRID_WIDTH / 2 && y > y() - V.GRID_HEIGHT / 2
+            && y < y() + V.GRID_WIDTH / 2);
    }
 }

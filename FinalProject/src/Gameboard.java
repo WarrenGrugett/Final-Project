@@ -21,7 +21,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	private float shopWidth;
 	private boolean placingTower, destroyingTower;
 	private int selected, money = 300;
-	public static int GRID_WIDTH, GRID_HEIGHT;
 
 	public Gameboard(Window w) {
 		this.w = w;
@@ -33,9 +32,11 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void setup() {
 		map = V.maps[0];
-		GRID_WIDTH = width / map.map()[0].length;
-		GRID_HEIGHT = height / map.map().length;
 		troops.add(new Archer(0, 0, true));
+	}
+	
+	public void settings() {
+		size(1200, 960);
 	}
 
 	public void pause() {
@@ -151,8 +152,8 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 			if (!onTower) {
 				if (money > V.P_UNITS.get(selected).cost() * 100) {
-					int y = (int) (mouseY / GRID_HEIGHT) * GRID_HEIGHT;
-					int x = (int) (mouseX / GRID_WIDTH) * GRID_WIDTH;
+					int y = (int) (mouseY / V.GRID_HEIGHT) * V.GRID_HEIGHT;
+					int x = (int) (mouseX / V.GRID_WIDTH) * V.GRID_WIDTH;
 					if (map.map()[x][y] == 1) {
 						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
 						money -= V.P_UNITS.get(selected).cost() * 100;
