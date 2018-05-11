@@ -1,9 +1,6 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-
-import processing.core.PApplet;
+import java.awt.event.*;
+import java.util.*;
+import processing.core.*;
 
 /**
  * This represents the entire GUI for the main section of gameplay. It is
@@ -15,40 +12,44 @@ import processing.core.PApplet;
  *
  */
 public class Gameboard extends PApplet implements ActionListener {
-   private ArrayList<Tower> towers;
-   private ArrayList<Troop> troops;
-   private ArrayList<Integer> keys;
-   private Map map;
-   private javax.swing.Timer timer;
-   private Window w;
-   private float shopWidth;
-   private boolean placingTower, destroyingTower;
-   private int selected, money = 300;
+	private ArrayList<Tower> towers;
+	private ArrayList<Troop> troops;
+	private ArrayList<Integer> keys;
+	private Map map;
+	private javax.swing.Timer timer;
+	private Window w;
+	private float shopWidth;
+	private boolean placingTower, destroyingTower;
+	private int selected, money = 300;
+	public static int GRID_WIDTH, GRID_HEIGHT;
 
-   public Gameboard(Window w) {
-      this.w = w;
-      timer = new javax.swing.Timer(100, this);
-      towers = new ArrayList<>();
-      troops = new ArrayList<>();
-      keys = new ArrayList<>();
-   }
+	public Gameboard(Window w) {
+		this.w = w;
+		timer = new javax.swing.Timer(100, this);
+		towers = new ArrayList<>();
+		troops = new ArrayList<>();
+		keys = new ArrayList<>();
+	}
 
 	public void setup() {
 		map = V.maps[0];
+		GRID_WIDTH = width / map.map()[0].length;
+		GRID_HEIGHT = height / map.map().length;
 		troops.add(new Archer(0, 0, true));
 	}
 
-   public void pause() {
-      timer.stop();
-   }
+	public void pause() {
+		timer.stop();
+	}
 
-   public void play() {
-      timer.start();
-   }
+	public void play() {
+		timer.start();
+	}
 
 	public void setMap(Map map) {
 		this.map = map;
 	}
+
 	public void draw() {
 		shopWidth = width - height;
 		if (isPressed(KeyEvent.VK_P)) {
@@ -68,18 +69,19 @@ public class Gameboard extends PApplet implements ActionListener {
 		if (money > 1000)
 			money = 1000;
 	}
-   public void keyPressed() {
-      keys.add(keyCode);
-   }
 
-   public void keyReleased() {
-      while (keys.contains(keyCode))
-         keys.remove(new Integer(keyCode));
-   }
+	public void keyPressed() {
+		keys.add(keyCode);
+	}
 
-   public boolean isPressed(Integer code) {
-      return keys.contains(code);
-   }
+	public void keyReleased() {
+		while (keys.contains(keyCode))
+			keys.remove(new Integer(keyCode));
+	}
+
+	public boolean isPressed(Integer code) {
+		return keys.contains(code);
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		ArrayList<Troop> dead = new ArrayList<>();
@@ -98,65 +100,65 @@ public class Gameboard extends PApplet implements ActionListener {
 				lose();
 			}
 	}
-	
+
 	public void lose() {
 		System.exit(0);
 	}
 
-   public void drawShop() {
-      pushMatrix();
-      fill(100);
-      rect(width - shopWidth, 0, shopWidth, height);
-      textAlign(CENTER, CENTER);
-      int num = V.NUM_UNITS + 2;
-      float height = this.height / num;
-      for (float i = 0; i < this.height; i += height) {
-         fill(200);
-         rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
-         fill(0);
-         if ((int) (i / height) < V.NUM_UNITS) {
-            text(V.P_UNITS.get((int) (i / height)).toString(), width - shopWidth / 2, i + 0.5f * height);
-         } else if ((int) (i / height) == V.NUM_UNITS) {
-            text("Demolish\nRegain half original cost", width - shopWidth / 2, i + 0.5f * height);
-         }
-      }
-      fill(255);
-      rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
-      fill(0);
-      text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height);
-      popMatrix();
-   }
+	public void drawShop() {
+		pushMatrix();
+		fill(100);
+		rect(width - shopWidth, 0, shopWidth, height);
+		textAlign(CENTER, CENTER);
+		int num = V.NUM_UNITS + 2;
+		float height = this.height / num;
+		for (float i = 0; i < this.height; i += height) {
+			fill(200);
+			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
+			fill(0);
+			if ((int) (i / height) < V.NUM_UNITS) {
+				text(V.P_UNITS.get((int) (i / height)).toString(), width - shopWidth / 2, i + 0.5f * height);
+			} else if ((int) (i / height) == V.NUM_UNITS) {
+				text("Demolish\nRegain half original cost", width - shopWidth / 2, i + 0.5f * height);
+			}
+		}
+		fill(255);
+		rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
+		fill(0);
+		text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height);
+		popMatrix();
+	}
 
-   public void mousePressed() {
-      float num = V.NUM_UNITS + 2;
-      float height = this.height / num;
-      if (mouseX > width - shopWidth) {
-         if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
-            int y = (int) (mouseY / height);
-            if (y < V.NUM_UNITS - V.NUM_TROOPS) {
-               selected = y;
-               placingTower = true;
-               destroyingTower = false;
-            }
-         }
-      } else if (placingTower) {
-         boolean onTower = false;
-         for (Tower tower : towers) {
-            if (tower.contains(mouseX, mouseY)) {
-               onTower = true;
-               continue;
-            }
-         }
-         if (!onTower) {
-            if (money > V.P_UNITS.get(selected).cost() * 100) {
-               int y = (int) (mouseY / V.GRID_HEIGHT) * V.GRID_HEIGHT;
-               int x = (int) (mouseX / V.GRID_WIDTH) * V.GRID_WIDTH;
-               if (map.map()[x][y] == 1) {
-                  towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
-                  money -= V.P_UNITS.get(selected).cost() * 100;
-               }
-            }
-         }
-      }
-   }
+	public void mousePressed() {
+		float num = V.NUM_UNITS + 2;
+		float height = this.height / num;
+		if (mouseX > width - shopWidth) {
+			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
+				int y = (int) (mouseY / height);
+				if (y < V.NUM_UNITS - V.NUM_TROOPS) {
+					selected = y;
+					placingTower = true;
+					destroyingTower = false;
+				}
+			}
+		} else if (placingTower) {
+			boolean onTower = false;
+			for (Tower tower : towers) {
+				if (tower.contains(mouseX, mouseY)) {
+					onTower = true;
+					continue;
+				}
+			}
+			if (!onTower) {
+				if (money > V.P_UNITS.get(selected).cost() * 100) {
+					int y = (int) (mouseY / GRID_HEIGHT) * GRID_HEIGHT;
+					int x = (int) (mouseX / GRID_WIDTH) * GRID_WIDTH;
+					if (map.map()[x][y] == 1) {
+						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
+						money -= V.P_UNITS.get(selected).cost() * 100;
+					}
+				}
+			}
+		}
+	}
 }
