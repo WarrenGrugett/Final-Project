@@ -10,7 +10,7 @@ public class V {
 	// Dimensions of each individual grid tile
 	public static final int GRID_WIDTH = 64, GRID_HEIGHT = 64;
 	// Troop movement speed
-	public static final int MOVEMENT_SPEED = 32;
+	public static final int MOVEMENT_SPEED = 21;
 	// Maps
 	public static final Map[] maps = { new Map("tdmap.png",
 			new int[][] { new int[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
