@@ -32,8 +32,8 @@ public class V {
 	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
-	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.png",
-			MACHINIST_ICON = "knight.jpg";
+	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "knight.png", KNIGHT_ICON = "knight.png",
+			MACHINIST_ICON = "knight.png";
 	// Tower attack icons
 	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
 			TANK_ATTACK_ICON = "knight.jpg";
