@@ -29,7 +29,7 @@ public class V {
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } }) };
 	// Tower icons
-	public static String CANNON_ICON = "knight.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "knight.jpg",
+	public static String CANNON_ICON = "cannon.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "knight.jpg",
 			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
 	public static String ARCHER_ICON = "knight.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",

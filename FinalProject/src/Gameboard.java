@@ -20,7 +20,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Window w;
 	private float shopWidth;
 	private boolean placingTower, destroyingTower;
-	private int selected, money = 300;
+	private int selected = -1, money = 300;
 
 	public Gameboard(Window w) {
 		this.w = w;
@@ -34,7 +34,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		map = V.maps[0];
 		troops.add(new Archer(map.startPoint().x, map.startPoint().y, true));
 	}
-	
+
 	public void settings() {
 		size(1200, 960);
 	}
@@ -115,6 +115,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		float height = this.height / num;
 		for (float i = 0; i < this.height; i += height) {
 			fill(200);
+			if (selected == (int) (i / height) || (destroyingTower && (int) (i / height) == V.NUM_UNITS))
+				fill(255);
 			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
 			fill(0);
 			if ((int) (i / height) < V.NUM_UNITS) {
@@ -137,9 +139,18 @@ public class Gameboard extends PApplet implements ActionListener {
 			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
 				int y = (int) (mouseY / height);
 				if (y < V.NUM_UNITS - V.NUM_TROOPS) {
-					selected = y;
-					placingTower = true;
-					destroyingTower = false;
+					if (selected != y) {
+						selected = y;
+						placingTower = true;
+						destroyingTower = false;
+					} else {
+						selected = -1;
+						placingTower = false;
+					}
+				} else if (y == V.NUM_UNITS) {
+					selected = -1;
+					placingTower = false;
+					destroyingTower = true;
 				}
 			}
 		} else if (placingTower) {
@@ -152,14 +163,25 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 			if (!onTower) {
 				if (money > V.P_UNITS.get(selected).cost() * 100) {
-					int y = (int) (mouseY / V.GRID_HEIGHT) * V.GRID_HEIGHT;
-					int x = (int) (mouseX / V.GRID_WIDTH) * V.GRID_WIDTH;
-					if (map.map()[x][y] == 1) {
-						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x, y));
+					int y = (int) (mouseY / V.GRID_HEIGHT);
+					int x = (int) (mouseX / V.GRID_WIDTH);
+					if (map.map()[y][x] == 1) {
+						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x * V.GRID_WIDTH, y * V.GRID_HEIGHT));
 						money -= V.P_UNITS.get(selected).cost() * 100;
 					}
 				}
 			}
+		} else if (destroyingTower) {
+			Tower remove = null;
+			for (Tower tower : towers) {
+				if (tower.contains(mouseX, mouseY)) {
+					remove = tower;
+					money += tower.cost() / 2;
+					continue;
+				}
+			}
+			if (remove != null)
+				towers.remove(remove);
 		}
 	}
 }
