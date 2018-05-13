@@ -69,9 +69,6 @@ public class Gameboard extends PApplet implements ActionListener {
 		for (Troop troop : troops)
 			troop.draw(this);
 		drawShop();
-		money += 1;
-		if (money > 1000)
-			money = 1000;
 	}
 
 	public void keyPressed() {
@@ -94,15 +91,33 @@ public class Gameboard extends PApplet implements ActionListener {
 				Troop target = troop.attack(troops);
 				if (target != null && target.takeDamage(troop.damage())) {
 					dead.add(target);
-					troop.drawAttack(target);
+					troop.drawAttack(target, this);
+				}
+			}
+		for (Tower tower : towers)
+			if (tower.attack()) {
+				Troop target = tower.attack(troops);
+				if (target != null && target.takeDamage(tower.damage())) {
+					dead.add(target);
+					tower.drawAttack(target, this);
 				}
 			}
 		for (Troop troop : dead)
 			troops.remove(troop);
+		dead = new ArrayList<>();
 		for (Troop troop : troops)
 			if (troop.makeNextMove(map)) {
-				lose();
+				if (troop.enemy())
+					lose();
+				else {
+					dead.add(troop);
+				}
 			}
+		for (Troop troop : dead)
+			troops.remove(troop);
+		money += 10;
+		if (money > 1000)
+			money = 1000;
 	}
 
 	public void lose() {
@@ -110,7 +125,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void drawShop() {
-		pushMatrix();
+		pushStyle();
 		fill(100);
 		rect(width - shopWidth, 0, shopWidth, height);
 		textAlign(CENTER, CENTER);
@@ -133,7 +148,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		fill(0);
 		text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height - 10);
 		text("Health: ", width - shopWidth / 2, this.height - 0.5f * height + 10);
-		popMatrix();
+		popStyle();
 	}
 
 	public void mousePressed() {

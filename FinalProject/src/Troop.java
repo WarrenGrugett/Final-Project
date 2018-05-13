@@ -126,6 +126,10 @@ public abstract class Troop extends Sprite {
 	public int attackSpeed() {
 		return attackSpeed;
 	}
+	
+	public boolean enemy() {
+		return enemy;
+	}
 
 	public boolean takeDamage(int damage) {
 		health -= damage;
@@ -162,7 +166,7 @@ public abstract class Troop extends Sprite {
 		return close;
 	}
 
-	public void drawAttack(Troop target) {
+	public void drawAttack(Troop target, Gameboard gb) {
 		// Make it draw the attackImage in some way
 	}
 

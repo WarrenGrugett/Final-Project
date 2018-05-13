@@ -1,13 +1,14 @@
 /**
- * Generates money for the user and is non considered a "Tower" because of the lack of damage it does
+ * Generates money for the user
+ * 
  * @author Sepehr
  *
  */
-public class Generator extends Sprite {
+public class Generator extends Tower {
 	private double generation;
 
 	public Generator(float x, float y) {
-		super(6, x, y, null);
+		super(x, y, 0, 200, 0, V.GENERATOR_COST, V.GENERATOR_ICON, null);
 		generation = 1;
 	}
 
@@ -23,4 +24,7 @@ public class Generator extends Sprite {
 		return "Generator\nCost: " + V.GENERATOR_COST;
 	}
 
+	public Tower clone(float x, float y) {
+		return new Generator(x, y);
+	}
 }

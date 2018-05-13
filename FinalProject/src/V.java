@@ -49,12 +49,12 @@ public class V {
 	// Costs of all troops
 	public static final double ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
 	// List of all tower stats
-	public static final double[] CANNON_STATS = { 100, CANNON_COST, 3, 1 };
-	public static final double[] CHIPPER_STATS = { 10, CHIPPER_COST, 3, 5 };
-	public static final double[] TANK_STATS = { 100, TANK_COST, 3, 7 };
+	public static final double[] CANNON_STATS = { 100, 3, 1.5, V.CANNON_COST };
+	public static final double[] CHIPPER_STATS = { 10, 3, 5, CHIPPER_COST };
+	public static final double[] TANK_STATS = { 100, 3, 7, TANK_COST };
 	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
-	
+
 	public static final double[][] TROOP_STATS = {};
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
