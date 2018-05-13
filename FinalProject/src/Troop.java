@@ -167,7 +167,11 @@ public abstract class Troop extends Sprite {
 	}
 
 	public void drawAttack(Troop target, Gameboard gb) {
-		// Make it draw the attackImage in some way
+		gb.pushStyle();
+		gb.fill(0);
+		gb.strokeWeight(10);
+		gb.line(x(), y(), target.x(), target.y());
+		gb.popStyle();
 	}
 
 	public abstract Troop clone(float x, float y, boolean enemy);
