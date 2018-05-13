@@ -29,10 +29,10 @@ public class V {
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } }) };
 	// Tower icons
-	public static String CANNON_ICON = "cannon.jpg", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.jpg",
+	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
-	public static String ARCHER_ICON = "archer.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
+	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
 			MACHINIST_ICON = "knight.jpg";
 	// Tower attack icons
 	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
