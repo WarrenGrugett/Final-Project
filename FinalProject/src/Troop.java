@@ -11,7 +11,7 @@ import processing.core.*;
  */
 public abstract class Troop extends Element {
 	private String attackIcon;
-	private int health, damage, attackSpeed, delayCount, dir = 1;
+	private int health, damage, attackSpeed, delayCount, dir;
 	// dir key: 0 = up, 1 = right, 2 = down, 3 = left
 	private float range;
 	private boolean enemy;
@@ -31,12 +31,11 @@ public abstract class Troop extends Element {
 		int[][] map = m.map();
 		float changeX = 0, changeY = 0;
 		int locX = (int) (x() / V.GRID_WIDTH + 0.5), locY = (int) (y() / V.GRID_HEIGHT + 0.5);
-		if (map[locY][locX] == 3) {
+		if ((map[locY][locX] == 3 && enemy) || (map[locY][locX] == 2 && !enemy)) {
 			return true;
 		}
-		System.out.println(y() + ", " + locY * V.GRID_HEIGHT);
 		if (dir == 0) {
-			if ((int) (y() - V.MOVEMENT_SPEED) / V.GRID_HEIGHT < 0
+			if ((y() - V.MOVEMENT_SPEED) / V.GRID_HEIGHT < 0
 					|| map[(int) (y() - V.MOVEMENT_SPEED) / V.GRID_HEIGHT][locX] == 1) {
 				if (locX + 1 == map[0].length || map[locY][locX + 1] == 1)
 					if (locX - 1 == -1 || map[locY][locX - 1] == 1)
@@ -75,7 +74,7 @@ public abstract class Troop extends Element {
 			}
 		} else if (dir == 2) {
 			if ((int) (y() + V.MOVEMENT_SPEED + V.GRID_HEIGHT) / V.GRID_HEIGHT >= map.length
-					|| map[(int) (y() + V.MOVEMENT_SPEED) / V.GRID_HEIGHT][locX] == 1) {
+					|| map[(int) (y() + V.MOVEMENT_SPEED + V.GRID_HEIGHT) / V.GRID_HEIGHT][locX] == 1) {
 				if (locX - 1 == -1 || map[locY][locX - 1] == 1)
 					if (locX + 1 == map[0].length || map[locY][locX + 1] == 1)
 						System.out.println("No valid moves");
@@ -93,7 +92,7 @@ public abstract class Troop extends Element {
 				changeY = V.MOVEMENT_SPEED;
 			}
 		} else if (dir == 3) {
-			if ((int) (x() - V.MOVEMENT_SPEED) / V.GRID_WIDTH < 0
+			if ((x() - V.MOVEMENT_SPEED) / V.GRID_WIDTH < 0
 					|| map[locY][(int) (x() - V.MOVEMENT_SPEED) / V.GRID_WIDTH] == 1) {
 				if (locY - 1 == -1 || map[locY - 1][locX] == 1)
 					if (locY + 1 == map.length || map[locY + 1][locX] == 1)
@@ -101,12 +100,12 @@ public abstract class Troop extends Element {
 					else {
 						dir = 2;
 						changeX = (locX * V.GRID_WIDTH - x());
-						changeY = V.MOVEMENT_SPEED + changeY;
+						changeY = V.MOVEMENT_SPEED + changeX;
 					}
 				else {
 					dir = 0;
 					changeX = (locX * V.GRID_WIDTH - x());
-					changeY = -V.MOVEMENT_SPEED - changeY;
+					changeY = -V.MOVEMENT_SPEED - changeX;
 				}
 			} else {
 				changeX = -V.MOVEMENT_SPEED;

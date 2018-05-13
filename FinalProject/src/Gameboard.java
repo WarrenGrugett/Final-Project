@@ -32,7 +32,7 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void setup() {
 		map = V.maps[0];
-		troops.add(new Archer(0, 0, true));
+		troops.add(new Archer(map.startPoint().x, map.startPoint().y, true));
 	}
 	
 	public void settings() {
