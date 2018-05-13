@@ -3,7 +3,7 @@
  * @author Sepehr
  *
  */
-public class Generator extends Element {
+public class Generator extends Sprite {
 	private double generation;
 
 	public Generator(float x, float y) {

@@ -41,7 +41,7 @@ public class V {
 	public static String ARCHER_ATTACK_ICON = "knight.jpg", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
 			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "knight.jpg";
 	// List of all units playable by the player
-	public static final HashMap<Integer, Element> P_UNITS = new HashMap<>();
+	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	// Costs of all towers

@@ -6,7 +6,7 @@
  * @author Warren, Sepehr, Leo
  *
  */
-public abstract class Tower extends Element {
+public abstract class Tower extends Sprite {
    private int damage, attackSpeed;
    private float range;
    private String attackIcon;

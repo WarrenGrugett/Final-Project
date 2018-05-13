@@ -8,7 +8,7 @@ import processing.core.*;
  * @author Warren, Sepehr, Leo
  *
  */
-public abstract class Element {
+public abstract class Sprite {
 	private String iconPath;
 	private PImage icon;
 	private float x, y;
@@ -17,7 +17,7 @@ public abstract class Element {
 	 */
 	private double cost;
 
-	public Element(float x, float y, double cost, String icon) {
+	public Sprite(float x, float y, double cost, String icon) {
 		this.cost = cost;
 		this.x = x;
 		this.y = y;

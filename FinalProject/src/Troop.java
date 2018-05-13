@@ -9,7 +9,7 @@ import processing.core.*;
  * @author Warren, Sepehr, Leo
  *
  */
-public abstract class Troop extends Element {
+public abstract class Troop extends Sprite {
 	private String attackIcon;
 	private int health, damage, attackSpeed, delayCount, dir;
 	// dir key: 0 = up, 1 = right, 2 = down, 3 = left
