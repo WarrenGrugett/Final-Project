@@ -151,6 +151,11 @@ public class Gameboard extends PApplet implements ActionListener {
 						selected = -1;
 						placingTower = false;
 					}
+				} else if (y < V.NUM_UNITS) {
+					selected = -1;
+					placingTower = false;
+					destroyingTower = false;
+					troops.add(((Troop) V.P_UNITS.get(y)).clone(map.endPoint().x, map.endPoint().y, false));
 				} else if (y == V.NUM_UNITS) {
 					selected = -1;
 					placingTower = false;

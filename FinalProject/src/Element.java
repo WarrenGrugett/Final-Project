@@ -9,7 +9,8 @@ import processing.core.*;
  *
  */
 public abstract class Element {
-	private String icon;
+	private String iconPath;
+	private PImage icon;
 	private float x, y;
 	/**
 	 * cost between 1-10
@@ -20,7 +21,7 @@ public abstract class Element {
 		this.cost = cost;
 		this.x = x;
 		this.y = y;
-		this.icon = icon;
+		this.iconPath = icon;
 	}
 
 	public Point2D.Float getLoc() {
@@ -36,7 +37,7 @@ public abstract class Element {
 	}
 
 	public String icon() {
-		return icon;
+		return iconPath;
 	}
 
 	public double cost() {
@@ -54,8 +55,10 @@ public abstract class Element {
 	}
 
 	public void draw(Gameboard gb) {
-		PImage icon = gb.loadImage(this.icon);
-		icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
+		if (icon == null) {
+			icon = gb.loadImage(iconPath);
+			icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
+		}
 		gb.image(icon, x, y, V.GRID_HEIGHT, V.GRID_WIDTH);
 	}
 

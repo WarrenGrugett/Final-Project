@@ -15,4 +15,8 @@ public class Archer extends Troop {
 	public String toString() {
 		return "Archer\nCost: " + V.ARCHER_COST;
 	}
+
+	public Troop clone(float x, float y, boolean enemy) {
+		return new Archer(x, y, enemy);
+	}
 }
