@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * Class stores all variables that do not change during runtime
@@ -29,10 +29,10 @@ public class V {
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } }) };
 	// Tower icons
-	public static String CANNON_ICON = "cannon.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "knight.jpg",
+	public static String CANNON_ICON = "cannon.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "tank.jpg",
 			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
-	public static String ARCHER_ICON = "knight.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
+	public static String ARCHER_ICON = "archer1.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
 			MACHINIST_ICON = "knight.jpg";
 	// Tower attack icons
 	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
