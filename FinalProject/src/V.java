@@ -54,6 +54,7 @@ public class V {
 	public static final double[] TANK_STATS = { 100, TANK_COST, 3, 7 };
 	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
+	
 	public static final double[][] TROOP_STATS = {};
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
