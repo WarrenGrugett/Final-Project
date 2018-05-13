@@ -1,6 +1,9 @@
-import java.awt.event.*;
-import java.util.*;
-import processing.core.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import processing.core.PApplet;
 
 /**
  * This represents the entire GUI for the main section of gameplay. It is
@@ -128,7 +131,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		fill(255);
 		rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
 		fill(0);
-		text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height);
+		text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height - 10);
+		text("Health: ", width - shopWidth / 2, this.height - 0.5f * height + 10);
 		popMatrix();
 	}
 
