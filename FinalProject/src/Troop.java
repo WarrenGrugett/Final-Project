@@ -1,5 +1,4 @@
 import java.util.*;
-
 import processing.core.*;
 
 /**
@@ -10,7 +9,8 @@ import processing.core.*;
  *
  */
 public abstract class Troop extends Sprite {
-	private String attackIcon;
+	private String attackIconPath;
+	private PImage attackIcon;
 	private int health, damage, attackSpeed, delayCount, dir;
 	// dir key: 0 = up, 1 = right, 2 = down, 3 = left
 	private float range;
@@ -24,7 +24,7 @@ public abstract class Troop extends Sprite {
 		this.attackSpeed = attackSpeed;
 		this.range = range;
 		this.enemy = enemy;
-		this.attackIcon = attackIcon;
+		this.attackIconPath = attackIcon;
 	}
 
 	public boolean makeNextMove(Map m) {
@@ -167,7 +167,14 @@ public abstract class Troop extends Sprite {
 	}
 
 	public void drawAttack(Troop target, Gameboard gb) {
-		// Make it draw the attackImage in some way
+		if (attackIcon == null) {
+			attackIcon = gb.loadImage(attackIconPath);
+		}
+		gb.pushStyle();
+		gb.fill(0);
+		gb.strokeWeight(10);
+		gb.line(x(), y(), target.x(), target.y());
+		gb.popStyle();
 	}
 
 	public abstract Troop clone(float x, float y, boolean enemy);
