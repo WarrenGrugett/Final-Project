@@ -49,6 +49,7 @@ public class V {
 	// Costs of all troops
 	public static final int ARCHER_COST = 3, GIANTWARRIOR_COST = 6, KNIGHT_COST = 4, MACHINIST_COST = 6;
 	// List of all tower stats
+	// Key: damage, attack speed, range, cost
 	public static final double[] CANNON_STATS = { 100, 3, 1.5, V.CANNON_COST };
 	public static final double[] CHIPPER_STATS = { 10, 3, 5, CHIPPER_COST };
 	public static final double[] TANK_STATS = { 100, 3, 7, TANK_COST };

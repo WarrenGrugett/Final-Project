@@ -201,7 +201,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			for (Tower tower : towers) {
 				if (tower.contains(mouseX, mouseY)) {
 					remove = tower;
-					money += tower.cost() / 2;
+					money += tower.cost() * 50;
 					continue;
 				}
 			}
