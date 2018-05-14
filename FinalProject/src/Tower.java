@@ -1,4 +1,5 @@
 import java.util.*;
+import processing.core.*;
 
 /**
  * The superclass for all defensive towers placed by the player to kill enemy
@@ -10,7 +11,8 @@ import java.util.*;
 public abstract class Tower extends Sprite {
 	private int damage, attackSpeed, delayCount;
 	private float range;
-	private String attackIcon;
+	private String attackIconPath;
+	private PImage attackIcon;
 
 	public Tower(float x, float y, int damage, int attackSpeed, float range, double cost, String icon,
 			String attackIcon) {
@@ -18,11 +20,11 @@ public abstract class Tower extends Sprite {
 		this.damage = damage;
 		this.range = range;
 		this.attackSpeed = attackSpeed;
-		this.attackIcon = attackIcon;
+		this.attackIconPath = attackIcon;
 	}
 
 	public Tower(float x, float y, Tower tower) {
-		this(x, y, tower.damage, tower.attackSpeed, tower.range, tower.cost(), tower.icon(), tower.attackIcon);
+		this(x, y, tower.damage, tower.attackSpeed, tower.range, tower.cost(), tower.icon(), tower.attackIconPath);
 	}
 
 	public abstract Tower clone(float x, float y);
@@ -40,7 +42,7 @@ public abstract class Tower extends Sprite {
 	}
 
 	public String attackIcon() {
-		return attackIcon;
+		return attackIconPath;
 	}
 
 	public void upgrade(int damage) {

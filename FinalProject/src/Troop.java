@@ -10,7 +10,8 @@ import processing.core.*;
  *
  */
 public abstract class Troop extends Sprite {
-	private String attackIcon;
+	private String attackIconPath;
+	private PImage attackIcon;
 	private int health, damage, attackSpeed, delayCount, dir;
 	// dir key: 0 = up, 1 = right, 2 = down, 3 = left
 	private float range;
@@ -24,7 +25,7 @@ public abstract class Troop extends Sprite {
 		this.attackSpeed = attackSpeed;
 		this.range = range;
 		this.enemy = enemy;
-		this.attackIcon = attackIcon;
+		attackIconPath = attackIcon;
 	}
 
 	public boolean makeNextMove(Map m) {

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.geom.*;
 import processing.core.*;
 
@@ -16,10 +17,12 @@ public class Map {
 	 * the start point, 3 for the end point, 4 if empty path has already been used (for tracking purposes)
 	 */
 	private int[][] mapData;
+	private Point[] troopAttackPattern;
 
-	public Map(String map, int[][] mapData) {
+	public Map(String map, int[][] mapData, Point[] troopPattern) {
 		this.mapPath = map;
 		setup(mapData);
+		troopAttackPattern = troopPattern;
 	}
 
 	public void draw(Gameboard gb) {
@@ -32,6 +35,10 @@ public class Map {
 
 	public int[][] map() {
 		return mapData;
+	}
+	
+	public Point[] troopPattern() {
+		return troopAttackPattern;
 	}
 	
 	public Point2D.Float startPoint() {
