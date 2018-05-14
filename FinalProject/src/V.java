@@ -33,7 +33,7 @@ public class V {
 			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
 	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
-			MACHINIST_ICON = "knight.png";
+			MACHINIST_ICON = "machinist.png";
 	// Tower attack icons
 	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
 			TANK_ATTACK_ICON = "knight.jpg";
@@ -54,7 +54,6 @@ public class V {
 	public static final double[] TANK_STATS = { 100, 3, 7, TANK_COST };
 	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
-
 	public static final double[][] TROOP_STATS = {};
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
