@@ -15,4 +15,8 @@ public class Machinist extends Troop {
 	public String toString() {
 		return "Machinist\nCost: " + V.MACHINIST_COST;
 	}
+
+	public Troop clone(float x, float y, boolean enemy) {
+		return new Machinist(x, y, enemy);
+	}
 }

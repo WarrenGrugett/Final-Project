@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * Class stores all variables that do not change during runtime
@@ -7,10 +7,10 @@ import java.util.*;
  *
  */
 public class V {
-	// Grid dimensions
+	// Dimensions of each individual grid tile
 	public static final int GRID_WIDTH = 64, GRID_HEIGHT = 64;
 	// Troop movement speed
-	public static final int MOVEMENT_SPEED = 64; // do not change for now,, still buggy
+	public static final int MOVEMENT_SPEED = 21;
 	// Maps
 	public static final Map[] maps = { new Map("tdmap.png",
 			new int[][] { new int[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -29,11 +29,11 @@ public class V {
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 					new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } }) };
 	// Tower icons
-	public static String CANNON_ICON = "knight.jpg", CHIPPER_ICON = "knight.jpg", TANK_ICON = "knight.jpg",
+	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
-	public static String ARCHER_ICON = "knight.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
-			MACHINIST_ICON = "knight.jpg";
+	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
+			MACHINIST_ICON = "machinist.png";
 	// Tower attack icons
 	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
 			TANK_ATTACK_ICON = "knight.jpg";
@@ -41,7 +41,7 @@ public class V {
 	public static String ARCHER_ATTACK_ICON = "knight.jpg", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
 			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "knight.jpg";
 	// List of all units playable by the player
-	public static final HashMap<Integer, Element> P_UNITS = new HashMap<>();
+	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	// Costs of all towers
@@ -49,9 +49,9 @@ public class V {
 	// Costs of all troops
 	public static final double ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
 	// List of all tower stats
-	public static final double[] CANNON_STATS = { 100, CANNON_COST, 3, 1 };
-	public static final double[] CHIPPER_STATS = { 10, CHIPPER_COST, 3, 5 };
-	public static final double[] TANK_STATS = { 100, TANK_COST, 3, 7 };
+	public static final double[] CANNON_STATS = { 100, 3, 1.5, V.CANNON_COST };
+	public static final double[] CHIPPER_STATS = { 10, 3, 5, CHIPPER_COST };
+	public static final double[] TANK_STATS = { 100, 3, 7, TANK_COST };
 	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
 	public static final double[][] TROOP_STATS = {};

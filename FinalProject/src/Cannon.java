@@ -6,7 +6,7 @@
 public class Cannon extends Tower {
 
    public Cannon(float x, float y) {
-      super(x, y, 100, 3, 1, V.CANNON_COST, V.CANNON_ICON, V.CANNON_ATTACK_ICON);
+      super(x, y, 100, 3, 1.5f, V.CANNON_COST, V.CANNON_ICON, V.CANNON_ATTACK_ICON);
    }
 
    public void upgrade() {
