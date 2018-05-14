@@ -55,6 +55,11 @@ public class V {
 	public static final double[] TANK_STATS = { 100, 3, 7, TANK_COST };
 	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
+	// Key: health, damage, attack speed, range, cost
+	public static final double[] ARCHER_STATS = {};
+	public static final double[] GIANTWARRIOR_STATS = {};
+	public static final double[] KNIGHT_STATS = {};
+	public static final double[] MACHINIST_STATS = {};
 	public static final double[][] TROOP_STATS = {};
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
