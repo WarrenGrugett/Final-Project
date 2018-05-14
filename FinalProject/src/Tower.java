@@ -66,7 +66,6 @@ public abstract class Tower extends Sprite {
 		for (Troop troop : troops) {
 			float dist = (float) Math.pow(Math.pow((x() + 0.5 * V.GRID_WIDTH) - (troop.x() + 0.5 * V.GRID_WIDTH), 2)
 					+ Math.pow((y() + 0.5 * V.GRID_HEIGHT) - (troop.y() + 0.5 * V.GRID_HEIGHT), 2), 0.5);
-			System.out.println(troop.x() + ", " + troop.y() + "\n " + dist + ", " + distance);
 			if (dist <= distance && troop.enemy()) {
 				distance = dist;
 				close = troop;
@@ -82,7 +81,7 @@ public abstract class Tower extends Sprite {
 		gb.pushStyle();
 		gb.fill(0);
 		gb.strokeWeight(10);
-		gb.line(x(), y(), target.x(), target.y());
+		gb.line(x() + V.GRID_WIDTH / 2, y() + V.GRID_HEIGHT / 2, target.x() + V.GRID_WIDTH / 2, target.y() + V.GRID_HEIGHT / 2);
 		gb.popStyle();
 	}
 }

@@ -27,4 +27,8 @@ public class Generator extends Tower {
 	public Tower clone(float x, float y) {
 		return new Generator(x, y);
 	}
+	
+	public void drawAttack(Troop target, Gameboard gb) {
+		
+	}
 }

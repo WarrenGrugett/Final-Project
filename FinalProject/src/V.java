@@ -45,9 +45,9 @@ public class V {
 	// List of all enemy troops
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	// Costs of all towers
-	public static final double CANNON_COST = 0, CHIPPER_COST = 0, TANK_COST = 0, GENERATOR_COST = 0;
+	public static final int CANNON_COST = 0, CHIPPER_COST = 0, TANK_COST = 0, GENERATOR_COST = 0;
 	// Costs of all troops
-	public static final double ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
+	public static final int ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
 	// List of all tower stats
 	public static final double[] CANNON_STATS = { 100, 3, 1.5, V.CANNON_COST };
 	public static final double[] CHIPPER_STATS = { 10, 3, 5, CHIPPER_COST };
