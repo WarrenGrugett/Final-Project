@@ -8,7 +8,7 @@ public class Generator extends Tower {
 	private double generation;
 
 	public Generator(float x, float y) {
-		super(x, y, 0, 200, 0, V.GENERATOR_COST, V.GENERATOR_ICON, null);
+		super(x, y, 0, 750, 0, V.GENERATOR_COST, V.GENERATOR_ICON, null);
 		generation = 1;
 	}
 
@@ -16,7 +16,7 @@ public class Generator extends Tower {
 		generation += 0.25;
 	}
 
-	public double speedProduction() {
+	public double generation() {
 		return generation;
 	}
 

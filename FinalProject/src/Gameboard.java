@@ -93,10 +93,14 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		for (Tower tower : towers)
 			if (tower.attack()) {
-				Troop target = tower.attack(troops);
-				if (target != null && target.takeDamage(tower.damage())) {
-					dead.add(target);
-					tower.drawAttack(target, this);
+				if (tower instanceof Generator) {
+					money += ((Generator) tower).generation() * 1000;
+				} else {
+					Troop target = tower.attack(troops);
+					if (target != null && target.takeDamage(tower.damage())) {
+						dead.add(target);
+						tower.drawAttack(target, this);
+					}
 				}
 			}
 		for (Troop troop : dead)
@@ -112,7 +116,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		for (Troop troop : dead)
 			troops.remove(troop);
-		money += 10;
+		money += 2;
 		if (money > 1000)
 			money = 1000;
 	}
