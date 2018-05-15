@@ -35,11 +35,11 @@ public class V {
 			new Map("tdmap2.png", new int[][] {}, new Point[] {}),
 			new Map("tdmap3.png", new int[][] {}, new Point[] {}), };
 	// Tower icons
-	public static String CANNON_ICON = "cannon.jpg", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.jpg",
+	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
-	public static String ARCHER_ICON = "archer.jpg", GIANTWARRIOR_ICON = "knight.jpg", KNIGHT_ICON = "knight.jpg",
-			MACHINIST_ICON = "knight.jpg";
+	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
+			MACHINIST_ICON = "machinist.png";
 	// Tower attack icons
 	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
 			TANK_ATTACK_ICON = "knight.jpg";
@@ -60,7 +60,6 @@ public class V {
 	public static final double[] TANK_STATS = { 100, 3, 7, TANK_COST };
 	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
-
 	public static final double[][] TROOP_STATS = {};
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
