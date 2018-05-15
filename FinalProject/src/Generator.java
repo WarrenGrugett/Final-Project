@@ -8,7 +8,8 @@ public class Generator extends Tower {
 	private double generation;
 
 	public Generator(float x, float y) {
-		super(x, y, 0, 200, 0, V.GENERATOR_COST, V.GENERATOR_ICON, null);
+		super(x, y, (int) V.GENERATOR_STATS[0], (int) V.GENERATOR_STATS[1], V.GENERATOR_STATS[2],
+				(int) V.GENERATOR_STATS[3], V.GENERATOR_ICON, null);
 		generation = 1;
 	}
 
@@ -16,12 +17,12 @@ public class Generator extends Tower {
 		generation += 0.25;
 	}
 
-	public double speedProduction() {
+	public double generation() {
 		return generation;
 	}
 
 	public String toString() {
-		return "Generator\nCost: " + V.GENERATOR_COST;
+		return "Generator\nCost: " + (int) V.GENERATOR_STATS[3];
 	}
 
 	public Tower clone(float x, float y) {

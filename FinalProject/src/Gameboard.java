@@ -1,9 +1,6 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-
-import processing.core.PApplet;
+import java.awt.event.*;
+import java.util.*;
+import processing.core.*;
 
 /**
  * This represents the entire GUI for the main section of gameplay. It is
@@ -23,7 +20,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Window w;
 	private float shopWidth;
 	private boolean placingTower, destroyingTower;
-	private int selected = -1, money = 300;
+	private int selected = -1, money = 300, selectedUnit = -1;
 
 	public Gameboard(Window w) {
 		this.w = w;
@@ -68,6 +65,17 @@ public class Gameboard extends PApplet implements ActionListener {
 			tower.draw(this);
 		for (Troop troop : troops)
 			troop.draw(this);
+		noFill();
+		stroke(0);
+		if (selectedUnit != -1 && selectedUnit < towers.size()) {
+			ellipse(towers.get(selectedUnit).x() + V.GRID_WIDTH / 2, towers.get(selectedUnit).y() + V.GRID_HEIGHT / 2,
+					2 * towers.get(selectedUnit).range() * V.GRID_WIDTH, 2 * towers.get(selectedUnit).range() * V.GRID_HEIGHT);
+		} else if (selectedUnit != -1 && selectedUnit < troops.size() + towers.size()) {
+			ellipse(troops.get(selectedUnit - towers.size()).x() + V.GRID_WIDTH / 2,
+					troops.get(selectedUnit - towers.size()).y() + V.GRID_HEIGHT / 2,
+					2 * troops.get(selectedUnit - towers.size()).range() * V.GRID_WIDTH,
+					2 * troops.get(selectedUnit - towers.size()).range() * V.GRID_HEIGHT);
+		}
 		drawShop();
 	}
 
@@ -96,10 +104,14 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		for (Tower tower : towers)
 			if (tower.attack()) {
-				Troop target = tower.attack(troops);
-				if (target != null && target.takeDamage(tower.damage())) {
-					dead.add(target);
-					tower.drawAttack(target, this);
+				if (tower instanceof Generator) {
+					money += ((Generator) tower).generation() * 100;
+				} else {
+					Troop target = tower.attack(troops);
+					if (target != null && target.takeDamage(tower.damage())) {
+						dead.add(target);
+						tower.drawAttack(target, this);
+					}
 				}
 			}
 		for (Troop troop : dead)
@@ -115,7 +127,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		for (Troop troop : dead)
 			troops.remove(troop);
-		money += 10;
+		money += 2;
 		if (money > 1000)
 			money = 1000;
 	}
@@ -162,19 +174,24 @@ public class Gameboard extends PApplet implements ActionListener {
 						selected = y;
 						placingTower = true;
 						destroyingTower = false;
+						selectedUnit = -1;
 					} else {
 						selected = -1;
 						placingTower = false;
+						selectedUnit = -1;
 					}
 				} else if (y < V.NUM_UNITS) {
 					selected = -1;
 					placingTower = false;
 					destroyingTower = false;
 					troops.add(((Troop) V.P_UNITS.get(y)).clone(map.endPoint().x, map.endPoint().y, false));
+					money -= V.P_UNITS.get(y).cost();
+					selectedUnit = -1;
 				} else if (y == V.NUM_UNITS) {
 					selected = -1;
 					placingTower = false;
 					destroyingTower = true;
+					selectedUnit = -1;
 				}
 			}
 		} else if (placingTower) {
@@ -200,12 +217,28 @@ public class Gameboard extends PApplet implements ActionListener {
 			for (Tower tower : towers) {
 				if (tower.contains(mouseX, mouseY)) {
 					remove = tower;
-					money += tower.cost() / 2;
+					money += tower.cost() * 50;
 					continue;
 				}
 			}
 			if (remove != null)
 				towers.remove(remove);
+		} else {
+			boolean onUnit = false;
+			for (int i = 0; i < towers.size(); i++) {
+				if (towers.get(i).contains(mouseX, mouseY)) {
+					selectedUnit = i;
+					onUnit = true;
+				}
+			}
+			for (int i = 0; i < troops.size(); i++) {
+				if (troops.get(i).contains(mouseX, mouseY)) {
+					selectedUnit = i + towers.size();
+					onUnit = true;
+				}
+			}
+			if (!onUnit)
+				selectedUnit = -1;
 		}
 	}
 }

@@ -9,7 +9,8 @@ public class Tank extends Tower {
 	private static final double radiusDamage = 0.5;
 
 	public Tank(float x, float y) {
-		super(x, y, 100, 3, 7, V.TANK_COST, V.TANK_ICON, V.TANK_ATTACK_ICON);
+		super(x, y, (int) V.TANK_STATS[0], (int) V.TANK_STATS[1], V.TANK_STATS[2], (int) V.TANK_STATS[3], V.TANK_ICON,
+				V.TANK_ATTACK_ICON);
 	}
 
 	public void upgrade() {
@@ -21,9 +22,9 @@ public class Tank extends Tower {
 	}
 
 	public String toString() {
-		return "Tank\nCost: " + V.TANK_COST;
+		return "Tank\nCost: " + (int) V.TANK_STATS[3];
 	}
-	
+
 	public Tower clone(float x, float y) {
 		return new Tank(x, y);
 	}

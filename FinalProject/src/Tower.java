@@ -1,6 +1,8 @@
 import java.util.*;
 import processing.core.*;
 
+import processing.core.*;
+
 /**
  * The superclass for all defensive towers placed by the player to kill enemy
  * troops
@@ -14,13 +16,13 @@ public abstract class Tower extends Sprite {
 	private String attackIconPath;
 	private PImage attackIcon;
 
-	public Tower(float x, float y, int damage, int attackSpeed, float range, double cost, String icon,
+	public Tower(float x, float y, int damage, int attackSpeed, float range, int cost, String icon,
 			String attackIcon) {
 		super(x, y, cost, icon);
 		this.damage = damage;
 		this.range = range;
 		this.attackSpeed = attackSpeed;
-		this.attackIconPath = attackIcon;
+		attackIconPath = attackIcon;
 	}
 
 	public Tower(float x, float y, Tower tower) {
@@ -33,7 +35,7 @@ public abstract class Tower extends Sprite {
 		return damage;
 	}
 
-	public double range() {
+	public float range() {
 		return range;
 	}
 
@@ -50,8 +52,7 @@ public abstract class Tower extends Sprite {
 	}
 
 	public boolean contains(float x, float y) {
-		return (x > x() - V.GRID_HEIGHT / 2 && x < x() + V.GRID_WIDTH / 2 && y > y() - V.GRID_HEIGHT / 2
-				&& y < y() + V.GRID_WIDTH / 2);
+		return (x > x() && x < x() + V.GRID_WIDTH && y > y() && y < y() + V.GRID_WIDTH);
 	}
 
 	public boolean attack() {
@@ -78,10 +79,13 @@ public abstract class Tower extends Sprite {
 	}
 
 	public void drawAttack(Troop target, Gameboard gb) {
+		if (attackIcon == null) {
+			attackIcon = gb.loadImage(attackIconPath);
+		}
 		gb.pushStyle();
 		gb.fill(0);
 		gb.strokeWeight(10);
-		gb.line(x(), y(), target.x(), target.y());
+		gb.line(x() + V.GRID_WIDTH / 2, y() + V.GRID_HEIGHT / 2, target.x() + V.GRID_WIDTH / 2, target.y() + V.GRID_HEIGHT / 2);
 		gb.popStyle();
 	}
 }

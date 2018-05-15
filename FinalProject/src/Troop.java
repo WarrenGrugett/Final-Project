@@ -1,5 +1,4 @@
 import java.util.*;
-
 import processing.core.*;
 
 /**
@@ -17,7 +16,7 @@ public abstract class Troop extends Sprite {
 	private float range;
 	private boolean enemy;
 
-	public Troop(float x, float y, int health, int damage, int attackSpeed, float range, double cost, boolean enemy,
+	public Troop(float x, float y, int health, int damage, int attackSpeed, float range, int cost, boolean enemy,
 			String icon, String attackIcon) {
 		super(x, y, cost, icon);
 		this.health = health;
@@ -26,6 +25,10 @@ public abstract class Troop extends Sprite {
 		this.range = range;
 		this.enemy = enemy;
 		attackIconPath = attackIcon;
+	}
+
+	public boolean contains(float x, float y) {
+		return (x > x() && x < x() + V.GRID_WIDTH && y > y() && y < y() + V.GRID_WIDTH);
 	}
 
 	public boolean makeNextMove(Map m) {
@@ -116,6 +119,10 @@ public abstract class Troop extends Sprite {
 		return false;
 	}
 
+	public float range() {
+		return range;
+	}
+
 	public int health() {
 		return health;
 	}
@@ -127,7 +134,7 @@ public abstract class Troop extends Sprite {
 	public int attackSpeed() {
 		return attackSpeed;
 	}
-	
+
 	public boolean enemy() {
 		return enemy;
 	}
@@ -155,7 +162,7 @@ public abstract class Troop extends Sprite {
 
 	public Troop attack(ArrayList<Troop> troops) {
 		Troop close = null;
-		float distance = range;
+		float distance = range * V.GRID_HEIGHT;
 		for (Troop troop : troops) {
 			float dist = (float) Math.pow(Math.pow((x() + 0.5 * V.GRID_WIDTH) - (troop.x() + 0.5 * V.GRID_WIDTH), 2)
 					+ Math.pow((y() + 0.5 * V.GRID_HEIGHT) - (troop.y() + 0.5 * V.GRID_HEIGHT), 2), 0.5);
@@ -168,11 +175,18 @@ public abstract class Troop extends Sprite {
 	}
 
 	public void drawAttack(Troop target, Gameboard gb) {
+		if (attackIcon == null) {
+			attackIcon = gb.loadImage(attackIconPath);
+		}
 		gb.pushStyle();
 		gb.fill(0);
 		gb.strokeWeight(10);
 		gb.line(x(), y(), target.x(), target.y());
 		gb.popStyle();
+	}
+	
+	public void draw(Gameboard gb) {
+		super.draw(gb);
 	}
 
 	public abstract Troop clone(float x, float y, boolean enemy);

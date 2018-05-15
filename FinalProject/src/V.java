@@ -50,17 +50,20 @@ public class V {
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
-	// Costs of all towers
-	public static final double CANNON_COST = 0, CHIPPER_COST = 0, TANK_COST = 0, GENERATOR_COST = 0;
-	// Costs of all troops
-	public static final double ARCHER_COST = 0, GIANTWARRIOR_COST = 0, KNIGHT_COST = 0, MACHINIST_COST = 0;
 	// List of all tower stats
-	public static final double[] CANNON_STATS = { 100, 3, 1.5, V.CANNON_COST };
-	public static final double[] CHIPPER_STATS = { 10, 3, 5, CHIPPER_COST };
-	public static final double[] TANK_STATS = { 100, 3, 7, TANK_COST };
-	public static final double[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
+	// Key: damage, attack speed, range, cost
+	public static final float[] CANNON_STATS = { 100, 3, 1.5f, 4 };
+	public static final float[] CHIPPER_STATS = { 5, 1, 5, 5 };
+	public static final float[] TANK_STATS = { 100, 3, 7, 7 };
+	public static final float[] GENERATOR_STATS = { 0, 75, 0, 6 };
+	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
-	public static final double[][] TROOP_STATS = {};
+	// Key: health, damage, attack speed, range, cost
+	public static final float[] ARCHER_STATS = { 40, 10, 2, 2, 3 };
+	public static final float[] GIANTWARRIOR_STATS = { 150, 30, 1, 0, 6 };
+	public static final float[] KNIGHT_STATS = { 150, 30, 2, 0, 4 };
+	public static final float[] MACHINIST_STATS = { 100, 5, 10, 10, 6 };
+	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS };
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
 		P_UNITS.put(1, new Chipper(0, 0));

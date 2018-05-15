@@ -15,9 +15,9 @@ public abstract class Sprite {
 	/**
 	 * cost between 1-10
 	 */
-	private double cost;
+	private int cost;
 
-	public Sprite(float x, float y, double cost, String icon) {
+	public Sprite(float x, float y, int cost, String icon) {
 		this.cost = cost;
 		this.x = x;
 		this.y = y;
@@ -40,7 +40,7 @@ public abstract class Sprite {
 		return iconPath;
 	}
 
-	public double cost() {
+	public int cost() {
 		return cost;
 	}
 

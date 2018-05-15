@@ -5,7 +5,8 @@
  */
 public class Knight extends Troop {
 	public Knight(float x, float y, boolean enemy) {
-		super(x, y, 150, 30, 2, 0, 5, enemy, V.KNIGHT_ICON, V.KNIGHT_ATTACK_ICON);
+		super(x, y, (int) V.KNIGHT_STATS[0], (int) V.KNIGHT_STATS[1], (int) V.KNIGHT_STATS[2], V.KNIGHT_STATS[3],
+				(int) V.KNIGHT_STATS[4], enemy, V.KNIGHT_ICON, V.KNIGHT_ATTACK_ICON);
 	}
 
 	public void upgrade() {
@@ -13,10 +14,18 @@ public class Knight extends Troop {
 	}
 
 	public String toString() {
-		return "Knight\nCost: " + V.KNIGHT_COST;
+		return "Knight\nCost: " + (int) V.KNIGHT_STATS[4];
 	}
 
 	public Troop clone(float x, float y, boolean enemy) {
 		return new Knight(x, y, enemy);
+	}
+	
+	public void draw(Gameboard gb) {
+		super.draw(gb);
+		gb.pushStyle();
+		gb.fill(0, 200, 0);
+		gb.rect(x(), y(), (float) (V.GRID_WIDTH * (health() / V.KNIGHT_STATS[0])), 10);
+		gb.popStyle();
 	}
 }
