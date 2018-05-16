@@ -18,6 +18,7 @@ public class Map {
 	 */
 	private int[][] mapData;
 	private Point[] troopAttackPattern;
+	private int loc = -1;
 
 	public Map(String map, int[][] mapData, Point[] troopPattern) {
 		this.mapPath = map;
@@ -39,6 +40,17 @@ public class Map {
 	
 	public Point[] troopPattern() {
 		return troopAttackPattern;
+	}
+	
+	public boolean complete() {
+		return (troopAttackPattern.length == loc);
+	}
+	
+	public Point nextTroops() {
+		loc++;
+		if (complete())
+			return null;
+		return troopAttackPattern[loc];
 	}
 	
 	public Point2D.Float startPoint() {

@@ -30,22 +30,22 @@ public class V {
 							new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } },
-					new Point[] {}),
-			new Map("tdmap1.png", new int[][] {}, new Point[] {}),
-			new Map("tdmap2.png", new int[][] {}, new Point[] {}),
-			new Map("tdmap3.png", new int[][] {}, new Point[] {}), };
+					new Point[] { new Point(1, 3) }),
+			new Map("tdmap1.png", new int[][] {}, new Point[] { new Point(1, 3) }),
+			new Map("tdmap2.png", new int[][] {}, new Point[] { new Point(1, 3) }),
+			new Map("tdmap3.png", new int[][] {}, new Point[] { new Point(1, 3) }), };
 	// Tower icons
 	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
-			GENERATOR_ICON = "knight.jpg";
+			GENERATOR_ICON = "testBG.png";
 	// Troop icons
 	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
 			MACHINIST_ICON = "machinist.png";
 	// Tower attack icons
-	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
-			TANK_ATTACK_ICON = "knight.jpg";
+	public static String CANNON_ATTACK_ICON = "testBG.png", CHIPPER_ATTACK_ICON = "testBG.png",
+			TANK_ATTACK_ICON = "testBG.png";
 	// Troop attack icons
-	public static String ARCHER_ATTACK_ICON = "knight.jpg", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
-			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "knight.jpg";
+	public static String ARCHER_ATTACK_ICON = "testBG.png", GIANTWARRIOR_ATTACK_ICON = "testBG.png",
+			KNIGHT_ATTACK_ICON = "testBG.png", MACHINIST_ATTACK_ICON = "testBG.png";
 	// List of all units playable by the player
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import processing.core.*;
@@ -20,7 +21,8 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Window w;
 	private float shopWidth;
 	private boolean placingTower, destroyingTower;
-	private int selected = -1, money = 300, selectedUnit = -1;
+	private int selected = -1, money = 300, selectedUnit = -1, level, delay;
+	private Point sentTroop;
 
 	public Gameboard(Window w) {
 		this.w = w;
@@ -32,7 +34,7 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void setup() {
 		map = V.maps[0];
-		troops.add(new Archer(map.startPoint().x, map.startPoint().y, true));
+		sentTroop = map.nextTroops();
 	}
 
 	public void settings() {
@@ -69,7 +71,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		stroke(0);
 		if (selectedUnit != -1 && selectedUnit < towers.size()) {
 			ellipse(towers.get(selectedUnit).x() + V.GRID_WIDTH / 2, towers.get(selectedUnit).y() + V.GRID_HEIGHT / 2,
-					2 * towers.get(selectedUnit).range() * V.GRID_WIDTH, 2 * towers.get(selectedUnit).range() * V.GRID_HEIGHT);
+					2 * towers.get(selectedUnit).range() * V.GRID_WIDTH,
+					2 * towers.get(selectedUnit).range() * V.GRID_HEIGHT);
 		} else if (selectedUnit != -1 && selectedUnit < troops.size() + towers.size()) {
 			ellipse(troops.get(selectedUnit - towers.size()).x() + V.GRID_WIDTH / 2,
 					troops.get(selectedUnit - towers.size()).y() + V.GRID_HEIGHT / 2,
@@ -92,7 +95,30 @@ public class Gameboard extends PApplet implements ActionListener {
 		return keys.contains(code);
 	}
 
+	private void nextLevel() {
+		level++;
+		map = V.maps[level];
+		timer.restart();
+		troops = new ArrayList<>();
+		towers = new ArrayList<>();
+		placingTower = false;
+		destroyingTower = false;
+		sentTroop = map.nextTroops();
+	}
+
 	public void actionPerformed(ActionEvent e) {
+		if (sentTroop != null) {
+			delay++;
+			if (delay == 4) {
+				delay = 0;
+				troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().x, map.startPoint().y, true));
+				sentTroop.y--;
+			}
+			if (sentTroop.y == 0) {
+				sentTroop = map.nextTroops();
+			}
+		} else if (troops.size() == 0)
+			nextLevel();
 		ArrayList<Troop> dead = new ArrayList<>();
 		for (Troop troop : troops)
 			if (troop.attack()) {
@@ -184,8 +210,10 @@ public class Gameboard extends PApplet implements ActionListener {
 					selected = -1;
 					placingTower = false;
 					destroyingTower = false;
-					troops.add(((Troop) V.P_UNITS.get(y)).clone(map.endPoint().x, map.endPoint().y, false));
-					money -= V.P_UNITS.get(y).cost();
+					if (money > V.P_UNITS.get(y).cost() * 100) {
+						troops.add(((Troop) V.P_UNITS.get(y)).clone(map.endPoint().x, map.endPoint().y, false));
+						money -= V.P_UNITS.get(y).cost();
+					}
 					selectedUnit = -1;
 				} else if (y == V.NUM_UNITS) {
 					selected = -1;
