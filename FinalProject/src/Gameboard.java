@@ -183,13 +183,13 @@ public class Gameboard extends PApplet implements ActionListener {
 			} else if ((int) (i / height) == V.NUM_UNITS) {
 				text("Demolish\nRegain half original cost", width - shopWidth / 2, i + 0.5f * height);
 			} else if ((int) (i / height) == V.NUM_UNITS + 1) {
-				text("Upgrade\n", width - shopWidth / 2, i + 0.5f * height);
+				text("Upgrade\nCosts half of the original cost", width - shopWidth / 2, i + 0.5f * height);
 			}
 		}
 		fill(255);
 		rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
 		fill(0);
-		text("Money unit thingies: " + money / 100, width - shopWidth / 2, this.height - 0.5f * height - 10);
+		text("Money unit thingies: " + money, width - shopWidth / 2, this.height - 0.5f * height - 10);
 		text("Health: ", width - shopWidth / 2, this.height - 0.5f * height + 10);
 		popStyle();
 	}
