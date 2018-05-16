@@ -12,12 +12,15 @@ public abstract class Sprite {
 	private String iconPath;
 	private PImage icon;
 	private float x, y;
+	private int level;
 	/**
 	 * cost between 1-10
 	 */
 	private int cost;
 
-	public Sprite(float x, float y, int cost, String icon) {
+	public Sprite(float x, float y, int cost, String icon) 
+	{
+		level = 1;
 		this.cost = cost;
 		this.x = x;
 		this.y = y;
@@ -52,6 +55,11 @@ public abstract class Sprite {
 	public void move(float x, float y) {
 		this.x += x;
 		this.y += y;
+	}
+	
+	public int level()
+	{
+		return level;
 	}
 
 	public void draw(Gameboard gb) {
