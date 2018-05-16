@@ -4,7 +4,7 @@ import java.util.HashMap;
 /**
  * Class stores all variables that do not change during runtime
  * 
- * @author Sepehr, Warren
+ * @author Sepehr, Warren, Leo
  *
  */
 public class V {
@@ -14,6 +14,7 @@ public class V {
 	public static final int MOVEMENT_SPEED = 21;
 	// Maps
 	public static final Map[] maps = {
+			// Map 1
 			new Map("tdmap.png",
 					new int[][] { new int[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
@@ -30,13 +31,83 @@ public class V {
 							new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } },
-					new Point[] { new Point(0, 3) }),
-			new Map("tdmap1.png", new int[][] {}, new Point[] { new Point(1, 3) }),
-			new Map("tdmap2.png", new int[][] {}, new Point[] { new Point(1, 3) }),
-			new Map("tdmap3.png", new int[][] {}, new Point[] { new Point(1, 3) }), };
+					new Point[] {}),
+			// Map 2
+			new Map("tdmap1.png",
+					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+							new int[] { 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
+							new int[] { 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
+							new int[] { 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1 },
+							new int[] { 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2 },
+							new int[] { 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1 },
+							new int[] { 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1 },
+							new int[] { 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+							new int[] { 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 } },
+					new Point[] {}),
+			// Map 3
+			new Map("tdmap2.png",
+					new int[][] { new int[] { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+							new int[] { 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+							new int[] { 3, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
+					new Point[] {}),
+			// Map 4
+			new Map("tdmap3.png",
+					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+							new int[] { 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
+							new int[] { 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
+					new Point[] {}),
+			// Map 5
+			new Map("tdmap4.png",
+					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1 },
+							new int[] { 2, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1 },
+							new int[] { 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1 },
+							new int[] { 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1 },
+							new int[] { 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1 },
+							new int[] { 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
+							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
+							new int[] { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+							new int[] { 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+							new int[] { 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3 } },
+					new Point[] {}) };
 	// Tower icons
 	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
-			GENERATOR_ICON = "testBG.png";
+			GENERATOR_ICON = "knight.jpg";
 	// Troop icons
 	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
 			MACHINIST_ICON = "machinist.png";
@@ -44,8 +115,8 @@ public class V {
 	public static String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
 			TANK_ATTACK_ICON = "missile.png";
 	// Troop attack icons
-	public static String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "testBG.png",
-			KNIGHT_ATTACK_ICON = "testBG.png", MACHINIST_ATTACK_ICON = "bullet.png";
+	public static String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
+			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "bullet.png";
 	// List of all units playable by the player
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops

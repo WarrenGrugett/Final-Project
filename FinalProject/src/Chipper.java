@@ -13,6 +13,8 @@ public class Chipper extends Tower {
 
 	public void upgrade() {
 		super.upgrade(10);
+		levelUp();
+
 	}
 
 	public String toString() {

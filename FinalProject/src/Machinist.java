@@ -9,8 +9,11 @@ public class Machinist extends Troop {
 				(int) V.MACHINIST_STATS[4], enemy, V.MACHINIST_ICON, V.MACHINIST_ATTACK_ICON);
 	}
 
-	public void upgrade() {
+	public void upgrade()
+	{
 		super.upgrade(10, 2);
+		levelUp();
+
 	}
 
 	public String toString() {

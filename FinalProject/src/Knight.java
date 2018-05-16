@@ -15,6 +15,8 @@ public class Knight extends Troop
 	public void upgrade()
 	{
 		super.upgrade(15, 5);
+		levelUp();
+
 	}
 
 	public String toString()
