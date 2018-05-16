@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.*;
 import processing.core.*;
 
 /**
@@ -96,6 +97,8 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	private void nextLevel() {
+		JOptionPane.showMessageDialog(frame, "Conglaturation\na winner is you");
+		JOptionPane.showMessageDialog(frame, "You can upgrade things to level 2 now");
 		level++;
 		map = V.maps[level];
 		timer.restart();

@@ -31,7 +31,10 @@ public class Knight extends Troop
 	{
 		super.draw(gb);
 		gb.pushStyle();
-		gb.fill(0, 200, 0);
+		if (enemy())
+			gb.fill(200, 0, 0);
+		else
+			gb.fill(0, 200, 0);
 		gb.rect(x(), y(), (float) (V.GRID_WIDTH * (health() / V.KNIGHT_STATS[0])), 10);
 		gb.popStyle();
 	}
