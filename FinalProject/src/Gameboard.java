@@ -21,7 +21,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private javax.swing.Timer timer;
 	private Window w;
 	private float shopWidth;
-	private boolean placingTower, destroyingTower;
+	private boolean placing, destroying, upgrading;
 	private int selected = -1, money = 300, selectedUnit = -1, level, delay;
 	private Point sentTroop;
 
@@ -104,8 +104,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		timer.restart();
 		troops = new ArrayList<>();
 		towers = new ArrayList<>();
-		placingTower = false;
-		destroyingTower = false;
+		placing = false;
+		destroying = false;
 		sentTroop = map.nextTroops();
 	}
 
@@ -174,7 +174,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		float height = this.height / num;
 		for (float i = 0; i < this.height; i += height) {
 			fill(200);
-			if (selected == (int) (i / height) || (destroyingTower && (int) (i / height) == V.NUM_UNITS))
+			if (selected == (int) (i / height) || (destroying && (int) (i / height) == V.NUM_UNITS))
 				fill(255);
 			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
 			fill(0);
@@ -203,18 +203,18 @@ public class Gameboard extends PApplet implements ActionListener {
 				if (y < V.NUM_UNITS - V.NUM_TROOPS) {
 					if (selected != y) {
 						selected = y;
-						placingTower = true;
-						destroyingTower = false;
+						placing = true;
+						destroying = false;
 						selectedUnit = -1;
 					} else {
 						selected = -1;
-						placingTower = false;
+						placing = false;
 						selectedUnit = -1;
 					}
 				} else if (y < V.NUM_UNITS) {
 					selected = -1;
-					placingTower = false;
-					destroyingTower = false;
+					placing = false;
+					destroying = false;
 					if (money > V.P_UNITS.get(y).cost()) {
 						troops.add(((Troop) V.P_UNITS.get(y)).clone(map.endPoint().x, map.endPoint().y, false));
 						money -= V.P_UNITS.get(y).cost();
@@ -222,12 +222,12 @@ public class Gameboard extends PApplet implements ActionListener {
 					selectedUnit = -1;
 				} else if (y == V.NUM_UNITS) {
 					selected = -1;
-					placingTower = false;
-					destroyingTower = true;
+					placing = false;
+					destroying = true;
 					selectedUnit = -1;
 				}
 			}
-		} else if (placingTower) {
+		} else if (placing) {
 			boolean onTower = false;
 			for (Tower tower : towers) {
 				if (tower.contains(mouseX, mouseY)) {
@@ -245,7 +245,7 @@ public class Gameboard extends PApplet implements ActionListener {
 					}
 				}
 			}
-		} else if (destroyingTower) {
+		} else if (destroying) {
 			Tower remove = null;
 			for (Tower tower : towers) {
 				if (tower.contains(mouseX, mouseY)) {
@@ -256,6 +256,16 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 			if (remove != null)
 				towers.remove(remove);
+		} else if (upgrading) {
+			for (Tower tower : towers) {
+				if (tower.contains(mouseX, mouseY)) {
+					if (money > tower.cost() / 2) {
+						money -= tower.cost() / 2;
+						tower.upgrade();
+					}
+					continue;
+				}
+			}
 		} else {
 			boolean onUnit = false;
 			for (int i = 0; i < towers.size(); i++) {
