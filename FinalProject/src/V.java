@@ -41,11 +41,11 @@ public class V {
 	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
 			MACHINIST_ICON = "machinist.png";
 	// Tower attack icons
-	public static String CANNON_ATTACK_ICON = "knight.jpg", CHIPPER_ATTACK_ICON = "knight.jpg",
-			TANK_ATTACK_ICON = "knight.jpg";
+	public static String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
+			TANK_ATTACK_ICON = "missile.png";
 	// Troop attack icons
-	public static String ARCHER_ATTACK_ICON = "knight.jpg", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
-			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "knight.jpg";
+	public static String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
+			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "bullet.png";
 	// List of all units playable by the player
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops
