@@ -12,6 +12,8 @@ public class Machinist extends Troop {
 	public void upgrade()
 	{
 		super.upgrade(10, 2);
+		levelUp();
+
 	}
 
 	public String toString() {

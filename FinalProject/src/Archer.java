@@ -15,7 +15,7 @@ public class Archer extends Troop
 	public void upgrade()
 	{
 		super.upgrade(10, 5);
-		
+		levelUp();
 	}
 
 	public String toString()

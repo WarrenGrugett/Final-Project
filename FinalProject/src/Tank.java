@@ -15,6 +15,8 @@ public class Tank extends Tower {
 
 	public void upgrade() {
 		super.upgrade(10);
+		levelUp();
+
 	}
 
 	public double radiusDamage() {
