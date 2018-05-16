@@ -18,8 +18,7 @@ public abstract class Sprite {
 	 */
 	private int cost;
 
-	public Sprite(float x, float y, int cost, String icon) 
-	{
+	public Sprite(float x, float y, int cost, String icon) {
 		level = 1;
 		this.cost = cost;
 		this.x = x;
@@ -29,6 +28,10 @@ public abstract class Sprite {
 
 	public Point2D.Float getLoc() {
 		return new Point2D.Float(x, y);
+	}
+
+	public void levelUp() {
+		level++;
 	}
 
 	public float x() {
@@ -56,9 +59,8 @@ public abstract class Sprite {
 		this.x += x;
 		this.y += y;
 	}
-	
-	public int level()
-	{
+
+	public int level() {
 		return level;
 	}
 

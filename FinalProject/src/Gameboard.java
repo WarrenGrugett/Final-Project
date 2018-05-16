@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-
-import javax.swing.JOptionPane;
-
+import javax.swing.*;
 import processing.core.*;
 
 /**
