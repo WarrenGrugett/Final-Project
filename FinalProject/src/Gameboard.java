@@ -170,7 +170,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		fill(100);
 		rect(width - shopWidth, 0, shopWidth, height);
 		textAlign(CENTER, CENTER);
-		int num = V.NUM_UNITS + 2;
+		int num = V.NUM_UNITS + 3;
 		float height = this.height / num;
 		for (float i = 0; i < this.height; i += height) {
 			fill(200);
@@ -182,6 +182,8 @@ public class Gameboard extends PApplet implements ActionListener {
 				text(V.P_UNITS.get((int) (i / height)).toString(), width - shopWidth / 2, i + 0.5f * height);
 			} else if ((int) (i / height) == V.NUM_UNITS) {
 				text("Demolish\nRegain half original cost", width - shopWidth / 2, i + 0.5f * height);
+			} else if ((int) (i / height) == V.NUM_UNITS + 1) {
+				text("Upgrade\n", width - shopWidth / 2, i + 0.5f * height);
 			}
 		}
 		fill(255);
@@ -213,7 +215,7 @@ public class Gameboard extends PApplet implements ActionListener {
 					selected = -1;
 					placingTower = false;
 					destroyingTower = false;
-					if (money > V.P_UNITS.get(y).cost() * 100) {
+					if (money > V.P_UNITS.get(y).cost()) {
 						troops.add(((Troop) V.P_UNITS.get(y)).clone(map.endPoint().x, map.endPoint().y, false));
 						money -= V.P_UNITS.get(y).cost();
 					}
@@ -234,12 +236,12 @@ public class Gameboard extends PApplet implements ActionListener {
 				}
 			}
 			if (!onTower) {
-				if (money > V.P_UNITS.get(selected).cost() * 100) {
+				if (money > V.P_UNITS.get(selected).cost()) {
 					int y = (int) (mouseY / V.GRID_HEIGHT);
 					int x = (int) (mouseX / V.GRID_WIDTH);
 					if (map.map()[y][x] == 1) {
 						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x * V.GRID_WIDTH, y * V.GRID_HEIGHT));
-						money -= V.P_UNITS.get(selected).cost() * 100;
+						money -= V.P_UNITS.get(selected).cost();
 					}
 				}
 			}
@@ -248,7 +250,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			for (Tower tower : towers) {
 				if (tower.contains(mouseX, mouseY)) {
 					remove = tower;
-					money += tower.cost() * 50;
+					money += tower.cost() / 2;
 					continue;
 				}
 			}

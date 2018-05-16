@@ -30,7 +30,7 @@ public class V {
 							new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } },
-					new Point[] { new Point(1, 3) }),
+					new Point[] { new Point(0, 3) }),
 			new Map("tdmap1.png", new int[][] {}, new Point[] { new Point(1, 3) }),
 			new Map("tdmap2.png", new int[][] {}, new Point[] { new Point(1, 3) }),
 			new Map("tdmap3.png", new int[][] {}, new Point[] { new Point(1, 3) }), };
