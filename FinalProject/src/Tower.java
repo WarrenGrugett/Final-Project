@@ -66,17 +66,11 @@ public abstract class Tower extends Sprite {
 	}
 
 	public Troop attack(ArrayList<Troop> troops) {
-		Troop close = null;
 		float distance = range * V.GRID_HEIGHT;
-		for (Troop troop : troops) {
-			float dist = (float) Math.pow(Math.pow((x() + 0.5 * V.GRID_WIDTH) - (troop.x() + 0.5 * V.GRID_WIDTH), 2)
-					+ Math.pow((y() + 0.5 * V.GRID_HEIGHT) - (troop.y() + 0.5 * V.GRID_HEIGHT), 2), 0.5);
-			if (dist <= distance && troop.enemy()) {
-				distance = dist;
-				close = troop;
-			}
-		}
-		return close;
+		for (Troop troop : troops)
+			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance)
+				return troop;
+		return null;
 	}
 
 	public void drawAttack(Troop target, Gameboard gb) {

@@ -109,7 +109,7 @@ public class V {
 					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }) };
 	// Tower icons
 	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
-			GENERATOR_ICON = "knight.jpg";
+			GENERATOR_ICON = "testBG.png";
 	// Troop icons
 	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
 			MACHINIST_ICON = "machinist.png";
@@ -117,25 +117,25 @@ public class V {
 	public static String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
 			TANK_ATTACK_ICON = "missile.png";
 	// Troop attack icons
-	public static String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "knight.jpg",
-			KNIGHT_ATTACK_ICON = "knight.jpg", MACHINIST_ATTACK_ICON = "bullet.png";
+	public static String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "giant.png",
+			KNIGHT_ATTACK_ICON = "knight.png", MACHINIST_ATTACK_ICON = "bullet.png";
 	// List of all units playable by the player
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	// List of all tower stats
 	// Key: damage, attack speed, range, cost
-	public static final float[] CANNON_STATS = { 100, 600, 1.5f, 40 };
-	public static final float[] CHIPPER_STATS = { 5, 100, 5, 50 };
-	public static final float[] TANK_STATS = { 100, 600, 4, 70 };
-	public static final float[] GENERATOR_STATS = { 0, 1500, 0, 60 };
+	public static final float[] CANNON_STATS = { 50, 150, 1.5f, 60 };
+	public static final float[] CHIPPER_STATS = { 5, 50, 5, 70 };
+	public static final float[] TANK_STATS = { 50, 400, 4, 100 };
+	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
 	// Key: health, damage, attack speed, range, cost
-	public static final float[] ARCHER_STATS = { 40, 10, 400, 2, 30 };
-	public static final float[] GIANTWARRIOR_STATS = { 150, 30, 200, 1, 60 };
-	public static final float[] KNIGHT_STATS = { 150, 30, 400, 1, 40 };
-	public static final float[] MACHINIST_STATS = { 100, 5, 100, 5, 60 };
+	public static final float[] ARCHER_STATS = { 40, 20, 400, 5, 30 };
+	public static final float[] GIANTWARRIOR_STATS = { 500, 100, 400, 1, 50 };
+	public static final float[] KNIGHT_STATS = { 400, 40, 200, 1, 40 };
+	public static final float[] MACHINIST_STATS = { 100, 5, 50, 4, 50 };
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS };
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
