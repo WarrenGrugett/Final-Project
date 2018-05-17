@@ -22,7 +22,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Window w;
 	private float shopWidth;
 	private boolean placing, destroying, upgrading;
-	private int selected = -1, money = 300, selectedUnit = -1, level, delay;
+	private int selected = -1, money = 30, selectedUnit = -1, level = 4, delay;
 	private Point sentTroop;
 
 	public Gameboard(Window w) {
@@ -34,7 +34,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void setup() {
-		map = V.maps[0];
+		map = V.maps[level];
 		sentTroop = map.nextTroops();
 	}
 
@@ -64,10 +64,14 @@ public class Gameboard extends PApplet implements ActionListener {
 			map.draw(this);
 		else
 			background(255);
-		for (Tower tower : towers)
+		for (int i = 0; i < towers.size(); i++) {
+			Tower tower = towers.get(i);
 			tower.draw(this);
-		for (Troop troop : troops)
+		}
+		for (int i = 0; i < troops.size(); i++) {
+			Troop troop = troops.get(i);
 			troop.draw(this);
+		}
 		noFill();
 		stroke(0);
 		if (selectedUnit != -1 && selectedUnit < towers.size()) {
@@ -96,9 +100,14 @@ public class Gameboard extends PApplet implements ActionListener {
 		return keys.contains(code);
 	}
 
+	private void win() {
+		JOptionPane.showMessageDialog(frame, "You win I guess\nyay");
+		System.exit(0);
+	}
+
 	private void nextLevel() {
-		JOptionPane.showMessageDialog(frame, "Conglaturation\na winner is you");
-		JOptionPane.showMessageDialog(frame, "You can upgrade things to level 2 now");
+		JOptionPane.showMessageDialog(frame, "Conglaturations\na winner is you");
+		JOptionPane.showMessageDialog(frame, "You can upgrade things to level " + (level + 2) + " now");
 		level++;
 		map = V.maps[level];
 		timer.restart();
@@ -114,7 +123,8 @@ public class Gameboard extends PApplet implements ActionListener {
 			delay++;
 			if (delay == 4) {
 				delay = 0;
-				troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().x, map.startPoint().y, true));
+				troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true));
+				troops.get(troops.size() - 1).orientate(map);
 				sentTroop.y--;
 			}
 			if (sentTroop.y == 0) {
@@ -123,7 +133,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		} else if (troops.size() == 0)
 			nextLevel();
 		ArrayList<Troop> dead = new ArrayList<>();
-		for (Troop troop : troops)
+		for (int i = 0; i < troops.size(); i++) {
+			Troop troop = troops.get(i);
 			if (troop.attack()) {
 				Troop target = troop.attack(troops);
 				if (target != null && target.takeDamage(troop.damage())) {
@@ -131,7 +142,9 @@ public class Gameboard extends PApplet implements ActionListener {
 					troop.drawAttack(target, this);
 				}
 			}
-		for (Tower tower : towers)
+		}
+		for (int i = 0; i < towers.size(); i++) {
+			Tower tower = towers.get(i);
 			if (tower.attack()) {
 				if (tower instanceof Generator) {
 					money += ((Generator) tower).generation() * 100;
@@ -143,10 +156,14 @@ public class Gameboard extends PApplet implements ActionListener {
 					}
 				}
 			}
-		for (Troop troop : dead)
+		}
+		for (int i = 0; i < dead.size(); i++) {
+			Troop troop = dead.get(i);
 			troops.remove(troop);
+		}
 		dead = new ArrayList<>();
-		for (Troop troop : troops)
+		for (int i = 0; i < troops.size(); i++) {
+			Troop troop = troops.get(i);
 			if (troop.makeNextMove(map)) {
 				if (troop.enemy())
 					lose();
@@ -154,8 +171,11 @@ public class Gameboard extends PApplet implements ActionListener {
 					dead.add(troop);
 				}
 			}
-		for (Troop troop : dead)
+		}
+		for (int i = 0; i < dead.size(); i++) {
+			Troop troop = dead.get(i);
 			troops.remove(troop);
+		}
 		money += 1;
 		if (money > 100)
 			money = 100;
@@ -217,6 +237,7 @@ public class Gameboard extends PApplet implements ActionListener {
 					destroying = false;
 					if (money > V.P_UNITS.get(y).cost()) {
 						troops.add(((Troop) V.P_UNITS.get(y)).clone(map.endPoint().x, map.endPoint().y, false));
+						troops.get(troops.size() - 1).orientate(map);
 						money -= V.P_UNITS.get(y).cost();
 					}
 					selectedUnit = -1;
@@ -229,7 +250,8 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		} else if (placing) {
 			boolean onTower = false;
-			for (Tower tower : towers) {
+			for (int i = 0; i < towers.size(); i++) {
+				Tower tower = towers.get(i);
 				if (tower.contains(mouseX, mouseY)) {
 					onTower = true;
 					continue;
@@ -247,7 +269,8 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		} else if (destroying) {
 			Tower remove = null;
-			for (Tower tower : towers) {
+			for (int i = 0; i < towers.size(); i++) {
+				Tower tower = towers.get(i);
 				if (tower.contains(mouseX, mouseY)) {
 					remove = tower;
 					money += tower.cost() / 2;
@@ -257,7 +280,8 @@ public class Gameboard extends PApplet implements ActionListener {
 			if (remove != null)
 				towers.remove(remove);
 		} else if (upgrading) {
-			for (Tower tower : towers) {
+			for (int i = 0; i < towers.size(); i++) {
+				Tower tower = towers.get(i);
 				if (tower.contains(mouseX, mouseY)) {
 					if (money > tower.cost() / 2) {
 						money -= tower.cost() / 2;
