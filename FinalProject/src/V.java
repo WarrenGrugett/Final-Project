@@ -8,8 +8,6 @@ import java.util.*;
  *
  */
 public class V {
-	// Dimensions of each individual grid tile
-	public static final int GRID_WIDTH = 64, GRID_HEIGHT = 64;
 	// Troop movement speed
 	public static final int MOVEMENT_SPEED = 1;
 	// Maps

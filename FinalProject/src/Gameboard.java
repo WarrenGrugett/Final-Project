@@ -14,6 +14,8 @@ import processing.core.*;
  *
  */
 public class Gameboard extends PApplet implements ActionListener {
+	// Dimensions of each individual grid tile
+	public static int GRID_WIDTH = 64, GRID_HEIGHT = 64;
 	private ArrayList<Tower> towers;
 	private ArrayList<Troop> troops;
 	private Map map;
@@ -63,10 +65,10 @@ public class Gameboard extends PApplet implements ActionListener {
 					if (target != null && tower instanceof Tank) {
 						for (int j = 0; j < troops.size(); j++) {
 							Troop troop = troops.get(j);
-							if (Math.abs(troop.x() + V.GRID_WIDTH / 2 - target.x() + V.GRID_WIDTH / 2) <= ((Tank) tower)
-									.radiusDamage() * V.GRID_WIDTH
-									&& Math.abs(troop.y() + V.GRID_HEIGHT / 2 - target.y()
-											+ V.GRID_HEIGHT / 2) <= ((Tank) tower).radiusDamage() * V.GRID_HEIGHT) {
+							if (Math.abs(troop.x() + GRID_WIDTH / 2 - target.x() + GRID_WIDTH / 2) <= ((Tank) tower)
+									.radiusDamage() * GRID_WIDTH
+									&& Math.abs(troop.y() + GRID_HEIGHT / 2 - target.y()
+											+ GRID_HEIGHT / 2) <= ((Tank) tower).radiusDamage() * GRID_HEIGHT) {
 								if (troop.takeDamage(tower.damage())) {
 									dead.add(troop);
 								}
@@ -126,6 +128,8 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void draw() {
+		GRID_WIDTH = height / map.map()[0].length;
+		GRID_HEIGHT = height / map.map().length;
 		textSize(15);
 		strokeWeight(1);
 		shopWidth = width - height;
@@ -145,18 +149,18 @@ public class Gameboard extends PApplet implements ActionListener {
 		stroke(0);
 		try {
 			if (selectedUnit != -1 && selectedUnit < towers.size()) {
-				rect(towers.get(selectedUnit).x() + V.GRID_WIDTH / 2 - towers.get(selectedUnit).range() * V.GRID_WIDTH,
-						towers.get(selectedUnit).y() + V.GRID_HEIGHT / 2
-								- towers.get(selectedUnit).range() * V.GRID_HEIGHT,
-						towers.get(selectedUnit).range() * V.GRID_WIDTH * 2,
-						towers.get(selectedUnit).range() * V.GRID_HEIGHT * 2);
+				rect(towers.get(selectedUnit).x() + GRID_WIDTH / 2 - towers.get(selectedUnit).range() * GRID_WIDTH,
+						towers.get(selectedUnit).y() + GRID_HEIGHT / 2
+								- towers.get(selectedUnit).range() * GRID_HEIGHT,
+						towers.get(selectedUnit).range() * GRID_WIDTH * 2,
+						towers.get(selectedUnit).range() * GRID_HEIGHT * 2);
 			} else if (selectedUnit != -1) {
-				rect(troops.get(selectedUnit - towers.size()).x() + V.GRID_WIDTH / 2
-						- troops.get(selectedUnit - towers.size()).range() * V.GRID_WIDTH,
-						troops.get(selectedUnit - towers.size()).y() + V.GRID_HEIGHT / 2
-								- troops.get(selectedUnit - towers.size()).range() * V.GRID_HEIGHT,
-						troops.get(selectedUnit - towers.size()).range() * V.GRID_WIDTH * 2,
-						troops.get(selectedUnit - towers.size()).range() * V.GRID_HEIGHT * 2);
+				rect(troops.get(selectedUnit - towers.size()).x() + GRID_WIDTH / 2
+						- troops.get(selectedUnit - towers.size()).range() * GRID_WIDTH,
+						troops.get(selectedUnit - towers.size()).y() + GRID_HEIGHT / 2
+								- troops.get(selectedUnit - towers.size()).range() * GRID_HEIGHT,
+						troops.get(selectedUnit - towers.size()).range() * GRID_WIDTH * 2,
+						troops.get(selectedUnit - towers.size()).range() * GRID_HEIGHT * 2);
 			}
 		} catch (Exception e) {
 			selectedUnit = -1;
@@ -250,10 +254,10 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 			if (!onTower) {
 				if (money >= V.P_UNITS.get(selected).cost()) {
-					int y = (int) (mouseY / V.GRID_HEIGHT);
-					int x = (int) (mouseX / V.GRID_WIDTH);
+					int y = (int) (mouseY / GRID_HEIGHT);
+					int x = (int) (mouseX / GRID_WIDTH);
 					if (map.map()[y][x] == 1) {
-						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x * V.GRID_WIDTH, y * V.GRID_HEIGHT));
+						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x * GRID_WIDTH, y * GRID_HEIGHT));
 						selectedUnit = towers.size() - 1;
 						money -= V.P_UNITS.get(selected).cost();
 					}
@@ -351,10 +355,6 @@ public class Gameboard extends PApplet implements ActionListener {
 			if (!onUnit)
 				selectedUnit = -1;
 		}
-	}
-
-	public void settings() {
-		size(1200, 960);
 	}
 
 	public void pause() {

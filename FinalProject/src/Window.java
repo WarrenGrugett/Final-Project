@@ -26,7 +26,7 @@ public class Window {
 		window.setBounds(0, 0, 1200, 995);
 		window.setMinimumSize(new Dimension(100, 100));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setResizable(false);
+		window.setResizable(true);
 		cardPanel = new JPanel();
 		CardLayout cl = new CardLayout();
 		cardPanel.setLayout(cl);

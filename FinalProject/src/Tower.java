@@ -51,7 +51,7 @@ public abstract class Tower extends Sprite {
 	public abstract void upgrade();
 
 	public boolean contains(float x, float y) {
-		return (x > x() && x < x() + V.GRID_WIDTH && y > y() && y < y() + V.GRID_WIDTH);
+		return (x > x() && x < x() + Gameboard.GRID_WIDTH && y > y() && y < y() + Gameboard.GRID_WIDTH);
 	}
 
 	public boolean attack() {
@@ -64,7 +64,7 @@ public abstract class Tower extends Sprite {
 	}
 
 	public Troop attack(ArrayList<Troop> troops) {
-		float distance = range * V.GRID_HEIGHT;
+		float distance = range * Gameboard.GRID_HEIGHT;
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance)
 				return troop;
@@ -78,8 +78,8 @@ public abstract class Tower extends Sprite {
 		}
 		gb.fill(0);
 		gb.strokeWeight(10);
-		gb.line(x() + V.GRID_WIDTH / 2, y() + V.GRID_HEIGHT / 2, target.x() + V.GRID_WIDTH / 2,
-				target.y() + V.GRID_HEIGHT / 2);
+		gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2, target.x() + Gameboard.GRID_WIDTH / 2,
+				target.y() + Gameboard.GRID_HEIGHT / 2);
 		gb.strokeWeight(1);
 	}
 }

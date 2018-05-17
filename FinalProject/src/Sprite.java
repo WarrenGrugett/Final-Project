@@ -62,12 +62,12 @@ public abstract class Sprite {
 	public void draw(Gameboard gb) {
 		if (icon == null) {
 			icon = gb.loadImage(iconPath);
-			icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
+			icon.resize(Gameboard.GRID_WIDTH, Gameboard.GRID_HEIGHT);
 		}
-		gb.image(icon, x, y, V.GRID_HEIGHT, V.GRID_WIDTH);
+		gb.image(icon, x, y, Gameboard.GRID_HEIGHT, Gameboard.GRID_WIDTH);
 		gb.textSize(20);
 		gb.fill(0);
-		gb.text(level, x, y + V.GRID_HEIGHT);
+		gb.text(level, x, y + Gameboard.GRID_HEIGHT);
 		gb.textSize(15);
 	}
 

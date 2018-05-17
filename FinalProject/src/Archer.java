@@ -36,7 +36,7 @@ public class Archer extends Troop
 			gb.fill(200, 0, 0);
 		else
 			gb.fill(0, 200, 0);
-		gb.rect(x(), y(), (float) (V.GRID_WIDTH * (health() / V.ARCHER_STATS[0])), 10);
+		gb.rect(x(), y(), (float) (Gameboard.GRID_WIDTH * (health() / V.ARCHER_STATS[0])), 10);
 		gb.popStyle();
 	}
 }
