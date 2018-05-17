@@ -39,9 +39,11 @@ public class Gameboard extends PApplet implements ActionListener {
 			Troop troop = troops.get(i);
 			if (troop.attack()) {
 				Troop target = troop.attack(troops);
+				if (target != null)
+					troop.drawAttack(target, this);
+				redraw();
 				if (target != null && target.takeDamage(troop.damage())) {
 					dead.add(target);
-					troop.drawAttack(target, this);
 				}
 			}
 		}
@@ -52,9 +54,11 @@ public class Gameboard extends PApplet implements ActionListener {
 					money += ((Generator) tower).generation() * 100;
 				} else {
 					Troop target = tower.attack(troops);
+					if (target != null)
+						tower.drawAttack(target, this);
+					redraw();
 					if (target != null && target.takeDamage(tower.damage())) {
 						dead.add(target);
-						tower.drawAttack(target, this);
 					}
 					if (target != null && tower instanceof Tank) {
 						for (int j = 0; j < troops.size(); j++) {
@@ -92,7 +96,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			Troop troop = dead.get(i);
 			troops.remove(troop);
 		}
-		money += 0.02;
+		money += 100;
 		if (money > 100)
 			money = 100;
 		if (sentTroop != null) {

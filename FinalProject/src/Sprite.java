@@ -58,7 +58,7 @@ public abstract class Sprite {
 	public int level() {
 		return level;
 	}
-
+	
 	public void draw(Gameboard gb) {
 		if (icon == null) {
 			icon = gb.loadImage(iconPath);

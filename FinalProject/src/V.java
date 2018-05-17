@@ -31,11 +31,10 @@ public class V {
 							new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } },
-					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }),
+					new Point[] { new Point(0, 1), new Point(-1, 3), new Point(-1, 3), }),
 			// Map 2
 			new Map("tdmap1.png",
-					new int[][] { 
-							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 							new int[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
 							new int[] { 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
 							new int[] { 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
@@ -53,8 +52,7 @@ public class V {
 					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }),
 			// Map 3
 			new Map("tdmap2.png",
-					new int[][] { 
-							new int[] { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+					new int[][] { new int[] { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 							new int[] { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
@@ -72,8 +70,7 @@ public class V {
 					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }),
 			// Map 4
 			new Map("tdmap3.png",
-					new int[][] { 
-							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 },
+					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 },
 							new int[] { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1 },
 							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 							new int[] { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -123,13 +120,13 @@ public class V {
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
-	// List of all tower stats 	Key: damage, attack speed, range, cost
+	// List of all tower stats Key: damage, attack speed, range, cost
 	public static final float[] CANNON_STATS = { 50, 150, 2.5f, 60 };
 	public static final float[] CHIPPER_STATS = { 10, 25, 4.5f, 70 };
 	public static final float[] TANK_STATS = { 75, 400, 3.5f, 100 };
 	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
-	// List of all troop stats	Key: health, damage, attack speed, range, cost
+	// List of all troop stats Key: health, damage, attack speed, range, cost
 	public static final float[] ARCHER_STATS = { 40, 20, 100, 4.5f, 30 };
 	public static final float[] GIANTWARRIOR_STATS = { 500, 100, 400, 1, 50 };
 	public static final float[] KNIGHT_STATS = { 400, 40, 200, 1, 40 };
