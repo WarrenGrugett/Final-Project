@@ -65,6 +65,10 @@ public abstract class Sprite {
 			icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
 		}
 		gb.image(icon, x, y, V.GRID_HEIGHT, V.GRID_WIDTH);
+		gb.textSize(20);
+		gb.fill(0);
+		gb.text(level, x, y + V.GRID_HEIGHT);
+		gb.textSize(15);
 	}
 
 	public abstract String toString();

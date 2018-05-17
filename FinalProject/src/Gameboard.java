@@ -21,7 +21,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Window w;
 	private float shopWidth, money = 40;
 	private boolean placing, destroying, upgrading;
-	private int selected = -1, selectedUnit = -1, level = 0, delay;
+	private int selected = -1, selectedUnit = -1, level = 0, delay, health = 20;
 	private Point sentTroop;
 
 	public Gameboard(Window w) {
@@ -56,7 +56,7 @@ public class Gameboard extends PApplet implements ActionListener {
 						dead.add(target);
 						tower.drawAttack(target, this);
 					}
-					if (tower instanceof Tank) {
+					if (target != null && tower instanceof Tank) {
 						for (int j = 0; j < troops.size(); j++) {
 							Troop troop = troops.get(j);
 							if (Math.abs(troop.x() + V.GRID_WIDTH / 2 - target.x() + V.GRID_WIDTH / 2) <= ((Tank) tower)
@@ -80,11 +80,12 @@ public class Gameboard extends PApplet implements ActionListener {
 		for (int i = 0; i < troops.size(); i++) {
 			Troop troop = troops.get(i);
 			if (troop.makeNextMove(map)) {
-				if (troop.enemy())
-					lose();
-				else {
-					dead.add(troop);
+				if (troop.enemy()) {
+					health -= troop.damage() / 10;
+					if (health <= 0)
+						lose();
 				}
+				dead.add(troop);
 			}
 		}
 		for (int i = 0; i < dead.size(); i++) {
@@ -121,6 +122,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void draw() {
+		textSize(15);
 		strokeWeight(1);
 		shopWidth = width - height;
 		if (map != null)
@@ -183,7 +185,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
 		fill(0);
 		text("Money unit thingies: " + (int) money, width - shopWidth / 2, this.height - 0.5f * height - 10);
-		text("Health: ", width - shopWidth / 2, this.height - 0.5f * height + 10);
+		text("Health: " + health, width - shopWidth / 2, this.height - 0.5f * height + 10);
 		popStyle();
 	}
 
@@ -387,10 +389,11 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	private void win() {
 		JOptionPane.showMessageDialog(frame, "You win I guess\n\nyay");
-		System.exit(0);
+		System.exit(1);
 	}
 
 	private void lose() {
-		System.exit(0);
+		JOptionPane.showMessageDialog(frame, "lol rekt nerd\nu ded");
+		System.exit(1);
 	}
 }
