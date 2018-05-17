@@ -22,7 +22,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Window w;
 	private float shopWidth;
 	private boolean placing, destroying, upgrading;
-	private int selected = -1, money = 30, selectedUnit = -1, level = 4, delay;
+	private int selected = -1, money = 30, selectedUnit = -1, level = 0, delay;
 	private Point sentTroop;
 
 	public Gameboard(Window w) {
@@ -106,9 +106,11 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	private void nextLevel() {
-		JOptionPane.showMessageDialog(frame, "Conglaturations\na winner is you");
-		JOptionPane.showMessageDialog(frame, "You can upgrade things to level " + (level + 2) + " now");
 		level++;
+		if (level == V.maps.length)
+			win();
+		JOptionPane.showMessageDialog(frame, "Conglaturations\na winner is you");
+		JOptionPane.showMessageDialog(frame, "You can upgrade things to level " + (level + 1) + " now");
 		map = V.maps[level];
 		timer.restart();
 		troops = new ArrayList<>();
@@ -119,19 +121,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (sentTroop != null) {
-			delay++;
-			if (delay == 4) {
-				delay = 0;
-				troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true));
-				troops.get(troops.size() - 1).orientate(map);
-				sentTroop.y--;
-			}
-			if (sentTroop.y == 0) {
-				sentTroop = map.nextTroops();
-			}
-		} else if (troops.size() == 0)
-			nextLevel();
 		ArrayList<Troop> dead = new ArrayList<>();
 		for (int i = 0; i < troops.size(); i++) {
 			Troop troop = troops.get(i);
@@ -179,6 +168,19 @@ public class Gameboard extends PApplet implements ActionListener {
 		money += 1;
 		if (money > 100)
 			money = 100;
+		if (sentTroop != null) {
+			delay++;
+			if (delay == 4) {
+				delay = 0;
+				troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true));
+				troops.get(troops.size() - 1).orientate(map);
+				sentTroop.y--;
+			}
+			if (sentTroop.y == 0) {
+				sentTroop = map.nextTroops();
+			}
+		} else if (troops.size() == 0)
+			nextLevel();
 	}
 
 	public void lose() {

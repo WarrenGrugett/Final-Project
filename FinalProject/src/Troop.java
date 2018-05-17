@@ -197,11 +197,9 @@ public abstract class Troop extends Sprite {
 		if (attackIcon == null) {
 			attackIcon = gb.loadImage(attackIconPath);
 		}
-		gb.pushStyle();
 		gb.fill(0);
 		gb.strokeWeight(10);
 		gb.line(x(), y(), target.x(), target.y());
-		gb.popStyle();
 	}
 
 	public void draw(Gameboard gb) {

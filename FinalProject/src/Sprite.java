@@ -8,8 +8,7 @@ import processing.core.*;
  * @author Warren, Sepehr, Leo
  *
  */
-public abstract class Sprite
-{
+public abstract class Sprite {
 	private String iconPath;
 	private PImage icon;
 	private float x, y;
@@ -19,8 +18,7 @@ public abstract class Sprite
 	 */
 	private int cost;
 
-	public Sprite(float x, float y, int cost, String icon)
-	{
+	public Sprite(float x, float y, int cost, String icon) {
 		level = 1;
 		this.cost = cost;
 		this.x = x;
@@ -28,57 +26,46 @@ public abstract class Sprite
 		this.iconPath = icon;
 	}
 
-	public Point2D.Float getLoc()
-	{
+	public Point2D.Float getLoc() {
 		return new Point2D.Float(x, y);
 	}
 
-	public void levelUp()
-	{
+	public void levelUp() {
 		level++;
 	}
 
-	public float x()
-	{
+	public float x() {
 		return x;
 	}
 
-	public float y()
-	{
+	public float y() {
 		return y;
 	}
 
-	public String icon()
-	{
+	public String icon() {
 		return iconPath;
 	}
 
-	public int cost()
-	{
+	public int cost() {
 		return cost;
 	}
 
-	public void moveTo(float x, float y)
-	{
+	public void moveTo(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	public void move(float x, float y)
-	{
+	public void move(float x, float y) {
 		this.x += x;
 		this.y += y;
 	}
 
-	public int level()
-	{
+	public int level() {
 		return level;
 	}
 
-	public void draw(Gameboard gb)
-	{
-		if (icon == null)
-		{
+	public void draw(Gameboard gb) {
+		if (icon == null) {
 			icon = gb.loadImage(iconPath);
 			icon.resize(V.GRID_WIDTH, V.GRID_HEIGHT);
 		}

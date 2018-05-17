@@ -83,11 +83,10 @@ public abstract class Tower extends Sprite {
 		if (attackIcon == null) {
 			attackIcon = gb.loadImage(attackIconPath);
 		}
-		gb.pushStyle();
 		gb.fill(0);
 		gb.strokeWeight(10);
 		gb.line(x() + V.GRID_WIDTH / 2, y() + V.GRID_HEIGHT / 2, target.x() + V.GRID_WIDTH / 2,
 				target.y() + V.GRID_HEIGHT / 2);
-		gb.popStyle();
+		gb.strokeWeight(1);
 	}
 }
