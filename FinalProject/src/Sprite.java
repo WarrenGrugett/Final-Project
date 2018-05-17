@@ -12,17 +12,12 @@ public abstract class Sprite {
 	private String iconPath;
 	private PImage icon;
 	private float x, y;
-	private int level;
-	/**
-	 * cost between 1-10
-	 */
-	private int cost;
+	private int level = 1, cost;
 
 	public Sprite(float x, float y, int cost, String icon) {
-		level = 1;
-		this.cost = cost;
 		this.x = x;
 		this.y = y;
+		this.cost = cost;
 		this.iconPath = icon;
 	}
 

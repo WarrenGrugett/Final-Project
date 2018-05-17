@@ -59,7 +59,6 @@ public class Window {
 	}
 
 	public void menu() {
-		game = new Gameboard(this);
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "menu");
 		processingCanvas.requestFocus();
 	}

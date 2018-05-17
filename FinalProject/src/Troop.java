@@ -160,7 +160,7 @@ public abstract class Troop extends Sprite {
 
 	public boolean takeDamage(int damage) {
 		health -= damage;
-		if (health < 0)
+		if (health <= 0)
 			return true;
 		return false;
 	}
@@ -172,7 +172,7 @@ public abstract class Troop extends Sprite {
 
 	public boolean attack() {
 		delayCount++;
-		if (delayCount == attackSpeed) {
+		if (delayCount >= attackSpeed) {
 			delayCount = 0;
 			return true;
 		}
@@ -184,6 +184,7 @@ public abstract class Troop extends Sprite {
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance && enemy != troop.enemy)
 				return troop;
+		delayCount = attackSpeed;
 		return null;
 	}
 

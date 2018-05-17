@@ -29,6 +29,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		timer = new javax.swing.Timer(5, this);
 		towers = new ArrayList<>();
 		troops = new ArrayList<>();
+		map = V.maps[level];
+		sentTroop = map.nextTroops();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -313,7 +315,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				Tower tower = towers.get(i);
 				if (tower.contains(mouseX, mouseY)) {
 					selectedUnit = i;
-					if (money >= tower.cost() / 2) {
+					if (money >= tower.cost() / 2 && tower.level() <= level) {
 						money -= tower.cost() / 2;
 						tower.upgrade();
 					}
@@ -343,11 +345,6 @@ public class Gameboard extends PApplet implements ActionListener {
 			if (!onUnit)
 				selectedUnit = -1;
 		}
-	}
-
-	public void setup() {
-		map = V.maps[level];
-		sentTroop = map.nextTroops();
 	}
 
 	public void settings() {
@@ -380,9 +377,12 @@ public class Gameboard extends PApplet implements ActionListener {
 		towers = new ArrayList<>();
 		placing = false;
 		destroying = false;
+		upgrading = false;
 		sentTroop = map.nextTroops();
 		selected = -1;
 		selectedUnit = -1;
+		money = 40;
+		delay = 0;
 	}
 
 	private void win() {

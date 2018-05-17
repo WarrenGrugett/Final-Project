@@ -1,8 +1,6 @@
 import java.util.*;
 import processing.core.*;
 
-import processing.core.*;
-
 /**
  * The superclass for all defensive towers placed by the player to kill enemy
  * troops
@@ -49,7 +47,7 @@ public abstract class Tower extends Sprite {
 	public void upgrade(int damage) {
 		this.damage += damage;
 	}
-	
+
 	public abstract void upgrade();
 
 	public boolean contains(float x, float y) {
@@ -58,7 +56,7 @@ public abstract class Tower extends Sprite {
 
 	public boolean attack() {
 		delayCount++;
-		if (delayCount == attackSpeed) {
+		if (delayCount >= attackSpeed) {
 			delayCount = 0;
 			return true;
 		}
@@ -70,6 +68,7 @@ public abstract class Tower extends Sprite {
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance)
 				return troop;
+		delayCount = attackSpeed;
 		return null;
 	}
 
