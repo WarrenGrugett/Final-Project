@@ -11,7 +11,7 @@ public class V {
 	// Dimensions of each individual grid tile
 	public static final int GRID_WIDTH = 64, GRID_HEIGHT = 64;
 	// Troop movement speed
-	public static final int MOVEMENT_SPEED = 21;
+	public static final int MOVEMENT_SPEED = 1;
 	// Maps
 	public static final Map[] maps = {
 			// Map 1
@@ -125,17 +125,17 @@ public class V {
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	// List of all tower stats
 	// Key: damage, attack speed, range, cost
-	public static final float[] CANNON_STATS = { 100, 3, 1.5f, 4 };
-	public static final float[] CHIPPER_STATS = { 5, 1, 5, 5 };
-	public static final float[] TANK_STATS = { 100, 3, 7, 7 };
-	public static final float[] GENERATOR_STATS = { 0, 75, 0, 6 };
+	public static final float[] CANNON_STATS = { 100, 600, 1.5f, 40 };
+	public static final float[] CHIPPER_STATS = { 5, 100, 5, 50 };
+	public static final float[] TANK_STATS = { 100, 600, 4, 70 };
+	public static final float[] GENERATOR_STATS = { 0, 1500, 0, 60 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats
 	// Key: health, damage, attack speed, range, cost
-	public static final float[] ARCHER_STATS = { 40, 10, 2, 2, 3 };
-	public static final float[] GIANTWARRIOR_STATS = { 150, 30, 1, 0, 6 };
-	public static final float[] KNIGHT_STATS = { 150, 30, 2, 0, 4 };
-	public static final float[] MACHINIST_STATS = { 100, 5, 10, 10, 6 };
+	public static final float[] ARCHER_STATS = { 40, 10, 400, 2, 30 };
+	public static final float[] GIANTWARRIOR_STATS = { 150, 30, 200, 1, 60 };
+	public static final float[] KNIGHT_STATS = { 150, 30, 400, 1, 40 };
+	public static final float[] MACHINIST_STATS = { 100, 5, 100, 5, 60 };
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS };
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));

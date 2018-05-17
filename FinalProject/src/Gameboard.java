@@ -20,14 +20,14 @@ public class Gameboard extends PApplet implements ActionListener {
 	private Map map;
 	private javax.swing.Timer timer;
 	private Window w;
-	private float shopWidth;
+	private float shopWidth, money = 30;
 	private boolean placing, destroying, upgrading;
-	private int selected = -1, money = 30, selectedUnit = -1, level = 0, delay;
+	private int selected = -1, selectedUnit = -1, level = 0, delay;
 	private Point sentTroop;
 
 	public Gameboard(Window w) {
 		this.w = w;
-		timer = new javax.swing.Timer(100, this);
+		timer = new javax.swing.Timer(5, this);
 		towers = new ArrayList<>();
 		troops = new ArrayList<>();
 		keys = new ArrayList<>();
@@ -101,7 +101,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	private void win() {
-		JOptionPane.showMessageDialog(frame, "You win I guess\nyay");
+		JOptionPane.showMessageDialog(frame, "You win I guess\n\nyay");
 		System.exit(0);
 	}
 
@@ -165,12 +165,12 @@ public class Gameboard extends PApplet implements ActionListener {
 			Troop troop = dead.get(i);
 			troops.remove(troop);
 		}
-		money += 1;
+		money += 0.01;
 		if (money > 100)
 			money = 100;
 		if (sentTroop != null) {
 			delay++;
-			if (delay == 4) {
+			if (delay == 80) {
 				delay = 0;
 				troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true));
 				troops.get(troops.size() - 1).orientate(map);
