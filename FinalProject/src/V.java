@@ -128,7 +128,7 @@ public class V {
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	// List of all tower stats Key: damage, attack speed, range, cost
 	public static final float[] CANNON_STATS = { 50, 150, 2.5f, 60 };
-	public static final float[] CHIPPER_STATS = { 10, 25, 4.5f, 80 };
+	public static final float[] CHIPPER_STATS = { 5, 25, 3.5f, 80 };
 	public static final float[] TANK_STATS = { 100, 300, 3.5f, 90 };
 	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
@@ -136,7 +136,7 @@ public class V {
 	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 };
 	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
 	public static final float[] KNIGHT_STATS = { 300, 40, 200, 1, 40 };
-	public static final float[] MACHINIST_STATS = { 100, 10, 25, 3.5f, 50 };
+	public static final float[] MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 };
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS };
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));

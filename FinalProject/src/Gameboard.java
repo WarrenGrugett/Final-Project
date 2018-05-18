@@ -39,6 +39,13 @@ public class Gameboard extends PApplet implements ActionListener {
 		sentTroop = map.nextTroops();
 	}
 
+	public void run() {
+		setSize(800, 600);
+		sketchPath();
+		initSurface();
+		surface.startThread();
+	}
+
 	public void actionPerformed(ActionEvent e) {
 		ArrayList<Troop> dead = new ArrayList<>();
 		for (int i = 0; i < troops.size(); i++) {
@@ -132,7 +139,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void draw() {
-		w.keepShop();
 		ratio = height / 960f;
 		scale(ratio);
 		textSize(15);
@@ -150,22 +156,18 @@ public class Gameboard extends PApplet implements ActionListener {
 		}
 		noFill();
 		stroke(0);
-		try {
-			if (selectedUnit != -1 && selectedUnit < towers.size()) {
-				rect(towers.get(selectedUnit).x() + GRID_WIDTH / 2 - towers.get(selectedUnit).range() * GRID_WIDTH,
-						towers.get(selectedUnit).y() + GRID_HEIGHT / 2 - towers.get(selectedUnit).range() * GRID_HEIGHT,
-						towers.get(selectedUnit).range() * GRID_WIDTH * 2,
-						towers.get(selectedUnit).range() * GRID_HEIGHT * 2);
-			} else if (selectedUnit != -1) {
-				rect(troops.get(selectedUnit - towers.size()).x() + GRID_WIDTH / 2
-						- troops.get(selectedUnit - towers.size()).range() * GRID_WIDTH,
-						troops.get(selectedUnit - towers.size()).y() + GRID_HEIGHT / 2
-								- troops.get(selectedUnit - towers.size()).range() * GRID_HEIGHT,
-						troops.get(selectedUnit - towers.size()).range() * GRID_WIDTH * 2,
-						troops.get(selectedUnit - towers.size()).range() * GRID_HEIGHT * 2);
-			}
-		} catch (Exception e) {
-			selectedUnit = -1;
+		if (selectedUnit != -1 && selectedUnit < towers.size()) {
+			rect(towers.get(selectedUnit).x() + GRID_WIDTH / 2 - towers.get(selectedUnit).range() * GRID_WIDTH,
+					towers.get(selectedUnit).y() + GRID_HEIGHT / 2 - towers.get(selectedUnit).range() * GRID_HEIGHT,
+					towers.get(selectedUnit).range() * GRID_WIDTH * 2,
+					towers.get(selectedUnit).range() * GRID_HEIGHT * 2);
+		} else if (selectedUnit != -1) {
+			rect(troops.get(selectedUnit - towers.size()).x() + GRID_WIDTH / 2
+					- troops.get(selectedUnit - towers.size()).range() * GRID_WIDTH,
+					troops.get(selectedUnit - towers.size()).y() + GRID_HEIGHT / 2
+							- troops.get(selectedUnit - towers.size()).range() * GRID_HEIGHT,
+					troops.get(selectedUnit - towers.size()).range() * GRID_WIDTH * 2,
+					troops.get(selectedUnit - towers.size()).range() * GRID_HEIGHT * 2);
 		}
 		drawShop();
 	}

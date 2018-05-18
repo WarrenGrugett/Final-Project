@@ -1,7 +1,7 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import processing.awt.*;
-import processing.core.*;
 
 /**
  * The window that contains the entire program
@@ -15,18 +15,21 @@ public class Window {
 	private GameMenu menu;
 	private Gameboard game;
 	private PauseMenu pause;
+	private PSurfaceAWT surf;
 	private PSurfaceAWT.SmoothCanvas processingCanvas;
 
 	public Window() {
+		window = new JFrame();
 		game = new Gameboard(this);
-		PApplet.runSketch(new String[] { "" }, game);
-		PSurfaceAWT surf = (PSurfaceAWT) game.getSurface();
+		game.run();
+		surf = (PSurfaceAWT) game.getSurface();
 		processingCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
-		window = (JFrame) processingCanvas.getFrame();
 		window.setBounds(500, 0, 1206, 995);
 		window.setMinimumSize(new Dimension(306, 235));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
+		window.setVisible(true);
+		surf.setSize(window.getWidth(), window.getHeight());
 		cardPanel = new JPanel();
 		CardLayout cl = new CardLayout();
 		cardPanel.setLayout(cl);
@@ -36,21 +39,19 @@ public class Window {
 		cardPanel.add(menu, "menu");
 		cardPanel.add(processingCanvas, "game");
 		cardPanel.add(pause, "pause");
+		cardPanel.addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent arg0) {
+				Component x = (Component) arg0.getSource();
+				fixProcessingPanelSizes(x);
+			}
+		});
 		window.setLayout(new BorderLayout());
 		window.add(cardPanel);
 		window.revalidate();
 	}
 
-	public void keepShop() {
-		int width = window.getBounds().width, height = window.getBounds().height;
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		if (width > gd.getDisplayMode().getWidth())
-			width = gd.getDisplayMode().getWidth();
-		if (height > gd.getDisplayMode().getHeight())
-			height = gd.getDisplayMode().getHeight();
-		if (width - 100 < height)
-			height = width - 100;
-		window.setBounds(window.getBounds().x, window.getBounds().y, width, height);
+	public void fixProcessingPanelSizes(Component x) {
+		surf.setSize(x.getWidth(), x.getHeight());
 	}
 
 	public void changePanel() {

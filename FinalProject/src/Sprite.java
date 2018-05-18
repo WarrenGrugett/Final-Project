@@ -99,7 +99,7 @@ public abstract class Sprite {
 		if (target != null) {
 			atkDuration++;
 			drawAttack(gb);
-			if (atkDuration > 5) {
+			if (atkDuration > 2) {
 				atkDuration = 0;
 				target = null;
 			}
