@@ -13,6 +13,7 @@ public abstract class Sprite {
 	private PImage icon;
 	private float x, y;
 	private int level = 1, cost;
+	private Troop target;
 
 	public Sprite(float x, float y, int cost, String icon) {
 		this.x = x;
@@ -59,16 +60,30 @@ public abstract class Sprite {
 		return level;
 	}
 	
+	public Troop target(Troop target) {
+		this.target = target;
+		return target;
+	}
+	
+	public Troop target() {
+		return target;
+	}
+	
+	public abstract void drawAttack(Gameboard gb);
+	
 	public void draw(Gameboard gb) {
 		if (icon == null) {
 			icon = gb.loadImage(iconPath);
 			icon.resize(Gameboard.GRID_WIDTH, Gameboard.GRID_HEIGHT);
 		}
 		gb.image(icon, x, y, Gameboard.GRID_HEIGHT, Gameboard.GRID_WIDTH);
-		gb.textSize(20);
+		gb.textSize(20 * Gameboard.ratio);
 		gb.fill(0);
 		gb.text(level, x, y + Gameboard.GRID_HEIGHT);
-		gb.textSize(15);
+		gb.textSize(15 * Gameboard.ratio);
+		if (target != null) {
+			drawAttack(gb);
+		}
 	}
 
 	public abstract String toString();

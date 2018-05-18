@@ -23,8 +23,8 @@ public class Window {
 		PSurfaceAWT surf = (PSurfaceAWT) game.getSurface();
 		processingCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		window = (JFrame) processingCanvas.getFrame();
-		window.setBounds(0, 0, 1200, 995);
-		window.setMinimumSize(new Dimension(100, 100));
+		window.setBounds(0, 0, 1206, 995);
+		window.setMinimumSize(new Dimension(306, 235));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
 		cardPanel = new JPanel();
@@ -39,6 +39,18 @@ public class Window {
 		window.setLayout(new BorderLayout());
 		window.add(cardPanel);
 		window.revalidate();
+	}
+
+	public void keepShop() {
+		int width = window.getBounds().width, height = window.getBounds().height;
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		if (width > gd.getDisplayMode().getWidth())
+			width = gd.getDisplayMode().getWidth();
+		if (height > gd.getDisplayMode().getHeight())
+			height = gd.getDisplayMode().getHeight();
+		if (width - 100 < height)
+			height = width - 100;
+		window.setBounds(window.getBounds().x, window.getBounds().y, width, height);
 	}
 
 	public void changePanel() {

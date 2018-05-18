@@ -15,7 +15,8 @@ import processing.core.*;
  */
 public class Gameboard extends PApplet implements ActionListener {
 	// Dimensions of each individual grid tile
-	public static int GRID_WIDTH = 64, GRID_HEIGHT = 64;
+	public static final int GRID_WIDTH = 64, GRID_HEIGHT = 64;
+	public static float ratio;
 	private ArrayList<Tower> towers;
 	private ArrayList<Troop> troops;
 	private Map map;
@@ -42,7 +43,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			if (troop.attack()) {
 				Troop target = troop.attack(troops);
 				if (target != null)
-					troop.drawAttack(target, this);
+					troop.drawAttack(this);
 				redraw();
 				if (target != null && target.takeDamage(troop.damage())) {
 					dead.add(target);
@@ -57,7 +58,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				} else {
 					Troop target = tower.attack(troops);
 					if (target != null)
-						tower.drawAttack(target, this);
+						tower.drawAttack(this);
 					redraw();
 					if (target != null && target.takeDamage(tower.damage())) {
 						dead.add(target);
@@ -128,15 +129,15 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void draw() {
-		GRID_WIDTH = height / map.map()[0].length;
-		GRID_HEIGHT = height / map.map().length;
+		System.out.println(width + ", " + height);
+		w.keepShop();
+		ratio = height / 960f;
+		scale(ratio);
 		textSize(15);
 		strokeWeight(1);
-		shopWidth = width - height;
+		background(255);
 		if (map != null)
 			map.draw(this);
-		else
-			background(255);
 		for (int i = 0; i < towers.size(); i++) {
 			Tower tower = towers.get(i);
 			tower.draw(this);
@@ -150,8 +151,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		try {
 			if (selectedUnit != -1 && selectedUnit < towers.size()) {
 				rect(towers.get(selectedUnit).x() + GRID_WIDTH / 2 - towers.get(selectedUnit).range() * GRID_WIDTH,
-						towers.get(selectedUnit).y() + GRID_HEIGHT / 2
-								- towers.get(selectedUnit).range() * GRID_HEIGHT,
+						towers.get(selectedUnit).y() + GRID_HEIGHT / 2 - towers.get(selectedUnit).range() * GRID_HEIGHT,
 						towers.get(selectedUnit).range() * GRID_WIDTH * 2,
 						towers.get(selectedUnit).range() * GRID_HEIGHT * 2);
 			} else if (selectedUnit != -1) {
@@ -171,29 +171,31 @@ public class Gameboard extends PApplet implements ActionListener {
 	public void drawShop() {
 		pushStyle();
 		fill(100);
-		rect(width - shopWidth, 0, shopWidth, height);
+		shopWidth = width / ratio - height / ratio;
+		rect(height / ratio, 0, shopWidth, height / ratio);
 		textAlign(CENTER, CENTER);
 		int num = V.NUM_UNITS + 3;
-		float height = this.height / num;
-		for (float i = 0; i < this.height; i += height) {
+		float height = this.height / num / ratio;
+		for (float i = 0; i < this.height / ratio; i += height) {
 			fill(200);
 			if (selected == (int) (i / height) || (destroying && (int) (i / height) == V.NUM_UNITS))
 				fill(255);
-			rect(width - shopWidth, i + 0.05f * height, shopWidth, 0.9f * height);
+			rect(this.height / ratio, i + 0.05f * height, shopWidth, 0.9f * height);
 			fill(0);
 			if ((int) (i / height) < V.NUM_UNITS) {
-				text(V.P_UNITS.get((int) (i / height)).toString(), width - shopWidth / 2, i + 0.5f * height);
+				text(V.P_UNITS.get((int) (i / height)).toString(), width / ratio - shopWidth / 2, i + 0.5f * height);
 			} else if ((int) (i / height) == V.NUM_UNITS) {
-				text("Demolish\nRegain half original cost", width - shopWidth / 2, i + 0.5f * height);
+				text("Demolish\nReturn: 50% original cost", width / ratio - shopWidth / 2, i + 0.5f * height);
 			} else if ((int) (i / height) == V.NUM_UNITS + 1) {
-				text("Upgrade\nCosts half of the original cost", width - shopWidth / 2, i + 0.5f * height);
+				text("Upgrade\nCost: 50% original cost", width / ratio - shopWidth / 2, i + 0.5f * height);
 			}
 		}
 		fill(255);
-		rect(width - shopWidth, this.height - 0.95f * height, shopWidth, 0.9f * height);
+		rect(width / ratio - shopWidth, this.height / ratio - 0.95f * height, shopWidth, 0.9f * height);
 		fill(0);
-		text("Money unit thingies: " + (int) money, width - shopWidth / 2, this.height - 0.5f * height - 10);
-		text("Health: " + health, width - shopWidth / 2, this.height - 0.5f * height + 10);
+		text("Money unit thingies: " + (int) money, width / ratio - shopWidth / 2,
+				this.height / ratio - 0.5f * height - 10);
+		text("Health: " + health, width / ratio - shopWidth / 2, this.height / ratio - 0.5f * height + 10);
 		popStyle();
 	}
 

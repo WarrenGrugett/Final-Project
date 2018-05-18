@@ -21,7 +21,7 @@ public class Map {
 		setup(mapData);
 		troopAttackPattern = troopPattern;
 	}
-	
+
 	public void reset() {
 		loc = -1;
 	}
@@ -29,34 +29,34 @@ public class Map {
 	public void draw(Gameboard gb) {
 		if (map == null) {
 			map = gb.loadImage(mapPath);
+			map.resize(960, 960);
 		}
-		map.resize(gb.height, gb.height);
 		gb.image(map, 0, 0);
 	}
 
 	public int[][] map() {
 		return mapData;
 	}
-	
+
 	public Point[] troopPattern() {
 		return troopAttackPattern;
 	}
-	
+
 	public boolean complete() {
 		return (troopAttackPattern.length == loc);
 	}
-	
+
 	public Point nextTroops() {
 		loc++;
 		if (complete())
 			return null;
 		return troopAttackPattern[loc];
 	}
-	
+
 	public Point2D.Float startPoint() {
 		return new Point2D.Float(startX * Gameboard.GRID_WIDTH, startY * Gameboard.GRID_HEIGHT);
 	}
-	
+
 	public Point2D.Float endPoint() {
 		return new Point2D.Float(endX * Gameboard.GRID_WIDTH, endY * Gameboard.GRID_HEIGHT);
 	}

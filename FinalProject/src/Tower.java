@@ -72,14 +72,14 @@ public abstract class Tower extends Sprite {
 		return null;
 	}
 
-	public void drawAttack(Troop target, Gameboard gb) {
+	public void drawAttack(Gameboard gb) {
 		if (attackIcon == null) {
 			attackIcon = gb.loadImage(attackIconPath);
 		}
 		gb.fill(0);
 		gb.strokeWeight(10);
-		gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2, target.x() + Gameboard.GRID_WIDTH / 2,
-				target.y() + Gameboard.GRID_HEIGHT / 2);
+		gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2, target().x() + Gameboard.GRID_WIDTH / 2,
+				target().y() + Gameboard.GRID_HEIGHT / 2);
 		gb.strokeWeight(1);
 	}
 }
