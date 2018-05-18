@@ -102,17 +102,25 @@ public class V {
 							new int[] { 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 							new int[] { 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3 } },
 					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }) };
+	// Tower placement sound effects
+	public static final SoundEffect CANNON_PLACE = new SoundEffect(""), CHIPPER_PLACE = new SoundEffect(""), TANK_PLACE = new SoundEffect(""), GENERATOR_PLACE = new SoundEffect("");
+	// Troop placement sound effects
+	public static final SoundEffect ARCHER_PLACE = new SoundEffect(""), GIANTWARRIOR_PLACE = new SoundEffect(""), KNIGHT_PLACE = new SoundEffect(""), MACHINIST_PLACE = new SoundEffect("");
+	// Tower attack sound effects
+	public static final SoundEffect CANNON_ATTACK = new SoundEffect(""), CHIPPER_ATTACK = new SoundEffect(""), TANK_ATTACK = new SoundEffect(""), GENERATOR_ATTACK = new SoundEffect("");
+	// Troop attack sound effects
+	public static final SoundEffect ARCHER_ATTACK = new SoundEffect(""), GIANTWARRIOR_ATTACK = new SoundEffect(""), KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("");
 	// Tower icons
-	public static String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
+	public static final String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "testBG.png";
 	// Troop icons
-	public static String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
+	public static final String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
 			MACHINIST_ICON = "machinist.png";
 	// Tower attack icons
-	public static String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
+	public static final String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
 			TANK_ATTACK_ICON = "missile.png";
 	// Troop attack icons
-	public static String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "giant.png",
+	public static final String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "giant.png",
 			KNIGHT_ATTACK_ICON = "knight.png", MACHINIST_ATTACK_ICON = "bullet.png";
 	// List of all units playable by the player
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
