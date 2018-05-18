@@ -1,5 +1,4 @@
 import java.util.*;
-import processing.core.*;
 
 /**
  * The superclass for all troops on the board, both enemy computer generated
@@ -9,22 +8,15 @@ import processing.core.*;
  *
  */
 public abstract class Troop extends Sprite {
-	private String attackIconPath;
-	private PImage attackIcon;
-	private int health, damage, attackSpeed, delayCount, dir;
-	// dir key: 0 = up, 1 = right, 2 = down, 3 = left
-	private float range;
+	private int health, max, dir;
 	private boolean enemy;
 
 	public Troop(float x, float y, int health, int damage, int attackSpeed, float range, int cost, boolean enemy,
 			String icon, String attackIcon) {
-		super(x, y, cost, icon);
+		super(x, y, damage, range, attackSpeed, cost, icon, attackIcon);
 		this.health = health;
-		this.damage = damage;
-		this.attackSpeed = attackSpeed;
-		this.range = range;
+		max = health;
 		this.enemy = enemy;
-		attackIconPath = attackIcon;
 	}
 
 	public boolean contains(float x, float y) {
@@ -138,20 +130,8 @@ public abstract class Troop extends Sprite {
 		return false;
 	}
 
-	public float range() {
-		return range;
-	}
-
 	public int health() {
 		return health;
-	}
-
-	public int damage() {
-		return damage;
-	}
-
-	public int attackSpeed() {
-		return attackSpeed;
 	}
 
 	public boolean enemy() {
@@ -165,39 +145,30 @@ public abstract class Troop extends Sprite {
 		return false;
 	}
 
-	public void upgrade(int health, int damage) {
+	protected void upgrade(int health, int damage) {
+		super.upgrade(damage);
 		this.health += health;
-		this.damage += damage;
-	}
-
-	public boolean attack() {
-		delayCount++;
-		if (delayCount >= attackSpeed) {
-			delayCount = 0;
-			return true;
-		}
-		return false;
 	}
 
 	public Troop attack(ArrayList<Troop> troops) {
-		float distance = range * Gameboard.GRID_HEIGHT;
+		float distance = range() * Gameboard.GRID_HEIGHT;
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance && enemy != troop.enemy)
 				return target(troop);
-		delayCount = attackSpeed;
+		resetDelay();
 		return null;
 	}
 
-	public void drawAttack(Gameboard gb) {
-		if (attackIcon == null) {
-			attackIcon = gb.loadImage(attackIconPath);
-		}
-		gb.fill(0);
-		gb.strokeWeight(10);
-		gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2, target().x() + Gameboard.GRID_WIDTH / 2,
-				target().y() + Gameboard.GRID_HEIGHT / 2);
-		gb.strokeWeight(1);
-	}
-
 	public abstract Troop clone(float x, float y, boolean enemy);
+
+	public void draw(Gameboard gb) {
+		super.draw(gb);
+		gb.pushStyle();
+		if (enemy())
+			gb.fill(200, 0, 0);
+		else
+			gb.fill(0, 200, 0);
+		gb.rect(x(), y(), (float) (Gameboard.GRID_WIDTH * (health() / (float) max)), 10);
+		gb.popStyle();
+	}
 }

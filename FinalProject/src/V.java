@@ -29,7 +29,7 @@ public class V {
 							new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } },
-					new Point[] { new Point(1, 1), new Point(-1, 3), new Point(0, 3), }),
+					new Point[] { new Point(1, 1), new Point(-1, 3), new Point(-1, 3), }),
 			// Map 2
 			new Map("tdmap1.png",
 					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -120,8 +120,8 @@ public class V {
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	// List of all tower stats Key: damage, attack speed, range, cost
 	public static final float[] CANNON_STATS = { 50, 150, 2.5f, 60 };
-	public static final float[] CHIPPER_STATS = { 10, 25, 4.5f, 70 };
-	public static final float[] TANK_STATS = { 75, 400, 3.5f, 100 };
+	public static final float[] CHIPPER_STATS = { 10, 25, 4.5f, 80 };
+	public static final float[] TANK_STATS = { 100, 300, 3.5f, 90 };
 	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats Key: health, damage, attack speed, range, cost

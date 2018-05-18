@@ -1,4 +1,3 @@
-import java.awt.geom.*;
 import processing.core.*;
 
 /**
@@ -9,25 +8,41 @@ import processing.core.*;
  *
  */
 public abstract class Sprite {
-	private String iconPath;
-	private PImage icon;
-	private float x, y;
-	private int level = 1, cost, atkDuration;
+	private String iconPath, attackIconPath;
+	private PImage icon, attackIcon;
+	private float x, y, range;
+	private int level = 1, cost, atkDuration, delayCount, attackSpeed, damage;
 	private Troop target;
 
-	public Sprite(float x, float y, int cost, String icon) {
+	public Sprite(float x, float y, int damage, float range, int attackSpeed, int cost, String icon,
+			String attackIcon) {
 		this.x = x;
 		this.y = y;
+		this.damage = damage;
+		this.range = range;
+		this.attackSpeed = attackSpeed;
 		this.cost = cost;
-		this.iconPath = icon;
+		iconPath = icon;
+		attackIconPath = attackIcon;
 	}
 
-	public Point2D.Float getLoc() {
-		return new Point2D.Float(x, y);
-	}
+	public abstract void upgrade();
 
-	public void levelUp() {
+	protected void upgrade(int damage) {
 		level++;
+		this.damage += damage;
+	}
+
+	public float range() {
+		return range;
+	}
+
+	public int damage() {
+		return damage;
+	}
+
+	public String attackIcon() {
+		return attackIconPath;
 	}
 
 	public float x() {
@@ -69,8 +84,6 @@ public abstract class Sprite {
 		return target;
 	}
 
-	public abstract void drawAttack(Gameboard gb);
-
 	public void draw(Gameboard gb) {
 		if (icon == null) {
 			icon = gb.loadImage(iconPath);
@@ -84,12 +97,42 @@ public abstract class Sprite {
 		if (target != null) {
 			atkDuration++;
 			drawAttack(gb);
-			if (atkDuration > 10) {
+			if (atkDuration > 5) {
 				atkDuration = 0;
 				target = null;
 			}
 		}
 	}
 
+	public void drawAttack(Gameboard gb) {
+		if (attackIcon == null) {
+			attackIcon = gb.loadImage(attackIconPath);
+		}
+		if (target() != null) {
+			gb.fill(0);
+			gb.strokeWeight(10);
+			gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2,
+					target().x() + Gameboard.GRID_WIDTH / 2, target().y() + Gameboard.GRID_HEIGHT / 2);
+			gb.strokeWeight(1);
+		}
+	}
+
+	public int attackSpeed() {
+		return attackSpeed;
+	}
+
+	public boolean attack() {
+		delayCount++;
+		if (delayCount >= attackSpeed) {
+			delayCount = 0;
+			return true;
+		}
+		return false;
+	}
+
 	public abstract String toString();
+
+	public void resetDelay() {
+		delayCount = 0;
+	}
 }

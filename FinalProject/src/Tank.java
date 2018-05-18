@@ -15,8 +15,6 @@ public class Tank extends Tower {
 
 	public void upgrade() {
 		super.upgrade(10);
-		levelUp();
-
 	}
 
 	public float radiusDamage() {
@@ -34,7 +32,7 @@ public class Tank extends Tower {
 	public void drawAttack(Troop target, Gameboard gb) {
 		super.drawAttack(gb);
 		gb.fill(200, 0, 0);
-		gb.ellipse(target.x() + Gameboard.GRID_WIDTH / 2, target.y() + Gameboard.GRID_HEIGHT, radiusDamage * 2 * Gameboard.GRID_WIDTH,
-				radiusDamage * 2 * Gameboard.GRID_HEIGHT);
+		gb.ellipse(target.x() + Gameboard.GRID_WIDTH / 2, target.y() + Gameboard.GRID_HEIGHT,
+				radiusDamage * 2 * Gameboard.GRID_WIDTH, radiusDamage * 2 * Gameboard.GRID_HEIGHT);
 	}
 }

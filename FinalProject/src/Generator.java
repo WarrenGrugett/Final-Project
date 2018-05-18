@@ -15,7 +15,6 @@ public class Generator extends Tower {
 
 	public void upgrade() {
 		generation += 0.25;
-		levelUp();
 
 	}
 
