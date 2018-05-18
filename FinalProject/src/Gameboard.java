@@ -99,7 +99,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			Troop troop = dead.get(i);
 			troops.remove(troop);
 		}
-		money += 100;
+		money += 0.02;
 		if (money > 100)
 			money = 100;
 		if (sentTroop != null) {

@@ -7,30 +7,28 @@ public class SoundEffect {
 	private int numBytes;
 
 	public SoundEffect(String fileName) {
-		File soundFile = new File(fileName);
-		AudioInputStream audioInputStream = null;
 		try {
-			audioInputStream = AudioSystem.getAudioInputStream(soundFile);
-		} catch (Exception ex) {
-			System.out.println("*** Cannot find " + fileName + " ***");
-			System.exit(1);
-		}
-		AudioFormat audioFormat = audioInputStream.getFormat();
-		DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
-		try {
-			line = (SourceDataLine) AudioSystem.getLine(info);
-			line.open(audioFormat);
-		} catch (LineUnavailableException ex) {
-			System.out.println("*** Audio line unavailable ***");
-			System.exit(0);
-		}
-		line.start();
-		audioBytes = new byte[(int) soundFile.length()];
-		try {
-			numBytes = audioInputStream.read(audioBytes, 0, audioBytes.length);
-		} catch (IOException ex) {
-			System.out.println("*** Cannot read " + fileName + " ***");
-			System.exit(1);
+			File soundFile = new File(fileName);
+			AudioInputStream audioInputStream = null;
+			try {
+				audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+			} catch (Exception ex) {
+			}
+			AudioFormat audioFormat = audioInputStream.getFormat();
+			DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
+			try {
+				line = (SourceDataLine) AudioSystem.getLine(info);
+				line.open(audioFormat);
+			} catch (LineUnavailableException ex) {
+			}
+			line.start();
+			audioBytes = new byte[(int) soundFile.length()];
+			try {
+				numBytes = audioInputStream.read(audioBytes, 0, audioBytes.length);
+			} catch (IOException ex) {
+			}
+		} catch (Exception e) {
+			
 		}
 	}
 
