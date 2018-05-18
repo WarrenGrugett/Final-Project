@@ -1,8 +1,11 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
-import processing.core.*;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+import processing.core.PApplet;
 
 /**
  * This represents the entire GUI for the main section of gameplay. It is
@@ -391,8 +394,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		level++;
 		if (level == V.maps.length)
 			win();
-		JOptionPane.showMessageDialog(frame, "Conglaturations\n you won this level");
-		JOptionPane.showMessageDialog(frame, "You can upgrade towers and troops to " + (level + 1) + " now");
+		JOptionPane.showMessageDialog(frame, "Conglaturations\n You won this level!");
+		JOptionPane.showMessageDialog(frame, "You can upgrade towers and troops to level " + (level + 1) + " now");
 		map = V.maps[level];
 		timer.restart();
 		troops = new ArrayList<>();
@@ -408,13 +411,13 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	private void win() {
-		JOptionPane.showMessageDialog(frame, "You beat the mideval combatants!");
+		JOptionPane.showMessageDialog(frame, "You beat the medieval combatants!");
 		JOptionPane.showMessageDialog(frame, "u win lul");
 		System.exit(1);
 	}
 
 	private void lose() {
-		JOptionPane.showMessageDialog(frame, "GAME OVER");
+		JOptionPane.showMessageDialog(frame, "GAME OVER >:)");
 		JOptionPane.showMessageDialog(frame, "rekt nerd, u lose");
 		System.exit(1);
 	}
