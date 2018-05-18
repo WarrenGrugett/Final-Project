@@ -183,7 +183,7 @@ public abstract class Troop extends Sprite {
 		float distance = range * Gameboard.GRID_HEIGHT;
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance && enemy != troop.enemy)
-				return troop;
+				return target(troop);
 		delayCount = attackSpeed;
 		return null;
 	}

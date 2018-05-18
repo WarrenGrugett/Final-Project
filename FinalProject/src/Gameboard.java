@@ -129,7 +129,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void draw() {
-		System.out.println(width + ", " + height);
 		w.keepShop();
 		ratio = height / 960f;
 		scale(ratio);

@@ -67,7 +67,7 @@ public abstract class Tower extends Sprite {
 		float distance = range * Gameboard.GRID_HEIGHT;
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance)
-				return troop;
+				return target(troop);
 		delayCount = attackSpeed;
 		return null;
 	}
@@ -76,10 +76,12 @@ public abstract class Tower extends Sprite {
 		if (attackIcon == null) {
 			attackIcon = gb.loadImage(attackIconPath);
 		}
-		gb.fill(0);
-		gb.strokeWeight(10);
-		gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2, target().x() + Gameboard.GRID_WIDTH / 2,
-				target().y() + Gameboard.GRID_HEIGHT / 2);
-		gb.strokeWeight(1);
+		if (target() != null) {
+			gb.fill(0);
+			gb.strokeWeight(10);
+			gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2, target().x() + Gameboard.GRID_WIDTH / 2,
+					target().y() + Gameboard.GRID_HEIGHT / 2);
+			gb.strokeWeight(1);
+		}
 	}
 }

@@ -12,7 +12,7 @@ public abstract class Sprite {
 	private String iconPath;
 	private PImage icon;
 	private float x, y;
-	private int level = 1, cost;
+	private int level = 1, cost, atkDuration;
 	private Troop target;
 
 	public Sprite(float x, float y, int cost, String icon) {
@@ -59,18 +59,18 @@ public abstract class Sprite {
 	public int level() {
 		return level;
 	}
-	
+
 	public Troop target(Troop target) {
 		this.target = target;
 		return target;
 	}
-	
+
 	public Troop target() {
 		return target;
 	}
-	
+
 	public abstract void drawAttack(Gameboard gb);
-	
+
 	public void draw(Gameboard gb) {
 		if (icon == null) {
 			icon = gb.loadImage(iconPath);
@@ -82,7 +82,12 @@ public abstract class Sprite {
 		gb.text(level, x, y + Gameboard.GRID_HEIGHT);
 		gb.textSize(15 * Gameboard.ratio);
 		if (target != null) {
+			atkDuration++;
 			drawAttack(gb);
+			if (atkDuration > 10) {
+				atkDuration = 0;
+				target = null;
+			}
 		}
 	}
 
