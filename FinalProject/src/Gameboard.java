@@ -394,7 +394,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		level++;
 		if (level == V.maps.length)
 			win();
-		JOptionPane.showMessageDialog(frame, "Conglaturations\n You won this level!");
+		JOptionPane.showMessageDialog(frame, "Conglaturations\n You won this level");
 		JOptionPane.showMessageDialog(frame, "You can upgrade towers and troops to level " + (level + 1) + " now");
 		map = V.maps[level];
 		timer.restart();
@@ -417,7 +417,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	private void lose() {
-		JOptionPane.showMessageDialog(frame, "GAME OVER >:)");
+		JOptionPane.showMessageDialog(frame, "GAME OVER");
 		JOptionPane.showMessageDialog(frame, "rekt nerd, u lose");
 		System.exit(1);
 	}
