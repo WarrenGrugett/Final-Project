@@ -47,7 +47,7 @@ public class V {
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
 							new int[] { 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
 							new int[] { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 } },
-					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }),
+					new Point[] { new Point(0, 3), new Point(-1, 8), new Point(0, 3), }),
 			// Map 3
 			new Map("tdmap2.png",
 					new int[][] { new int[] { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -125,7 +125,7 @@ public class V {
 	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats Key: health, damage, attack speed, range, cost
-	public static final float[] ARCHER_STATS = { 40, 20, 100, 4.5f, 30 };
+	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 };
 	public static final float[] GIANTWARRIOR_STATS = { 500, 100, 400, 1, 50 };
 	public static final float[] KNIGHT_STATS = { 400, 40, 200, 1, 40 };
 	public static final float[] MACHINIST_STATS = { 100, 10, 25, 3.5f, 50 };
