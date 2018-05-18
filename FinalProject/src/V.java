@@ -126,8 +126,8 @@ public class V {
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS };
 	// List of all troop stats Key: health, damage, attack speed, range, cost
 	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 };
-	public static final float[] GIANTWARRIOR_STATS = { 500, 100, 400, 1, 50 };
-	public static final float[] KNIGHT_STATS = { 400, 40, 200, 1, 40 };
+	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
+	public static final float[] KNIGHT_STATS = { 300, 40, 200, 1, 40 };
 	public static final float[] MACHINIST_STATS = { 100, 10, 25, 3.5f, 50 };
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS };
 	static {
