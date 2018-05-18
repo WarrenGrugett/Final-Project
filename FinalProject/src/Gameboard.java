@@ -29,6 +29,10 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public Gameboard(Window w) {
 		this.w = w;
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+		}
 		timer = new javax.swing.Timer(5, this);
 		towers = new ArrayList<>();
 		troops = new ArrayList<>();

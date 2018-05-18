@@ -23,7 +23,7 @@ public class Window {
 		PSurfaceAWT surf = (PSurfaceAWT) game.getSurface();
 		processingCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		window = (JFrame) processingCanvas.getFrame();
-		window.setBounds(0, 0, 1206, 995);
+		window.setBounds(500, 0, 1206, 995);
 		window.setMinimumSize(new Dimension(306, 235));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
