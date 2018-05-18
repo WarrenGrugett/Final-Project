@@ -17,11 +17,6 @@ public abstract class Tower extends Sprite {
 
 	public abstract Tower clone(float x, float y);
 
-
-	public boolean contains(float x, float y) {
-		return (x > x() && x < x() + Gameboard.GRID_WIDTH && y > y() && y < y() + Gameboard.GRID_WIDTH);
-	}
-	
 	public boolean checkEnemy(Troop troop) {
 		return troop.enemy();
 	}

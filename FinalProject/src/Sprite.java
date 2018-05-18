@@ -149,6 +149,10 @@ public abstract class Sprite {
 		resetDelay();
 		return null;
 	}
+	
+	public boolean contains(float x, float y) {
+		return (x > x() && x < x() + Gameboard.GRID_WIDTH && y > y() && y < y() + Gameboard.GRID_WIDTH);
+	}
 
 	public abstract boolean checkEnemy(Troop troop);
 

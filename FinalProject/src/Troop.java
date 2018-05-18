@@ -17,10 +17,6 @@ public abstract class Troop extends Sprite {
 		this.enemy = enemy;
 	}
 
-	public boolean contains(float x, float y) {
-		return (x > x() && x < x() + Gameboard.GRID_WIDTH && y > y() && y < y() + Gameboard.GRID_WIDTH);
-	}
-
 	public boolean orientate(Map m) {
 		int[][] map = m.map();
 		int locX = (int) (x() / Gameboard.GRID_WIDTH + 0.5), locY = (int) (y() / Gameboard.GRID_HEIGHT + 0.5);
@@ -151,7 +147,7 @@ public abstract class Troop extends Sprite {
 	public abstract Troop clone(float x, float y, boolean enemy);
 	
 	public boolean checkEnemy(Troop troop) {
-		return troop.enemy == this.enemy;
+		return troop.enemy != this.enemy;
 	}
 
 	public void draw(Gameboard gb) {
