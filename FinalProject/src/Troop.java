@@ -1,5 +1,3 @@
-import java.util.*;
-
 /**
  * The superclass for all troops on the board, both enemy computer generated
  * enemies and possibly player troops if we implement them
@@ -150,16 +148,11 @@ public abstract class Troop extends Sprite {
 		this.health += health;
 	}
 
-	public Troop attack(ArrayList<Troop> troops) {
-		float distance = range() * Gameboard.GRID_HEIGHT;
-		for (Troop troop : troops)
-			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance && enemy != troop.enemy)
-				return target(troop);
-		resetDelay();
-		return null;
-	}
-
 	public abstract Troop clone(float x, float y, boolean enemy);
+	
+	public boolean checkEnemy(Troop troop) {
+		return troop.enemy == this.enemy;
+	}
 
 	public void draw(Gameboard gb) {
 		super.draw(gb);

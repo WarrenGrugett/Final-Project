@@ -41,7 +41,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		for (int i = 0; i < troops.size(); i++) {
 			Troop troop = troops.get(i);
 			if (troop.attack()) {
-				Troop target = troop.attack(troops);
+				Troop target = troop.attack(troops, map.map());
 				if (target != null)
 					troop.drawAttack(this);
 				redraw();
@@ -56,7 +56,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				if (tower instanceof Generator) {
 					money += ((Generator) tower).generation() * 100;
 				} else {
-					Troop target = tower.attack(troops);
+					Troop target = tower.attack(troops, map.map());
 					if (target != null)
 						tower.drawAttack(this);
 					redraw();
