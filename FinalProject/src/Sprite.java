@@ -115,6 +115,11 @@ public abstract class Sprite {
 			gb.strokeWeight(10);
 			gb.line(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2,
 					target().x() + Gameboard.GRID_WIDTH / 2, target().y() + Gameboard.GRID_HEIGHT / 2);
+			if (this instanceof Tank) {
+				gb.fill(200, 0, 0);
+				gb.ellipse(target.x() + Gameboard.GRID_WIDTH / 2, target.y() + Gameboard.GRID_HEIGHT / 2,
+						((Tank)this).radiusDamage() * 2 * Gameboard.GRID_WIDTH, ((Tank)this).radiusDamage() * 2 * Gameboard.GRID_HEIGHT);
+			}
 			gb.strokeWeight(1);
 		}
 	}
