@@ -408,7 +408,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	private void win() {
-		JOptionPane.showMessageDialog(frame, "You beat the mideval combatants!");
+		JOptionPane.showMessageDialog(frame, "You beat the medieval combatants!");
 		JOptionPane.showMessageDialog(frame, "u win lul");
 		System.exit(1);
 	}
