@@ -183,9 +183,9 @@ public class Gameboard extends PApplet implements ActionListener {
 		float height = this.height / (float) num / ratio;
 		for (int i = 0; i < num - 1; i++) {
 			fill(200);
-			if (selected == i || (destroying && i == V.NUM_UNITS)|| (upgrading && i == V.NUM_UNITS + 1))
+			if (selected == i || (destroying && i == V.NUM_UNITS) || (upgrading && i == V.NUM_UNITS + 1))
 				fill(255);
-			rect(this.height / ratio, (i + 0.05f) * height, shopWidth, 0.9f * height);
+			rect(this.height / ratio, i * height, shopWidth, 0.9f * height);
 			fill(0);
 			if (i < V.NUM_UNITS) {
 				text(V.P_UNITS.get(i).toString(), width / ratio - shopWidth / 2, (i + 0.5f) * height);
@@ -196,7 +196,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			}
 		}
 		fill(255);
-		rect(width / ratio - shopWidth, this.height / ratio - 0.95f * height, shopWidth, 0.9f * height);
+		rect(width / ratio - shopWidth, this.height / ratio - height, shopWidth, 0.9f * height);
 		fill(0);
 		text("Money unit thingies: " + (int) money, width / ratio - shopWidth / 2,
 				this.height / ratio - 0.5f * height - 10);
@@ -206,9 +206,9 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void mousePressed() {
 		float num = V.NUM_UNITS + 3;
-		float height = this.height / (float) num / ratio;
+		float height = this.height / (float) num;
 		if (mouseX > this.height) {
-			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
+			if (mouseY % height < 0.9f * height) {
 				int y = (int) (mouseY / height);
 				if (y < V.NUM_UNITS - V.NUM_TROOPS) {
 					if (selected != y) {
