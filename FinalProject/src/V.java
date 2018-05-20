@@ -1,5 +1,5 @@
-import java.awt.*;
-import java.util.*;
+import java.awt.Point;
+import java.util.HashMap;
 
 /**
  * Class stores all variables that do not change during runtime
@@ -116,10 +116,10 @@ public class V {
 			KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("");
 	// Tower icons
 	public static final String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
-			GENERATOR_ICON = "testBG.png", SNIPERTOWER_ICON = "testBG.png";
+			GENERATOR_ICON = "testBG.png", SNIPERTOWER_ICON = "snipertower.png";
 	// Troop icons
 	public static final String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
-			MACHINIST_ICON = "machinist.png", KAMIKAZE_ICON = "testBG.png";
+			MACHINIST_ICON = "machinist.png", KAMIKAZE_ICON = "kamikaze.png";
 	// Tower attack icons
 	public static final String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
 			TANK_ATTACK_ICON = "missile.png", SNIPERTOWER_ATTACK_ICON = "testBG.png";
