@@ -1,11 +1,8 @@
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
-import processing.core.PApplet;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
+import processing.core.*;
 
 /**
  * This represents the entire GUI for the main section of gameplay. It is
@@ -113,7 +110,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				selectedUnit = -1;
 			troops.remove(troop);
 		}
-		money += 0.02;
+		money += 100;
 		if (money > 100)
 			money = 100;
 		if (sentTroop != null) {
@@ -165,7 +162,7 @@ public class Gameboard extends PApplet implements ActionListener {
 					towers.get(selectedUnit).y() + GRID_HEIGHT / 2 - towers.get(selectedUnit).range() * GRID_HEIGHT,
 					towers.get(selectedUnit).range() * GRID_WIDTH * 2,
 					towers.get(selectedUnit).range() * GRID_HEIGHT * 2);
-		} else if (selectedUnit != -1) {
+		} else if (selectedUnit != -1 && selectedUnit < troops.size() + towers.size()) {
 			rect(troops.get(selectedUnit - towers.size()).x() + GRID_WIDTH / 2
 					- troops.get(selectedUnit - towers.size()).range() * GRID_WIDTH,
 					troops.get(selectedUnit - towers.size()).y() + GRID_HEIGHT / 2
@@ -184,18 +181,18 @@ public class Gameboard extends PApplet implements ActionListener {
 		textAlign(CENTER, CENTER);
 		int num = V.NUM_UNITS + 3;
 		float height = this.height / (float) num / ratio;
-		for (float i = 0; i < this.height / ratio; i += height) {
+		for (int i = 0; i < num - 1; i++) {
 			fill(200);
-			if (selected == (int) (i / height) || (destroying && (int) (i / height) == V.NUM_UNITS))
+			if (selected == i || (destroying && i == V.NUM_UNITS)|| (upgrading && i == V.NUM_UNITS + 1))
 				fill(255);
-			rect(this.height / ratio, i + 0.05f * height, shopWidth, 0.9f * height);
+			rect(this.height / ratio, (i + 0.05f) * height, shopWidth, 0.9f * height);
 			fill(0);
-			if ((int) (i / height) < V.NUM_UNITS) {
-				text(V.P_UNITS.get((int) (i / height)).toString(), width / ratio - shopWidth / 2, i + 0.5f * height);
-			} else if ((int) (i / height) == V.NUM_UNITS) {
-				text("Demolish\nReturn: 50% original cost", width / ratio - shopWidth / 2, i + 0.5f * height);
-			} else if ((int) (i / height) == V.NUM_UNITS + 1) {
-				text("Upgrade\nCost: 50% original cost", width / ratio - shopWidth / 2, i + 0.5f * height);
+			if (i < V.NUM_UNITS) {
+				text(V.P_UNITS.get(i).toString(), width / ratio - shopWidth / 2, (i + 0.5f) * height);
+			} else if (i == V.NUM_UNITS) {
+				text("Demolish\nReturn: 50% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
+			} else if (i == V.NUM_UNITS + 1) {
+				text("Upgrade\nCost: 50% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
 			}
 		}
 		fill(255);
@@ -209,8 +206,8 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void mousePressed() {
 		float num = V.NUM_UNITS + 3;
-		float height = this.height / (float) num;
-		if (mouseX > width - shopWidth) {
+		float height = this.height / (float) num / ratio;
+		if (mouseX > this.height) {
 			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
 				int y = (int) (mouseY / height);
 				if (y < V.NUM_UNITS - V.NUM_TROOPS) {

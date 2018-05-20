@@ -116,16 +116,16 @@ public class V {
 			KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("");
 	// Tower icons
 	public static final String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
-			GENERATOR_ICON = "testBG.png", SNIPERTOWER_ICON = null;
+			GENERATOR_ICON = "testBG.png", SNIPERTOWER_ICON = "testBG.png";
 	// Troop icons
 	public static final String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
-			MACHINIST_ICON = "machinist.png", KAMIKAZE_ICON = null;
+			MACHINIST_ICON = "machinist.png", KAMIKAZE_ICON = "testBG.png";
 	// Tower attack icons
 	public static final String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
-			TANK_ATTACK_ICON = "missile.png", SNIPERTOWER_ATTACK_ICON = null;
+			TANK_ATTACK_ICON = "missile.png", SNIPERTOWER_ATTACK_ICON = "testBG.png";
 	// Troop attack icons
 	public static final String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "giant.png",
-			KNIGHT_ATTACK_ICON = "knight.png", MACHINIST_ATTACK_ICON = "bullet.png", KAMIKAZE_ATTACK_ICON = null;
+			KNIGHT_ATTACK_ICON = "knight.png", MACHINIST_ATTACK_ICON = "bullet.png", KAMIKAZE_ATTACK_ICON = "testBG.png";
 	// List of all units playable by the player
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	// List of all enemy troops
@@ -142,7 +142,7 @@ public class V {
 	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
 	public static final float[] KNIGHT_STATS = { 200, 40, 200, 1, 40 };
 	public static final float[] MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 };
-	public static final float[] KAMIKAZE_STATS = { 200, 100, 2, 60, 10 };
+	public static final float[] KAMIKAZE_STATS = { 200, 100, 2, 0, 60 };
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS,
 			KAMIKAZE_STATS };
 	static {
