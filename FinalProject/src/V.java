@@ -104,7 +104,7 @@ public class V {
 					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }) };
 	// Tower placement sound effects
 	public static final SoundEffect CANNON_PLACE = new SoundEffect(""), CHIPPER_PLACE = new SoundEffect(""),
-			TANK_PLACE = new SoundEffect(""), GENERATOR_PLACE = new SoundEffect("");
+			TANK_PLACE = new SoundEffect(""), GENERATOR_PLACE = new SoundEffect(""), SNIPERTOWER_PLACE = new SoundEffect("");
 	// Troop placement sound effects
 	public static final SoundEffect ARCHER_PLACE = new SoundEffect(""), GIANTWARRIOR_PLACE = new SoundEffect(""),
 			KNIGHT_PLACE = new SoundEffect(""), MACHINIST_PLACE = new SoundEffect("");
