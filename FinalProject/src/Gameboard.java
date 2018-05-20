@@ -91,6 +91,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		}
 		for (int i = 0; i < dead.size(); i++) {
 			Troop troop = dead.get(i);
+			if (troops.indexOf(troop) - towers.size() == selectedUnit)
+				selectedUnit = -1;
 			troops.remove(troop);
 		}
 		dead = new ArrayList<>();
@@ -107,6 +109,8 @@ public class Gameboard extends PApplet implements ActionListener {
 		}
 		for (int i = 0; i < dead.size(); i++) {
 			Troop troop = dead.get(i);
+			if (troops.indexOf(troop) - towers.size() == selectedUnit)
+				selectedUnit = -1;
 			troops.remove(troop);
 		}
 		money += 0.02;
@@ -179,7 +183,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		rect(height / ratio, 0, shopWidth, height / ratio);
 		textAlign(CENTER, CENTER);
 		int num = V.NUM_UNITS + 3;
-		float height = this.height / num / ratio;
+		float height = this.height / (float) num / ratio;
 		for (float i = 0; i < this.height / ratio; i += height) {
 			fill(200);
 			if (selected == (int) (i / height) || (destroying && (int) (i / height) == V.NUM_UNITS))
@@ -205,7 +209,7 @@ public class Gameboard extends PApplet implements ActionListener {
 
 	public void mousePressed() {
 		float num = V.NUM_UNITS + 3;
-		float height = this.height / num;
+		float height = this.height / (float) num;
 		if (mouseX > width - shopWidth) {
 			if (mouseY % height > 0.05f * height && mouseY % height < 0.95f * height) {
 				int y = (int) (mouseY / height);

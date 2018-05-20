@@ -103,13 +103,17 @@ public class V {
 							new int[] { 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3 } },
 					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }) };
 	// Tower placement sound effects
-	public static final SoundEffect CANNON_PLACE = new SoundEffect(""), CHIPPER_PLACE = new SoundEffect(""), TANK_PLACE = new SoundEffect(""), GENERATOR_PLACE = new SoundEffect("");
+	public static final SoundEffect CANNON_PLACE = new SoundEffect(""), CHIPPER_PLACE = new SoundEffect(""),
+			TANK_PLACE = new SoundEffect(""), GENERATOR_PLACE = new SoundEffect("");
 	// Troop placement sound effects
-	public static final SoundEffect ARCHER_PLACE = new SoundEffect(""), GIANTWARRIOR_PLACE = new SoundEffect(""), KNIGHT_PLACE = new SoundEffect(""), MACHINIST_PLACE = new SoundEffect("");
+	public static final SoundEffect ARCHER_PLACE = new SoundEffect(""), GIANTWARRIOR_PLACE = new SoundEffect(""),
+			KNIGHT_PLACE = new SoundEffect(""), MACHINIST_PLACE = new SoundEffect("");
 	// Tower attack sound effects
-	public static final SoundEffect CANNON_ATTACK = new SoundEffect(""), CHIPPER_ATTACK = new SoundEffect(""), TANK_ATTACK = new SoundEffect(""), GENERATOR_ATTACK = new SoundEffect("");
+	public static final SoundEffect CANNON_ATTACK = new SoundEffect(""), CHIPPER_ATTACK = new SoundEffect(""),
+			TANK_ATTACK = new SoundEffect(""), GENERATOR_ATTACK = new SoundEffect("");
 	// Troop attack sound effects
-	public static final SoundEffect ARCHER_ATTACK = new SoundEffect(""), GIANTWARRIOR_ATTACK = new SoundEffect(""), KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("");
+	public static final SoundEffect ARCHER_ATTACK = new SoundEffect(""), GIANTWARRIOR_ATTACK = new SoundEffect(""),
+			KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("");
 	// Tower icons
 	public static final String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "testBG.png", SNIPERTOWER_ICON = null;
@@ -131,15 +135,16 @@ public class V {
 	public static final float[] CHIPPER_STATS = { 5, 25, 3.5f, 80 };
 	public static final float[] TANK_STATS = { 100, 300, 3.5f, 90 };
 	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
-	public static final float[] SNIPERTOWER_STATS = {100, 1000, 15, 80};
+	public static final float[] SNIPERTOWER_STATS = { 100, 1000, 15, 80 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS, SNIPERTOWER_STATS };
 	// List of all troop stats Key: health, damage, attack speed, range, cost
 	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 };
 	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
 	public static final float[] KNIGHT_STATS = { 200, 40, 200, 1, 40 };
 	public static final float[] MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 };
-	public static final float[] KAMIKAZE_STATS = { 200, 100, 2, 60 };
-	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS, KAMIKAZE_STATS };
+	public static final float[] KAMIKAZE_STATS = { 200, 100, 2, 60, 10 };
+	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS,
+			KAMIKAZE_STATS };
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
 		P_UNITS.put(1, new Chipper(0, 0));
@@ -155,6 +160,7 @@ public class V {
 		TROOPS.put(1, new GiantWarrior(0, 0, false));
 		TROOPS.put(2, new Knight(0, 0, false));
 		TROOPS.put(3, new Machinist(0, 0, false));
+		TROOPS.put(4, new Kamikaze(0, 0, false));
 	}
 	public static final int NUM_TROOPS = TROOPS.size(), NUM_UNITS = P_UNITS.size();
 }

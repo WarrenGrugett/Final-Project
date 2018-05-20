@@ -7,10 +7,7 @@
 public class Main {
 
 	public static void main(String[] args) {
-		try {
-			@SuppressWarnings("unused")
-			Window window = new Window();
-		} catch (Exception e) {
-		}
+		@SuppressWarnings("unused")
+		Window window = new Window();
 	}
 }
