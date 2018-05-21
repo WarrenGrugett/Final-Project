@@ -6,10 +6,11 @@
  */
 public class Kamikaze extends Troop
 {
+   private static int cost;
    public Kamikaze(float x, float y, boolean enemy)
    {
       super(x, y, (int) V.KAMIKAZE_STATS[0], (int) V.KAMIKAZE_STATS[1], (int) V.KAMIKAZE_STATS[2], V.KAMIKAZE_STATS[3],
-            (int) V.KAMIKAZE_STATS[4], enemy, V.KAMIKAZE_ICON, V.KAMIKAZE_ATTACK_ICON);
+            cost, enemy, V.KAMIKAZE_ICON, V.KAMIKAZE_ATTACK_ICON);
    }
 
    public void upgrade()
@@ -30,5 +31,10 @@ public class Kamikaze extends Troop
    public void activateAbility()
    {
       
+   }
+   
+   public int cost()
+   {
+      return (int) V.KAMIKAZE_STATS[4];
    }
 }

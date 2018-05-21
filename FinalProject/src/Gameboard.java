@@ -420,23 +420,6 @@ public class Gameboard extends PApplet implements ActionListener
                continue;
             }
          }
-         if (!onUnit)
-         {
-            for (int i = 0; i < troops.size(); i++)
-            {
-               Troop troop = troops.get(i);
-               if (troop.contains(mouseX, mouseY))
-               {
-                  selectedUnit = i;
-                  if (money >= troop.cost() / 2 && troop.level() <= level)
-                  {
-                     money -= troop.cost() / 2;
-                     troop.upgrade();
-                  }
-                  continue;
-               }
-            }
-         }
       }
       else
       {
@@ -483,18 +466,25 @@ public class Gameboard extends PApplet implements ActionListener
          w.pause();
       }
    }
+   
+   public void troopUpgrade()
+   {
+      for (Troop t : troops)
+         t.upgrade();
+   }
 
    private void nextLevel()
    {
       level++;
       if (level == V.maps.length)
          win();
-      JOptionPane.showMessageDialog(frame, "Conglaturations\n You won this level");
+      JOptionPane.showMessageDialog(frame, "Congratulations\n You won this level");
       JOptionPane.showMessageDialog(frame, "Towers and troops are level " + (level + 1) + " now");
       map = V.maps[level];
       timer.restart();
       troops = new ArrayList<>();
       towers = new ArrayList<>();
+      
       placing = false;
       destroying = false;
       upgrading = false;

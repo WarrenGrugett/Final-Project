@@ -17,12 +17,14 @@ public abstract class Sprite {
 	private Troop target;
 
 	public Sprite(float x, float y, int damage, float range, int attackSpeed, int cost, String icon,
-			String attackIcon) {
+			String attackIcon, int level) {
 		this.x = x;
 		this.y = y;
 		this.damage = damage;
 		this.range = range;
 		this.attackSpeed = attackSpeed;
+		for (int i = 0; i < level; i++)
+		   upgrade(damage);
 		this.cost = cost;
 		iconPath = icon;
 		attackIconPath = attackIcon;
@@ -33,6 +35,7 @@ public abstract class Sprite {
 	protected void upgrade(int damage) {
 		level++;
 		this.damage += damage;
+		cost += cost * 0.1;
 	}
 
 	public float range() {
@@ -158,7 +161,7 @@ public abstract class Sprite {
 	public boolean contains(float x, float y) {
 		return (x > x() && x < x() + Gameboard.GRID_WIDTH && y > y() && y < y() + Gameboard.GRID_WIDTH);
 	}
-
+	
 	public abstract boolean checkEnemy(Troop troop);
 
 	public abstract String toString();
