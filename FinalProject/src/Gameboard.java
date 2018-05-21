@@ -10,7 +10,7 @@ import processing.core.*;
  * the map to try to kill the player, and the shop, which will be where the
  * player selects their defensive unit and upgrades them.
  * 
- * @author Warren, Sepehr, Leo
+ * @author Warren
  *
  */
 public class Gameboard extends PApplet implements ActionListener
@@ -215,7 +215,7 @@ public class Gameboard extends PApplet implements ActionListener
       shopWidth = width / ratio - height / ratio;
       rect(height / ratio, 0, shopWidth, height / ratio);
       textAlign(CENTER, CENTER);
-      int num = V.NUM_UNITS + 2;
+      int num = V.NUM_UNITS + 3;
       float height = this.height / (float) num / ratio;
       for (int i = 0; i < num - 1; i++)
       {
@@ -231,6 +231,10 @@ public class Gameboard extends PApplet implements ActionListener
          else if (i == V.NUM_UNITS)
          {
             text("Demolish\nReturn: 50% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
+         }
+         else if (i == V.NUM_UNITS + 1) 
+         {
+            text("Upgrade Tower\nCost: 50% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
          }
       }
       fill(255);
