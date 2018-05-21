@@ -5,10 +5,14 @@ Warren Grugett, Sepehr Nasiriany, Leo Zheng
 Period 6
 
 Description:
-The objective is to defend yourself from enemy troops. Each level has a unique map and troops sent against you. You can place your own defensive troops and towers to fight off the hordes of enemies, and protect your side. By winning, you progress to the next level and play in a new map of increasing difficulty. Good luck! 
+The objective is to defend yourself from enemy troops. Each level has a unique map and troops sent against you. 
+You can place your own defensive troops and towers to fight off the hordes of enemies, and protect your side. 
+By winning, you progress to the next level and play in a new map of increasing difficulty. Good luck! 
 
 Instructions:
-To deploy a tower/troop, select it by clicking on it in the shop panel to the right of the screen. Then, click on any of the available wall spaces on the map. You must have sufficient funds to do so. Defend against the enemy troops by preventing them from reaching the end of the map. Once your health falls down to zero, the game is over. 
+To deploy a tower/troop, select it by clicking on it in the shop panel to the right of the screen. 
+Then, click on any of the available wall spaces on the map. You must have sufficient funds to do so. 
+Defend against the enemy troops by preventing them from reaching the end of the map. Once your health falls down to zero, the game is over. 
 
 Must-haves:
 Different levels (new units unlock)
