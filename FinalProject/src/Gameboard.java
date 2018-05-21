@@ -118,7 +118,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			if (delay == 80) {
 				delay = 0;
 				if (sentTroop.x != -1) {
-					troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true));
+					troops.add(((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true, 1));
 					troops.get(troops.size() - 1).orientate(map);
 				}
 				sentTroop.y--;
@@ -230,7 +230,7 @@ public class Gameboard extends PApplet implements ActionListener {
 					destroying = false;
 					upgrading = false;
 					if (money >= V.P_UNITS.get(y).cost()) {
-						Troop troop = ((Troop) V.P_UNITS.get(y)).clone(map.endPoint().y, map.endPoint().x, false);
+						Troop troop = ((Troop) V.P_UNITS.get(y)).clone(map.endPoint().y, map.endPoint().x, false, 1);
 						troop.orientate(map);
 						troops.add(troop);
 						selectedUnit = troops.indexOf(troop);

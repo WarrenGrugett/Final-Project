@@ -7,34 +7,26 @@
  */
 public class GiantWarrior extends Troop
 {
-   private static int cost;
-   public GiantWarrior(float x, float y, boolean enemy)
+   public GiantWarrior(float x, float y, boolean enemy, int level)
    {
       super(x, y, (int) V.GIANTWARRIOR_STATS[0], (int) V.GIANTWARRIOR_STATS[1], (int) V.GIANTWARRIOR_STATS[2],
-            V.GIANTWARRIOR_STATS[3], (int) V.GIANTWARRIOR_STATS[4], enemy, V.GIANTWARRIOR_ICON,
+            V.GIANTWARRIOR_STATS[3], (int) (V.GIANTWARRIOR_STATS[4] * Math.pow(1.1, level)), enemy, V.GIANTWARRIOR_ICON,
             V.GIANTWARRIOR_ATTACK_ICON);
-//      if (level == 1)
-//         cost = (int) V.GIANTWARRIOR_STATS[4];
    }
 
    public void upgrade()
    {
       super.upgrade(15, 5);
-      cost += cost * 0.1;
    }
 
    public String toString()
    {
-      return "Giant Warrior\nCost: " + (int) V.GIANTWARRIOR_STATS[4];
+      return "Giant Warrior\nCost: " + cost();
    }
 
-   public Troop clone(float x, float y, boolean enemy)
+   public Troop clone(float x, float y, boolean enemy, int level)
    {
-      return new GiantWarrior(x, y, enemy);
+      return new GiantWarrior(x, y, enemy, level);
    }
 
-   public int cost()
-   {
-      return (int) V.GIANTWARRIOR_STATS[4];
-   }
 }
