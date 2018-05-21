@@ -35,7 +35,7 @@ public abstract class Sprite
 	{
 		level++;
 		this.damage += damage;
-		cost += cost * 0.1;
+		cost *= 1.1;
 	}
 
 	public float range()
