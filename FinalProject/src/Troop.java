@@ -13,7 +13,7 @@ public abstract class Troop extends Sprite
    public Troop(float x, float y, int health, int damage, int attackSpeed, float range, int cost, boolean enemy,
          String icon, String attackIcon)
    {
-      super(x, y, damage, range, attackSpeed, cost, icon, attackIcon, 0);
+      super(x, y, damage, range, attackSpeed, cost, icon, attackIcon);
       this.health = health;
       max = health;
       this.enemy = enemy;
