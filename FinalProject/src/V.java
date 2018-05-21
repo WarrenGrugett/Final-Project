@@ -109,10 +109,10 @@ public class V {
 	public static final SoundEffect ARCHER_PLACE = new SoundEffect(""), GIANTWARRIOR_PLACE = new SoundEffect(""),
 			KNIGHT_PLACE = new SoundEffect(""), MACHINIST_PLACE = new SoundEffect("");
 	// Tower attack sound effects
-	public static final SoundEffect CANNON_ATTACK = new SoundEffect(""), CHIPPER_ATTACK = new SoundEffect(""),
-			TANK_ATTACK = new SoundEffect(""), GENERATOR_ATTACK = new SoundEffect(""), SNIPERTOWER_ATTACK = new SoundEffect("");
+	public static final SoundEffect CANNON_ATTACK = new SoundEffect("cannonshot.wav"), CHIPPER_ATTACK = new SoundEffect(""),
+			TANK_ATTACK = new SoundEffect("explosion.wav"), GENERATOR_ATTACK = new SoundEffect(""), SNIPERTOWER_ATTACK = new SoundEffect("snipershot.wav");
 	// Troop attack sound effects
-	public static final SoundEffect ARCHER_ATTACK = new SoundEffect(""), GIANTWARRIOR_ATTACK = new SoundEffect(""),
+	public static final SoundEffect ARCHER_ATTACK = new SoundEffect("arrowfired.wav"), GIANTWARRIOR_ATTACK = new SoundEffect(""),
 			KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("");
 	// Tower icons
 	public static final String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
