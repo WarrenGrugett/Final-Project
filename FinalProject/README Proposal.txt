@@ -15,48 +15,48 @@ Then, click on any of the available wall spaces on the map. You must have suffic
 Defend against the enemy troops by preventing them from reaching the end of the map. Once your health falls down to zero, the game is over. 
 
 Must-haves:
-Different levels (new units unlock)
-Different troops (4)
-Different towers (4)
-Upgrading units
-Income used to deploy more units
-Lose when health reaches 0
+-Different levels (new units unlock)
+-Different troops (4)
+-Different towers (4)
+-Upgrading units
+-Income used to deploy more units
+-Lose when health reaches 0
 
 Want-to-haves:
-Sound effects
-Ranks (based on number of wins)
-Different maps per level
-Combat between troops (interaction)
-Ranged units, in addition to melee units
+-Sound effects
+-Ranks (based on number of wins)
+-Different maps per level
+-Combat between troops (interaction)
+-Ranged units, in addition to melee units
 
 Stretch:
-1v1 gameplay with 2 people total playing live
-Different game modes
-Animations for shooting and dying
- 3D graphics
-Troops have special abilities which can be used
+-1v1 gameplay with 2 people total playing live
+-Different game modes
+-Animations for shooting and dying
+-3D graphics
+-Troops have special abilities which can be used
 
 Classes:
-Gameboard: The contents of the window while the game is being played
-GameMenu: The menu screen of the game
-Main: The class used to run the game
-Map: The background image, wall data, and troop patterns for the current map
-PauseMenu: The pause screen of the game
-Sprite: Any Troop or Tower displayed on the screen
-Tower: Any stationary defensive unit created by the player
-Troop: Any mobile unit created by the computer or the player
-V: The variable class, used to store variables that will not be changed during runtime
-Window: The window that contains the entire game
+-Gameboard: The contents of the window while the game is being played
+-GameMenu: The menu screen of the game
+-Main: The class used to run the game
+-Map: The background image, wall data, and troop patterns for the current map
+-PauseMenu: The pause screen of the game
+-Sprite: Any Troop or Tower displayed on the screen
+-Tower: Any stationary defensive unit created by the player
+-Troop: Any mobile unit created by the computer or the player
+-V: The variable class, used to store variables that will not be changed during runtime
+-Window: The window that contains the entire game
 
 Troop/Tower Subclasses:
-Knight
-Giant Warrior
-Archer
-Machinist
-Generator
-Cannon
-Tank
-Chipper
+-Knight
+-Giant Warrior
+-Archer
+-Machinist
+-Generator
+-Cannon
+-Tank
+-Chipper
 
 Responsibilities:
 Sepehr: Work on troop/building classes (attributes and functionality)
