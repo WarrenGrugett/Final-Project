@@ -187,7 +187,7 @@ public abstract class Troop extends Sprite
       this.health += health;
    }
 
-   public abstract Troop clone(float x, float y, boolean enemy);
+   public abstract Troop clone(float x, float y, boolean enemy, int level);
 
    public boolean checkEnemy(Troop troop)
    {

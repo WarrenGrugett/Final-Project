@@ -6,11 +6,10 @@
  */
 public class Kamikaze extends Troop
 {
-   private static int cost;
-   public Kamikaze(float x, float y, boolean enemy)
+   public Kamikaze(float x, float y, boolean enemy, int level)
    {
       super(x, y, (int) V.KAMIKAZE_STATS[0], (int) V.KAMIKAZE_STATS[1], (int) V.KAMIKAZE_STATS[2], V.KAMIKAZE_STATS[3],
-            cost, enemy, V.KAMIKAZE_ICON, V.KAMIKAZE_ATTACK_ICON);
+            (int) (V.KAMIKAZE_STATS[4] * Math.pow(1.1, level)), enemy, V.KAMIKAZE_ICON, V.KAMIKAZE_ATTACK_ICON);
    }
 
    public void upgrade()
@@ -20,21 +19,16 @@ public class Kamikaze extends Troop
 
    public String toString()
    {
-      return "Kamikaze\nCost: " + (int) V.KAMIKAZE_STATS[4];
+      return "Kamikaze\nCost: " + cost();
    }
 
-   public Troop clone(float x, float y, boolean enemy)
+   public Troop clone(float x, float y, boolean enemy, int level)
    {
-      return new Kamikaze(x, y, enemy);
+      return new Kamikaze(x, y, enemy, level);
    }
    
    public void activateAbility()
    {
       
-   }
-   
-   public int cost()
-   {
-      return (int) V.KAMIKAZE_STATS[4];
    }
 }

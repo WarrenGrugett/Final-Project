@@ -151,16 +151,16 @@ public class V {
 		P_UNITS.put(2, new Tank(0, 0));
 		P_UNITS.put(3, new Generator(0, 0));
 		P_UNITS.put(4, new SniperTower(0, 0));
-		P_UNITS.put(5, new Archer(0, 0, false));
-		P_UNITS.put(6, new GiantWarrior(0, 0, false));
-		P_UNITS.put(7, new Knight(0, 0, false));
-		P_UNITS.put(8, new Machinist(0, 0, false));
-		P_UNITS.put(9, new Kamikaze(0, 0, false));
-		TROOPS.put(0, new Archer(0, 0, false));
-		TROOPS.put(1, new GiantWarrior(0, 0, false));
-		TROOPS.put(2, new Knight(0, 0, false));
-		TROOPS.put(3, new Machinist(0, 0, false));
-		TROOPS.put(4, new Kamikaze(0, 0, false));
+		P_UNITS.put(5, new Archer(0, 0, false, 1));
+		P_UNITS.put(6, new GiantWarrior(0, 0, false, 1));
+		P_UNITS.put(7, new Knight(0, 0, false, 1));
+		P_UNITS.put(8, new Machinist(0, 0, false, 1));
+		P_UNITS.put(9, new Kamikaze(0, 0, false, 1));
+		TROOPS.put(0, new Archer(0, 0, false, 1));
+		TROOPS.put(1, new GiantWarrior(0, 0, false, 1));
+		TROOPS.put(2, new Knight(0, 0, false, 1));
+		TROOPS.put(3, new Machinist(0, 0, false, 1));
+		TROOPS.put(4, new Kamikaze(0, 0, false, 1));
 	}
 	public static final int NUM_TROOPS = TROOPS.size(), NUM_UNITS = P_UNITS.size();
 }
