@@ -8,7 +8,7 @@
 public abstract class Tower extends Sprite {
 
 	public Tower(float x, float y, int damage, int attackSpeed, float range, int cost, String icon, String attackIcon) {
-		super(x, y, damage, range, attackSpeed, cost, icon, attackIcon);
+		super(x, y, damage, range, attackSpeed, cost, icon, attackIcon, 0);
 	}
 
 	public Tower(float x, float y, Tower tower) {
