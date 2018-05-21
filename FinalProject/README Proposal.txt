@@ -15,7 +15,7 @@ Then, click on any of the available wall spaces on the map. You must have suffic
 Defend against the enemy troops by preventing them from reaching the end of the map. Once your health falls down to zero, the game is over. 
 
 Must-haves:
--Different levels (new units unlock)
+-Different levels (new upgrades unlock)
 -Different troops (4)
 -Different towers (4)
 -Upgrading units
