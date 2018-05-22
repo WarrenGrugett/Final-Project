@@ -37,7 +37,6 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void run() {
-		setSize(800, 600);
 		sketchPath();
 		initSurface();
 		surface.startThread();
@@ -147,6 +146,12 @@ public class Gameboard extends PApplet implements ActionListener {
 		background(255);
 		if (map != null)
 			map.draw(this);
+		stroke(100);
+		for (int i = 0; i < map.map().length; i++) {
+			line(0, i * GRID_HEIGHT, height, i * GRID_HEIGHT);
+			line(i * GRID_WIDTH, 0, i * GRID_WIDTH, height);
+		}
+		stroke(0);
 		for (int i = 0; i < towers.size(); i++) {
 			Tower tower = towers.get(i);
 			tower.draw(this);

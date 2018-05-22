@@ -1,5 +1,5 @@
-import java.awt.Point;
-import java.util.HashMap;
+import java.awt.*;
+import java.util.*;
 
 /**
  * Class stores all variables that do not change during runtime
