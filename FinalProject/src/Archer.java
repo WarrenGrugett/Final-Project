@@ -7,7 +7,7 @@
 public class Archer extends Troop
 {
    /**
-    * Sets Archer to appropriate fields 
+    * Invokes super constructor to     
     * 
     * @param x position of Archer
     * @param y position of Archer
