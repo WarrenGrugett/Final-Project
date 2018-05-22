@@ -9,7 +9,7 @@ public class Kamikaze extends Troop
    public Kamikaze(float x, float y, boolean enemy, int level)
    {
       super(x, y, (int) V.KAMIKAZE_STATS[0], (int) V.KAMIKAZE_STATS[1], (int) V.KAMIKAZE_STATS[2], V.KAMIKAZE_STATS[3],
-            (int) (V.KAMIKAZE_STATS[4] * Math.pow(1.1, level)), enemy, V.KAMIKAZE_ICON, V.KAMIKAZE_ATTACK_ICON);
+            (int) (V.KAMIKAZE_STATS[4] * Math.pow(1.1, level-1)), enemy, V.KAMIKAZE_ICON, V.KAMIKAZE_ATTACK_ICON);
    }
 
    public void upgrade()

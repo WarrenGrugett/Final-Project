@@ -192,7 +192,7 @@ public class Gameboard extends PApplet implements ActionListener {
 			} else if (i == V.NUM_UNITS) {
 				text("Demolish\nReturn: 50% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
 			} else if (i == V.NUM_UNITS + 1) {
-				text("Upgrade Tower\nCost: 50% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
+				text("Upgrade Tower\nCost: 25% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
 			}
 		}
 		fill(255);
@@ -333,8 +333,8 @@ public class Gameboard extends PApplet implements ActionListener {
 				Tower tower = towers.get(i);
 				if (tower.contains(mouseX / ratio, mouseY / ratio)) {
 					selectedUnit = i;
-					if (money >= tower.cost() / 2 && tower.level() <= level) {
-						money -= tower.cost() / 2;
+					if (money >= tower.cost() / 4 && tower.level() <= level) {
+						money -= tower.cost() / 4;
 						tower.upgrade();
 					}
 					onUnit = true;

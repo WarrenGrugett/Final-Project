@@ -9,7 +9,7 @@ public class Knight extends Troop
    public Knight(float x, float y, boolean enemy, int level)
    {
       super(x, y, (int) V.KNIGHT_STATS[0], (int) V.KNIGHT_STATS[1], (int) V.KNIGHT_STATS[2], V.KNIGHT_STATS[3],
-            (int) (V.KNIGHT_STATS[4] * Math.pow(1.1, level)), enemy, V.KNIGHT_ICON, V.KNIGHT_ATTACK_ICON);
+            (int) (V.KNIGHT_STATS[4] * Math.pow(1.1, level-1)), enemy, V.KNIGHT_ICON, V.KNIGHT_ATTACK_ICON);
    }
 
    public void upgrade()
