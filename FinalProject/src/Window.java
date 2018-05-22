@@ -59,6 +59,7 @@ public class Window {
 
 	public void fixProcessingPanelSizes(Component x) {
 		surf.setSize(x.getWidth(), x.getHeight());
+		cSurf.setSize(x.getWidth(), x.getHeight());
 	}
 
 	public void pause() {
