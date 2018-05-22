@@ -2,7 +2,11 @@ import java.awt.*;
 import java.util.Arrays;
 
 import processing.core.*;
-
+/**
+ * 
+ * @author Warren
+ *
+ */
 public class MapCreator extends PApplet {
 	private PImage background;
 	private int[][] mapData;

@@ -7,7 +7,7 @@
 public class Archer extends Troop
 {
    /**
-    * Invokes super constructor to     
+    * Invokes super constructor to initialize Troop 
     * 
     * @param x position of Archer
     * @param y position of Archer
@@ -21,7 +21,7 @@ public class Archer extends Troop
    }
 
    /**
-    * 
+    * upgrades health by 10, damage by 5
     */
    public void upgrade()
    {
@@ -29,7 +29,7 @@ public class Archer extends Troop
    }
    
    /**
-    * 
+    * Displays name + cost
     */
    public String toString()
    {
@@ -37,7 +37,7 @@ public class Archer extends Troop
    }
    
    /**
-    * 
+    * @return new object of Archer from the following parameters
     */
    public Troop clone(float x, float y, boolean enemy, int level)
    {
@@ -45,7 +45,7 @@ public class Archer extends Troop
    }
    
    /**
-    * 
+    * @return name of Troop/Tower
     */
    public String name()
    {

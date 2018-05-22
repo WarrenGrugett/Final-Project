@@ -1,6 +1,10 @@
 import java.io.*;
 import javax.sound.sampled.*;
-
+/**
+ * 
+ * @author Leo
+ *
+ */
 public class SoundEffect {
 	private SourceDataLine line = null;
 	private byte[] audioBytes;

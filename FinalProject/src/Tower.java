@@ -2,7 +2,7 @@
  * The superclass for all defensive towers placed by the player to kill enemy
  * troops
  * 
- * @author Warren, Sepehr, Leo
+ * @author Sepehr
  *
  */
 public abstract class Tower extends Sprite {
@@ -21,14 +21,4 @@ public abstract class Tower extends Sprite {
 		return troop.enemy();
 	}
 	
-//	public void draw(Gameboard gb)
-//   {
-//      super.draw(gb);
-//      gb.pushStyle();
-//      if (enemy())
-//         gb.fill(200, 0, 0);
-//      else gb.fill(0, 200, 0);
-//      gb.rect(x(), y(), (float) (Gameboard.GRID_WIDTH * (health() / (float) max)), 10);
-//      gb.popStyle();
-//   }
 }

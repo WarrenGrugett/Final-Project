@@ -2,7 +2,7 @@
  * The superclass for all troops on the board, both enemy computer generated
  * enemies and possibly player troops if we implement them
  * 
- * @author Warren, Sepehr, Leo
+ * @author Sepehr
  *
  */
 public abstract class Troop extends Sprite

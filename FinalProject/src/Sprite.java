@@ -6,7 +6,7 @@ import processing.core.*;
  * The all-encompassing superclass for all of the game elements on the board,
  * ie: Towers and Troops
  * 
- * @author Warren, Sepehr, Leo
+ * @author Sepehr
  *
  */
 public abstract class Sprite
