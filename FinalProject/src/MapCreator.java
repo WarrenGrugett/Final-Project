@@ -80,5 +80,8 @@ public class MapCreator extends PApplet {
 	public void mousePressed() {
 		int num = (troopSelect) ? V.NUM_TROOPS + 1 : 7;
 		float height = this.height / (float) num;
+		if (mouseY > this.height) {
+			
+		}
 	}
 }
