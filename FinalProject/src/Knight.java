@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Troop class - Melee troop that deals individual damage
  * 
@@ -30,6 +32,13 @@ public class Knight extends Troop
    public Troop clone(float x, float y, boolean enemy, int level)
    {
       return new Knight(x, y, enemy, level);
+   }
+   
+   @Override
+   public Troop attack(ArrayList<Troop> troops, int[][] map)
+   {
+	   V.KNIGHT_ATTACK.play();
+	   return super.attack(troops, map);
    }
   
 }

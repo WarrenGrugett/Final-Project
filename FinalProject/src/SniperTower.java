@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Does "splash" damage in a certain radius and high damage but has a very low
  * rate of fire
@@ -38,5 +40,12 @@ public class SniperTower extends Tower
    public Tower clone(float x, float y)
    {
       return new SniperTower(x, y);
+   }
+   
+   @Override
+   public Troop attack(ArrayList<Troop> troops, int[][] map)
+   {
+	   V.SNIPERTOWER_ATTACK.play();
+	   return super.attack(troops, map);
    }
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Troop - Fires constantly with low damage and high range
  * 
@@ -30,6 +32,13 @@ public class Machinist extends Troop
    public Troop clone(float x, float y, boolean enemy, int level)
    {
       return new Machinist(x, y, enemy, level);
+   }
+   
+   @Override
+   public Troop attack(ArrayList<Troop> troops, int[][] map)
+   {
+	   V.MACHINIST_ATTACK.play();
+	   return super.attack(troops, map);
    }
 
 }

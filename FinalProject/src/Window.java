@@ -9,8 +9,7 @@ import processing.awt.*;
  * @author Warren
  *
  */
-public class Window
-{
+public class Window {
    private JFrame window;
    private JPanel cardPanel;
    private GameMenu menu;
@@ -20,8 +19,7 @@ public class Window
    private PSurfaceAWT surf, cSurf;
    private PSurfaceAWT.SmoothCanvas gameCanvas, cCanvas;
 
-   public Window()
-   {
+   public Window() {
       window = new JFrame();
       game = new Gameboard(this);
       creator = new MapCreator(this);
@@ -48,10 +46,8 @@ public class Window
       cardPanel.add(gameCanvas, "game");
       cardPanel.add(pause, "pause");
       cardPanel.add(cCanvas, "creator");
-      cardPanel.addComponentListener(new ComponentAdapter()
-      {
-         public void componentResized(ComponentEvent arg0)
-         {
+      cardPanel.addComponentListener(new ComponentAdapter() {
+         public void componentResized(ComponentEvent arg0) {
             Component x = (Component) arg0.getSource();
             fixProcessingPanelSizes(x);
          }
@@ -61,35 +57,30 @@ public class Window
       window.revalidate();
    }
 
-   public void fixProcessingPanelSizes(Component x)
-   {
+   public void fixProcessingPanelSizes(Component x) {
       surf.setSize(x.getWidth(), x.getHeight());
+      cSurf.setSize(x.getWidth(), x.getHeight());
    }
 
-   public void pause()
-   {
+   public void pause() {
       game.pause();
       ((CardLayout) cardPanel.getLayout()).show(cardPanel, "pause");
    }
 
-   public void play()
-   {
+   public void play() {
       game.play();
       ((CardLayout) cardPanel.getLayout()).show(cardPanel, "game");
    }
 
-   public void menu()
-   {
+   public void menu() {
       ((CardLayout) cardPanel.getLayout()).show(cardPanel, "menu");
    }
-
-   public void creator()
-   {
+   
+   public void creator() {
       ((CardLayout) cardPanel.getLayout()).show(cardPanel, "creator");
    }
 
-   public void quit()
-   {
+   public void quit() {
       System.exit(0);
    }
 }
