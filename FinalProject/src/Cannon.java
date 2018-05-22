@@ -39,7 +39,9 @@ public class Cannon extends Tower
    {
       return "Cannon";
    }
-
+   /**
+    * @return new Cannon with following parameters
+    */
    public Tower clone(float x, float y)
    {
       return new Cannon(x, y);
