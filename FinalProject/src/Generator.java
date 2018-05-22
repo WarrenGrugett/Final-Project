@@ -25,6 +25,11 @@ public class Generator extends Tower {
 	public String toString() {
 		return "Generator\nCost: " + (int) V.GENERATOR_STATS[3];
 	}
+	
+	public String name()
+	{
+	   return "Generator";
+	}
 
 	public Tower clone(float x, float y) {
 		return new Generator(x, y);

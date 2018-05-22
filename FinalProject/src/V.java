@@ -142,7 +142,7 @@ public class V {
 	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
 	public static final float[] KNIGHT_STATS = { 200, 40, 200, 1, 40 };
 	public static final float[] MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 };
-	public static final float[] KAMIKAZE_STATS = { 200, 100, 2, 0, 60 };
+	public static final float[] KAMIKAZE_STATS = { 200, 100, 0, 4, 60 };
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS,
 			KAMIKAZE_STATS };
 	static {

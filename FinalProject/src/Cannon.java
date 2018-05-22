@@ -19,6 +19,11 @@ public class Cannon extends Tower {
 	public String toString() {
 		return "Cannon\nCost: " + (int) V.CANNON_STATS[3];
 	}
+	
+	public String name()
+	{
+	   return "Cannon";
+	}
 
 	public Tower clone(float x, float y) {
 		return new Cannon(x, y);

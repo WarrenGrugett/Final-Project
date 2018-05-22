@@ -157,6 +157,8 @@ public abstract class Sprite {
 
 	public abstract String toString();
 
+	public abstract String name();
+
 	public void resetDelay() {
 		delayCount = 0;
 	}

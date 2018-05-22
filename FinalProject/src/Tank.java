@@ -24,6 +24,11 @@ public class Tank extends Tower {
 	public String toString() {
 		return "Tank\nCost: " + (int) V.TANK_STATS[3];
 	}
+	
+	public String name()
+	{
+	   return "Tank";
+	}
 
 	public Tower clone(float x, float y) {
 		return new Tank(x, y);

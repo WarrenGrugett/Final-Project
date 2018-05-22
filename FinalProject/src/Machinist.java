@@ -21,6 +21,11 @@ public class Machinist extends Troop
    {
       return "Machinist\nCost: " + cost();
    }
+   
+   public String name()
+   {
+      return "Machinist";
+   }
 
    public Troop clone(float x, float y, boolean enemy, int level)
    {
