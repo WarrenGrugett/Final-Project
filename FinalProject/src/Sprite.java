@@ -169,17 +169,7 @@ public abstract class Sprite
 		float distance = range() * Gameboard.GRID_HEIGHT;
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance && checkEnemy(troop))
-			{
-				int locX = (int) (x / Gameboard.GRID_WIDTH + 0.5), locY = (int) (y / Gameboard.GRID_HEIGHT + 0.5),
-				      eLocX = (int) (troop.x() / Gameboard.GRID_WIDTH + 0.5),
-				      eLocY = (int) (troop.y() / Gameboard.GRID_HEIGHT + 0.5);
-				for (int x = (locX < eLocX) ? locX : eLocX; x < ((locX > eLocX) ? locX : eLocX); x++)
-				{
-					for (int y = (locY < eLocY) ? locY : eLocY; y < ((locY > eLocY) ? locY : eLocY); y++)
-					{
-
-					}
-				}
+			{				
 				return target(troop);
 			}
 		resetDelay();
@@ -194,6 +184,8 @@ public abstract class Sprite
 	public abstract boolean checkEnemy(Troop troop);
 
 	public abstract String toString();
+	
+	public abstract String name();
 
 	public void resetDelay()
 	{

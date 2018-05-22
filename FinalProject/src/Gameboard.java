@@ -390,7 +390,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		if (level == V.maps.length)
 			win();
 		JOptionPane.showMessageDialog(frame, "Congratulations\n You won this level");
-		JOptionPane.showMessageDialog(frame, "Towers and troops are level " + (level + 1) + " now");
+		JOptionPane.showMessageDialog(frame, "Troops are level " + (level + 1) + " now" + "\n Towers can be upgraded up to level " + (level+1));
 		map = V.maps[level];
 		timer.restart();
 		troops = new ArrayList<>();

@@ -24,6 +24,11 @@ public class GiantWarrior extends Troop
       return "Giant Warrior\nCost: " + cost();
    }
 
+   public String name()
+   {
+      return "Giant Warrior";
+   }
+   
    public Troop clone(float x, float y, boolean enemy, int level)
    {
       return new GiantWarrior(x, y, enemy, level);

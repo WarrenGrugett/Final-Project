@@ -27,7 +27,12 @@ public class SniperTower extends Tower
 
    public String toString()
    {
-      return "SniperTower\nCost: " + (int) V.SNIPERTOWER_STATS[3];
+      return "Sniper Tower\nCost: " + (int) V.SNIPERTOWER_STATS[3];
+   }
+   
+   public String name()
+   {
+      return "Sniper Tower";
    }
 
    public Tower clone(float x, float y)

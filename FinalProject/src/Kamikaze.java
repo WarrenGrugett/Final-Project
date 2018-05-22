@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Troop class- shoots at enemy with arrows with certain range
  * 
@@ -21,14 +23,25 @@ public class Kamikaze extends Troop
    {
       return "Kamikaze\nCost: " + cost();
    }
+   
+   public String name()
+   {
+      return "Kamikaze";
+   }
 
    public Troop clone(float x, float y, boolean enemy, int level)
    {
       return new Kamikaze(x, y, enemy, level);
    }
    
-   public void activateAbility()
+   public void activateAbility(ArrayList<Troop> troops)
    {
-      
+      for (Troop t : troops)
+      {
+         if (this.x() == t.x() && this.y() == t.y())
+         {
+            
+         }
+      }
    }
 }

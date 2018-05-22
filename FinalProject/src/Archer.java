@@ -26,5 +26,10 @@ public class Archer extends Troop
    {
       return new Archer(x, y, enemy, level);
    }
+   
+   public String name()
+   {
+      return "Archer";
+   }
 
 }

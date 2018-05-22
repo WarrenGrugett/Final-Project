@@ -21,6 +21,11 @@ public class Knight extends Troop
    {
       return "Knight\nCost: " + cost();
    }
+   
+   public String name()
+   {
+      return "Knight";
+   }
 
    public Troop clone(float x, float y, boolean enemy, int level)
    {
