@@ -17,7 +17,13 @@ public class Map {
 	private int loc = -1;
 
 	public Map(String map, int[][] mapData, Point[] troopPattern) {
-		this.mapPath = map;
+		mapPath = map;
+		setup(mapData);
+		troopAttackPattern = troopPattern;
+	}
+	
+	public Map(PImage map, int[][] mapData, Point[] troopPattern) {
+		this.map = map;
 		setup(mapData);
 		troopAttackPattern = troopPattern;
 	}

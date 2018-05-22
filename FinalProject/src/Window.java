@@ -15,21 +15,27 @@ public class Window {
 	private GameMenu menu;
 	private Gameboard game;
 	private PauseMenu pause;
-	private PSurfaceAWT surf;
-	private PSurfaceAWT.SmoothCanvas processingCanvas;
+	private MapCreator creator;
+	private PSurfaceAWT surf, cSurf;
+	private PSurfaceAWT.SmoothCanvas gameCanvas, cCanvas;
 
 	public Window() {
 		window = new JFrame();
 		game = new Gameboard(this);
+		creator = new MapCreator(this);
 		game.run();
+		creator.run();
 		surf = (PSurfaceAWT) game.getSurface();
-		processingCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
+		gameCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
+		cSurf = (PSurfaceAWT) creator.getSurface();
+		cCanvas = (PSurfaceAWT.SmoothCanvas) cSurf.getNative();
 		window.setBounds(500, 0, 1206, 995);
 		window.setMinimumSize(new Dimension(306, 235));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
 		window.setVisible(true);
 		surf.setSize(window.getWidth(), window.getHeight());
+		cSurf.setSize(window.getWidth(), window.getHeight());
 		cardPanel = new JPanel();
 		CardLayout cl = new CardLayout();
 		cardPanel.setLayout(cl);
@@ -37,8 +43,9 @@ public class Window {
 		menu = new GameMenu(this);
 		pause = new PauseMenu(this);
 		cardPanel.add(menu, "menu");
-		cardPanel.add(processingCanvas, "game");
+		cardPanel.add(gameCanvas, "game");
 		cardPanel.add(pause, "pause");
+		cardPanel.add(cCanvas, "creator");
 		cardPanel.addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent arg0) {
 				Component x = (Component) arg0.getSource();
@@ -54,26 +61,22 @@ public class Window {
 		surf.setSize(x.getWidth(), x.getHeight());
 	}
 
-	public void changePanel() {
-		((CardLayout) cardPanel.getLayout()).next(cardPanel);
-		processingCanvas.requestFocus();
-	}
-
 	public void pause() {
 		game.pause();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "pause");
-		processingCanvas.requestFocus();
 	}
 
 	public void play() {
 		game.play();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "game");
-		processingCanvas.requestFocus();
 	}
 
 	public void menu() {
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "menu");
-		processingCanvas.requestFocus();
+	}
+	
+	public void creator() {
+		((CardLayout) cardPanel.getLayout()).show(cardPanel, "creator");
 	}
 
 	public void quit() {

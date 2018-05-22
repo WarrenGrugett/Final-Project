@@ -205,7 +205,7 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void mousePressed() {
-		float num = V.NUM_UNITS + 3;
+		int num = V.NUM_UNITS + 3;
 		float height = this.height / (float) num;
 		if (mouseX > this.height) {
 			if (mouseY % height < 0.9f * height) {
