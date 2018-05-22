@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Troop class- shoots at enemy with arrows with certain range
  * 
@@ -52,4 +54,10 @@ public class Archer extends Troop
       return "Archer";
    }
 
+   @Override
+   public Troop attack(ArrayList<Troop> troops, int[][] map)
+   {
+	   V.ARCHER_ATTACK.play();
+	   return super.attack(troops, map);
+   }
 }

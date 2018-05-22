@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Troop - Tank-like unit that absorbs damage and is a "distraction" to other
  * troops attacking it
@@ -32,6 +34,13 @@ public class GiantWarrior extends Troop
    public Troop clone(float x, float y, boolean enemy, int level)
    {
       return new GiantWarrior(x, y, enemy, level);
+   }
+   
+   @Override
+   public Troop attack(ArrayList<Troop> troops, int[][] map)
+   {
+	   V.GIANTWARRIOR_ATTACK.play();
+	   return super.attack(troops, map);
    }
 
 }

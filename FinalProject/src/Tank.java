@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Does "splash" damage in a certain radius and high damage but has a very low
  * rate of fire
@@ -30,7 +32,15 @@ public class Tank extends Tower {
 	   return "Tank";
 	}
 
-	public Tower clone(float x, float y) {
+	public Tower clone(float x, float y)
+	{
 		return new Tank(x, y);
 	}
+	
+	 @Override
+	 public Troop attack(ArrayList<Troop> troops, int[][] map)
+	 {
+		 V.TANK_ATTACK.play();
+		 return super.attack(troops, map);
+	 }
 }
