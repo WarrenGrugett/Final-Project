@@ -1,5 +1,5 @@
-import java.awt.*;
-import java.util.*;
+import java.awt.Point;
+import java.util.HashMap;
 
 /**
  * Class stores all variables that do not change during runtime
@@ -113,7 +113,7 @@ public class V {
 			TANK_ATTACK = new SoundEffect("explosion.wav"), GENERATOR_ATTACK = new SoundEffect(""), SNIPERTOWER_ATTACK = new SoundEffect("snipershot.wav");
 	// Troop attack sound effects
 	public static final SoundEffect ARCHER_ATTACK = new SoundEffect("arrowfired.wav"), GIANTWARRIOR_ATTACK = new SoundEffect(""),
-			KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("");
+			KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect(""), KAMIKAZE_ATTACK = new SoundEffect("");
 	// Tower icons
 	public static final String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "generator.png", SNIPERTOWER_ICON = "snipertower.png";
