@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Troop class- shoots at enemy with arrows with certain range
  * 

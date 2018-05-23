@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * The superclass for all defensive towers placed by the player to kill enemy
  * troops

@@ -1,6 +1,9 @@
+package gamegui;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import gamecomponents.MapCreator;
 import processing.awt.*;
 
 /**

@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Tower class - Shoots really fast with low damage
  * 

@@ -1,4 +1,7 @@
+package gamesprites;
 import java.util.*;
+
+import gamegui.Gameboard;
 
 /**
  * Troop class- shoots at enemy with arrows with certain range

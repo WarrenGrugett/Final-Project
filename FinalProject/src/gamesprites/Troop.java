@@ -1,3 +1,7 @@
+package gamesprites;
+import gamecomponents.Map;
+import gamegui.Gameboard;
+
 /**
  * The superclass for all troops on the board, both enemy computer generated
  * enemies and possibly player troops if we implement them

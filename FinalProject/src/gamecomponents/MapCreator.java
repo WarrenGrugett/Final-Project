@@ -1,9 +1,12 @@
+package gamecomponents;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+import gamegui.Window;
+import gamesprites.Data;
 import processing.core.*;
 
 /**

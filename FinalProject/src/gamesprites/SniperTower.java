@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Does high damage, takes a long time to reload, and has full range of the map
  * 

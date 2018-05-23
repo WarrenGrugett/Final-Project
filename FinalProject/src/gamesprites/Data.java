@@ -1,5 +1,9 @@
+package gamesprites;
 import java.awt.*;
 import java.util.*;
+
+import gamecomponents.Map;
+import gamecomponents.SoundEffect;
 
 /**
  * Class stores all variables that do not change during runtime

@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Troop class - Melee troop that deals individual damage
  * 

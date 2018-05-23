@@ -1,9 +1,18 @@
+package gamegui;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
+
+import gamecomponents.Map;
+import gamesprites.Data;
+import gamesprites.Generator;
+import gamesprites.Kamikaze;
+import gamesprites.Tank;
+import gamesprites.Tower;
+import gamesprites.Troop;
 import processing.core.*;
 
 /**

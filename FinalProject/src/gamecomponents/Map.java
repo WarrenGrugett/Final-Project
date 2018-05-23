@@ -1,5 +1,8 @@
+package gamecomponents;
 import java.awt.*;
 import java.awt.geom.*;
+
+import gamegui.Gameboard;
 import processing.core.*;
 
 /**

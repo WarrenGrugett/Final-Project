@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Troop - Fires constantly with low damage and high range
  * 

@@ -1,3 +1,6 @@
+package gamecomponents;
+import gamegui.Window;
+
 /**
  * The class that runs the game
  * 

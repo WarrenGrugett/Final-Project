@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Generates money for the user
  * 

@@ -1,4 +1,7 @@
+package gamesprites;
 import java.util.*;
+
+import gamegui.Gameboard;
 import processing.core.*;
 
 /**

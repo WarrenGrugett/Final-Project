@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Troop - Tank-like unit that absorbs damage and is a "distraction" to other
  * troops attacking it

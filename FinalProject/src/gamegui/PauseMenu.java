@@ -1,3 +1,4 @@
+package gamegui;
 import java.awt.event.*;
 import javax.swing.*;
 

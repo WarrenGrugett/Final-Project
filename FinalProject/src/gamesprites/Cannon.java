@@ -1,3 +1,5 @@
+package gamesprites;
+
 /**
  * Tower class - Does non-splash individual damage
  * 

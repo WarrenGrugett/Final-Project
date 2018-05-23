@@ -1,4 +1,7 @@
+package gamesprites;
 import java.util.*;
+
+import gamegui.Gameboard;
 
 /**
  * Does "splash" damage in a certain radius and high damage but has a very low
