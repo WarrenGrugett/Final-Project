@@ -79,6 +79,13 @@ public class Window {
 	}
 
 	public void creator() {
+		JOptionPane.showMessageDialog(cardPanel, "For troop selection, use the right menu to select a troop to add. It will show up on the left side, under the highlighted troop.");
+		JOptionPane.showMessageDialog(cardPanel, "Use the up and down arrows to change the highlighted troop. The number next to each troop shows how many of them will be spawned.");
+		JOptionPane.showMessageDialog(cardPanel, "There will be approximately 160 milliseconds between each troop sent.");
+		JOptionPane.showMessageDialog(cardPanel, "For the map creation, select the tile you would like to place from the right menu, then click where you want to place it.");
+		JOptionPane.showMessageDialog(cardPanel, "Alternatively, you can click and drag to place that tile everywhere you pass over.");
+		JOptionPane.showMessageDialog(cardPanel, "You can also change the dimensions of the map, or the number of grid spots there are, and the background image.");
+		JOptionPane.showMessageDialog(cardPanel, "Once you are done, you can save it as a map file to be loaded from the menu.");
 		creator.loop();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "creator");
 	}

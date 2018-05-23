@@ -18,12 +18,13 @@ public class Map {
 
 	/**
 	 * 
-	 * @param String
-	 *            map of each level
+	 * @param map
+	 *            The path to the background image of the map
 	 * @param mapData
-	 *            (what the map consists of)
+	 *            A 2D Array containing a virtual representation of the path the
+	 *            troops will take
 	 * @param troopPattern
-	 *            (the locations where troops can travel)
+	 *            The attack patterns the computer will send troops in
 	 */
 	public Map(String map, int[][] mapData, Point[] troopPattern) {
 		mapPath = map;
@@ -34,11 +35,12 @@ public class Map {
 	/**
 	 * 
 	 * @param map
-	 *            PImage of map of each level
+	 *            The background map
 	 * @param mapData
-	 *            (what the map consists of)
+	 *            A 2D Array containing a virtual representation of the path the
+	 *            troops will take
 	 * @param troopPattern
-	 *            (the locations where troops can travel)
+	 *            The attack patterns the computer will send troops in
 	 */
 	public Map(PImage map, int[][] mapData, Point[] troopPattern) {
 		this.map = map;
@@ -47,32 +49,30 @@ public class Map {
 	}
 
 	/**
-	 * Postcondition: resets location
+	 * Resets the map so that it can be used again
 	 */
 	public void reset() {
 		loc = -1;
 	}
 
 	/**
-	 * draws the Map to screen
+	 * Draws the Map to onto the given Gameboard
 	 * 
-	 * @param Gameboard
-	 *            gb - the Gameboard of
+	 * @param gb
+	 *            the Gameboard for this to be drawn onto
 	 */
 	public void draw(Gameboard gb) {
 		if (map == null) {
 			map = gb.loadImage(mapPath);
 			map.resize(960, 960);
 		}
-		long t1 = System.nanoTime();
 		gb.image(map, 0, 0);
-		long t2 = System.nanoTime();
-		System.out.println(t2 - t1);
 	}
 
 	/**
 	 * 
-	 * @return map (data)
+	 * @return A 2D Array containing a virtual representation of the path the troops
+	 *         will take
 	 */
 	public int[][] map() {
 		return mapData;
@@ -88,15 +88,15 @@ public class Map {
 
 	/**
 	 * 
-	 * @return true if troop traveled through the whole map
+	 * @return true if all troops for this map have been sent, false otherwise
 	 */
-	public boolean complete() {
+	private boolean complete() {
 		return (troopAttackPattern.length == loc);
 	}
 
 	/**
 	 * 
-	 * @return
+	 * @return The next group of troops for the computer to send
 	 */
 	public Point nextTroops() {
 		loc++;
@@ -107,7 +107,7 @@ public class Map {
 
 	/**
 	 * 
-	 * @return startPoint
+	 * @return The starting point for enemy troops and ending point for player troops
 	 */
 	public Point2D.Float startPoint() {
 		return new Point2D.Float(startX * Gameboard.GRID_WIDTH, startY * Gameboard.GRID_HEIGHT);
@@ -115,19 +115,13 @@ public class Map {
 
 	/**
 	 * 
-	 * @return endPoint
+	 * @return The starting point for player troops and ending point for enemy troops
 	 */
 	public Point2D.Float endPoint() {
 		return new Point2D.Float(endX * Gameboard.GRID_WIDTH, endY * Gameboard.GRID_HEIGHT);
 	}
 
-	/**
-	 * setup for Map (initializing, etc.)
-	 * 
-	 * @param mapData
-	 *            for that level
-	 */
-	public void setup(int[][] mapData) {
+	private void setup(int[][] mapData) {
 		this.mapData = mapData;
 		for (int x = 0; x < mapData.length; x++)
 			for (int y = 0; y < mapData[0].length; y++)
