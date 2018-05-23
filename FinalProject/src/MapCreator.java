@@ -1,7 +1,11 @@
 import java.awt.*;
+import java.io.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.filechooser.*;
+
 import processing.core.*;
+
 /**
  * 
  * @author Warren
@@ -10,6 +14,7 @@ import processing.core.*;
 public class MapCreator extends PApplet {
 	private Map map;
 	private PImage background;
+	private String backgroundPath;
 	private int[][] mapData;
 	private ArrayList<Point> troops;
 	private Window w;
@@ -20,6 +25,7 @@ public class MapCreator extends PApplet {
 			"Select Map Background", "Set Map Dimensions" };
 
 	public MapCreator(Window w) {
+		noLoop();
 		this.w = w;
 		troops = new ArrayList<>();
 		mapData = new int[mHeight][mWidth];
@@ -47,9 +53,12 @@ public class MapCreator extends PApplet {
 
 	private void getBackground() {
 		JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-		chooser.showOpenDialog(null);
-		background = loadImage(chooser.getSelectedFile().getAbsolutePath());
-		background.resize(height, height);
+		chooser.setFileFilter(new FileNameExtensionFilter("Select a background image", "jpg", "png", "jpeg"));
+		if (chooser.showOpenDialog(frame) != JFileChooser.CANCEL_OPTION) {
+			backgroundPath = chooser.getSelectedFile().getAbsolutePath();
+			background = loadImage(backgroundPath);
+			background.resize(height, height);
+		}
 	}
 
 	private void drawMapCreator() {
@@ -192,12 +201,44 @@ public class MapCreator extends PApplet {
 	}
 
 	public void finishMap() {
-		Point[] troops = new Point[this.troops.size()];
-		for (int i = 0; i < troops.length; i++) {
-			troops[i] = this.troops.get(i);
+		if (!troops.isEmpty() && backgroundPath != null) {
+			Point[] troops = new Point[this.troops.size()];
+			for (int i = 0; i < troops.length; i++) {
+				troops[i] = this.troops.get(i);
+			}
+			map = new Map(background, mapData, troops);
+			JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+			chooser.setFileFilter(new FileNameExtensionFilter("Select a destination file", "map"));
+			if (chooser.showSaveDialog(frame) != JFileChooser.CANCEL_OPTION) {
+				FileWriter writer = null;
+				BufferedWriter bWriter = null;
+				try {
+					writer = new FileWriter(chooser.getSelectedFile().getAbsolutePath());
+					bWriter = new BufferedWriter(writer);
+					bWriter.write(backgroundPath);
+					bWriter.newLine();
+					bWriter.write("/---/\n");
+					bWriter.newLine();
+					for (int y = 0; y < mapData.length; y++) {
+						for (int x = 0; x < mapData[0].length; x++) {
+							bWriter.write(mapData[y][x] + 48);
+						}
+						bWriter.newLine();
+					}
+					bWriter.write("/---/");
+					bWriter.newLine();
+					for (int i = 0; i < troops.length; i++) {
+						bWriter.write(troops[i].x + ":" + troops[i].y + ";");
+					}
+				} catch (IOException e) {
+				} finally {
+					if (bWriter != null)
+						try {
+							bWriter.close();
+						} catch (IOException e) {
+						}
+				}
+			}
 		}
-		map = new Map(background, mapData, troops);
-		// something to store the map, I don't know how I'll do this yet
-		w.menu();
 	}
 }

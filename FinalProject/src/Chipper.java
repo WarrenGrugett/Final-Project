@@ -8,34 +8,32 @@ import java.util.ArrayList;
  */
 public class Chipper extends Tower {
 
-   public Chipper(float x, float y) {
-      super(x, y, (int) V.CHIPPER_STATS[0], (int) V.CHIPPER_STATS[1], V.CHIPPER_STATS[2], (int) V.CHIPPER_STATS[3],
-            V.CHIPPER_ICON, V.CHIPPER_ATTACK_ICON);
-   }
+	public Chipper(float x, float y) {
+		super(x, y, (int) V.CHIPPER_STATS[0], (int) V.CHIPPER_STATS[1], V.CHIPPER_STATS[2], (int) V.CHIPPER_STATS[3],
+				V.CHIPPER_ICON, V.CHIPPER_ATTACK_ICON);
+	}
 
-   public void upgrade() {
-      super.upgrade(10);
+	public void upgrade() {
+		super.upgrade(10);
 
-   }
+	}
 
-   public String toString() {
-      return "Chipper\nCost: " + cost();
-   }
-   
-   public String name()
-   {
-      return "Chipper";
-   }
+	public String toString() {
+		return "Chipper\nCost: " + cost();
+	}
 
-   public Tower clone(float x, float y)
-   {
-      return new Chipper(x, y);
-   }
-   
-    @Override
-    public Troop attack(ArrayList<Troop> troops, int[][] map)
-    {
-       V.CHIPPER_ATTACK.play();
-       return super.attack(troops, map);
-    }
+	public String name() {
+		return "Chipper";
+	}
+
+	public Tower clone(float x, float y) {
+		return new Chipper(x, y);
+	}
+
+	public Troop attack(ArrayList<Troop> troops, int[][] map) {
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			V.CHIPPER_ATTACK.play();
+		return target;
+	}
 }

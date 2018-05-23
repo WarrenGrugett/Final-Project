@@ -7,40 +7,34 @@ import java.util.ArrayList;
  * @author Sepehr
  *
  */
-public class GiantWarrior extends Troop
-{
-   public GiantWarrior(float x, float y, boolean enemy, int level)
-   {
-      super(x, y, (int) V.GIANTWARRIOR_STATS[0], (int) V.GIANTWARRIOR_STATS[1], (int) V.GIANTWARRIOR_STATS[2],
-            V.GIANTWARRIOR_STATS[3], (int) (V.GIANTWARRIOR_STATS[4] * Math.pow(1.1, level-1)), enemy, V.GIANTWARRIOR_ICON,
-            V.GIANTWARRIOR_ATTACK_ICON);
-   }
+public class GiantWarrior extends Troop {
+	public GiantWarrior(float x, float y, boolean enemy, int level) {
+		super(x, y, (int) V.GIANTWARRIOR_STATS[0], (int) V.GIANTWARRIOR_STATS[1], (int) V.GIANTWARRIOR_STATS[2],
+				V.GIANTWARRIOR_STATS[3], (int) (V.GIANTWARRIOR_STATS[4] * Math.pow(1.1, level - 1)), enemy,
+				V.GIANTWARRIOR_ICON, V.GIANTWARRIOR_ATTACK_ICON);
+	}
 
-   public void upgrade()
-   {
-      super.upgrade(15, 5);
-   }
+	public void upgrade() {
+		super.upgrade(15, 5);
+	}
 
-   public String toString()
-   {
-      return "Giant Warrior\nCost: " + cost();
-   }
+	public String toString() {
+		return "Giant Warrior\nCost: " + cost();
+	}
 
-   public String name()
-   {
-      return "Giant Warrior";
-   }
-   
-   public Troop clone(float x, float y, boolean enemy, int level)
-   {
-      return new GiantWarrior(x, y, enemy, level);
-   }
-   
-   @Override
-   public Troop attack(ArrayList<Troop> troops, int[][] map)
-   {
-	   V.GIANTWARRIOR_ATTACK.play();
-	   return super.attack(troops, map);
-   }
+	public String name() {
+		return "Giant Warrior";
+	}
+
+	public Troop clone(float x, float y, boolean enemy, int level) {
+		return new GiantWarrior(x, y, enemy, level);
+	}
+
+	public Troop attack(ArrayList<Troop> troops, int[][] map) {
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			V.GIANTWARRIOR_ATTACK.play();
+		return target;
+	}
 
 }

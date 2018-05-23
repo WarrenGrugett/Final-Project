@@ -26,21 +26,20 @@ public class Tank extends Tower {
 	public String toString() {
 		return "Tank\nCost: " + (int) V.TANK_STATS[3];
 	}
-	
-	public String name()
-	{
-	   return "Tank";
+
+	public String name() {
+		return "Tank";
 	}
 
-	public Tower clone(float x, float y)
-	{
+	public Tower clone(float x, float y) {
 		return new Tank(x, y);
 	}
-	
-	 @Override
-	 public Troop attack(ArrayList<Troop> troops, int[][] map)
-	 {
-		 V.TANK_ATTACK.play();
-		 return super.attack(troops, map);
-	 }
+
+	@Override
+	public Troop attack(ArrayList<Troop> troops, int[][] map) {
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			V.TANK_ATTACK.play();
+		return target;
+	}
 }

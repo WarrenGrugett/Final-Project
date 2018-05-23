@@ -7,45 +7,38 @@ import java.util.ArrayList;
  * @author Sepehr
  *
  */
-public class SniperTower extends Tower
-{
-   private static final float radiusDamage = 1;
+public class SniperTower extends Tower {
+	private static final float radiusDamage = 1;
 
-   public SniperTower(float x, float y)
-   {
-      super(x, y, (int) V.SNIPERTOWER_STATS[0], (int) V.SNIPERTOWER_STATS[1], V.SNIPERTOWER_STATS[2],
-            (int) V.SNIPERTOWER_STATS[3], V.SNIPERTOWER_ICON, V.SNIPERTOWER_ATTACK_ICON);
-   }
+	public SniperTower(float x, float y) {
+		super(x, y, (int) V.SNIPERTOWER_STATS[0], (int) V.SNIPERTOWER_STATS[1], V.SNIPERTOWER_STATS[2],
+				(int) V.SNIPERTOWER_STATS[3], V.SNIPERTOWER_ICON, V.SNIPERTOWER_ATTACK_ICON);
+	}
 
-   public void upgrade()
-   {
-      super.upgrade(10);
-   }
+	public void upgrade() {
+		super.upgrade(10);
+	}
 
-   public float radiusDamage()
-   {
-      return radiusDamage;
-   }
+	public float radiusDamage() {
+		return radiusDamage;
+	}
 
-   public String toString()
-   {
-      return "Sniper Tower\nCost: " + (int) V.SNIPERTOWER_STATS[3];
-   }
-   
-   public String name()
-   {
-      return "Sniper Tower";
-   }
+	public String toString() {
+		return "Sniper Tower\nCost: " + (int) V.SNIPERTOWER_STATS[3];
+	}
 
-   public Tower clone(float x, float y)
-   {
-      return new SniperTower(x, y);
-   }
-   
-   @Override
-   public Troop attack(ArrayList<Troop> troops, int[][] map)
-   {
-	   V.SNIPERTOWER_ATTACK.play();
-	   return super.attack(troops, map);
-   }
+	public String name() {
+		return "Sniper Tower";
+	}
+
+	public Tower clone(float x, float y) {
+		return new SniperTower(x, y);
+	}
+
+	public Troop attack(ArrayList<Troop> troops, int[][] map) {
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			V.SNIPERTOWER_ATTACK.play();
+		return target;
+	}
 }

@@ -32,10 +32,11 @@ public class Cannon extends Tower {
       return new Cannon(x, y);
    }
    
-    @Override
     public Troop attack(ArrayList<Troop> troops, int[][] map)
     {
-       V.CANNON_ATTACK.play();
-       return super.attack(troops, map);
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			V.CANNON_ATTACK.play();
+		return target;
     }
 }
