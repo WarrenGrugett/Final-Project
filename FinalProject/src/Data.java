@@ -33,8 +33,7 @@ public class Data {
 							new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } },
-					new Point[] { new Point(0, 3), new Point(-1, 10), new Point(1, 3), new Point(-1, 10),
-							new Point(1, 3), new Point(3, 1), new Point(1, 1), new Point(-1, 30) }),
+					new Point[] { new Point(0, 3) }),
 			// Map 2
 			new Map("tdmap1.png",
 					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -52,7 +51,7 @@ public class Data {
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
 							new int[] { 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
 							new int[] { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 } },
-					new Point[] { new Point(0, 3), new Point(-1, 8), new Point(0, 3), }),
+					new Point[] { new Point(0, 2), new Point(-1, 40), new Point(1, 1), new Point(-1, 10), new Point(0, 3), new Point(-1, 10), new Point(2, 1), new Point(-1, 10), new Point(3, 1)}),
 			// Map 3
 			new Map("tdmap2.png",
 					new int[][] { new int[] { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -70,7 +69,7 @@ public class Data {
 							new int[] { 3, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
-					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }),
+					new Point[] { new Point(1, 1), new Point(-1, 40), new Point(1,1), new Point(2, 1), new Point(-1, 20), new Point(3, 3)}),
 			// Map 4
 			new Map("tdmap3.png",
 					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 },
@@ -88,7 +87,7 @@ public class Data {
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
 							new int[] { 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
 							new int[] { 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
-					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }),
+					new Point[] { new Point(1, 3), new Point(-1, 30), new Point(3, 2), new Point(-1, 30), new Point(4, 1)}),
 			// Map 5
 			new Map("tdmap4.png",
 					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -106,7 +105,7 @@ public class Data {
 							new int[] { 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
 							new int[] { 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 							new int[] { 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3 } },
-					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }) };
+					new Point[] {new Point(0, 3), new Point(-1, 30), new Point(2, 2), new Point(-1, 30), new Point(3, 1), new Point(0, 1), new Point(-1, 30), new Point(2, 1), new Point(2, 2)})};
 	/**
 	 * Tower attack sound effects
 	 */
@@ -150,7 +149,7 @@ public class Data {
 	/**
 	 * List of all tower stats Key: damage, attack speed, range, cost
 	 */
-	public static final float[] CANNON_STATS = { 50, 150, 2.5f, 60 };
+	public static final float[] CANNON_STATS = { 50, 75, 2.5f, 60 };
 	public static final float[] CHIPPER_STATS = { 5, 25, 3.5f, 80 };
 	public static final float[] TANK_STATS = { 100, 300, 3.5f, 90 };
 	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
@@ -160,8 +159,8 @@ public class Data {
 	 * List of Troop stats Key: health, damage, attack speed, range, cost
 	 */
 	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 };
-	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
-	public static final float[] KNIGHT_STATS = { 200, 40, 200, 1, 40 };
+	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 450, 1, 50 };
+	public static final float[] KNIGHT_STATS = { 200, 40, 300, 1, 40 };
 	public static final float[] MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 };
 	public static final float[] KAMIKAZE_STATS = { 200, 100, 0, 4, 60 };
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS,

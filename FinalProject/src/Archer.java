@@ -10,14 +10,10 @@ public class Archer extends Troop {
 	/**
 	 * Invokes super constructor to initialize Troop
 	 * 
-	 * @param x
-	 *            position of Archer
-	 * @param y
-	 *            position of Archer
-	 * @param enemy
-	 *            if one exists
-	 * @param level
-	 *            of the game
+	 * @param x position of Archer
+	 * @param y position of Archer
+	 * @param enemy if one exists
+	 * @param level of the game
 	 */
 	public Archer(float x, float y, boolean enemy, int level) {
 		super(x, y, (int) Data.ARCHER_STATS[0], (int) Data.ARCHER_STATS[1], (int) Data.ARCHER_STATS[2],
@@ -25,7 +21,8 @@ public class Archer extends Troop {
 				Data.ARCHER_ATTACK_ICON);
 	}
 
-	public void upgrade() {
+	public void upgrade() 
+	{
 		super.upgrade(10, 5);
 	}
 

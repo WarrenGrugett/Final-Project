@@ -10,10 +10,8 @@ public class Generator extends Tower {
 	/**
 	 * Postcondition: calls Tower constructor (super)
 	 * 
-	 * @param x
-	 *            position of Generator
-	 * @param y
-	 *            position of Generator
+	 * @param x position of Generator
+	 * @param y position of Generator
 	 */
 	public Generator(float x, float y) {
 		super(x, y, (int) Data.GENERATOR_STATS[0], (int) Data.GENERATOR_STATS[1], Data.GENERATOR_STATS[2],
