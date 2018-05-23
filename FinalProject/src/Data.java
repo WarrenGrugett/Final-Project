@@ -150,22 +150,15 @@ public class Data {
 	/**
 	 * List of all tower stats Key: damage, attack speed, range, cost
 	 */
-	public static final float[] CANNON_STATS = { 50, 150, 2.5f, 60 };
-	public static final float[] CHIPPER_STATS = { 5, 25, 3.5f, 80 };
-	public static final float[] TANK_STATS = { 100, 300, 3.5f, 90 };
-	public static final float[] GENERATOR_STATS = { 0, 1000, 0, 100 };
-	public static final float[] SNIPERTOWER_STATS = { 100, 1000, 15, 80 };
-	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS, SNIPERTOWER_STATS };
+	public static final float[] CANNON_STATS = { 50, 150, 2.5f, 60 }, CHIPPER_STATS = { 5, 25, 3.5f, 80 },
+			TANK_STATS = { 100, 300, 3.5f, 90 }, GENERATOR_STATS = { 0, 1000, 0, 100 },
+			SNIPERTOWER_STATS = { 100, 1000, 15, 80 };
 	/**
 	 * List of Troop stats Key: health, damage, attack speed, range, cost
 	 */
-	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 };
-	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
-	public static final float[] KNIGHT_STATS = { 200, 40, 200, 1, 40 };
-	public static final float[] MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 };
-	public static final float[] KAMIKAZE_STATS = { 200, 100, 0, 4, 60 };
-	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS,
-			KAMIKAZE_STATS };
+	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 }, GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 },
+			KNIGHT_STATS = { 200, 40, 200, 1, 40 }, MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 },
+			KAMIKAZE_STATS = { 200, 100, 0, 4, 60 };
 	static {
 		P_UNITS.put(0, new Cannon(0, 0));
 		P_UNITS.put(1, new Chipper(0, 0));
@@ -183,5 +176,12 @@ public class Data {
 		TROOPS.put(3, new Machinist(0, 0, false, 1));
 		TROOPS.put(4, new Kamikaze(0, 0, false, 1));
 	}
-	public static final int NUM_TROOPS = TROOPS.size(), NUM_UNITS = P_UNITS.size();
+	/**
+	 * The number of Troops placable by the computer
+	 */
+	public static final int NUM_TROOPS = TROOPS.size();
+	/**
+	 * The number of units placable by the player
+	 */
+	public static final int NUM_UNITS = P_UNITS.size();
 }
