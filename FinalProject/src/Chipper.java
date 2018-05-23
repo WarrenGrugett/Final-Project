@@ -26,7 +26,7 @@ public class Chipper extends Tower
    {
       super.upgrade(10);
 
-   }
+	}
 
    /**
     * @return name + cost
@@ -55,7 +55,6 @@ public class Chipper extends Tower
    /**
     * overrides attack method from Sprite
     */
-   @Override
    public Troop attack(ArrayList<Troop> troops, int[][] map)
    {
       V.CHIPPER_ATTACK.play();

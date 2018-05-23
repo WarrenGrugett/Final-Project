@@ -6,21 +6,23 @@ import java.util.ArrayList;
  * @author Sepehr
  *
  */
-public class Archer extends Troop
-{
-   /**
-    * Invokes super constructor to initialize Troop
-    * 
-    * @param x position of Archer
-    * @param y  position of Archer
-    * @param enemy if one exists
-    * @param level of the game
-    */
-   public Archer(float x, float y, boolean enemy, int level)
-   {
-      super(x, y, (int) V.ARCHER_STATS[0], (int) V.ARCHER_STATS[1], (int) V.ARCHER_STATS[2], V.ARCHER_STATS[3],
-            (int) (V.ARCHER_STATS[4] * Math.pow(1.1, level - 1)), enemy, V.ARCHER_ICON, V.ARCHER_ATTACK_ICON);
-   }
+public class Archer extends Troop {
+	/**
+	 * Invokes super constructor to initialize Troop
+	 * 
+	 * @param x
+	 *            position of Archer
+	 * @param y
+	 *            position of Archer
+	 * @param enemy
+	 *            if one exists
+	 * @param level
+	 *            of the game
+	 */
+	public Archer(float x, float y, boolean enemy, int level) {
+		super(x, y, (int) V.ARCHER_STATS[0], (int) V.ARCHER_STATS[1], (int) V.ARCHER_STATS[2], V.ARCHER_STATS[3],
+				(int) (V.ARCHER_STATS[4] * Math.pow(1.1, level - 1)), enemy, V.ARCHER_ICON, V.ARCHER_ATTACK_ICON);
+	}
 
    /**
     * upgrades health by 10, damage by 5
@@ -46,21 +48,17 @@ public class Archer extends Troop
       return new Archer(x, y, enemy, level);
    }
 
-   /**
-    * @return name of Troop/Tower
-    */
-   public String name()
-   {
-      return "Archer";
-   }
+	/**
+	 * @return name of Troop/Tower
+	 */
+	public String name() {
+		return "Archer";
+	}
 
-   /**
-    * overrides attack method from Sprite
-    */
-   @Override
-   public Troop attack(ArrayList<Troop> troops, int[][] map)
-   {
-      V.ARCHER_ATTACK.play();
-      return super.attack(troops, map);
-   }
+	public Troop attack(ArrayList<Troop> troops, int[][] map) {
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			V.ARCHER_ATTACK.play();
+		return target;
+	}
 }
