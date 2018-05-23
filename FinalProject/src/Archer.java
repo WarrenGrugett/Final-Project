@@ -20,8 +20,8 @@ public class Archer extends Troop {
 	 *            of the game
 	 */
 	public Archer(float x, float y, boolean enemy, int level) {
-		super(x, y, (int) V.ARCHER_STATS[0], (int) V.ARCHER_STATS[1], (int) V.ARCHER_STATS[2], V.ARCHER_STATS[3],
-				(int) (V.ARCHER_STATS[4] * Math.pow(1.1, level - 1)), enemy, V.ARCHER_ICON, V.ARCHER_ATTACK_ICON);
+		super(x, y, (int) Data.ARCHER_STATS[0], (int) Data.ARCHER_STATS[1], (int) Data.ARCHER_STATS[2], Data.ARCHER_STATS[3],
+				(int) (Data.ARCHER_STATS[4] * Math.pow(1.1, level - 1)), enemy, Data.ARCHER_ICON, Data.ARCHER_ATTACK_ICON);
 	}
 
    /**
@@ -58,7 +58,7 @@ public class Archer extends Troop {
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
 		Troop target = super.attack(troops, map);
 		if (target != null)
-			V.ARCHER_ATTACK.play();
+			Data.ARCHER_ATTACK.play();
 		return target;
 	}
 }

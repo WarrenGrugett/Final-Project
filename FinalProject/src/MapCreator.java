@@ -105,7 +105,7 @@ public class MapCreator extends PApplet {
 			else
 				fill(0);
 			if (troops.get(i).x != -1)
-				text(V.TROOPS.get(troops.get(i).x).name() + ": " + troops.get(i).y, 10, (i - loc) * 50 + height / 2);
+				text(Data.TROOPS.get(troops.get(i).x).name() + ": " + troops.get(i).y, 10, (i - loc) * 50 + height / 2);
 			else
 				text("Empty: " + troops.get(i).y, 10, (i - loc) * 50 + height / 2);
 		}
@@ -120,7 +120,7 @@ public class MapCreator extends PApplet {
 		fill(100);
 		float shopWidth = width - height;
 		rect(height, 0, shopWidth, height);
-		int num = (troopSelect) ? V.NUM_TROOPS + 4 : menuItems.length + 2;
+		int num = (troopSelect) ? Data.NUM_TROOPS + 4 : menuItems.length + 2;
 		float height = this.height / (float) num;
 		textAlign(CENTER, CENTER);
 		for (int i = 0; i < num - 1; i++) {
@@ -130,7 +130,7 @@ public class MapCreator extends PApplet {
 			rect(this.height, i * height, shopWidth, 0.9f * height);
 			fill(0);
 			if (troopSelect && i < num - 4) {
-				text(V.TROOPS.get(i).name(), width - shopWidth / 2, (i + 0.5f) * height);
+				text(Data.TROOPS.get(i).name(), width - shopWidth / 2, (i + 0.5f) * height);
 			} else if (troopSelect && i == num - 3)
 				text("Delete Last Troop", width - shopWidth / 2, (i + 0.5f) * height);
 			else if (troopSelect)
@@ -159,13 +159,13 @@ public class MapCreator extends PApplet {
 	 * Processes input if mousePressed
 	 */
 	public void mousePressed() {
-		int num = (troopSelect) ? V.NUM_TROOPS + 4 : menuItems.length + 2;
+		int num = (troopSelect) ? Data.NUM_TROOPS + 4 : menuItems.length + 2;
 		float height = this.height / (float) num;
 		if (mouseX > this.height) {
 			if (mouseY % height < 0.9f * height) {
 				int y = (int) (mouseY / height);
 				if (troopSelect) {
-					if (y < V.NUM_TROOPS) {
+					if (y < Data.NUM_TROOPS) {
 						if (loc > 0 && troops.get(loc - 1).x == y)
 							troops.set(loc - 1, new Point(troops.get(loc - 1).x, troops.get(loc - 1).y + 1));
 						else {

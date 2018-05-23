@@ -21,9 +21,9 @@ public class GiantWarrior extends Troop {
 	 *            of the game
 	 */
 	public GiantWarrior(float x, float y, boolean enemy, int level) {
-		super(x, y, (int) V.GIANTWARRIOR_STATS[0], (int) V.GIANTWARRIOR_STATS[1], (int) V.GIANTWARRIOR_STATS[2],
-				V.GIANTWARRIOR_STATS[3], (int) (V.GIANTWARRIOR_STATS[4] * Math.pow(1.1, level - 1)), enemy,
-				V.GIANTWARRIOR_ICON, V.GIANTWARRIOR_ATTACK_ICON);
+		super(x, y, (int) Data.GIANTWARRIOR_STATS[0], (int) Data.GIANTWARRIOR_STATS[1], (int) Data.GIANTWARRIOR_STATS[2],
+				Data.GIANTWARRIOR_STATS[3], (int) (Data.GIANTWARRIOR_STATS[4] * Math.pow(1.1, level - 1)), enemy,
+				Data.GIANTWARRIOR_ICON, Data.GIANTWARRIOR_ATTACK_ICON);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class GiantWarrior extends Troop {
 	 * @return new GiantWarrior from the following parameters
 	 */
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		V.GIANTWARRIOR_ATTACK.play();
+		Data.GIANTWARRIOR_ATTACK.play();
 		return super.attack(troops, map);
 	}
 }

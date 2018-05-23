@@ -19,8 +19,8 @@ public class Tank extends Tower {
 	 *            position of Tank
 	 */
 	public Tank(float x, float y) {
-		super(x, y, (int) V.TANK_STATS[0], (int) V.TANK_STATS[1], V.TANK_STATS[2], (int) V.TANK_STATS[3], V.TANK_ICON,
-				V.TANK_ATTACK_ICON);
+		super(x, y, (int) Data.TANK_STATS[0], (int) Data.TANK_STATS[1], Data.TANK_STATS[2], (int) Data.TANK_STATS[3], Data.TANK_ICON,
+				Data.TANK_ATTACK_ICON);
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class Tank extends Tower {
 	 * @return name + cost
 	 */
 	public String toString() {
-		return "Tank\nCost: " + (int) V.TANK_STATS[3];
+		return "Tank\nCost: " + (int) Data.TANK_STATS[3];
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class Tank extends Tower {
 	 * overrides attack method from Sprite
 	 */
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		V.TANK_ATTACK.play();
+		Data.TANK_ATTACK.play();
 		return super.attack(troops, map);
 	}
 }

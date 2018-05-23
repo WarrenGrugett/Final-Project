@@ -75,8 +75,8 @@ public abstract class Troop extends Sprite
       }
       if (dir == 0)
       {
-         if ((y() - V.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT < 0
-               || map[(int) (y() - V.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT][locX] == 1)
+         if ((y() - Data.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT < 0
+               || map[(int) (y() - Data.MOVEMENT_SPEED) / Gameboard.GRID_HEIGHT][locX] == 1)
          {
             if (locX + 1 == map[0].length || map[locY][locX + 1] == 1)
                if (locX == 0 || map[locY][locX - 1] == 1)
@@ -85,24 +85,24 @@ public abstract class Troop extends Sprite
                {
                   dir = 3;
                   changeY = (locY * Gameboard.GRID_HEIGHT - y());
-                  changeX = -V.MOVEMENT_SPEED - changeY;
+                  changeX = -Data.MOVEMENT_SPEED - changeY;
                }
             else
             {
                dir = 1;
                changeY = (locY * Gameboard.GRID_HEIGHT - y());
-               changeX = V.MOVEMENT_SPEED + changeY;
+               changeX = Data.MOVEMENT_SPEED + changeY;
             }
          }
          else
          {
-            changeY = -V.MOVEMENT_SPEED;
+            changeY = -Data.MOVEMENT_SPEED;
          }
       }
       else if (dir == 1)
       {
-         if ((int) (x() + V.MOVEMENT_SPEED + Gameboard.GRID_WIDTH) / Gameboard.GRID_WIDTH >= map[0].length
-               || map[locY][(int) (x() + V.MOVEMENT_SPEED + Gameboard.GRID_WIDTH) / Gameboard.GRID_WIDTH] == 1)
+         if ((int) (x() + Data.MOVEMENT_SPEED + Gameboard.GRID_WIDTH) / Gameboard.GRID_WIDTH >= map[0].length
+               || map[locY][(int) (x() + Data.MOVEMENT_SPEED + Gameboard.GRID_WIDTH) / Gameboard.GRID_WIDTH] == 1)
          {
             if (locY + 1 == map.length || map[locY + 1][locX] == 1)
                if (locY == 0 || map[locY - 1][locX] == 1)
@@ -111,24 +111,24 @@ public abstract class Troop extends Sprite
                {
                   dir = 0;
                   changeX = (locX * Gameboard.GRID_WIDTH - x());
-                  changeY = -V.MOVEMENT_SPEED + changeX;
+                  changeY = -Data.MOVEMENT_SPEED + changeX;
                }
             else
             {
                dir = 2;
                changeX = (locX * Gameboard.GRID_WIDTH - x());
-               changeY = V.MOVEMENT_SPEED - changeX;
+               changeY = Data.MOVEMENT_SPEED - changeX;
             }
          }
          else
          {
-            changeX = V.MOVEMENT_SPEED;
+            changeX = Data.MOVEMENT_SPEED;
          }
       }
       else if (dir == 2)
       {
-         if ((int) (y() + V.MOVEMENT_SPEED + Gameboard.GRID_HEIGHT) / Gameboard.GRID_HEIGHT >= map.length
-               || map[(int) (y() + V.MOVEMENT_SPEED + Gameboard.GRID_HEIGHT) / Gameboard.GRID_HEIGHT][locX] == 1)
+         if ((int) (y() + Data.MOVEMENT_SPEED + Gameboard.GRID_HEIGHT) / Gameboard.GRID_HEIGHT >= map.length
+               || map[(int) (y() + Data.MOVEMENT_SPEED + Gameboard.GRID_HEIGHT) / Gameboard.GRID_HEIGHT][locX] == 1)
          {
             if (locX == 0 || map[locY][locX - 1] == 1)
                if (locX + 1 == map[0].length || map[locY][locX + 1] == 1)
@@ -137,24 +137,24 @@ public abstract class Troop extends Sprite
                {
                   dir = 1;
                   changeY = (locY * Gameboard.GRID_HEIGHT - y());
-                  changeX = V.MOVEMENT_SPEED - changeY;
+                  changeX = Data.MOVEMENT_SPEED - changeY;
                }
             else
             {
                dir = 3;
                changeY = (locY * Gameboard.GRID_HEIGHT - y());
-               changeX = -V.MOVEMENT_SPEED + changeY;
+               changeX = -Data.MOVEMENT_SPEED + changeY;
             }
          }
          else
          {
-            changeY = V.MOVEMENT_SPEED;
+            changeY = Data.MOVEMENT_SPEED;
          }
       }
       else if (dir == 3)
       {
-         if ((x() - V.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH < 0
-               || map[locY][(int) (x() - V.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH] == 1)
+         if ((x() - Data.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH < 0
+               || map[locY][(int) (x() - Data.MOVEMENT_SPEED) / Gameboard.GRID_WIDTH] == 1)
          {
             if (locY == 0 || map[locY - 1][locX] == 1)
                if (locY + 1 == map.length || map[locY + 1][locX] == 1)
@@ -163,18 +163,18 @@ public abstract class Troop extends Sprite
                {
                   dir = 2;
                   changeX = (locX * Gameboard.GRID_WIDTH - x());
-                  changeY = V.MOVEMENT_SPEED + changeX;
+                  changeY = Data.MOVEMENT_SPEED + changeX;
                }
             else
             {
                dir = 0;
                changeX = (locX * Gameboard.GRID_WIDTH - x());
-               changeY = -V.MOVEMENT_SPEED - changeX;
+               changeY = -Data.MOVEMENT_SPEED - changeX;
             }
          }
          else
          {
-            changeX = -V.MOVEMENT_SPEED;
+            changeX = -Data.MOVEMENT_SPEED;
          }
       }
       move(changeX, changeY);
