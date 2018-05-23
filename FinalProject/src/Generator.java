@@ -15,8 +15,8 @@ public class Generator extends Tower
     */
    public Generator(float x, float y)
    {
-      super(x, y, (int) V.GENERATOR_STATS[0], (int) V.GENERATOR_STATS[1], V.GENERATOR_STATS[2],
-            (int) V.GENERATOR_STATS[3], V.GENERATOR_ICON, null);
+      super(x, y, (int) Data.GENERATOR_STATS[0], (int) Data.GENERATOR_STATS[1], Data.GENERATOR_STATS[2],
+            (int) Data.GENERATOR_STATS[3], Data.GENERATOR_ICON, null);
       generation = 1;
    }
 
@@ -43,7 +43,7 @@ public class Generator extends Tower
     */
    public String toString()
    {
-      return "Generator\nCost: " + (int) V.GENERATOR_STATS[3];
+      return "Generator\nCost: " + (int) Data.GENERATOR_STATS[3];
    }
 
    /**

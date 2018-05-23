@@ -16,8 +16,8 @@ public class Cannon extends Tower {
 	 *            position of cannon
 	 */
 	public Cannon(float x, float y) {
-		super(x, y, (int) V.CANNON_STATS[0], (int) V.CANNON_STATS[1], V.CANNON_STATS[2], (int) V.CANNON_STATS[3],
-				V.CANNON_ICON, V.CANNON_ATTACK_ICON);
+		super(x, y, (int) Data.CANNON_STATS[0], (int) Data.CANNON_STATS[1], Data.CANNON_STATS[2], (int) Data.CANNON_STATS[3],
+				Data.CANNON_ICON, Data.CANNON_ATTACK_ICON);
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class Cannon extends Tower {
 	 * @return name + cost
 	 */
 	public String toString() {
-		return "Cannon\nCost: " + (int) V.CANNON_STATS[3];
+		return "Cannon\nCost: " + (int) Data.CANNON_STATS[3];
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class Cannon extends Tower {
 	 * overrides attack method from Sprite
 	 */
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		V.CANNON_ATTACK.play();
+		Data.CANNON_ATTACK.play();
 		return super.attack(troops, map);
 	}
 }

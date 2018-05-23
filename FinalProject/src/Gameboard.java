@@ -35,7 +35,7 @@ public class Gameboard extends PApplet implements ActionListener {
 		timer = new javax.swing.Timer(5, this);
 		towers = new ArrayList<>();
 		troops = new ArrayList<>();
-		map = V.maps[level];
+		map = Data.maps[level];
 		sentTroop = map.nextTroops();
 	}
 
@@ -121,7 +121,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				delay = 0;
 				if (sentTroop.x != -1) {
 					troops.add(
-							((Troop) V.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true, 1));
+							((Troop) Data.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true, 1));
 					troops.get(troops.size() - 1).orientate(map);
 				}
 				sentTroop.y--;
@@ -189,19 +189,19 @@ public class Gameboard extends PApplet implements ActionListener {
 		shopWidth = width / ratio - height / ratio;
 		rect(height / ratio, 0, shopWidth, height / ratio);
 		textAlign(CENTER, CENTER);
-		int num = V.NUM_UNITS + 3;
+		int num = Data.NUM_UNITS + 3;
 		float height = this.height / (float) num / ratio;
 		for (int i = 0; i < num - 1; i++) {
 			fill(200);
-			if (selected == i || (destroying && i == V.NUM_UNITS) || (upgrading && i == V.NUM_UNITS + 1))
+			if (selected == i || (destroying && i == Data.NUM_UNITS) || (upgrading && i == Data.NUM_UNITS + 1))
 				fill(255);
 			rect(this.height / ratio, i * height, shopWidth, 0.9f * height);
 			fill(0);
-			if (i < V.NUM_UNITS) {
-				text(V.P_UNITS.get(i).toString(), width / ratio - shopWidth / 2, (i + 0.5f) * height);
-			} else if (i == V.NUM_UNITS) {
+			if (i < Data.NUM_UNITS) {
+				text(Data.P_UNITS.get(i).toString(), width / ratio - shopWidth / 2, (i + 0.5f) * height);
+			} else if (i == Data.NUM_UNITS) {
 				text("Demolish\nReturn: 50% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
-			} else if (i == V.NUM_UNITS + 1) {
+			} else if (i == Data.NUM_UNITS + 1) {
 				text("Upgrade Tower\nCost: 25% original cost", width / ratio - shopWidth / 2, (i + 0.5f) * height);
 			}
 		}
@@ -215,12 +215,12 @@ public class Gameboard extends PApplet implements ActionListener {
 	}
 
 	public void mousePressed() {
-		int num = V.NUM_UNITS + 3;
+		int num = Data.NUM_UNITS + 3;
 		float height = this.height / (float) num;
 		if (mouseX > this.height) {
 			if (mouseY % height < 0.9f * height) {
 				int y = (int) (mouseY / height);
-				if (y < V.NUM_UNITS - V.NUM_TROOPS) {
+				if (y < Data.NUM_UNITS - Data.NUM_TROOPS) {
 					if (selected != y) {
 						selected = y;
 						placing = true;
@@ -234,25 +234,25 @@ public class Gameboard extends PApplet implements ActionListener {
 						upgrading = false;
 						selectedUnit = -1;
 					}
-				} else if (y < V.NUM_UNITS) {
+				} else if (y < Data.NUM_UNITS) {
 					selected = -1;
 					placing = false;
 					destroying = false;
 					upgrading = false;
-					if (money >= V.P_UNITS.get(y).cost()) {
-						Troop troop = ((Troop) V.P_UNITS.get(y)).clone(map.endPoint().y, map.endPoint().x, false, 1);
+					if (money >= Data.P_UNITS.get(y).cost()) {
+						Troop troop = ((Troop) Data.P_UNITS.get(y)).clone(map.endPoint().y, map.endPoint().x, false, 1);
 						troop.orientate(map);
 						troops.add(troop);
 						selectedUnit = troops.indexOf(troop);
-						money -= V.P_UNITS.get(y).cost();
+						money -= Data.P_UNITS.get(y).cost();
 					}
-				} else if (y == V.NUM_UNITS) {
+				} else if (y == Data.NUM_UNITS) {
 					selected = -1;
 					placing = false;
 					destroying = true;
 					upgrading = false;
 					selectedUnit = -1;
-				} else if (y == V.NUM_UNITS + 1) {
+				} else if (y == Data.NUM_UNITS + 1) {
 					selected = -1;
 					placing = false;
 					destroying = false;
@@ -270,13 +270,13 @@ public class Gameboard extends PApplet implements ActionListener {
 				}
 			}
 			if (!onTower) {
-				if (money >= V.P_UNITS.get(selected).cost()) {
+				if (money >= Data.P_UNITS.get(selected).cost()) {
 					int y = (int) (mouseY / GRID_HEIGHT / ratio);
 					int x = (int) (mouseX / GRID_WIDTH / ratio);
 					if (map.map()[y][x] == 1) {
-						towers.add(((Tower) V.P_UNITS.get(selected)).clone(x * GRID_WIDTH, y * GRID_HEIGHT));
+						towers.add(((Tower) Data.P_UNITS.get(selected)).clone(x * GRID_WIDTH, y * GRID_HEIGHT));
 						selectedUnit = towers.size() - 1;
-						money -= V.P_UNITS.get(selected).cost();
+						money -= Data.P_UNITS.get(selected).cost();
 					}
 				}
 			} else {
@@ -405,12 +405,12 @@ public class Gameboard extends PApplet implements ActionListener {
 			w.menu();
 		}
 		level++;
-		if (level == V.maps.length)
+		if (level == Data.maps.length)
 			win();
 		JOptionPane.showMessageDialog(frame, "Congratulations\n You completed this level");
 		JOptionPane.showMessageDialog(frame,
 				"Troops are level " + (level + 1) + " now" + "\n Towers can be upgraded up to level " + (level + 1));
-		map = V.maps[level];
+		map = Data.maps[level];
 		timer.restart();
 		troops = new ArrayList<>();
 		towers = new ArrayList<>();

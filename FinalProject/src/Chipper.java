@@ -15,8 +15,8 @@ public class Chipper extends Tower
     */
    public Chipper(float x, float y)
    {
-      super(x, y, (int) V.CHIPPER_STATS[0], (int) V.CHIPPER_STATS[1], V.CHIPPER_STATS[2], (int) V.CHIPPER_STATS[3],
-            V.CHIPPER_ICON, V.CHIPPER_ATTACK_ICON);
+      super(x, y, (int) Data.CHIPPER_STATS[0], (int) Data.CHIPPER_STATS[1], Data.CHIPPER_STATS[2], (int) Data.CHIPPER_STATS[3],
+            Data.CHIPPER_ICON, Data.CHIPPER_ATTACK_ICON);
    }
 
    /**
@@ -57,7 +57,7 @@ public class Chipper extends Tower
     */
    public Troop attack(ArrayList<Troop> troops, int[][] map)
    {
-      V.CHIPPER_ATTACK.play();
+      Data.CHIPPER_ATTACK.play();
       return super.attack(troops, map);
    }
 }

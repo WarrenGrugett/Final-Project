@@ -20,9 +20,9 @@ public class Machinist extends Troop {
 	 *            of the game
 	 */
 	public Machinist(float x, float y, boolean enemy, int level) {
-		super(x, y, (int) V.MACHINIST_STATS[0], (int) V.MACHINIST_STATS[1], (int) V.MACHINIST_STATS[2],
-				V.MACHINIST_STATS[3], (int) (V.MACHINIST_STATS[4] * Math.pow(1.1, level - 1)), enemy, V.MACHINIST_ICON,
-				V.MACHINIST_ATTACK_ICON);
+		super(x, y, (int) Data.MACHINIST_STATS[0], (int) Data.MACHINIST_STATS[1], (int) Data.MACHINIST_STATS[2],
+				Data.MACHINIST_STATS[3], (int) (Data.MACHINIST_STATS[4] * Math.pow(1.1, level - 1)), enemy, Data.MACHINIST_ICON,
+				Data.MACHINIST_ATTACK_ICON);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class Machinist extends Troop {
 	 * overrides attack method from Sprite
 	 */
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		V.MACHINIST_ATTACK.play();
+		Data.MACHINIST_ATTACK.play();
 		return super.attack(troops, map);
 	}
 

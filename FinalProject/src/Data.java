@@ -7,7 +7,7 @@ import java.util.*;
  * @author Sepehr, Warren, Leo
  *
  */
-public class V {
+public class Data {
 	/**
 	 *  Troop movement speed
 	 */

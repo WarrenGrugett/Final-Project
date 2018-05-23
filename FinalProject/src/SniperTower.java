@@ -18,8 +18,8 @@ public class SniperTower extends Tower {
 	 *            position of SniperTower
 	 */
 	public SniperTower(float x, float y) {
-		super(x, y, (int) V.SNIPERTOWER_STATS[0], (int) V.SNIPERTOWER_STATS[1], V.SNIPERTOWER_STATS[2],
-				(int) V.SNIPERTOWER_STATS[3], V.SNIPERTOWER_ICON, V.SNIPERTOWER_ATTACK_ICON);
+		super(x, y, (int) Data.SNIPERTOWER_STATS[0], (int) Data.SNIPERTOWER_STATS[1], Data.SNIPERTOWER_STATS[2],
+				(int) Data.SNIPERTOWER_STATS[3], Data.SNIPERTOWER_ICON, Data.SNIPERTOWER_ATTACK_ICON);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class SniperTower extends Tower {
 	 * @return name + cost
 	 */
 	public String toString() {
-		return "Sniper Tower\nCost: " + (int) V.SNIPERTOWER_STATS[3];
+		return "Sniper Tower\nCost: " + (int) Data.SNIPERTOWER_STATS[3];
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class SniperTower extends Tower {
 	 */
 	@Override
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		V.SNIPERTOWER_ATTACK.play();
+		Data.SNIPERTOWER_ATTACK.play();
 		return super.attack(troops, map);
 	}
 }
