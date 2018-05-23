@@ -17,6 +17,12 @@ public class Map
    private Point[] troopAttackPattern;
    private int loc = -1;
 
+   /**
+    * 
+    * @param String map of each level
+    * @param mapData (what the map consists of)
+    * @param troopPattern (the locations where troops can travel)
+    */
    public Map(String map, int[][] mapData, Point[] troopPattern)
    {
       mapPath = map;
@@ -24,6 +30,12 @@ public class Map
       troopAttackPattern = troopPattern;
    }
 
+   /**
+    * 
+    * @param map PImage of map of each level
+    * @param mapData (what the map consists of)
+    * @param troopPattern (the locations where troops can travel)
+    */
    public Map(PImage map, int[][] mapData, Point[] troopPattern)
    {
       this.map = map;
@@ -31,11 +43,18 @@ public class Map
       troopAttackPattern = troopPattern;
    }
 
+   /**
+    * Postcondition: resets location
+    */
    public void reset()
    {
       loc = -1;
    }
 
+   /**
+    * draws the Map to screen
+    * @param Gameboard gb - the Gameboard of 
+    */
    public void draw(Gameboard gb)
    {
       if (map == null)
@@ -46,21 +65,37 @@ public class Map
       gb.image(map, 0, 0);
    }
 
+   /**
+    * 
+    * @return map (data)
+    */
    public int[][] map()
    {
       return mapData;
    }
 
+   /**
+    * 
+    * @return troopPattern
+    */
    public Point[] troopPattern()
    {
       return troopAttackPattern;
    }
 
+   /**
+    * 
+    * @return true if troop traveled through the whole map
+    */
    public boolean complete()
    {
       return (troopAttackPattern.length == loc);
    }
 
+   /**
+    * 
+    * @return 
+    */
    public Point nextTroops()
    {
       loc++;
@@ -69,16 +104,28 @@ public class Map
       return troopAttackPattern[loc];
    }
 
+   /**
+    * 
+    * @return startPoint
+    */
    public Point2D.Float startPoint()
    {
       return new Point2D.Float(startX * Gameboard.GRID_WIDTH, startY * Gameboard.GRID_HEIGHT);
    }
 
+   /**
+    * 
+    * @return endPoint
+    */
    public Point2D.Float endPoint()
    {
       return new Point2D.Float(endX * Gameboard.GRID_WIDTH, endY * Gameboard.GRID_HEIGHT);
    }
 
+   /**
+    * setup for Map (initializing, etc.)
+    * @param mapData for that level
+    */
    public void setup(int[][] mapData)
    {
       this.mapData = mapData;

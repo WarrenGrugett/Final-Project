@@ -10,6 +10,19 @@ public abstract class Troop extends Sprite
    private int health, max, dir;
    private boolean enemy;
 
+   /**
+    * 
+    * @param x position of Troop
+    * @param y position of Troop
+    * @param health of Troop
+    * @param damage of Troop
+    * @param attackSpeed of Troop
+    * @param range of Troop
+    * @param cost of Troop
+    * @param enemy of Troop
+    * @param icon of Troop
+    * @param attackIcon of Troop
+    */
    public Troop(float x, float y, int health, int damage, int attackSpeed, float range, int cost, boolean enemy,
          String icon, String attackIcon)
    {
@@ -19,6 +32,11 @@ public abstract class Troop extends Sprite
       this.enemy = enemy;
    }
 
+   /**
+    * 
+    * @param m
+    * @return
+    */
    public boolean orientate(Map m)
    {
       int[][] map = m.map();
@@ -163,16 +181,31 @@ public abstract class Troop extends Sprite
       return false;
    }
 
+   /**
+    * 
+    * @return health of Troop
+    */
    public int health()
    {
       return health;
    }
 
+   /**
+    * 
+    * @return if enemy exists
+    */
    public boolean enemy()
    {
       return enemy;
    }
 
+   /**
+    * 
+    * @param damage supposed to be done to Troop
+    * 
+    * Postcondition: health decreased by the damage done
+    * @return true if troop is dead, false if troop is alive
+    */
    public boolean takeDamage(int damage)
    {
       health -= damage;
@@ -181,6 +214,11 @@ public abstract class Troop extends Sprite
       return false;
    }
 
+   /**
+    * 
+    * @param health increase
+    * @param damage increase
+    */
    protected void upgrade(int health, int damage)
    {
       super.upgrade(damage);
@@ -189,11 +227,18 @@ public abstract class Troop extends Sprite
 
    public abstract Troop clone(float x, float y, boolean enemy, int level);
 
+   /**
+    * @param troop is the opposing side of Troop 
+    */
    public boolean checkEnemy(Troop troop)
    {
       return troop.enemy != this.enemy;
    }
 
+   /**
+    * Draws to screen Troops from parameter gb
+    * @param gb - Gameboard used to draw Troop to screen
+    */
    public void draw(Gameboard gb)
    {
       super.draw(gb);
