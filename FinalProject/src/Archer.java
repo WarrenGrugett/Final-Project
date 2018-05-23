@@ -24,26 +24,29 @@ public class Archer extends Troop {
 				(int) (V.ARCHER_STATS[4] * Math.pow(1.1, level - 1)), enemy, V.ARCHER_ICON, V.ARCHER_ATTACK_ICON);
 	}
 
-	/**
-	 * upgrades health by 10, damage by 5
-	 */
-	public void upgrade() {
-		super.upgrade(10, 5);
-	}
+   /**
+    * upgrades health by 10, damage by 5
+    */
+   public void upgrade()
+   {
+      super.upgrade(10, 5);
+   }
 
-	/**
-	 * Displays name + cost
-	 */
-	public String toString() {
-		return "Archer\nCost: " + cost();
-	}
+   /**
+    * @return name + cost
+    */
+   public String toString()
+   {
+      return "Archer\nCost: " + cost();
+   }
 
-	/**
-	 * @return new object of Archer from the following parameters
-	 */
-	public Troop clone(float x, float y, boolean enemy, int level) {
-		return new Archer(x, y, enemy, level);
-	}
+   /**
+    * @return new Archer from the following parameters
+    */
+   public Troop clone(float x, float y, boolean enemy, int level)
+   {
+      return new Archer(x, y, enemy, level);
+   }
 
 	/**
 	 * @return name of Troop/Tower
