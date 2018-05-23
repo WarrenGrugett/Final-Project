@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Tower class - Does non-splash individual damage
  * 
@@ -35,12 +33,5 @@ public class Cannon extends Tower {
 
 	public Tower clone(float x, float y) {
 		return new Cannon(x, y);
-	}
-
-	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Troop target = super.attack(troops, map);
-		if (target != null)
-			Data.CANNON_ATTACK.play();
-		return target;
 	}
 }

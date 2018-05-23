@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Does high damage, takes a long time to reload, and has full range of the map
  * 
@@ -44,12 +42,5 @@ public class SniperTower extends Tower {
 
 	public Tower clone(float x, float y) {
 		return new SniperTower(x, y);
-	}
-
-	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Troop target = super.attack(troops, map);
-		if (target != null)
-			Data.SNIPERTOWER_ATTACK.play();
-		return target;
 	}
 }

@@ -8,38 +8,36 @@
 public abstract class Tower extends Sprite {
 
 	/**
-	 * 
 	 * @param x
-	 *            position of Tower
+	 *            X-coordinate of Tower
 	 * @param y
-	 *            position of Tower
+	 *            Y-coordinate of Tower
 	 * @param damage
-	 *            of Tower
-	 * @param attackSpeed
-	 *            of Tower
+	 *            Damage done by one attack
 	 * @param range
-	 *            of Tower
+	 *            Number of tiles away from the Tower it can attack
+	 * @param attackSpeed
+	 *            Number of timer cycles between attacks
 	 * @param cost
-	 *            of Tower
+	 *            Amount of money the Tower costs
 	 * @param icon
-	 *            of Tower
+	 *            The path of the Tower's icon
 	 * @param attackIcon
-	 *            of Tower
-	 * 
-	 *            Postcondition: invokes Sprite (super) constructor
+	 *            The path of the icon displayed when the Tower attacks
 	 */
 	public Tower(float x, float y, int damage, int attackSpeed, float range, int cost, String icon, String attackIcon) {
 		super(x, y, damage, range, attackSpeed, cost, icon, attackIcon);
 	}
-	
-	public abstract Tower clone(float x, float y);
 
 	/**
-	 * Checks if enemy exists in troop
-	 * 
-	 * @param troop
-	 * @return boolean returned from the enemy method of troop
+	 * @param x
+	 *            X-coordinate of Tower
+	 * @param y
+	 *            Y-coordinate of Tower
+	 * @return A copy of the given tower with x-coordinate x, and y-coordinate y
 	 */
+	public abstract Tower clone(float x, float y);
+
 	public boolean checkEnemy(Troop troop) {
 		return troop.enemy();
 	}
