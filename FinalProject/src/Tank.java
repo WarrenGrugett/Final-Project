@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Does "splash" damage in a certain radius and high damage but has a very low
@@ -62,12 +62,5 @@ public class Tank extends Tower {
 			}
 		}
 		return dead;
-	}
-
-	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Troop target = super.attack(troops, map);
-		if (target != null)
-			Data.TANK_ATTACK.play();
-		return target;
 	}
 }

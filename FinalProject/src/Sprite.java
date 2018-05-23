@@ -16,8 +16,6 @@ public abstract class Sprite {
 	private Troop target;
 
 	/**
-	 * Initializes all fields from parameters given
-	 * 
 	 * @param x
 	 *            X-coordinate of Sprite
 	 * @param y
@@ -33,7 +31,7 @@ public abstract class Sprite {
 	 * @param icon
 	 *            The path of the Sprite's icon
 	 * @param attackIcon
-	 *            The icon displayed when the Sprite attacks
+	 *            The path of the icon displayed when the Sprite attacks
 	 */
 	public Sprite(float x, float y, int damage, float range, int attackSpeed, int cost, String icon,
 			String attackIcon) {
@@ -206,15 +204,7 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @return Number of timer cycles between attacks
-	 */
-	public int attackSpeed() {
-		return attackSpeed;
-	}
-
-	/**
-	 * 
-	 * @return if attackSpeed is less than delay, return false else true
+	 * @return true if the Troop can attack, false otherwise
 	 */
 	public boolean attack() {
 		delayCount++;
@@ -226,14 +216,13 @@ public abstract class Sprite {
 	}
 
 	/**
-	 * attacks the target troop
+	 * Targets the troop closest to the map end
 	 * 
 	 * @param troops
-	 * @param map
-	 *            of the level
-	 * @return target troop
+	 *            Troops to select a target from
+	 * @return The targeted troop
 	 */
-	public Troop attack(ArrayList<Troop> troops, int[][] map) {
+	public Troop attack(ArrayList<Troop> troops) {
 		float distance = range() * Gameboard.GRID_HEIGHT;
 		for (Troop troop : troops)
 			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance && checkEnemy(troop)) {
@@ -246,25 +235,38 @@ public abstract class Sprite {
 	/**
 	 * 
 	 * @param x
-	 *            position
+	 *            X-coordinate to test
 	 * @param y
-	 *            position
-	 * @return true if coordinates are contained within Sprite's coordinates
+	 *            Y-coordinate to test
+	 * @return true if coordinates are contained within Sprite's coordinates, false
+	 *         otherwise
 	 */
 	public boolean contains(float x, float y) {
 		return (x > x() && x < x() + Gameboard.GRID_WIDTH && y > y() && y < y() + Gameboard.GRID_WIDTH);
 	}
 
+	/**
+	 * Checks if the given troop is on the opposing side
+	 * 
+	 * @param troop
+	 *            Troop to test
+	 * @return true if the given troop is on the opposite side, false otherwise
+	 */
 	public abstract boolean checkEnemy(Troop troop);
 
+	/**
+	 * @return The name and cost of the Sprite
+	 */
 	public abstract String toString();
 
+	/**
+	 * The name of the sprite
+	 * 
+	 * @return
+	 */
 	public abstract String name();
 
-	/**
-	 * Postcondition: sets delayCount to 0
-	 */
-	public void resetDelay() {
+	private void resetDelay() {
 		delayCount = 0;
 	}
 }

@@ -19,6 +19,9 @@ public class Window {
 	private PSurfaceAWT surf, cSurf;
 	private PSurfaceAWT.SmoothCanvas gameCanvas, cCanvas;
 
+	/**
+	 * Creates a new Window with 4 panels: a menu, the gameboard, a pause menu, and a level creator
+	 */
 	public Window() {
 		window = new JFrame();
 		game = new Gameboard(this);
@@ -57,27 +60,39 @@ public class Window {
 		window.revalidate();
 	}
 
-	public void fixProcessingPanelSizes(Component x) {
+	private void fixProcessingPanelSizes(Component x) {
 		surf.setSize(x.getWidth(), x.getHeight());
 		cSurf.setSize(x.getWidth(), x.getHeight());
 	}
 
+	/**
+	 * Pauses the game and opens the pause menu
+	 */
 	public void pause() {
 		game.pause();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "pause");
 	}
 
+	/**
+	 * Plays the game and opens the game
+	 */
 	public void play() {
 		game.play();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "game");
 	}
 
+	/**
+	 * Pauses the game and switches to the main menu
+	 */
 	public void menu() {
 		game.pause();
 		creator.noLoop();
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "menu");
 	}
 
+	/**
+	 * Switches to the map creator
+	 */
 	public void creator() {
 		JOptionPane.showMessageDialog(cardPanel, "For troop selection, use the right menu to select a troop to add. It will show up on the left side, under the highlighted troop.");
 		JOptionPane.showMessageDialog(cardPanel, "Use the up and down arrows to change the highlighted troop. The number next to each troop shows how many of them will be spawned.");
@@ -90,10 +105,16 @@ public class Window {
 		((CardLayout) cardPanel.getLayout()).show(cardPanel, "creator");
 	}
 
+	/**
+	 * Exits the program
+	 */
 	public void quit() {
 		System.exit(0);
 	}
 
+	/**
+	 * Loads a user created level
+	 */
 	public void loadMap() {
 		game.loadMap();
 	}

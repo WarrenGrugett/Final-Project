@@ -12,7 +12,7 @@ public class SoundEffect {
 	private int numBytes;
 
 	/**
-	 * Takes in filename of sound byte and initializes an AudioInputStream
+	 * Takes in the filename of a sound byte and initializes an AudioInputStream
 	 * 
 	 * @param fileName
 	 *            of Sound byte
@@ -45,7 +45,7 @@ public class SoundEffect {
 	}
 
 	/**
-	 * plays soundByte
+	 * Plays the soundByte
 	 */
 	public void play() {
 		line.write(audioBytes, 0, numBytes);

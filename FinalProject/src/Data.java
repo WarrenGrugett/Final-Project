@@ -9,11 +9,11 @@ import java.util.*;
  */
 public class Data {
 	/**
-	 * Troop movement speed
+	 * Distance each Troop will move by each timer cycle
 	 */
 	public static final int MOVEMENT_SPEED = 1;
 	/**
-	 * Maps
+	 * The maps to be used during the game
 	 */
 	public static final Map[] maps = {
 			// Map 1

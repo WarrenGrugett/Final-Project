@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Tower class - Shoots really fast with low damage
  * 
@@ -35,12 +33,5 @@ public class Chipper extends Tower {
 
 	public Tower clone(float x, float y) {
 		return new Chipper(x, y);
-	}
-
-	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Troop target = super.attack(troops, map);
-		if (target != null)
-			Data.CHIPPER_ATTACK.play();
-		return target;
 	}
 }

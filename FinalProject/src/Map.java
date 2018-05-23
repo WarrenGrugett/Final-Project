@@ -80,16 +80,12 @@ public class Map {
 
 	/**
 	 * 
-	 * @return troopPattern
+	 * @return The attack patterns the computer will send troops in
 	 */
 	public Point[] troopPattern() {
 		return troopAttackPattern;
 	}
 
-	/**
-	 * 
-	 * @return true if all troops for this map have been sent, false otherwise
-	 */
 	private boolean complete() {
 		return (troopAttackPattern.length == loc);
 	}
@@ -107,7 +103,8 @@ public class Map {
 
 	/**
 	 * 
-	 * @return The starting point for enemy troops and ending point for player troops
+	 * @return The starting point for enemy troops and ending point for player
+	 *         troops
 	 */
 	public Point2D.Float startPoint() {
 		return new Point2D.Float(startX * Gameboard.GRID_WIDTH, startY * Gameboard.GRID_HEIGHT);
@@ -115,7 +112,8 @@ public class Map {
 
 	/**
 	 * 
-	 * @return The starting point for player troops and ending point for enemy troops
+	 * @return The starting point for player troops and ending point for enemy
+	 *         troops
 	 */
 	public Point2D.Float endPoint() {
 		return new Point2D.Float(endX * Gameboard.GRID_WIDTH, endY * Gameboard.GRID_HEIGHT);

@@ -1,5 +1,3 @@
-import java.util.*;
-
 /**
  * Troop - Fires constantly with low damage and high range
  * 
@@ -25,43 +23,19 @@ public class Machinist extends Troop {
 				Data.MACHINIST_ATTACK_ICON);
 	}
 
-	/**
-	 * upgrades health by 10, damage by 2
-	 */
 	public void upgrade() {
 		super.upgrade(10, 2);
 	}
 
-	/**
-	 * @return name + cost
-	 */
 	public String toString() {
 		return "Machinist\nCost: " + cost();
 	}
 
-	/**
-	 * @return name
-	 */
 	public String name() {
 		return "Machinist";
 	}
 
-	/**
-	 * 
-	 * @return new Machinist from the following parameters
-	 */
 	public Troop clone(float x, float y, boolean enemy, int level) {
 		return new Machinist(x, y, enemy, level);
 	}
-
-	/**
-	 * overrides attack method from Sprite
-	 */
-	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Troop target = super.attack(troops, map);
-		if (target != null)
-			Data.MACHINIST_ATTACK.play();
-		return target;
-	}
-
 }
