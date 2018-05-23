@@ -182,8 +182,8 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @param Gameboard
-	 *            gb - displays attacks on gb
+	 * @param gb
+	 *            The Gameboard to draw on
 	 */
 	public void drawAttack(Gameboard gb) {
 		if (attackIcon == null) {
@@ -206,7 +206,7 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @return attackSpeed
+	 * @return Number of timer cycles between attacks
 	 */
 	public int attackSpeed() {
 		return attackSpeed;
