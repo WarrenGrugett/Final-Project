@@ -19,21 +19,21 @@ public abstract class Sprite {
 	 * Initializes all fields from parameters given
 	 * 
 	 * @param x
-	 *            position of Sprite
+	 *            X-coordinate of Sprite
 	 * @param y
-	 *            position of Sprite
+	 *            Y-coordinate of Sprite
 	 * @param damage
-	 *            of Sprite
+	 *            Damage done by one attack
 	 * @param range
-	 *            of Sprite
+	 *            Number of tiles away from the Sprite it can attack
 	 * @param attackSpeed
-	 *            of Sprite
+	 *            Number of timer cycles between attacks
 	 * @param cost
-	 *            of Sprite
+	 *            Amount of money the Sprite costs
 	 * @param icon
-	 *            of Sprite
+	 *            The path of the Sprite's icon
 	 * @param attackIcon
-	 *            of Sprite
+	 *            The icon displayed when the Sprite attacks
 	 */
 	public Sprite(float x, float y, int damage, float range, int attackSpeed, int cost, String icon,
 			String attackIcon) {
@@ -47,13 +47,15 @@ public abstract class Sprite {
 		attackIconPath = attackIcon;
 	}
 
+	/**
+	 * Increases the Sprite's stats by a predetermined amount
+	 */
 	public abstract void upgrade();
 
 	/**
-	 * Postcondition: level is incremented, cost multiplied by 1.1
 	 * 
 	 * @param damage
-	 *            increase
+	 *            Amount of extra damage the Sprite does
 	 */
 	protected void upgrade(int damage) {
 		level++;
@@ -63,7 +65,7 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @return range of Sprite
+	 * @return Number of tiles away from the Sprite it can attack
 	 */
 	public float range() {
 		return range;
@@ -71,22 +73,15 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @return damage
+	 * @return Damage done by one attack
 	 */
 	public int damage() {
 		return damage;
 	}
 
 	/**
+	 * @return X-coordinate of Sprite
 	 * 
-	 * @return attackIconPath
-	 */
-	public String attackIcon() {
-		return attackIconPath;
-	}
-
-	/**
-	 * @return x position of Sprite
 	 */
 	public float x() {
 		return x;
@@ -94,7 +89,7 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @return y position of Sprite
+	 * @return Y-coordinate of Sprite
 	 */
 	public float y() {
 		return y;
@@ -102,15 +97,7 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @return Sprite icon (String)
-	 */
-	public String icon() {
-		return iconPath;
-	}
-
-	/**
-	 * 
-	 * @return cost of Sprite
+	 * @return Cost of Sprite
 	 */
 	public int cost() {
 		return cost;
@@ -119,9 +106,9 @@ public abstract class Sprite {
 	/**
 	 * 
 	 * @param x
-	 *            (new x position of Sprite)
+	 *            New x-coordinate of Sprite
 	 * @param y
-	 *            (new y position of Sprite)
+	 *            New y-coordinate of Sprite
 	 */
 	public void moveTo(float x, float y) {
 		this.x = x;
@@ -132,9 +119,9 @@ public abstract class Sprite {
 	 *
 	 * 
 	 * @param x
-	 *            (how much x should be incremented)
+	 *            Change in x-coordinate of Sprite
 	 * @param y
-	 *            (how much y should be incremented)
+	 *            Change in y-coordinate of Sprite
 	 */
 	public void move(float x, float y) {
 		this.x += x;
@@ -152,8 +139,8 @@ public abstract class Sprite {
 	/**
 	 * 
 	 * @param target
-	 *            (sets target to target passed in)
-	 * @return target passed in
+	 *            Targets the given troop when drawAttack is called
+	 * @return Same troop passed in
 	 */
 	public Troop target(Troop target) {
 		this.target = target;
@@ -162,7 +149,7 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @return target
+	 * @return The troop currently being targeted
 	 */
 	public Troop target() {
 		return target;
@@ -170,8 +157,8 @@ public abstract class Sprite {
 
 	/**
 	 * 
-	 * @param Gameboard
-	 *            gb - draws on the Gameboard passed in
+	 * @param gb
+	 *            The Gameboard to draw on
 	 */
 	public void draw(Gameboard gb) {
 		if (icon == null) {
@@ -179,10 +166,10 @@ public abstract class Sprite {
 			icon.resize(Gameboard.GRID_WIDTH, Gameboard.GRID_HEIGHT);
 		}
 		gb.image(icon, x, y, Gameboard.GRID_HEIGHT, Gameboard.GRID_WIDTH);
-		gb.textSize(20 * Gameboard.ratio);
+		gb.textSize(20);
 		gb.fill(0);
 		gb.text(level, x, y + Gameboard.GRID_HEIGHT);
-		gb.textSize(15 * Gameboard.ratio);
+		gb.textSize(15);
 		if (target != null) {
 			atkDuration++;
 			drawAttack(gb);

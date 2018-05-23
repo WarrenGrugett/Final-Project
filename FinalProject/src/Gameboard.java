@@ -16,9 +16,11 @@ import processing.core.*;
  *
  */
 public class Gameboard extends PApplet implements ActionListener {
-	// Dimensions of each individual grid tile
+	/**
+	 * Dimensions of each grid tile
+	 */
 	public static final int GRID_WIDTH = 64, GRID_HEIGHT = 64;
-	public static float ratio;
+	private static float ratio;
 	private ArrayList<Tower> towers;
 	private ArrayList<Troop> troops;
 	private Map map;
@@ -29,6 +31,12 @@ public class Gameboard extends PApplet implements ActionListener {
 	private int selected = -1, selectedUnit = -1, level = 0, delay, health = 20;
 	private Point sentTroop;
 
+	/**
+	 * Constructs a new Gameboard in the selected window
+	 * 
+	 * @param w
+	 *            the window to add the Gameboard to
+	 */
 	public Gameboard(Window w) {
 		noLoop();
 		this.w = w;
@@ -38,7 +46,10 @@ public class Gameboard extends PApplet implements ActionListener {
 		map = Data.maps[level];
 		sentTroop = map.nextTroops();
 	}
-
+	
+	/**
+	 * Begins the PApplet sketch
+	 */
 	public void run() {
 		sketchPath();
 		initSurface();
@@ -135,6 +146,9 @@ public class Gameboard extends PApplet implements ActionListener {
 		}
 	}
 
+	/**
+	 * Draws the Gameboard in the window from the constructor
+	 */
 	public void draw() {
 		ratio = height / 960f;
 		scale(ratio);
@@ -175,6 +189,9 @@ public class Gameboard extends PApplet implements ActionListener {
 		drawShop();
 	}
 
+	/**
+	 * Draws the shop section of the game
+	 */
 	public void drawShop() {
 		pushStyle();
 		fill(100);
@@ -370,11 +387,17 @@ public class Gameboard extends PApplet implements ActionListener {
 		}
 	}
 
+	/**
+	 * Pauses the game
+	 */
 	public void pause() {
 		noLoop();
 		timer.stop();
 	}
 
+	/**
+	 * Plays the game
+	 */
 	public void play() {
 		loop();
 		timer.start();
@@ -384,11 +407,6 @@ public class Gameboard extends PApplet implements ActionListener {
 		if (key == 'p') {
 			w.pause();
 		}
-	}
-
-	public void troopUpgrade() {
-		for (Troop t : troops)
-			t.upgrade();
 	}
 
 	private void nextLevel() {
@@ -427,6 +445,9 @@ public class Gameboard extends PApplet implements ActionListener {
 		System.exit(1);
 	}
 
+	/**
+	 * Loads a user generated map from a file
+	 */
 	public void loadMap() {
 		JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
 		chooser.setFileFilter(new FileNameExtensionFilter("Select a Map to use", "map"));
