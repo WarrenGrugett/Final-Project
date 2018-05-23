@@ -6,9 +6,9 @@ import javax.swing.filechooser.*;
 
 import processing.core.*;
 
-/**
- * 
- * @author Warren *extends library PApplet
+/** * 
+ * @author Warren
+ * extends library PApplet
  */
 public class MapCreator extends PApplet {
 	private PImage background;
@@ -29,14 +29,15 @@ public class MapCreator extends PApplet {
 		mapData = new int[100][100];
 	}
 
-	/**
-	 * starts threading
-	 */
-	public void run() {
-		sketchPath();
-		initSurface();
-		surface.startThread();
-	}
+   /**
+    * starts threading
+    */
+   public void run()
+   {
+      sketchPath();
+      initSurface();
+      surface.startThread();
+   }
 
 	/**
 	 * Draws all components from MapCreator to screen overrides PApplet draw
@@ -54,15 +55,17 @@ public class MapCreator extends PApplet {
 			drawTroopSelector();
 	}
 
-	private void getBackground() {
-		JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-		chooser.setFileFilter(new FileNameExtensionFilter("Select a background image", "jpg", "png", "jpeg"));
-		if (chooser.showOpenDialog(frame) != JFileChooser.CANCEL_OPTION) {
-			backgroundPath = chooser.getSelectedFile().getAbsolutePath();
-			background = loadImage(backgroundPath);
-			background.resize(height, height);
-		}
-	}
+   private void getBackground()
+   {
+      JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+      chooser.setFileFilter(new FileNameExtensionFilter("Select a background image", "jpg", "png", "jpeg"));
+      if (chooser.showOpenDialog(frame) != JFileChooser.CANCEL_OPTION)
+      {
+         backgroundPath = chooser.getSelectedFile().getAbsolutePath();
+         background = loadImage(backgroundPath);
+         background.resize(height, height);
+      }
+   }
 
 	/**
 	 * draws text to screen
@@ -90,26 +93,26 @@ public class MapCreator extends PApplet {
 		drawMenu();
 	}
 
-	/**
-	 * draws text
-	 */
-	private void drawTroopSelector() {
-		background(255);
-		textAlign(LEFT, TOP);
-		textSize(30);
-		for (int i = (loc > 8) ? loc - 9 : 0; i < troops.size() && i < loc + 9; i++) {
-			if (i == loc - 1)
-				fill(255, 0, 0);
-			else
-				fill(0);
-			if (troops.get(i).x != -1)
-				text(Data.TROOPS.get(troops.get(i).x).name() + ": " + troops.get(i).y, 10, (i - loc) * 50 + height / 2);
-			else
-				text("Empty: " + troops.get(i).y, 10, (i - loc) * 50 + height / 2);
-		}
-		textSize(15);
-		drawMenu();
-	}
+   /**
+    * draws text
+    */
+   private void drawTroopSelector()
+   {
+      background(255);
+      textAlign(LEFT, TOP);
+      textSize(30);
+      for (int i = (loc > 8) ? loc - 9 : 0; i < troops.size() && i < loc + 9; i++)
+      {
+         if (i == loc - 1)
+            fill(255, 0, 0);
+         else fill(0);
+         if (troops.get(i).x != -1)
+            text(Data.TROOPS.get(troops.get(i).x).name() + ": " + troops.get(i).y, 10, (i - loc) * 50 + height / 2);
+         else text("Empty: " + troops.get(i).y, 10, (i - loc) * 50 + height / 2);
+      }
+      textSize(15);
+      drawMenu();
+   }
 
 	private void drawMenu() {
 		fill(100);
@@ -142,7 +145,7 @@ public class MapCreator extends PApplet {
 		text("Finish Map", width - shopWidth / 2, this.height - 1.5f * height);
 		text("Return to Menu", width - shopWidth / 2, this.height - 0.5f * height);
 
-	}
+   }
 
 	public void mouseDragged() {
 		if (mouseX < height) {
@@ -216,17 +219,24 @@ public class MapCreator extends PApplet {
 				mapData[y][x] = selected;
 		}
 	}
+   /**
+    * Processes input if mousePressed
+    */
 
-	/**
-	 * Processes input if keyPressed
-	 */
-	public void keyPressed() {
-		if (keyCode == UP) {
-			loc--;
-		} else if (keyCode == DOWN) {
-			loc++;
-		}
-	}
+   /**
+    * Processes input if keyPressed
+    */
+   public void keyPressed()
+   {
+      if (keyCode == UP)
+      {
+         loc--;
+      }
+      else if (keyCode == DOWN)
+      {
+         loc++;
+      }
+   }
 
 	public void finishMap() {
 		if (!troops.isEmpty() && backgroundPath != null) {
