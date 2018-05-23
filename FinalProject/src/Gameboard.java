@@ -57,6 +57,9 @@ public class Gameboard extends PApplet implements ActionListener {
 				if (target != null && target.takeDamage(troop.damage())) {
 					dead.add(target);
 				}
+				if (target != null && troop instanceof Kamikaze) {
+					dead.addAll(((Kamikaze) troop).detonate(troops));
+				}
 			}
 		}
 		for (int i = 0; i < towers.size(); i++) {
@@ -73,17 +76,7 @@ public class Gameboard extends PApplet implements ActionListener {
 						dead.add(target);
 					}
 					if (target != null && tower instanceof Tank) {
-						for (int j = 0; j < troops.size(); j++) {
-							Troop troop = troops.get(j);
-							if (Math.abs(troop.x() + GRID_WIDTH / 2 - target.x() + GRID_WIDTH / 2) <= ((Tank) tower)
-									.radiusDamage() * GRID_WIDTH
-									&& Math.abs(troop.y() + GRID_HEIGHT / 2 - target.y()
-											+ GRID_HEIGHT / 2) <= ((Tank) tower).radiusDamage() * GRID_HEIGHT) {
-								if (troop.takeDamage(tower.damage())) {
-									dead.add(troop);
-								}
-							}
-						}
+						dead.addAll(((Tank) tower).explosion(troops));
 					}
 				}
 			}
@@ -112,7 +105,7 @@ public class Gameboard extends PApplet implements ActionListener {
 				selectedUnit = -1;
 			troops.remove(troop);
 		}
-		money += 100;
+		money += 0.02;
 		if (money > 100)
 			money = 100;
 		if (sentTroop != null) {
@@ -120,8 +113,8 @@ public class Gameboard extends PApplet implements ActionListener {
 			if (delay == 80) {
 				delay = 0;
 				if (sentTroop.x != -1) {
-					troops.add(
-							((Troop) Data.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x, true, 1));
+					troops.add(((Troop) Data.TROOPS.get(sentTroop.x)).clone(map.startPoint().y, map.startPoint().x,
+							true, 1));
 					troops.get(troops.size() - 1).orientate(map);
 				}
 				sentTroop.y--;

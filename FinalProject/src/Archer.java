@@ -20,37 +20,23 @@ public class Archer extends Troop {
 	 *            of the game
 	 */
 	public Archer(float x, float y, boolean enemy, int level) {
-		super(x, y, (int) Data.ARCHER_STATS[0], (int) Data.ARCHER_STATS[1], (int) Data.ARCHER_STATS[2], Data.ARCHER_STATS[3],
-				(int) (Data.ARCHER_STATS[4] * Math.pow(1.1, level - 1)), enemy, Data.ARCHER_ICON, Data.ARCHER_ATTACK_ICON);
+		super(x, y, (int) Data.ARCHER_STATS[0], (int) Data.ARCHER_STATS[1], (int) Data.ARCHER_STATS[2],
+				Data.ARCHER_STATS[3], (int) (Data.ARCHER_STATS[4] * Math.pow(1.1, level - 1)), enemy, Data.ARCHER_ICON,
+				Data.ARCHER_ATTACK_ICON);
 	}
 
-   /**
-    * upgrades health by 10, damage by 5
-    */
-   public void upgrade()
-   {
-      super.upgrade(10, 5);
-   }
+	public void upgrade() {
+		super.upgrade(10, 5);
+	}
 
-   /**
-    * @return name + cost
-    */
-   public String toString()
-   {
-      return "Archer\nCost: " + cost();
-   }
+	public String toString() {
+		return "Archer\nCost: " + cost();
+	}
 
-   /**
-    * @return new Archer from the following parameters
-    */
-   public Troop clone(float x, float y, boolean enemy, int level)
-   {
-      return new Archer(x, y, enemy, level);
-   }
+	public Troop clone(float x, float y, boolean enemy, int level) {
+		return new Archer(x, y, enemy, level);
+	}
 
-	/**
-	 * @return name of Troop/Tower
-	 */
 	public String name() {
 		return "Archer";
 	}

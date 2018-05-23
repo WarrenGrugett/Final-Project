@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  */
 public class Tank extends Tower {
-	private static final float radiusDamage = 1;
+	private static final float explosionRange = 1;
 
 	/**
 	 * Postcondition: calls Tower constructor (super)
@@ -19,14 +19,10 @@ public class Tank extends Tower {
 	 *            position of Tank
 	 */
 	public Tank(float x, float y) {
-		super(x, y, (int) Data.TANK_STATS[0], (int) Data.TANK_STATS[1], Data.TANK_STATS[2], (int) Data.TANK_STATS[3], Data.TANK_ICON,
-				Data.TANK_ATTACK_ICON);
+		super(x, y, (int) Data.TANK_STATS[0], (int) Data.TANK_STATS[1], Data.TANK_STATS[2], (int) Data.TANK_STATS[3],
+				Data.TANK_ICON, Data.TANK_ATTACK_ICON);
 	}
 
-	/**
-	 * 
-	 * increases damage by 10
-	 */
 	public void upgrade() {
 		super.upgrade(10);
 	}
@@ -35,37 +31,43 @@ public class Tank extends Tower {
 	 * 
 	 * @return radiusDamage
 	 */
-	public float radiusDamage() {
-		return radiusDamage;
+	public float explosionRange() {
+		return explosionRange;
 	}
 
-	/**
-	 * @return name + cost
-	 */
 	public String toString() {
 		return "Tank\nCost: " + (int) Data.TANK_STATS[3];
 	}
 
-	/**
-	 * @return name of the tower
-	 */
 	public String name() {
 		return "Tank";
 	}
 
-	/**
-	 * 
-	 * creates a new Tank with the following parameters
-	 */
 	public Tower clone(float x, float y) {
 		return new Tank(x, y);
 	}
 
-	/**
-	 * overrides attack method from Sprite
-	 */
+	public ArrayList<Troop> explosion(ArrayList<Troop> troops) {
+		ArrayList<Troop> dead = new ArrayList<Troop>();
+		for (int j = 0; j < troops.size(); j++) {
+			Troop troop = troops.get(j);
+			if (Math.abs(
+					troop.x() + Gameboard.GRID_WIDTH / 2 - target().x() + Gameboard.GRID_WIDTH / 2) <= explosionRange
+							* Gameboard.GRID_WIDTH
+					&& Math.abs(troop.y() + Gameboard.GRID_HEIGHT / 2 - target().y()
+							+ Gameboard.GRID_HEIGHT / 2) <= explosionRange * Gameboard.GRID_HEIGHT) {
+				if (troop.takeDamage(damage())) {
+					dead.add(troop);
+				}
+			}
+		}
+		return dead;
+	}
+
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Data.TANK_ATTACK.play();
-		return super.attack(troops, map);
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			Data.TANK_ATTACK.play();
+		return target;
 	}
 }

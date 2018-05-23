@@ -22,10 +22,6 @@ public class SniperTower extends Tower {
 				(int) Data.SNIPERTOWER_STATS[3], Data.SNIPERTOWER_ICON, Data.SNIPERTOWER_ATTACK_ICON);
 	}
 
-	/**
-	 * 
-	 * increases damage by 10
-	 */
 	public void upgrade() {
 		super.upgrade(10);
 	}
@@ -38,34 +34,22 @@ public class SniperTower extends Tower {
 		return radiusDamage;
 	}
 
-	/**
-	 * @return name + cost
-	 */
 	public String toString() {
 		return "Sniper Tower\nCost: " + (int) Data.SNIPERTOWER_STATS[3];
 	}
 
-	/**
-	 * @return name of the tower
-	 */
 	public String name() {
 		return "Sniper Tower";
 	}
 
-	/**
-	 * 
-	 * creates a new SniperTower with the following parameters
-	 */
 	public Tower clone(float x, float y) {
 		return new SniperTower(x, y);
 	}
 
-	/**
-	 * overrides attack method from Sprite
-	 */
-	@Override
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Data.SNIPERTOWER_ATTACK.play();
-		return super.attack(troops, map);
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			Data.SNIPERTOWER_ATTACK.play();
+		return target;
 	}
 }

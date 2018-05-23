@@ -58,8 +58,10 @@ public class Machinist extends Troop {
 	 * overrides attack method from Sprite
 	 */
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Data.MACHINIST_ATTACK.play();
-		return super.attack(troops, map);
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			Data.MACHINIST_ATTACK.play();
+		return target;
 	}
 
 }

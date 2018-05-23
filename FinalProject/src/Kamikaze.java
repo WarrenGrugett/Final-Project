@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Troop class- shoots at enemy with arrows with certain range
@@ -21,20 +21,14 @@ public class Kamikaze extends Troop {
 	 */
 	public Kamikaze(float x, float y, boolean enemy, int level) {
 		super(x, y, (int) Data.KAMIKAZE_STATS[0], (int) Data.KAMIKAZE_STATS[1], (int) Data.KAMIKAZE_STATS[2],
-				Data.KAMIKAZE_STATS[3], (int) (Data.KAMIKAZE_STATS[4] * Math.pow(1.1, level - 1)), enemy, Data.KAMIKAZE_ICON,
-				Data.KAMIKAZE_ATTACK_ICON);
+				Data.KAMIKAZE_STATS[3], (int) (Data.KAMIKAZE_STATS[4] * Math.pow(1.1, level - 1)), enemy,
+				Data.KAMIKAZE_ICON, Data.KAMIKAZE_ATTACK_ICON);
 	}
 
-	/**
-	 * upgrades health by 10, damage by 5
-	 */
 	public void upgrade() {
 		super.upgrade(10, 5);
 	}
 
-	/**
-	 * Displays name + cost
-	 */
 	public String toString() {
 		return "Kamikaze\nCost: " + cost();
 	}
@@ -43,41 +37,45 @@ public class Kamikaze extends Troop {
 		return "Kamikaze";
 	}
 
-	/**
-	 * @return new Kamikaze from the following parameters
-	 */
 	public Troop clone(float x, float y, boolean enemy, int level) {
 		return new Kamikaze(x, y, enemy, level);
 	}
 
-	/**
-	 * overrides attack method from Sprite
-	 */
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
+		float distance = Gameboard.GRID_HEIGHT;
+		for (Troop troop : troops)
+			if (Math.abs(troop.x() - x()) < distance && Math.abs(troop.y() - y()) < distance && checkEnemy(troop)) {
+				return target(troop);
+			}
 		return null;
 	}
 
 	/**
 	 * 
-	 * @param enemy
-	 *            troops
-	 * @return dead troops calculated from blast
+	 * @param troops
+	 *            The ArrayList of Troops that it can target
+	 * @return The troops killed in the blast
 	 */
-	public ArrayList<Troop> deadBlastTroops(ArrayList<Troop> troops) {
+	public ArrayList<Troop> detonate(ArrayList<Troop> troops) {
 		ArrayList<Troop> dead = new ArrayList<Troop>();
-		for (Troop t : troops) {
-			if ((Math.abs(this.x() + 32 - t.x() + 32) <= (Data.KAMIKAZE_STATS[3] * 64))
-					&& (Math.abs(this.y() + 32 - t.y() + 32) <= (Data.KAMIKAZE_STATS[3] * 64))) {
-				dead.add(t);
+		for (int j = 0; j < troops.size(); j++) {
+			Troop troop = troops.get(j);
+			if (Math.abs(troop.x() + Gameboard.GRID_WIDTH / 2 - x() + Gameboard.GRID_WIDTH / 2) <= range()
+					* Gameboard.GRID_WIDTH
+					&& Math.abs(troop.y() + Gameboard.GRID_HEIGHT / 2 - y() + Gameboard.GRID_HEIGHT / 2) <= range()
+							* Gameboard.GRID_HEIGHT) {
+				if (troop.takeDamage(damage())) {
+					dead.add(troop);
+				}
 			}
 		}
+		dead.add(this);
 		return dead;
 	}
 
-	/**
-	 * Displays the blast
-	 */
 	public void drawAttack(Gameboard gb) {
-
+		gb.fill(200, 0, 0);
+		gb.ellipse(x() + Gameboard.GRID_WIDTH / 2, y() + Gameboard.GRID_HEIGHT / 2, range() * 2 * Gameboard.GRID_WIDTH,
+				range() * 2 * Gameboard.GRID_HEIGHT);
 	}
 }

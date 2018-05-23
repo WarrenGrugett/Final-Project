@@ -4,61 +4,45 @@
  * @author Sepehr
  *
  */
-public class Generator extends Tower
-{
-   private double generation;
-   
-   /**
-    * Postcondition: calls Tower constructor (super) 
-    * @param x position of Generator 
-    * @param y position of Generator
-    */
-   public Generator(float x, float y)
-   {
-      super(x, y, (int) Data.GENERATOR_STATS[0], (int) Data.GENERATOR_STATS[1], Data.GENERATOR_STATS[2],
-            (int) Data.GENERATOR_STATS[3], Data.GENERATOR_ICON, null);
-      generation = 1;
-   }
+public class Generator extends Tower {
+	private double generation;
 
-   /**
-    * generates $0.25 more per cycle
-    */
-   public void upgrade()
-   {
-      generation += 0.25;
+	/**
+	 * Postcondition: calls Tower constructor (super)
+	 * 
+	 * @param x
+	 *            position of Generator
+	 * @param y
+	 *            position of Generator
+	 */
+	public Generator(float x, float y) {
+		super(x, y, (int) Data.GENERATOR_STATS[0], (int) Data.GENERATOR_STATS[1], Data.GENERATOR_STATS[2],
+				(int) Data.GENERATOR_STATS[3], Data.GENERATOR_ICON, null);
+		generation = 1;
+	}
 
-   }
+	public void upgrade() {
+		generation += 0.25;
 
-   /**
-    * 
-    * @return generation
-    */
-   public double generation()
-   {
-      return generation;
-   }
+	}
 
-   /**
-    * @return name + cost
-    */
-   public String toString()
-   {
-      return "Generator\nCost: " + (int) Data.GENERATOR_STATS[3];
-   }
+	/**
+	 * 
+	 * @return generation
+	 */
+	public double generation() {
+		return generation;
+	}
 
-   /**
-    * @return name
-    */
-   public String name()
-   {
-      return "Generator";
-   }
+	public String toString() {
+		return "Generator\nCost: " + (int) Data.GENERATOR_STATS[3];
+	}
 
-   /**
-    * returns a new Generator with the following parameters
-    */
-   public Tower clone(float x, float y)
-   {
-      return new Generator(x, y);
-   }
+	public String name() {
+		return "Generator";
+	}
+
+	public Tower clone(float x, float y) {
+		return new Generator(x, y);
+	}
 }

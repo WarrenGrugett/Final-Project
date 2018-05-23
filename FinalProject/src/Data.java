@@ -9,11 +9,11 @@ import java.util.*;
  */
 public class Data {
 	/**
-	 *  Troop movement speed
+	 * Troop movement speed
 	 */
 	public static final int MOVEMENT_SPEED = 1;
 	/**
-	 *  Maps
+	 * Maps
 	 */
 	public static final Map[] maps = {
 			// Map 1
@@ -33,7 +33,8 @@ public class Data {
 							new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 							new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 } },
-					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }),
+					new Point[] { new Point(0, 3), new Point(-1, 10), new Point(1, 3), new Point(-1, 10),
+							new Point(1, 3), new Point(3, 1), new Point(1, 1), new Point(-1, 30) }),
 			// Map 2
 			new Map("tdmap1.png",
 					new int[][] { new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -107,55 +108,47 @@ public class Data {
 							new int[] { 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3 } },
 					new Point[] { new Point(0, 3), new Point(0, 3), new Point(0, 3), }) };
 	/**
-	 *  Tower placement sound effects
+	 * Tower attack sound effects
 	 */
-	public static final SoundEffect CANNON_PLACE = new SoundEffect(""), CHIPPER_PLACE = new SoundEffect(""),
-			TANK_PLACE = new SoundEffect(""), GENERATOR_PLACE = new SoundEffect(""), SNIPERTOWER_PLACE = new SoundEffect("");
+	public static final SoundEffect CANNON_ATTACK = new SoundEffect("cannonshot.wav"),
+			CHIPPER_ATTACK = new SoundEffect("chipperatk.wav"), TANK_ATTACK = new SoundEffect("explosion.wav"),
+			SNIPERTOWER_ATTACK = new SoundEffect("snipershot.wav");
 	/**
-	 *  Troop placement sound effects
+	 * Troop attack sound effects
 	 */
-	public static final SoundEffect ARCHER_PLACE = new SoundEffect(""), GIANTWARRIOR_PLACE = new SoundEffect(""),
-			KNIGHT_PLACE = new SoundEffect(""), MACHINIST_PLACE = new SoundEffect("");
+	public static final SoundEffect ARCHER_ATTACK = new SoundEffect("arrowfired.wav"),
+			MACHINIST_ATTACK = new SoundEffect("gunshot.wav"), KAMIKAZE_ATTACK = new SoundEffect("explosion.wav");
 	/**
-	 *  Tower attack sound effects
-	 */
-	public static final SoundEffect CANNON_ATTACK = new SoundEffect("cannonshot.wav"), CHIPPER_ATTACK = new SoundEffect("chipperatk.wav"),
-			TANK_ATTACK = new SoundEffect("explosion.wav"), GENERATOR_ATTACK = new SoundEffect(""), SNIPERTOWER_ATTACK = new SoundEffect("snipershot.wav");
-	/**
-	 *  Troop attack sound effects
-	 */
-	public static final SoundEffect ARCHER_ATTACK = new SoundEffect("arrowfired.wav"), GIANTWARRIOR_ATTACK = new SoundEffect(""),
-			KNIGHT_ATTACK = new SoundEffect(""), MACHINIST_ATTACK = new SoundEffect("gunshot.wav"), KAMIKAZE_ATTACK = new SoundEffect("explosion.wav");
-	/**
-	 *  Tower icons
+	 * Tower icons
 	 */
 	public static final String CANNON_ICON = "cannon.png", CHIPPER_ICON = "chipper.png", TANK_ICON = "tank.png",
 			GENERATOR_ICON = "generator.png", SNIPERTOWER_ICON = "snipertower.png";
 	/**
-	 *  Troop icons
+	 * Troop icons
 	 */
 	public static final String ARCHER_ICON = "archer.png", GIANTWARRIOR_ICON = "giant.png", KNIGHT_ICON = "knight.png",
 			MACHINIST_ICON = "machinist.png", KAMIKAZE_ICON = "kamikaze.png";
 	/**
-	 *  Tower attack icons
+	 * Tower attack icons
 	 */
 	public static final String CANNON_ATTACK_ICON = "cannonball.png", CHIPPER_ATTACK_ICON = "dart.png",
 			TANK_ATTACK_ICON = "missile.png", SNIPERTOWER_ATTACK_ICON = "testBG.png";
 	/**
-	 *  Troop attack icons
+	 * Troop attack icons
 	 */
 	public static final String ARCHER_ATTACK_ICON = "arrow.png", GIANTWARRIOR_ATTACK_ICON = "giant.png",
-			KNIGHT_ATTACK_ICON = "knight.png", MACHINIST_ATTACK_ICON = "bullet.png", KAMIKAZE_ATTACK_ICON = "testBG.png";
+			KNIGHT_ATTACK_ICON = "knight.png", MACHINIST_ATTACK_ICON = "bullet.png",
+			KAMIKAZE_ATTACK_ICON = "testBG.png";
 	/**
-	 *  List of all units playable by the player
+	 * List of all units playable by the player
 	 */
 	public static final HashMap<Integer, Sprite> P_UNITS = new HashMap<>();
 	/**
-	 *  List of all enemy troops
+	 * List of all enemy troops
 	 */
 	public static final HashMap<Integer, Troop> TROOPS = new HashMap<>();
 	/**
-	 *  List of all tower stats Key: damage, attack speed, range, cost
+	 * List of all tower stats Key: damage, attack speed, range, cost
 	 */
 	public static final float[] CANNON_STATS = { 50, 150, 2.5f, 60 };
 	public static final float[] CHIPPER_STATS = { 5, 25, 3.5f, 80 };
@@ -164,28 +157,13 @@ public class Data {
 	public static final float[] SNIPERTOWER_STATS = { 100, 1000, 15, 80 };
 	public static final float[][] TOWER_STATS = { CANNON_STATS, CHIPPER_STATS, TANK_STATS, SNIPERTOWER_STATS };
 	/**
-	 *  List of Archer stats Key: health, damage, attack speed, range, cost
+	 * List of Troop stats Key: health, damage, attack speed, range, cost
 	 */
 	public static final float[] ARCHER_STATS = { 40, 20, 100, 3f, 30 };
-	/**
-    *  List of GiantWarrior stats Key: health, damage, attack speed, range, cost
-    */
 	public static final float[] GIANTWARRIOR_STATS = { 400, 100, 400, 1, 50 };
-	/**
-    *  List of Knight stats Key: health, damage, attack speed, range, cost
-    */
 	public static final float[] KNIGHT_STATS = { 200, 40, 200, 1, 40 };
-	/**
-    *  List of Machinist stats Key: health, damage, attack speed, range, cost
-    */
 	public static final float[] MACHINIST_STATS = { 80, 5, 25, 3.5f, 50 };
-	/**
-    *  List of Kamikaze stats Key: health, damage, attack speed, range, cost
-    */
 	public static final float[] KAMIKAZE_STATS = { 200, 100, 0, 4, 60 };
-	/**
-    *  List of all troop stats Key: health, damage, attack speed, range, cost
-    */
 	public static final float[][] TROOP_STATS = { ARCHER_STATS, GIANTWARRIOR_STATS, KNIGHT_STATS, MACHINIST_STATS,
 			KAMIKAZE_STATS };
 	static {

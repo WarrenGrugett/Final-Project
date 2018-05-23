@@ -20,40 +20,27 @@ public class Cannon extends Tower {
 				Data.CANNON_ICON, Data.CANNON_ATTACK_ICON);
 	}
 
-	/**
-	 * increments health by 10
-	 */
 	public void upgrade() {
 		super.upgrade(10);
 
 	}
 
-	/**
-	 * @return name + cost
-	 */
 	public String toString() {
 		return "Cannon\nCost: " + (int) Data.CANNON_STATS[3];
 	}
 
-	/**
-	 * @return name of Tower
-	 */
 	public String name() {
 		return "Cannon";
 	}
 
-	/**
-	 * creates a new Cannon with the following parameters
-	 */
 	public Tower clone(float x, float y) {
 		return new Cannon(x, y);
 	}
 
-	/**
-	 * overrides attack method from Sprite
-	 */
 	public Troop attack(ArrayList<Troop> troops, int[][] map) {
-		Data.CANNON_ATTACK.play();
-		return super.attack(troops, map);
+		Troop target = super.attack(troops, map);
+		if (target != null)
+			Data.CANNON_ATTACK.play();
+		return target;
 	}
 }
