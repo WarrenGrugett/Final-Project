@@ -4,9 +4,11 @@
  * @author Warren, Sepehr, Leo
  *
  */
-public class Main {
+public class Main
+{
 
-	public static void main(String[] args) {
-		new Window();
-	}
+   public static void main(String[] args)
+   {
+      new Window();
+   }
 }

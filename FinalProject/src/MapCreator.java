@@ -8,8 +8,7 @@ import processing.core.*;
 
 /**
  * 
- * @author Warren
- *
+ * @author Warren *extends library PApplet
  */
 public class MapCreator extends PApplet {
 	private Map map;
@@ -31,12 +30,18 @@ public class MapCreator extends PApplet {
 		mapData = new int[mHeight][mWidth];
 	}
 
+	/**
+	 * starts threading
+	 */
 	public void run() {
 		sketchPath();
 		initSurface();
 		surface.startThread();
 	}
 
+	/**
+	 * Draws all components from MapCreator to screen overrides PApplet draw
+	 */
 	public void draw() {
 		tWidth = height / (float) mWidth;
 		tWidth = height / (float) mHeight;
@@ -61,6 +66,9 @@ public class MapCreator extends PApplet {
 		}
 	}
 
+	/**
+	 * draws text to screen
+	 */
 	private void drawMapCreator() {
 		if (background != null)
 			image(background, 0, 0);
@@ -84,6 +92,9 @@ public class MapCreator extends PApplet {
 		drawMenu();
 	}
 
+	/**
+	 * draws text
+	 */
 	private void drawTroopSelector() {
 		background(255);
 		textAlign(LEFT, TOP);
@@ -102,6 +113,9 @@ public class MapCreator extends PApplet {
 		drawMenu();
 	}
 
+	/**
+	 * Draws Menu layout to screen
+	 */
 	private void drawMenu() {
 		fill(100);
 		float shopWidth = width - height;
@@ -141,6 +155,9 @@ public class MapCreator extends PApplet {
 		}
 	}
 
+	/**
+	 * Processes input if mousePressed
+	 */
 	public void mousePressed() {
 		int num = (troopSelect) ? V.NUM_TROOPS + 4 : menuItems.length + 2;
 		float height = this.height / (float) num;
@@ -192,6 +209,9 @@ public class MapCreator extends PApplet {
 		}
 	}
 
+	/**
+	 * Processes input if keyPressed
+	 */
 	public void keyPressed() {
 		if (keyCode == UP) {
 			loc--;
